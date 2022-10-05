@@ -1,13 +1,15 @@
 package module6.backend.controller;
 
+import module6.backend.entity.employee.Employee;
 import module6.backend.service.IAccountService;
 import module6.backend.service.IEmployeeService;
 import module6.backend.service.IPositionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
@@ -21,5 +23,15 @@ public class EmployeeController {
 
     @Autowired
     private IPositionService positionService;
+
+    //    Tìm kiếm nhân viên theo id
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Employee> findCustomerById(@PathVariable Long id) {
+        Optional<Employee> employeeOptional = employeeService.findEmployeeById(id);
+        if (!employeeOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(employeeOptional.get(), HttpStatus.OK);
+    }
 
 }
