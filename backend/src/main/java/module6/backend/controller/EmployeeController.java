@@ -24,7 +24,7 @@ public class EmployeeController {
     @Autowired
     private IPositionService positionService;
 
-    //    Tìm kiếm nhân viên theo id
+    //  SonLH  Tìm kiếm nhân viên theo id
     @GetMapping("/detail/{id}")
     public ResponseEntity<Employee> findCustomerById(@PathVariable Long id) {
         Optional<Employee> employeeOptional = employeeService.findEmployeeById(id);
