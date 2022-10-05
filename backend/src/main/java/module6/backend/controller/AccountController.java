@@ -20,4 +20,7 @@ public class AccountController {
     private IAccountRoleService accountRoleService;
     @Autowired
     private IEmployeeService employeeService;
+    private IEmployeeService employeeService2;
+    private IEmployeeService employeeService3;
+    private IEmployeeService employeeService4;
 }
