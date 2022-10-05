@@ -26,7 +26,7 @@ public class EmployeeController {
 
     //  SonLH  Tìm kiếm nhân viên theo id
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Employee> findCustomerById(@PathVariable Long id) {
+    public ResponseEntity<Employee> findEmployeeById(@PathVariable Long id) {
         Optional<Employee> employeeOptional = employeeService.findEmployeeById(id);
         if (!employeeOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
