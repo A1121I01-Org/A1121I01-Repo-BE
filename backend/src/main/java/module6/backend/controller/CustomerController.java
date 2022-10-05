@@ -21,7 +21,7 @@ public class CustomerController {
     @Autowired
     private ICustomerTypeService customerTypeService;
 
-    //    Tìm kiếm khách hàng theo id
+    //  SonLH  Tìm kiếm khách hàng theo id
     @GetMapping("/detail/{id}")
     public ResponseEntity<Customer> findCustomerById(@PathVariable Long id) {
         Optional<Customer> customerOptional = customerService.findCustomerById(id);
