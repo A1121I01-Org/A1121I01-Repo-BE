@@ -1,6 +1,9 @@
 package module6.backend.entity.account;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "account")
@@ -12,14 +15,26 @@ public class Account {
     private String password;
     private Boolean accountFlag = false;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(name = "account_role",
+            joinColumns = {
+                    @JoinColumn(name = "account_id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "role_id")
+            }
+    )
+    @JsonBackReference
+    private Set<Role> roles;
     public Account() {
     }
 
-    public Account(Long accountId, String username, String password, Boolean accountFlag) {
+    public Account(Long accountId, String username, String password, Boolean accountFlag, Set<Role> roles) {
         this.accountId = accountId;
         this.username = username;
         this.password = password;
         this.accountFlag = accountFlag;
+        this.roles = roles;
     }
 
     public Long getAccountId() {
@@ -52,5 +67,13 @@ public class Account {
 
     public void setAccountFlag(Boolean accountFlag) {
         this.accountFlag = accountFlag;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
