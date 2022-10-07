@@ -1,6 +1,7 @@
 package module6.backend.controller;
 
 import module6.backend.entity.customer.Customer;
+import module6.backend.entity.customer.CustomerType;
 import module6.backend.service.ICustomerService;
 import module6.backend.service.ICustomerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -29,5 +31,15 @@ public class CustomerController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(customerOptional.get(), HttpStatus.OK);
+    }
+
+    //  SonLH lấy danh dách loại khách hàng
+    @GetMapping("/customer-type")
+    public ResponseEntity<List<CustomerType>> findAllCustomerType() {
+        List<CustomerType> customerTypes = customerTypeService.findAllCustomerType();
+        if (customerTypes.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(customerTypes, HttpStatus.OK);
     }
 }
