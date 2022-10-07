@@ -3,10 +3,13 @@ package module6.backend.controller;
 
 import module6.backend.entity.ClassDTO.Password;
 import module6.backend.entity.account.Account;
+import module6.backend.entity.account.Role;
 import module6.backend.entity.employee.Employee;
+import module6.backend.repository.IRoleRepository;
 import module6.backend.service.IAccountRoleService;
 import module6.backend.service.IAccountService;
 import module6.backend.service.IEmployeeService;
+import module6.backend.service.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +18,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
+import java.util.List;
+
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin
 @RequestMapping("api/account")
 public class AccountController {
     @Autowired
@@ -51,6 +57,9 @@ public class AccountController {
             }
         }
     }
+
+    @Autowired
+
 
 //    @PostConstruct
 //    public void initRolesAndAccount(){
@@ -87,9 +96,42 @@ public class AccountController {
         return new ResponseEntity<>(accountService.createEmployeeAndAccount(employee),HttpStatus.CREATED);
     }
 
-//    @GetMapping("/{code}")
-//    public ResponseEntity<?> getEmployee(@PathVariable String code){
-//        Employee employee = employeeService.findEmployeeByCode(code);
-//        return new ResponseEntity<>(employee,HttpStatus.OK);
-//    }
+    @GetMapping("/{code}")
+    public ResponseEntity<?> getEmployee(@PathVariable String code){
+        Employee employee = employeeService.findEmployeeByCode(code);
+        return new ResponseEntity<>(employee,HttpStatus.OK);
+    }
+
+
+    @PostMapping("/create-Account/{username}/{password}/{positionId}/{code}")
+    public ResponseEntity<?> createTest(@RequestBody Employee employee,@PathVariable String username,@PathVariable String password,
+                                        @PathVariable Long positionId,@PathVariable String code,BindingResult bindingResult){
+//        Employee employee1 = employeeService.findEmployeeByCode(code);
+//        if (employee1!=null){
+//            accountService.createTest(employee1,username,password,roleId,code);
+//        }
+//        else accountService.createTest(employee,username,password,roleId,code);
+//
+//        return new ResponseEntity<>(HttpStatus.CREATED);
+
+        if (employeeService.findExistEmployeeHasAccount(code)!=null){
+            bindingResult.rejectValue("employeeCode","Mã nhân viên đã tồn tại và đã có tài khoản");
+            System.out.println("Mã nhân viên đã tồn tại và đã có tài khoản");
+        }else if (accountService.existAccountByUsername(username)){
+            bindingResult.rejectValue("employeeCode", "Tên tài khoản đã tồn tại");
+        }
+
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(bindingResult.getFieldError(), HttpStatus.BAD_REQUEST);
+        }else {
+            if (employeeService.findExistEmployeeDontHasAccount(code)!=null){
+                Employee employee1 = employeeService.findEmployeeByCode(code);
+                accountService.createTest(employee1,username,password,positionId,code);
+            }else {
+                accountService.createTest(employee,username,password,positionId,code);
+            }
+        }
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
 }

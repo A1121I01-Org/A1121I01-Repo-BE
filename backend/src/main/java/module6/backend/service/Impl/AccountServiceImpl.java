@@ -37,18 +37,9 @@ public class AccountServiceImpl implements IAccountService {
     //Thêm sẵn 2 acc admin
     @Override
     public void initRoleAndAccount() {
-        Role adminRole = new Role();
-        adminRole.setRoleName("ROLE_ADMIN");
-        roleRepository.save(adminRole);
-
-        Role accountantRole = new Role();
-        accountantRole.setRoleName("ROLE_ACCOUNTANT");
-        roleRepository.save(accountantRole);
-
-        Role sellRole = new Role();
-        sellRole.setRoleName("ROLE_SELL");
-        roleRepository.save(sellRole);
-
+        Role adminRole = roleRepository.findRoleByRoleName("ROLE_ADMIN");
+        Role accountantRole = roleRepository.findRoleByRoleName("ROLE_ACCOUNTANT");
+        Role sellRole = roleRepository.findRoleByRoleName("ROLE_SELL");
         Account adminUser = new Account();
         adminUser.setUsername("admin");
         adminUser.setPassword("123123");
@@ -114,6 +105,31 @@ public class AccountServiceImpl implements IAccountService {
 //        employeeRepository.saveEmployeeAndAccount(employee.getEmployeeCode(),employee.getEmployeeName(),employee.getEmployeeDateOfBirth(),employee.getEmployeeGender(),employee.getEmployeeAddress(),
 //                employee.getEmployeePhone(), employee.getEmployeeAccountId().getAccountId(),employee.getEmployeePositionId().getPositionId());
         employeeRepository.save(employee);
+        return employee;
+    }
+
+    @Override
+    public Employee createTest(Employee employee, String username, String password, Long positionId, String code) {
+        if (employeeRepository.findExistEmployeeHasAccount(code)!=null){
+            System.out.println("Ton tai nhan vien va da co tai khoan");
+        }else if (employeeRepository.findExistEmployeeDontHasAccount(code)!=null){
+            Set<Role> roles = new HashSet<>();
+            Role role = roleRepository.findById(positionId).get();
+            roles.add(role);
+            Account account = new Account(username,password);
+            account.setRoles(roles);
+            employee.setEmployeeAccountId(account);
+            employeeRepository.save(employee);
+        }else {
+            Set<Role> roles = new HashSet<>();
+            employeeRepository.save(employee);
+            Role role = roleRepository.findById(positionId).get();
+            roles.add(role);
+            Account account = new Account(username,password);
+            account.setRoles(roles);
+            employee.setEmployeeAccountId(account);
+            employeeRepository.save(employee);
+        }
         return employee;
     }
 
