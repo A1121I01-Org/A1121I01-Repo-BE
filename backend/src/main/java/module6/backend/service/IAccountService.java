@@ -7,5 +7,5 @@ public interface IAccountService {
     Account findAccountByUsername(String username);
     Boolean existAccountByUsername(String username);
     String getEncodedPassword(String password);
-    void initRoleAndAccount();
+//    void initRoleAndAccount();
 }

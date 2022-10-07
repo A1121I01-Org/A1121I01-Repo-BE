@@ -8,6 +8,7 @@ import module6.backend.repository.IEmployeeRepository;
 import module6.backend.repository.IRoleRepository;
 import module6.backend.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -24,40 +25,33 @@ public class AccountServiceImpl implements IAccountService {
     @Autowired
     private IRoleRepository roleRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     //Thêm sẵn 2 acc admin
-    @Override
-    public void initRoleAndAccount() {
-        Role adminRole = new Role();
-        adminRole.setRoleName("ROLE_ADMIN");
-        roleRepository.save(adminRole);
-
-        Role accountantRole = new Role();
-        accountantRole.setRoleName("ROLE_ACCOUNTANT");
-        roleRepository.save(accountantRole);
-
-        Role sellRole = new Role();
-        sellRole.setRoleName("ROLE_SELL");
-        roleRepository.save(sellRole);
-
-        Account adminUser = new Account();
-        adminUser.setUsername("admin");
-        adminUser.setPassword("123123");
-        adminUser.setAccountFlag(false);
-        Set<Role> adminRoles = new HashSet<>();
-        adminRoles.add(adminRole);
-        adminUser.setRoles(adminRoles);
-        accountRepository.save(adminUser);
-
-        Account adminUser1 = new Account();
-        adminUser1.setUsername("admin1");
-        adminUser1.setPassword("123123");
-        adminUser1.setAccountFlag(false);
-        Set<Role> adminRoles1 = new HashSet<>();
-        adminRoles1.add(adminRole);
-        adminUser1.setRoles(adminRoles1);
-        accountRepository.save(adminUser1);
-    }
+//    @Override
+//    public void initRoleAndAccount() {
+//
+//        Role adminRole = roleRepository.findById(Long.valueOf(1)).get();
+//        Account adminUser = new Account();
+//        adminUser.setUsername("admin");
+//        adminUser.setPassword(getEncodedPassword("123123"));
+//        adminUser.setAccountFlag(false);
+//        Set<Role> adminRoles = new HashSet<>();
+//        adminRoles.add(adminRole);
+//        adminUser.setRoles(adminRoles);
+//        accountRepository.save(adminUser);
+//
+//        Account adminUser1 = new Account();
+//        adminUser1.setUsername("admin1");
+//        adminUser1.setPassword(getEncodedPassword("123123"));
+//        adminUser1.setAccountFlag(false);
+//        Set<Role> adminRoles1 = new HashSet<>();
+//        adminRoles1.add(adminRole);
+//        adminUser1.setRoles(adminRoles1);
+//        accountRepository.save(adminUser1);
+//    }
     @Override
     public Account createAccountForExistEmployee(Account account, String code) {
         return null;
@@ -75,7 +69,7 @@ public class AccountServiceImpl implements IAccountService {
 
     @Override
     public String getEncodedPassword(String password) {
-        return null;
+        return passwordEncoder.encode(password);
     }
 
 }

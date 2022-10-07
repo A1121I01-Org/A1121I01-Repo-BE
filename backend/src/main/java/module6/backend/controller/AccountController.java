@@ -24,10 +24,6 @@ public class AccountController {
     @Autowired
     private IEmployeeService employeeService;
 
-//    @PostConstruct
-//    public void initRolesAndAccount(){
-//        accountService.initRoleAndAccount();
-//    }
 
     @GetMapping("/byUsername/{username}")
     public ResponseEntity<Account> findAccountByUsername(@PathVariable("username") String username){

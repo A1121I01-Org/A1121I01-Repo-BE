@@ -28,9 +28,9 @@ public class JwtServiceImpl implements UserDetailsService {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
-	private void authenticate(String userName, String userPassword) throws Exception {
+	private void authenticate(String username, String password) throws Exception {
 		try {
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userName, userPassword));
+			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		} catch (DisabledException e) {
 			throw new Exception("USER_DISABLED", e);
 		} catch (BadCredentialsException e) {
@@ -39,20 +39,20 @@ public class JwtServiceImpl implements UserDetailsService {
 	}
 
 	public JwtResponse createJwtToken(LoginRequest loginRequest) throws Exception {
-		String userName = loginRequest.getUserName();
-		String userPassword = loginRequest.getUserPassword();
-		authenticate(userName, userPassword);
+		String username = loginRequest.getUsername();
+		String password = loginRequest.getPassword();
+		authenticate(username, password);
 
-		UserDetails userDetails = loadUserByUsername(userName);
+		UserDetails userDetails = loadUserByUsername(username);
 		String newGeneratedToken = jwtUtils.generateToken(userDetails);
 
-		Account account = accountRepository.findAccountByUsername(userName);
+		Account account = accountRepository.findAccountByUsername(username);
 		return new JwtResponse(account, newGeneratedToken);
 	}
 	private Set getAuthority(Account account) {
 		Set<SimpleGrantedAuthority> authorities = new HashSet<>();
 		account.getRoles().forEach(role -> {
-			authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRoleName()));
+			authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
 		});
 		return authorities;
 	}

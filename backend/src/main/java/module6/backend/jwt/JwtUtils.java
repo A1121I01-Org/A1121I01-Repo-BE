@@ -3,6 +3,7 @@ package module6.backend.jwt;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -10,9 +11,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 @Component
 public class JwtUtils {
+//	@Value("${app.jwtSecret}")
+//	private String SECRET_KEY;
+//
+//	@Value("${app.jwtExpirationMs}")
 	private static final String SECRET_KEY = "1234!@#";
 	private static final int TOKEN_VALIDITY = 3600 * 5;
 	public String getUsernameFromToken(String token){
