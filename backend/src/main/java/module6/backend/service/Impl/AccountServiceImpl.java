@@ -18,6 +18,15 @@ public class AccountServiceImpl implements IAccountService {
     @Autowired
     private IAccountRepository accountRepository;
 
+    @Override
+    public Account findAccountById(Long id) {
+        return accountRepository.findAccountById(id);
+    }
+
+    @Override
+    public void updatePassword(String password, Long id) {
+        accountRepository.updatePassword(password,id);
+    }
     @Autowired
     private IEmployeeRepository employeeRepository;
 
