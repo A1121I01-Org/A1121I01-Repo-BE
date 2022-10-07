@@ -58,9 +58,54 @@ public class AccountServiceImpl implements IAccountService {
         adminUser1.setRoles(adminRoles1);
         accountRepository.save(adminUser1);
     }
+
+    @Override
+    public Account updateAccount(Account account) {
+        return accountRepository.updateAccount(account.getUsername(), account.getPassword(), account.getAccountId());
+    }
+
+    //NhiVP code tao account cho nhan vien ton tai nhung chua co account
     @Override
     public Account createAccountForExistEmployee(Account account, String code) {
-        return null;
+        Employee employee = employeeRepository.findEmployeeByCode(code);
+        Set<Role> roles = new HashSet<>();
+        Role role = new Role();
+        if (employee.getEmployeePositionId().getPositionId() == 2) {
+            role.setRoleId(Long.valueOf(2));
+        } else {
+            role.setRoleId(Long.valueOf(3));
+        }
+        roles.add(role);
+        account.setRoles(roles);
+        account.setAccountFlag(false);
+
+        employee.setEmployeeAccountId(account);
+
+        employeeRepository.save(employee);
+        return account;
+    }
+
+    //NhiVP code tao nhan vien va account moi
+    @Override
+    public Object createEmployeeAndAccount(Employee employee) {
+//        employeeRepository.saveEmployeeAndAccount(employee.getEmployeeCode(),employee.getEmployeeName(),employee.getEmployeeDateOfBirth(),employee.getEmployeeGender(),employee.getEmployeeAddress(),
+//                employee.getEmployeePhone(), employee.getEmployeeAccountId().getAccountId(),employee.getEmployeePositionId().getPositionId());
+        employeeRepository.save(employee);
+        Set<Role> roleSet = new HashSet<>();
+        Role role = new Role();
+        if (employee.getEmployeePositionId().getPositionId() == 1) {
+            role.setRoleId(Long.valueOf(1));
+        } else {
+            role.setRoleId(Long.valueOf(2));
+        }
+        roleSet.add(role);
+        employee.getEmployeeAccountId().setRoles(roleSet);
+
+        accountRepository.save(employee.getEmployeeAccountId());
+//        employeeRepository.saveEmployeeAndAccount(employee.getEmployeeCode(),employee.getEmployeeName(),employee.getEmployeeDateOfBirth(),employee.getEmployeeGender(),employee.getEmployeeAddress(),
+//                employee.getEmployeePhone(), employee.getEmployeeAccountId().getAccountId(),employee.getEmployeePositionId().getPositionId());
+        employeeRepository.save(employee);
+        return employee;
     }
 
     @Override
@@ -70,7 +115,7 @@ public class AccountServiceImpl implements IAccountService {
 
     @Override
     public Boolean existAccountByUsername(String username) {
-        return null;
+        return accountRepository.findAccountByUsername(username) != null;
     }
 
     @Override
