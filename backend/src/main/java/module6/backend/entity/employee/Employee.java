@@ -23,7 +23,7 @@ public class Employee {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "employee_account_id")
     private Account employeeAccountId;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "employee_position_id")
     private Position employeePositionId;
 
