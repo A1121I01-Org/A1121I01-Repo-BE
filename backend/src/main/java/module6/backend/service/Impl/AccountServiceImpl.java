@@ -41,7 +41,7 @@ public class AccountServiceImpl implements IAccountService {
     }
 
 
-    //Thêm sẵn 2 acc admin
+    //Them san 2 acc admin
     @Override
     public void initRoleAndAccount() {
         Role adminRole = roleRepository.findRoleByRoleName("ROLE_ADMIN");
