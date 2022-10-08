@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -30,7 +31,7 @@ public class AccountServiceImpl implements IAccountService {
     private IRoleRepository roleRepository;
 
     @Override
-    public Account findAccountById(Long id) {
+    public Optional<Account> findAccountById(Long id) {
         return accountRepository.findAccountById(id);
     }
 
