@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -19,7 +20,7 @@ public class AccountServiceImpl implements IAccountService {
     private IAccountRepository accountRepository;
 
     @Override
-    public Account findAccountById(Long id) {
+    public Optional<Account> findAccountById(Long id) {
         return accountRepository.findAccountById(id);
     }
 
