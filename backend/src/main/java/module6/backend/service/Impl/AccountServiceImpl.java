@@ -88,6 +88,7 @@ public class AccountServiceImpl implements IAccountService {
             roles.add(role);
             Account account = employeeAccount.getAccount();
             account.setRoles(roles);
+            account.setPassword(employeeAccount.getAccount().getPassword());
             employeeAccount.getEmployee().setEmployeeAccountId(account);
             employeeRepository.save(employeeAccount.getEmployee());
         }
