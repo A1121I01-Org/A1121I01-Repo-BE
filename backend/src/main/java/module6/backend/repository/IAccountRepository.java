@@ -8,10 +8,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Repository
 public interface IAccountRepository extends JpaRepository<Account, Long> {
-    @Query(value = "SELECT * FROM account WHERE account_id = :id", nativeQuery = true)
-    Account findAccountById(@Param("id") Long id);
+    @Query(value = "SELECT * FROM account WHERE account_id = :id AND account_flag = 0", nativeQuery = true)
+    Optional<Account> findAccountById(@Param("id") Long id);
 
     @Modifying
     @Transactional

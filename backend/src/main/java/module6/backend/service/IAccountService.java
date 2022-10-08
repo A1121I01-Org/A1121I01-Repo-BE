@@ -4,8 +4,10 @@ import module6.backend.entity.account.Account;
 import module6.backend.entity.employee.Employee;
 import org.springframework.data.repository.query.Param;
 
+import java.util.Optional;
+
 public interface IAccountService {
-    Account findAccountById(@Param("id") Long id);
+    Optional<Account> findAccountById(@Param("id") Long id);
     void updatePassword(String password, Long id);
     Account createAccountForExistEmployee(Account account, String code);
     Account findAccountByUsername(String username);
