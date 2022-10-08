@@ -37,6 +37,11 @@ public class Account {
         this.roles = roles;
     }
 
+    public Account(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public Long getAccountId() {
         return accountId;
     }
