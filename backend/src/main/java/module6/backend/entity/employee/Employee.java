@@ -2,7 +2,6 @@ package module6.backend.entity.employee;
 
 import module6.backend.entity.account.Account;
 import org.hibernate.validator.constraints.Length;
-import org.omg.CORBA.UserException;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -11,7 +10,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "employee")

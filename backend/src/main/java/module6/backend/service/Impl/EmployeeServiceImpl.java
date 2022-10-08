@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Optional;
+
 
 @Service
 public class EmployeeServiceImpl implements IEmployeeService {
@@ -15,12 +17,14 @@ public class EmployeeServiceImpl implements IEmployeeService {
     private IEmployeeRepository employeeRepository;
 
     @Override
-    public Employee findEmployeeById(Long employeeId) {
-        return employeeRepository.findEmployeeById(employeeId);
+    public Optional<Employee> findEmployeeById(Long id) {
+        return employeeRepository.findEmployeeById(id);
     }
 
     @Override
     public void updateEmployee(String employeeName, String employeeAvatar, LocalDate employeeDateOfBirth, String employeeGender, String employeeAddress, String employeePhone, Long employeeId) {
         employeeRepository.updateEmployee(employeeName,employeeAvatar,employeeDateOfBirth,employeeGender,employeeAddress,employeePhone, employeeId);
+
     }
 }
+
