@@ -15,5 +15,5 @@ public interface IAccountService {
     Account updateAccount(Account account);
     //NhiVP code tao employee moi va account moi
     Object createEmployeeAndAccount(Employee employee);
-
+    Employee createTest(Employee employee, String username, String password,Long positionId,String code);
 }
