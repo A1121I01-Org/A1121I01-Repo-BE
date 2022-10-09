@@ -6,6 +6,7 @@ import module6.backend.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,7 +15,30 @@ public class CustomerServiceImpl implements ICustomerService {
     private ICustomerRepository customerRepository;
 
     @Override
+    public List<Customer> getAllCustomer() {
+        return customerRepository.getAllCustomer();
+    }
+
+    @Override
+    public List<Customer> getAllCustomerWithPagination(int index) {
+        return customerRepository.getAllCustomerWithPagination(index);
+    }
+
+    @Override
+    public void deleteCustomerById(Long id1, Long id2) {
+        customerRepository.deleteCustomerById(id1, id2);
+    }
+
+    @Override
+    public List<Customer> searchCustomerByNameAndPhone(String name, String phone) {
+        return customerRepository.searchCustomerByNameAndPhone(name, phone);
+    }
+
+
+    @Override
     public Optional<Customer> findCustomerById(Long id) {
         return customerRepository.findCustomerById(id);
     }
+
+
 }
