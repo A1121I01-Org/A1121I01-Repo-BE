@@ -25,9 +25,15 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
-    public void updateCustomer(String name, String code, String avatar, String address, String phone, String email, Long typeId, Long id) {
-        customerRepository.updateCustomer(name, code, avatar, address, phone, email, typeId, id);
+    public void deleteCustomerById(Long id1, Long id2) {
+        customerRepository.deleteCustomerById(id1, id2);
     }
+
+    @Override
+    public List<Customer> searchCustomerByNameAndPhone(String name, String phone) {
+        return customerRepository.searchCustomerByNameAndPhone(name, phone);
+    }
+
 
     @Override
     public Optional<Customer> findCustomerById(Long id) {

@@ -1,27 +1,17 @@
 package module6.backend.controller;
 
 import module6.backend.entity.customer.Customer;
-<<<<<<< HEAD
-=======
 import module6.backend.entity.customer.CustomerType;
->>>>>>> origin/customer-manager
 import module6.backend.service.ICustomerService;
 import module6.backend.service.ICustomerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-
-<<<<<<< HEAD
-import org.springframework.data.domain.Pageable;
-=======
->>>>>>> origin/customer-manager
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-<<<<<<< HEAD
-=======
 import java.util.Optional;
->>>>>>> origin/customer-manager
+
 
 @RestController
 @CrossOrigin("*")
@@ -33,9 +23,8 @@ public class CustomerController {
     @Autowired
     private ICustomerTypeService customerTypeService;
 
-<<<<<<< HEAD
 
-    //    lay danh sach khach hang
+    //  HieuNT  get list customer  not pagination
     @GetMapping("")
     public ResponseEntity<List<Customer>> getAllCustomer(){
         List<Customer> customerList = this.customerService.getAllCustomer();
@@ -45,8 +34,8 @@ public class CustomerController {
         return new ResponseEntity<>(customerList, HttpStatus.OK);
     }
 
-    /// get list phan trang
-    @GetMapping("/pagination/{index}")
+    /// HieuNT get list with pagination
+    @GetMapping("/customer-pagination/{index}")
     public ResponseEntity<List<Customer>> getAllCustomer(@PathVariable("index") int index) {
         List<Customer> customers = customerService.getAllCustomerWithPagination(index);
         if (customers.isEmpty()) {
@@ -55,14 +44,31 @@ public class CustomerController {
         return new ResponseEntity<List<Customer>>(customers, HttpStatus.OK);
     }
 
-    //    chinh sua thong tin khach hang
-    @PatchMapping(value = "/api/customer/update/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable("id")  Long id, @RequestBody Customer customer){
-        customerService.updateCustomer(customer.getCustomerName(), customer.getCustomerCode(),customer.getCustomerAvatar(),customer.getCustomerAddress(), customer.getCustomerPhone(), customer.getCustomerEmail(),customer.getCustomerTypeId().getCustomerTypeId(), customer.getCustomerId());
-        return new ResponseEntity<>(HttpStatus.OK);
+
+    //  HieuNT  delete customer
+    @DeleteMapping("/customer-delete/{id}")
+    public ResponseEntity<Customer> delete(@PathVariable("id") Long id) {
+        Optional<Customer> customerOptional = customerService.findCustomerById(id);
+        if (!customerOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        customerService.deleteCustomerById(-id, id);
+        return new ResponseEntity<>(customerOptional.get(), HttpStatus.NO_CONTENT);
     }
 
-=======
+    //   HieuNT search customer by name and phone
+    @GetMapping(value = "/search-customer")
+    public ResponseEntity<List<Customer>> searchCustomerByNameAndPhone(@RequestParam("name") String name, @RequestParam("phone") String phone) {
+        List<Customer> isCustomerExist = customerService.searchCustomerByNameAndPhone(name,phone);
+
+
+        if (isCustomerExist != null){
+            return new ResponseEntity<>(isCustomerExist,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+
     //  SonLH  Tìm kiếm khách hàng theo id
     @GetMapping("/detail/{id}")
     public ResponseEntity<Customer> findCustomerById(@PathVariable Long id) {
@@ -82,5 +88,5 @@ public class CustomerController {
         }
         return new ResponseEntity<>(customerTypes, HttpStatus.OK);
     }
->>>>>>> origin/customer-manager
+
 }
