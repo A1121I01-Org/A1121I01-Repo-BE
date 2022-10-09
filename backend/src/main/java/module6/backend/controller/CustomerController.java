@@ -1,16 +1,27 @@
 package module6.backend.controller;
 
 import module6.backend.entity.customer.Customer;
+<<<<<<< HEAD
+=======
+import module6.backend.entity.customer.CustomerType;
+>>>>>>> origin/customer-manager
 import module6.backend.service.ICustomerService;
 import module6.backend.service.ICustomerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+<<<<<<< HEAD
 import org.springframework.data.domain.Pageable;
+=======
+>>>>>>> origin/customer-manager
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+<<<<<<< HEAD
+=======
+import java.util.Optional;
+>>>>>>> origin/customer-manager
 
 @RestController
 @CrossOrigin("*")
@@ -22,6 +33,7 @@ public class CustomerController {
     @Autowired
     private ICustomerTypeService customerTypeService;
 
+<<<<<<< HEAD
 
     //    lay danh sach khach hang
     @GetMapping("")
@@ -50,4 +62,25 @@ public class CustomerController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+=======
+    //  SonLH  Tìm kiếm khách hàng theo id
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Customer> findCustomerById(@PathVariable Long id) {
+        Optional<Customer> customerOptional = customerService.findCustomerById(id);
+        if (!customerOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(customerOptional.get(), HttpStatus.OK);
+    }
+
+    //  SonLH lấy danh dách loại khách hàng
+    @GetMapping("/customer-type")
+    public ResponseEntity<List<CustomerType>> findAllCustomerType() {
+        List<CustomerType> customerTypes = customerTypeService.findAllCustomerType();
+        if (customerTypes.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(customerTypes, HttpStatus.OK);
+    }
+>>>>>>> origin/customer-manager
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements ICustomerService {
@@ -25,6 +26,13 @@ public class CustomerServiceImpl implements ICustomerService {
 
     @Override
     public void updateCustomer(String name, String code, String avatar, String address, String phone, String email, Long typeId, Long id) {
-        customerRepository.updateCustomer(name, code,avatar,address,phone,email,typeId,id);
+        customerRepository.updateCustomer(name, code, avatar, address, phone, email, typeId, id);
     }
+
+    @Override
+    public Optional<Customer> findCustomerById(Long id) {
+        return customerRepository.findCustomerById(id);
+    }
+
+
 }
