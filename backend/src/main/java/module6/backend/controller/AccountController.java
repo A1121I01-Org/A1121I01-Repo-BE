@@ -5,9 +5,11 @@ import module6.backend.entity.ClassDTO.EmployeeAccount;
 import module6.backend.entity.ClassDTO.Password;
 import module6.backend.entity.account.Account;
 import module6.backend.entity.employee.Employee;
+import module6.backend.entity.employee.Position;
 import module6.backend.service.IAccountRoleService;
 import module6.backend.service.IAccountService;
 import module6.backend.service.IEmployeeService;
+import module6.backend.service.IPositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +19,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 import java.util.Optional;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("api/account")
 public class AccountController {
     @Autowired

@@ -16,11 +16,10 @@ public class Account {
     private Long accountId;
     @NotBlank
     @Length(max = 20, min = 8)
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,20}$")
+    @Pattern(regexp = "^[a-z0-9]{8,20}$")
     private String username;
     @NotBlank
-    @Length(max = 20, min = 8)
-    @Pattern(regexp = "^[a-z0-9]{8,20}$")
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,20}$")
     private String password;
     private Boolean accountFlag = false;
 

@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -41,7 +40,7 @@ public class AccountServiceImpl implements IAccountService {
     }
 
 
-    //Them san 2 acc admin
+    //Nhi VP code them san 2 acc admin
     @Override
     public void initRoleAndAccount() {
         Role adminRole = roleRepository.findRoleByRoleName("ROLE_ADMIN");
@@ -79,6 +78,7 @@ public class AccountServiceImpl implements IAccountService {
             roles.add(role);
             Account account = employeeAccount.getAccount();
             account.setRoles(roles);
+            account.setPassword(getEncodedPassword(employeeAccount.getAccount().getPassword()));
             employee.setEmployeeAccountId(account);
             employeeRepository.save(employee);
         }else {

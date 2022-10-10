@@ -25,7 +25,4 @@ public interface IAccountRepository extends JpaRepository<Account, Long> {
     @Query(value = "INSERT INTO account(username,password) values (?1,?2)", nativeQuery = true)
     void saveAccount(String username, String password);
 
-
-    @Query(value = "UPDATE account as a set a.username=?1, a.password=?2 where a.account_id=?3", nativeQuery = true)
-    Account updateAccount(String username, String password, Long accountId);
 }
