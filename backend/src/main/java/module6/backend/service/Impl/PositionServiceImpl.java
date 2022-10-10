@@ -12,8 +12,9 @@ import java.util.List;
 public class PositionServiceImpl implements IPositionService {
     @Autowired
     private IPositionRepository positionRepository;
+
     @Override
-    public List<Position> findPositionNotManager() {
-        return positionRepository.findPositionNotManager();
+    public List<Position> findAllPosition() {
+        return positionRepository.findAllPosition();
     }
 }

@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface IPositionRepository extends JpaRepository<Position, Long> {
-    @Query(value = "select * from position where position_id <> 1 and position_flag = 0", nativeQuery = true)
-    List<Position> findPositionNotManager();
+    @Query(value = "select * from `position` where position_flag = 0 ", nativeQuery = true)
+    List<Position> findAllPosition();
 }

@@ -5,5 +5,5 @@ import module6.backend.entity.employee.Position;
 import java.util.List;
 
 public interface IPositionService {
-    List<Position> findPositionNotManager();
+    List<Position> findAllPosition();
 }
