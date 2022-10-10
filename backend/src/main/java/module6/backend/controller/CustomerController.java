@@ -36,7 +36,7 @@ public class CustomerController {
 
     /// HieuNT get list with pagination
     @GetMapping("/customer-pagination/{index}")
-    public ResponseEntity<List<Customer>> getAllCustomer(@PathVariable("index") int index) {
+    public ResponseEntity<List<Customer>> getAllCustomerWithPagination(@PathVariable("index") int index) {
         List<Customer> customers = customerService.getAllCustomerWithPagination(index);
         if (customers.isEmpty()) {
             return new ResponseEntity<List<Customer>>(HttpStatus.NO_CONTENT);
@@ -47,21 +47,19 @@ public class CustomerController {
 
     //  HieuNT  delete customer
     @DeleteMapping("/customer-delete/{id}")
-    public ResponseEntity<Customer> delete(@PathVariable("id") Long id) {
+    public ResponseEntity<Customer> deleteCustomerById(@PathVariable("id") Long id) {
         Optional<Customer> customerOptional = customerService.findCustomerById(id);
         if (!customerOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         customerService.deleteCustomerById(-id, id);
-        return new ResponseEntity<>(customerOptional.get(), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     //   HieuNT search customer by name and phone
-    @GetMapping(value = "/search-customer")
+    @GetMapping(value = "/customer-search")
     public ResponseEntity<List<Customer>> searchCustomerByNameAndPhone(@RequestParam("name") String name, @RequestParam("phone") String phone) {
         List<Customer> isCustomerExist = customerService.searchCustomerByNameAndPhone(name,phone);
-
-
         if (isCustomerExist != null){
             return new ResponseEntity<>(isCustomerExist,HttpStatus.OK);
         }
