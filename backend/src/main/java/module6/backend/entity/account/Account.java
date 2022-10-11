@@ -19,7 +19,6 @@ public class Account {
     @Pattern(regexp = "^[a-z0-9]{8,20}$")
     private String username;
     @NotBlank
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,20}$")
     private String password;
     private Boolean accountFlag = false;
 

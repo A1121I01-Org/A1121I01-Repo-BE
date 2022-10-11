@@ -77,4 +77,43 @@ public class EmployeeController {
             return new ResponseEntity<>(HttpStatus.OK);
         }
     }
+
+    //NhiVP lấy nhân viên theo code
+    @GetMapping("/byCode/{code}")
+    public ResponseEntity<Employee> getEmployeeByCode(@PathVariable String code){
+        Employee employee = employeeService.findEmployeeByCode(code);
+        if (employee == null) {
+            return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<Employee>(employee,HttpStatus.OK);
+    }
+
+    //NhiVP lấy danh sách mã nhân viên đã có tài khoản
+    @GetMapping("/listHasAccount")
+    public ResponseEntity<List<String>> findAllEmployeeHasAccount() {
+        List<String> employees = employeeService.findAllEmployeeHasAccount();
+        if (employees.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+    //NhiVP lấy danh sách mã nhân viên chưa có tài khoản
+    @GetMapping("/listDontHasAccount")
+    public ResponseEntity<List<String>> findAllEmployeeDontHasAccount() {
+        List<String> employees = employeeService.findAllEmployeeDontHasAccount();
+        if (employees.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+
+    //NhiVP lấy danh sách chức vụ trừ chức vụ quản lý
+    @GetMapping("/position-NotManager/list")
+    public ResponseEntity<List<Position>> getPositionNotManager(){
+        List<Position> positions = positionService.findPositionNotManager();
+        if (positions.isEmpty()){
+            return new ResponseEntity<List<Position>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<Position>>(positions,HttpStatus.OK);
+    }
 }

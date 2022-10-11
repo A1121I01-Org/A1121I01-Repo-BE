@@ -69,6 +69,15 @@ public class AccountController {
             return new ResponseEntity<Account>(account, HttpStatus.FOUND);
         return new ResponseEntity<Account>(HttpStatus.NOT_FOUND);
     }
+    //NhiVP lay danh sach username
+    @GetMapping("/list-Username")
+    public ResponseEntity<List<String>> findAllUsername() {
+        List<String> allUsername = accountService.findAllUsername();
+        if (allUsername.isEmpty()){
+            return new ResponseEntity<List<String>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<String>>(allUsername, HttpStatus.OK);
+    }
 
     //NhiVP create account
     @PostMapping("/create-Account")
