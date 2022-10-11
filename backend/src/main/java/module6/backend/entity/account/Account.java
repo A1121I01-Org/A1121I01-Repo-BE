@@ -2,7 +2,6 @@ package module6.backend.entity.account;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -29,12 +28,17 @@ public class Account {
     public Account() {
     }
 
-    public Account(Long accountId, String username, String password, Boolean accountFlag, Set<Role> roles) {
+    public Account(Long accountId , String username , String password , Boolean accountFlag , Set<Role> roles) {
         this.accountId = accountId;
         this.username = username;
         this.password = password;
         this.accountFlag = accountFlag;
         this.roles = roles;
+    }
+
+    public Account(String username , String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public Long getAccountId() {

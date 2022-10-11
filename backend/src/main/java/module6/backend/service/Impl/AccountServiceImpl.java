@@ -8,6 +8,7 @@ import module6.backend.repository.IEmployeeRepository;
 import module6.backend.repository.IRoleRepository;
 import module6.backend.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -18,6 +19,8 @@ import java.util.Set;
 public class AccountServiceImpl implements IAccountService {
     @Autowired
     private IAccountRepository accountRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public Optional<Account> findAccountById(Long id) {
@@ -25,8 +28,8 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
-    public void updatePassword(String password, Long id) {
-        accountRepository.updatePassword(password,id);
+    public void updatePassword(String password , Long id) {
+        accountRepository.updatePassword(password , id);
     }
     @Autowired
     private IEmployeeRepository employeeRepository;
@@ -43,7 +46,7 @@ public class AccountServiceImpl implements IAccountService {
         Role sellRole = roleRepository.findRoleByRoleName("ROLE_SELL");
         Account adminUser = new Account();
         adminUser.setUsername("admin");
-        adminUser.setPassword("123123");
+        adminUser.setPassword(getEncodedPassword("123123"));
         adminUser.setAccountFlag(false);
         Set<Role> adminRoles = new HashSet<>();
         adminRoles.add(adminRole);
@@ -52,7 +55,7 @@ public class AccountServiceImpl implements IAccountService {
 
         Account adminUser1 = new Account();
         adminUser1.setUsername("admin1");
-        adminUser1.setPassword("123123");
+        adminUser1.setPassword(getEncodedPassword("123123"));
         adminUser1.setAccountFlag(false);
         Set<Role> adminRoles1 = new HashSet<>();
         adminRoles1.add(adminRole);
@@ -144,9 +147,8 @@ public class AccountServiceImpl implements IAccountService {
         return accountRepository.findAccountByUsername(username) != null;
     }
 
-    @Override
     public String getEncodedPassword(String password) {
-        return null;
+        return passwordEncoder.encode(password);
     }
 
 }

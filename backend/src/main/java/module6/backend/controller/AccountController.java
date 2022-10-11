@@ -13,8 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import java.util.Optional;
 
 
@@ -40,34 +40,31 @@ public class AccountController {
         }else {
             String originalPasswordEncode = account.get().getPassword();
             boolean checkPassword = passwordEncoder.matches(password.getOldPassword(),originalPasswordEncode);
-            if(checkPassword) {
-                if(!password.getNewPassword().equals(password.getConfirmPassword())) {
+            if (checkPassword) {
+                if (!password.getNewPassword().equals(password.getConfirmPassword())) {
                     return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
-                }else {
+                } else {
                     String newPassWordEncode = new BCryptPasswordEncoder().encode(password.getNewPassword());
-                    accountService.updatePassword(newPassWordEncode, id);
+                    accountService.updatePassword(newPassWordEncode , id);
 
                     return new ResponseEntity<>(HttpStatus.OK);
                 }
-            }else {
+            } else {
                 return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
             }
         }
     }
 
-    @Autowired
-
-
-//    @PostConstruct
-//    public void initRolesAndAccount(){
-//        accountService.initRoleAndAccount();
-//    }
+    @PostConstruct
+    public void initRolesAndAccount() {
+        accountService.initRoleAndAccount();
+    }
 
     @GetMapping("/byUsername/{username}")
-    public ResponseEntity<Account> findAccountByUsername(@PathVariable("username") String username){
+    public ResponseEntity<Account> findAccountByUsername(@PathVariable("username") String username) {
         Account account = accountService.findAccountByUsername(username);
-        if (account!=null)
-            return new ResponseEntity<Account>(account, HttpStatus.OK);
+        if (account != null)
+            return new ResponseEntity<Account>(account , HttpStatus.OK);
         return new ResponseEntity<Account>(HttpStatus.NOT_FOUND);
     }
 
