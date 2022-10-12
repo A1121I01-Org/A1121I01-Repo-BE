@@ -1,8 +1,11 @@
 package module6.backend.entity.account;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.Set;
 
 @Entity
@@ -11,7 +14,11 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountId;
+    @NotBlank
+    @Length(max = 20, min = 8)
+    @Pattern(regexp = "^[a-z0-9]{8,20}$")
     private String username;
+    @NotBlank
     private String password;
     private Boolean accountFlag = false;
 

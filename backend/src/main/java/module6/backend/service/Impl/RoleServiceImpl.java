@@ -1,6 +1,8 @@
 package module6.backend.service.Impl;
 
 import module6.backend.entity.account.Role;
+import module6.backend.entity.employee.Position;
+import module6.backend.repository.IPositionRepository;
 import module6.backend.repository.IRoleRepository;
 import module6.backend.service.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;

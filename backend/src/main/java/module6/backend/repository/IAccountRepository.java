@@ -8,10 +8,14 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface IAccountRepository extends JpaRepository<Account, Long> {
+    @Query(value = "select * from account where account_flag = 0 ", nativeQuery = true)
+    List<Account> findAllAccount();
+
     @Query(value = "SELECT * FROM account WHERE account_id = :id AND account_flag = 0", nativeQuery = true)
     Optional<Account> findAccountById(@Param("id") Long id);
 
@@ -22,10 +26,10 @@ public interface IAccountRepository extends JpaRepository<Account, Long> {
     @Query(value = "SELECT * FROM account WHERE username=?1 and account_flag = 0", nativeQuery = true)
     Account findAccountByUsername(String username);
 
+    @Query(value = "SELECT username FROM account WHERE username=?1 and account_flag = 0", nativeQuery = true)
+    String findUsername(String username);
     @Query(value = "INSERT INTO account(username,password) values (?1,?2)", nativeQuery = true)
     void saveAccount(String username, String password);
-
-
-    @Query(value = "UPDATE account as a set a.username=?1, a.password=?2 where a.account_id=?3", nativeQuery = true)
-    Account updateAccount(String username, String password, Long accountId);
+    @Query(value = "select username from account where account_flag = 0", nativeQuery = true)
+    List<String> findAllUsername();
 }

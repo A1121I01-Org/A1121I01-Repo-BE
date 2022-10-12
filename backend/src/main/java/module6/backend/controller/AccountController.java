@@ -1,21 +1,19 @@
 package module6.backend.controller;
 
 
+import module6.backend.entity.ClassDTO.EmployeeAccount;
 import module6.backend.entity.ClassDTO.Password;
 import module6.backend.entity.account.Account;
-import module6.backend.entity.employee.Employee;
-import module6.backend.service.IAccountRoleService;
 import module6.backend.service.IAccountService;
-import module6.backend.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -26,11 +24,12 @@ public class AccountController {
     @Autowired
     private IAccountService accountService;
     @Autowired
-    private IAccountRoleService accountRoleService;
-    @Autowired
-    private IEmployeeService employeeService;
-    @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @PostConstruct
+    public void initRolesAndAccount() {
+        accountService.initRoleAndAccount();
+    }
 
     //AnDVH thay đổi password
     @PatchMapping("update/password/{id}")
@@ -38,7 +37,7 @@ public class AccountController {
         Optional<Account> account = accountService.findAccountById(id);
         if (!account.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }else {
+        } else {
             String originalPasswordEncode = account.get().getPassword();
             boolean checkPassword = passwordEncoder.matches(password.getOldPassword(),originalPasswordEncode);
             if (checkPassword) {
@@ -56,76 +55,34 @@ public class AccountController {
         }
     }
 
-//    @PostConstruct
-//    public void initRolesAndAccount() {
-//        accountService.initRoleAndAccount();
-//    }
 
+   @PostConstruct
+   public void initRolesAndAccount() {
+        accountService.initRoleAndAccount();
+    }
+    
+    //NhiVP get account by username
     @GetMapping("/byUsername/{username}")
     public ResponseEntity<Account> findAccountByUsername(@PathVariable("username") String username) {
         Account account = accountService.findAccountByUsername(username);
         if (account != null)
-            return new ResponseEntity<Account>(account , HttpStatus.OK);
+            return new ResponseEntity<Account>(account, HttpStatus.FOUND);
         return new ResponseEntity<Account>(HttpStatus.NOT_FOUND);
     }
-
-    @PostMapping("/create-Account/{code}")
-    public ResponseEntity<?> createAccount(@RequestBody(required = false) Account account, @PathVariable String code, BindingResult bindingResult){
-        if (employeeService.findExistEmployeeHasAccount(code)!=null){
-            bindingResult.rejectValue("username","Mã nhân viên đã tồn tại và đã có tài khoản");
-            System.out.println("Mã nhân viên đã tồn tại và đã có tài khoản");
-        }else if (accountService.existAccountByUsername(account.getUsername())){
-            bindingResult.rejectValue("username", "Tên tài khoản đã tồn tại");
+    //NhiVP lay danh sach username
+    @GetMapping("/list-Username")
+    public ResponseEntity<List<String>> findAllUsername() {
+        List<String> allUsername = accountService.findAllUsername();
+        if (allUsername.isEmpty()){
+            return new ResponseEntity<List<String>>(HttpStatus.NO_CONTENT);
         }
-
-        if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(bindingResult.getFieldError(), HttpStatus.BAD_REQUEST);
-        }else {
-            accountService.createAccountForExistEmployee(account,code);
-        }
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<List<String>>(allUsername, HttpStatus.OK);
     }
 
-    @PostMapping("/create-EmployeeAndAccount")
-    public ResponseEntity<?> createNewEmployeeAndAccount(@RequestBody Employee employee){
-        return new ResponseEntity<>(accountService.createEmployeeAndAccount(employee),HttpStatus.CREATED);
-    }
-
-    @GetMapping("/{code}")
-    public ResponseEntity<?> getEmployee(@PathVariable String code){
-        Employee employee = employeeService.findEmployeeByCode(code);
-        return new ResponseEntity<>(employee,HttpStatus.OK);
-    }
-
-
-    @PostMapping("/create-Account/{username}/{password}/{positionId}/{code}")
-    public ResponseEntity<?> createTest(@RequestBody Employee employee,@PathVariable String username,@PathVariable String password,
-                                        @PathVariable Long positionId,@PathVariable String code,BindingResult bindingResult){
-//        Employee employee1 = employeeService.findEmployeeByCode(code);
-//        if (employee1!=null){
-//            accountService.createTest(employee1,username,password,roleId,code);
-//        }
-//        else accountService.createTest(employee,username,password,roleId,code);
-//
-//        return new ResponseEntity<>(HttpStatus.CREATED);
-
-        if (employeeService.findExistEmployeeHasAccount(code)!=null){
-            bindingResult.rejectValue("employeeCode","Mã nhân viên đã tồn tại và đã có tài khoản");
-            System.out.println("Mã nhân viên đã tồn tại và đã có tài khoản");
-        }else if (accountService.existAccountByUsername(username)){
-            bindingResult.rejectValue("employeeCode", "Tên tài khoản đã tồn tại");
-        }
-
-        if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(bindingResult.getFieldError(), HttpStatus.BAD_REQUEST);
-        }else {
-            if (employeeService.findExistEmployeeDontHasAccount(code)!=null){
-                Employee employee1 = employeeService.findEmployeeByCode(code);
-                accountService.createTest(employee1,username,password,positionId,code);
-            }else {
-                accountService.createTest(employee,username,password,positionId,code);
-            }
-        }
+    //NhiVP create account
+    @PostMapping("/create-Account")
+    public ResponseEntity<?> createAccount(@RequestBody EmployeeAccount employeeAccount) {
+        accountService.createEmployeeAccount(employeeAccount);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
