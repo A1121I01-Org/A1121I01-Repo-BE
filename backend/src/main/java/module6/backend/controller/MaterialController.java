@@ -1,4 +1,4 @@
-package controller;
+package module6.backend.controller;
 
 import module6.backend.service.ICustomerService;
 import module6.backend.service.IMaterialService;
