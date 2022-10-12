@@ -34,6 +34,7 @@ public class AccountServiceImpl implements IAccountService {
     public List<Account> findAllAccount() {
         return accountRepository.findAllAccount();
     }
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public Optional<Account> findAccountById(Long id) {
@@ -74,6 +75,7 @@ public class AccountServiceImpl implements IAccountService {
         }
     }
 
+
     //NhiVP code tao account va employee
     @Override
     public void createEmployeeAccount(EmployeeAccount employeeAccount) {
@@ -110,7 +112,6 @@ public class AccountServiceImpl implements IAccountService {
         return accountRepository.findAccountByUsername(username);
     }
 
-    @Override
     public String getEncodedPassword(String password) {
         return passwordEncoder.encode(password);
     }
