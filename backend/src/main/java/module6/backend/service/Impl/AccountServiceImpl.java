@@ -34,7 +34,6 @@ public class AccountServiceImpl implements IAccountService {
     public List<Account> findAllAccount() {
         return accountRepository.findAllAccount();
     }
-    private PasswordEncoder passwordEncoder;
 
     @Override
     public Optional<Account> findAccountById(Long id) {

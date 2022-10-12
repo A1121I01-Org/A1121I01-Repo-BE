@@ -55,12 +55,6 @@ public class AccountController {
         }
     }
 
-
-   @PostConstruct
-   public void initRolesAndAccount() {
-        accountService.initRoleAndAccount();
-    }
-    
     //NhiVP get account by username
     @GetMapping("/byUsername/{username}")
     public ResponseEntity<Account> findAccountByUsername(@PathVariable("username") String username) {
