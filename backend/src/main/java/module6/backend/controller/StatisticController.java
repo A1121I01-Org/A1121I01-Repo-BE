@@ -1,4 +1,4 @@
-package module6.backend.controller;
+package controller;
 
 import module6.backend.service.IStatisticService;
 import org.springframework.beans.factory.annotation.Autowired;

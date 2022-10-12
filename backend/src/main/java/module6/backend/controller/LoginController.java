@@ -1,4 +1,4 @@
-package module6.backend.controller;
+package controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
