@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.List;
 
 @Repository
 public interface IMaterialRepository extends JpaRepository<Material, Long> {
@@ -15,8 +16,18 @@ public interface IMaterialRepository extends JpaRepository<Material, Long> {
     Material findByMaterialCode(String materialCode);
 
     // Thắng code thêm mới Vật tư (Import)
-    @Query(value = "INSERT INTO `material` (`material_code`, `material_name`, `material_quantity`, `material_price`, `material_expiridate`, `material_image`, `material_describe`, `material_unit`, `material_type_id`, `material_customer_id`) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)", nativeQuery = true)
+    @Query(value = "INSERT INTO `material` (`material_code`, `material_name`, `material_quantity`, `material_price`, `material_expiridate`, `material_unit`, `material_type_id`, `material_customer_id`) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)", nativeQuery = true)
     @Transactional
     @Modifying
-    void createMaterialImport(String code, String name, Integer quantity, Double price, LocalDate hsd, String image, String describe, String unit, Long typeId, Long customerId);
+    void createMaterialImport(String code, String name, Integer quantity, Double price, LocalDate hsd, String unit, Long typeId, Long customerId);
+
+    // Thắng code list material theo customer_id
+    @Query(value = "SELECT * FROM material where material_flag = 0 and material_id > 0 and material_type_id > 0 and material_customer_id = ?1", nativeQuery = true)
+    List<Material> findAllMaterialImport(Long customerId);
+
+    //Thắng code update vật tư theo nhập kho
+    @Query(value = "UPDATE `material` SET `material_code` = ?1, `material_name` = ?2, `material_unit` = ?3, `material_quantity` = ?4 WHERE (`material_id` = ?5)", nativeQuery = true)
+    @Transactional
+    @Modifying
+    void updateMaterialImport(String materialCode, String materialName, String materialUnit, Integer quantityMaterial, Long materialId);
 }
