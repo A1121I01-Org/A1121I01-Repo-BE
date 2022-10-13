@@ -2,7 +2,7 @@ package module6.backend.entity.customer;
 
 import javax.persistence.*;
 
-@Entity(name = "customerEntity")
+@Entity
 @Table(name = "customer")
 public class Customer {
     @Id

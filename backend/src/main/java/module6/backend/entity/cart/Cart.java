@@ -1,10 +1,11 @@
 package module6.backend.entity.cart;
 
-import module6.backend.entity.customer.Customer;
 import module6.backend.entity.account.Account;
+import module6.backend.entity.customer.Customer;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "cart")
@@ -14,7 +15,9 @@ public class Cart {
     private Long cartId;
     private String cartCode;
     private Integer cartQuantity;
+
     private LocalDate cartDateCreate;
+
     private Double cartTotalMoney;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cart_status_id")
@@ -29,11 +32,19 @@ public class Cart {
     public Cart() {
     }
 
+
     public Cart(Long cartId, String cartCode, Integer cartQuantity, LocalDate cartDateCreate, Double cartTotalMoney, CartStatus cartStatusId, Account cartAccountId, Customer cartCustomerId) {
         this.cartId = cartId;
         this.cartCode = cartCode;
         this.cartQuantity = cartQuantity;
         this.cartDateCreate = cartDateCreate;
+    }
+
+    public Cart(Long cartId, String cartCode, Integer cartQuantity, Double cartTotalMoney, CartStatus cartStatusId, Account cartAccountId, Customer cartCustomerId) {
+        this.cartId = cartId;
+        this.cartCode = cartCode;
+        this.cartQuantity = cartQuantity;
+
         this.cartTotalMoney = cartTotalMoney;
         this.cartStatusId = cartStatusId;
         this.cartAccountId = cartAccountId;
@@ -96,6 +107,7 @@ public class Cart {
         this.cartCustomerId = cartCustomerId;
     }
 
+
     public LocalDate getCartDateCreate() {
         return cartDateCreate;
     }
@@ -103,4 +115,5 @@ public class Cart {
     public void setCartDateCreate(LocalDate cartDateCreate) {
         this.cartDateCreate = cartDateCreate;
     }
+
 }

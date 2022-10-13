@@ -34,11 +34,20 @@ public class CustomerServiceImpl implements ICustomerService {
         return customerRepository.searchCustomerByNameAndPhone(name, phone);
     }
 
-
     @Override
     public Optional<Customer> findCustomerById(Long id) {
         return customerRepository.findCustomerById(id);
     }
 
+
+    @Override
+    public void createCustomer(String name, String code, String avt, String address, String phone, String email, Long customerType) {
+        customerRepository.createCustomer(name, code, avt, address, phone, email, customerType);
+    }
+
+    @Override
+    public void updateCustomer(String name, String code, String avatar, String address, String phone, String email, Long typeId, Long id) {
+        customerRepository.updateCustomer(name, code, avatar, address, phone, email, typeId, id);
+    }
 
 }
