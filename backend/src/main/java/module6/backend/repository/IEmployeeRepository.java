@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @Repository
 public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
+
     @Query(value = "select * from employee where employee_id = ?1 and employee_position_id > 0 and employee_account_id > 0 and employee_flag = 0 ", nativeQuery = true)
     Optional<Employee> findEmployeeById(Long id);
 
@@ -36,6 +37,12 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
     //NhiVP code lấy danh sách mã nhân viên đã có tài khoản
     @Query(value = "select employee_code from employee where employee_code is not null and employee_account_id is not null and employee_flag = 0", nativeQuery = true)
     List<String> findAllEmployeeHasAccount();
+
     @Query(value = "select employee_code from employee where employee_code is not null and employee_account_id is null and employee_flag = 0", nativeQuery = true)
     List<String> findAllEmployeeDontHasAccount();
+
+
+    // Thắng code lấy list admin người thực hiện
+    @Query(value = "SELECT * FROM employee where employee_position_id = 1 and employee_account_id > 0 and employee_position_id > 0 and employee_id > 0;", nativeQuery = true)
+    List<Employee> findAllEmployeeImport();
 }
