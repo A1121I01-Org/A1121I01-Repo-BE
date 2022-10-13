@@ -1,4 +1,4 @@
-package module6.backend.service.Impl;
+package module6.backend.service.Impl.pdf;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
@@ -30,24 +30,57 @@ public class PDFGeneratorImportServiceImpl {
             Font font1 = FontFactory.getFont(FontFactory.TIMES, 20, BaseColor.BLACK);
             Font font2 = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 13, BaseColor.BLACK);
             Paragraph para = new Paragraph("Đơn nhập kho", font);
+            font.setSize(24);
             para.setAlignment(Element.ALIGN_CENTER);
             document.add(para);
-            Paragraph para1 = new Paragraph("Thông tin nhập kho", font);
-            font.setSize(14);
-            document.add(para1);
-            Paragraph para2 = new Paragraph("Mã hoá đơn: " + import1.getImportId(), font);
-            document.add(para2);
-            Paragraph para3 = new Paragraph("Mã Vật tư: " + import1.getImportMaterialId().getMaterialId(),font);
-            document.add(para3);
-            Paragraph para4 = new Paragraph("Số lượng: " + import1.getImportQuantity(),font);
-            document.add(para4);
-            Paragraph para5 = new Paragraph("Đơn vị: " + import1.getImportMaterialId().getMaterialUnit(),font);
-            document.add(para5);
-            Paragraph para6 = new Paragraph("Giá thành: " + import1.getImportQuantity() * import1.getImportMaterialId().getMaterialPrice(),font);
-            document.add(para6);
-            Paragraph para7 = new Paragraph("Người thực hiện: " + employee.getEmployeeName(),font);
-            document.add(para7);
             document.add(Chunk.NEWLINE);
+
+            Paragraph para13 = new Paragraph("- Thông tin Nhập kho", font);
+            font.setSize(18);
+            document.add(para13);
+            Paragraph para14 = new Paragraph("Mã nhập kho: " + import1.getImportCode(), font);
+            font.setSize(16);
+            document.add(para14);
+            Paragraph para15 = new Paragraph("Ngày nhập kho: " + import1.getImportStartDate(), font);
+            document.add(para15);
+            Paragraph para16 = new Paragraph("Số lượng nhập kho: " + import1.getImportQuantity(), font);
+            document.add(para16);
+            Paragraph para17 = new Paragraph("Tổng tiền: " + import1.getImportQuantity() * import1.getImportMaterialId().getMaterialPrice(), font);
+            document.add(para17);
+            document.add(Chunk.NEWLINE);
+
+            Paragraph para7 = new Paragraph("- Thông tin Vật tư", font);
+            font.setSize(18);
+            document.add(para7);
+            Paragraph para8 = new Paragraph("Mã vật tư: " + import1.getImportMaterialId().getMaterialCode(), font);
+            font.setSize(16);
+            document.add(para8);
+            Paragraph para9 = new Paragraph("Tên vật tư: " + import1.getImportMaterialId().getMaterialName(), font);
+            document.add(para9);
+            Paragraph para10 = new Paragraph("Giá thành: " + import1.getImportMaterialId().getMaterialPrice(), font);
+            document.add(para10);
+            Paragraph para11 = new Paragraph("Hạn sử dụng: " + import1.getImportMaterialId().getMaterialExpiridate(), font);
+            document.add(para11);
+            Paragraph para12 = new Paragraph("Đơn vị: " + import1.getImportMaterialId().getMaterialUnit(), font);
+            document.add(para12);
+            document.add(Chunk.NEWLINE);
+
+            Paragraph para1 = new Paragraph("- Thông tin Nhà cung cấp", font);
+            font.setSize(18);
+            document.add(para1);
+            Paragraph para2 = new Paragraph("Tên nhà cung cấp: " + import1.getImportMaterialId().getMaterialCustomerId().getCustomerName(), font);
+            font.setSize(16);
+            document.add(para2);
+            Paragraph para3 = new Paragraph("Mã nhà cung cấp: " + import1.getImportMaterialId().getMaterialCustomerId().getCustomerName(), font);
+            document.add(para3);
+            Paragraph para4 = new Paragraph("Địa chỉ: " + import1.getImportMaterialId().getMaterialCustomerId().getCustomerAddress(), font);
+            document.add(para4);
+            Paragraph para5 = new Paragraph("Số điện thoại: " + import1.getImportMaterialId().getMaterialCustomerId().getCustomerPhone(), font);
+            document.add(para5);
+            Paragraph para6 = new Paragraph("Gmail: " + import1.getImportMaterialId().getMaterialCustomerId().getCustomerEmail(), font);
+            document.add(para6);
+            document.add(Chunk.NEWLINE);
+
 
 //            PdfPTable table = new PdfPTable(4);
 //            Stream.of("Sản phẩm", "Đơn giá", "Số lượng", "Thành tiền").forEach(headerTitle -> {

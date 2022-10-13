@@ -42,6 +42,11 @@ public class ImportServiceImpl implements IImportService {
         return importRepository.findAllImportNotPagination();
     }
 
+    @Override
+    public List<String> findAllImportString() {
+        return importRepository.findAllImportString();
+    }
+
     // Thắng code xoá import
     @Override
     public void deleteImport(Long idAfterUpdate, Boolean flag, Long idBeforeUpdate) {
@@ -114,6 +119,17 @@ public class ImportServiceImpl implements IImportService {
     @Override
     public List<Material> findAllMaterialImport(Long customerId) {
         return materialRepository.findAllMaterialImport(customerId);
+    }
+
+    // Thắng code
+    @Override
+    public List<String> findAllMaterialImportString() {
+        return materialRepository.findAllMaterialImportString();
+    }
+
+    @Override
+    public List<String> findAllCustomerImportString() {
+        return customerRepository.findAllCustomerImportString();
     }
 
     // Thắng code list material type

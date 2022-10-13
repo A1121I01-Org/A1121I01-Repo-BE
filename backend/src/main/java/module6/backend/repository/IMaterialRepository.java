@@ -25,6 +25,10 @@ public interface IMaterialRepository extends JpaRepository<Material, Long> {
     @Query(value = "SELECT * FROM material where material_flag = 0 and material_id > 0 and material_type_id > 0 and material_customer_id = ?1", nativeQuery = true)
     List<Material> findAllMaterialImport(Long customerId);
 
+    // Thắng code list material kiểm tra tồn tại code customer
+    @Query(value = "SELECT material_code FROM material", nativeQuery = true)
+    List<String> findAllMaterialImportString();
+
     //Thắng code update vật tư theo nhập kho
     @Query(value = "UPDATE `material` SET `material_code` = ?1, `material_name` = ?2, `material_unit` = ?3, `material_quantity` = ?4 WHERE (`material_id` = ?5)", nativeQuery = true)
     @Transactional

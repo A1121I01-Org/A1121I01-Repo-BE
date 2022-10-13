@@ -22,6 +22,10 @@ public interface IImportRepository extends JpaRepository<Import, Long> {
     @Query(value = "select * from import where import_account_id > 0 and import_material_id > 0 and import_id > 0 and import_flag = 0", nativeQuery = true)
     List<Import> findAllImportNotPagination();
 
+    // Thắng code list import
+    @Query(value = "select import_code from import", nativeQuery = true)
+    List<String> findAllImportString();
+
     // Thắng code xoá import
     @Query(value = "UPDATE import SET import_id = ?1, `import_flag` = ?2  WHERE (`import_id` = ?3)", nativeQuery = true)
     @Transactional
@@ -47,5 +51,4 @@ public interface IImportRepository extends JpaRepository<Import, Long> {
     @Transactional
     @Modifying
     void createImport(String code, LocalDate startDate, Integer quantity, Long idAccount, Long idMaterial);
-
 }

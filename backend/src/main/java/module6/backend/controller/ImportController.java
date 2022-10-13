@@ -6,7 +6,7 @@ import module6.backend.entity.employee.Employee;
 import module6.backend.entity.material.Material;
 import module6.backend.entity.material.MaterialType;
 import module6.backend.service.IImportService;
-import module6.backend.service.Impl.PDFGeneratorImportServiceImpl;
+import module6.backend.service.Impl.pdf.PDFGeneratorImportServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -51,6 +51,39 @@ public class ImportController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<>(importList, HttpStatus.OK);
+        }
+    }
+
+    //Thắng code list import string
+    @GetMapping("import-list-string")
+    public ResponseEntity<List<String>> findAllImportString() {
+        List<String> importList = importService.findAllImportString();
+        if (importList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(importList, HttpStatus.OK);
+        }
+    }
+
+    //Thắng code list material import string
+    @GetMapping("import-material-list-string")
+    public ResponseEntity<List<String>> findAllImportMaterialString() {
+        List<String> importMaterialList = importService.findAllMaterialImportString();
+        if (importMaterialList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(importMaterialList, HttpStatus.OK);
+        }
+    }
+
+    //Thắng code list customer import string kiểm tra code
+    @GetMapping("import-customer-list-string")
+    public ResponseEntity<List<String>> findAllImportCustomerString() {
+        List<String> importCustomerList = importService.findAllCustomerImportString();
+        if (importCustomerList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(importCustomerList, HttpStatus.OK);
         }
     }
 

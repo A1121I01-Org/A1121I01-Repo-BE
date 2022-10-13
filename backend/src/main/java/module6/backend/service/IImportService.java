@@ -14,6 +14,8 @@ public interface IImportService {
 
     List<Import> findAllImportNotPagination();
 
+    List<String> findAllImportString();
+
     void deleteImport(Long idAfterUpdate, Boolean flag, Long idBeforeUpdate);
 
     Optional<Import> findImportById(Long id);
@@ -30,5 +32,10 @@ public interface IImportService {
 
     List<Material> findAllMaterialImport(Long customerId);
 
+    List<String> findAllMaterialImportString();
+
+    List<String> findAllCustomerImportString();
+
     List<MaterialType> findAllMaterialTypeImport();
+
 }
