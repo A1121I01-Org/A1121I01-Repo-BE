@@ -7,21 +7,20 @@ import javax.persistence.*;
 public class AccountRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "account_role_id")
     private Long accountRoleId;
+    @Column(name = "account_role_flag")
     private Boolean accountRoleFlag = false;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "account_id")
-    private Account accountId;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "role_id")
-    private Role roleId;
+    @Column(name = "account_id")
+    private Long accountId;
+    @Column(name = "role_id")
+    private Long roleId;
 
     public AccountRole() {
     }
 
-    public AccountRole(Long accountRoleId, Boolean accountRoleFlag, Account accountId, Role roleId) {
+    public AccountRole(Long accountRoleId, Boolean accountRoleFlag, Long accountId, Long roleId) {
         this.accountRoleId = accountRoleId;
         this.accountRoleFlag = accountRoleFlag;
         this.accountId = accountId;
@@ -44,19 +43,19 @@ public class AccountRole {
         this.accountRoleFlag = accountRoleFlag;
     }
 
-    public Account getAccountId() {
+    public Long getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(Account accountId) {
+    public void setAccountId(Long accountId) {
         this.accountId = accountId;
     }
 
-    public Role getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Role roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 }
