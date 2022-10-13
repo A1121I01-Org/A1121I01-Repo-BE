@@ -88,18 +88,14 @@ public class CustomerController {
         return new ResponseEntity<>(customerTypes, HttpStatus.OK);
     }
 
-
-    @GetMapping("customer-findById/{id}")
-    public ResponseEntity<Customer> findById(@PathVariable Long id) {
-        return new ResponseEntity<>(customerService.findCustomerById(id).get(), HttpStatus.OK);
-    }
-
+    // DuyDTT tạo mới khách hàng
     @PostMapping("customer-create")
     public ResponseEntity<Customer> createNewCustomer(@RequestBody Customer customer) {
         customerService.createCustomer(customer.getCustomerName(), customer.getCustomerCode(), customer.getCustomerAvatar(), customer.getCustomerAddress(), customer.getCustomerPhone(), customer.getCustomerEmail(), customer.getCustomerTypeId().getCustomerTypeId());
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
 
+    // DuyDTT cập nhật khách hàng
     @PatchMapping("update")
     public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
         Optional<Customer> customerOptional = customerService.findCustomerById(customer.getCustomerId());
