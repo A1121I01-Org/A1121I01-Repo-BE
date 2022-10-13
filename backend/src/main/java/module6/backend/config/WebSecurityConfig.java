@@ -43,10 +43,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.cors();
 		httpSecurity.csrf().disable()
-				.authorizeRequests().antMatchers("/authenticate" , "/registerNewUser").permitAll()
+				.authorizeRequests().antMatchers("/auth/login").permitAll()
 				.antMatchers(HttpHeaders.ALLOW).permitAll()
-				.antMatchers(GET , "/forAdmin").hasAnyAuthority("ROLE_ADMIN")
-				.antMatchers(GET , "/forStaff").permitAll()
+//				.antMatchers(GET , "/api/account/create-Account", "/api/account/list-Username").hasAnyAuthority("ROLE_ADMIN")
+				.antMatchers(GET , "/api/account/list-Username").hasAnyAuthority("ROLE_ACCOUNTANT")
+				.antMatchers(GET , "/api/list-Material").permitAll()
 				.anyRequest().authenticated()
 				.and()
 				.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)

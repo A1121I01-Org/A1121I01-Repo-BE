@@ -19,7 +19,7 @@ import java.util.Optional;
 
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin
 @RequestMapping("api/employee")
 public class EmployeeController {
     @Autowired

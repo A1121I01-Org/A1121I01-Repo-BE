@@ -8,6 +8,7 @@ import module6.backend.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -74,6 +75,7 @@ public class AccountController {
     }
 
     //NhiVP create account
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/create-Account")
     public ResponseEntity<?> createAccount(@RequestBody EmployeeAccount employeeAccount) {
         accountService.createEmployeeAccount(employeeAccount);
