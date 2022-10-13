@@ -55,6 +55,7 @@ public class AccountController {
             }
         }
     }
+
     //NhiVP get account by username
     @GetMapping("/byUsername/{username}")
     public ResponseEntity<Account> findAccountByUsername(@PathVariable("username") String username) {
