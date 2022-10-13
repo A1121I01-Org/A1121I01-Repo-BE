@@ -40,6 +40,22 @@ public class Cart {
         this.cartCustomerId = cartCustomerId;
     }
 
+    public Cart(Long cartId, String cartCode, Integer cartQuantity, LocalDate cartDateCreate, Double cartTotalMoney, CartStatus cartStatusId, Customer cartCustomerId) {
+        this.cartId = cartId;
+        this.cartCode = cartCode;
+        this.cartQuantity = cartQuantity;
+        this.cartDateCreate = cartDateCreate;
+        this.cartTotalMoney = cartTotalMoney;
+        this.cartStatusId = cartStatusId;
+        this.cartCustomerId = cartCustomerId;
+    }
+
+    public Cart(Integer cartQuantity, Double cartTotalMoney, CartStatus cartStatusId) {
+        this.cartQuantity = cartQuantity;
+        this.cartTotalMoney = cartTotalMoney;
+        this.cartStatusId = cartStatusId;
+    }
+
     public Long getCartId() {
         return cartId;
     }
