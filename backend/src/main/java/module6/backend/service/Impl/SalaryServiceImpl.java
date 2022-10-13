@@ -11,7 +11,7 @@ public class SalaryServiceImpl implements ISalaryService {
     private ISalaryRepository salaryRepository;
 
     @Override
-    public Integer displayBan() {
+    public Integer displayLuong() {
         return salaryRepository.luong();
     }
 }

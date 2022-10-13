@@ -42,6 +42,7 @@ public class CartController {
 
     @GetMapping("/banhang")
     public ResponseEntity<Integer> banHang() {
+        System.out.println(1);
         Integer ban = cartService.displayBan();
         return new ResponseEntity<>(ban, HttpStatus.OK);
     }

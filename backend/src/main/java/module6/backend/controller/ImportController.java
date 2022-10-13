@@ -4,6 +4,8 @@ import module6.backend.service.IAccountService;
 import module6.backend.service.IImportService;
 import module6.backend.service.IMaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,4 +21,9 @@ public class ImportController {
     @Autowired
     private IMaterialService materialService;
 
+    @GetMapping("/nhaphang")
+    public ResponseEntity<Integer> nhapHang() {
+        Integer nhap = importService.displayNhap();
+        return new ResponseEntity<>(nhap, HttpStatus.OK);
+    }
 }

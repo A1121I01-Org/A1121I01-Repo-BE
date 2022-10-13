@@ -8,5 +8,4 @@ public interface ICartService {
     Integer displayTra();
 
     Integer displayBan();
-
 }

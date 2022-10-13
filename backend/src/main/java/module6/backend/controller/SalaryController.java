@@ -22,7 +22,7 @@ public class SalaryController {
 
     @GetMapping("/luongNV")
     public ResponseEntity<Integer> luongNV() {
-        Integer luong = salaryService.displayBan();
+        Integer luong = salaryService.displayLuong();
         return new ResponseEntity<>(luong, HttpStatus.OK);
     }
 }

@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface ISalaryRepository extends JpaRepository<Salary, Long> {
+
     @Query(value = "select sum(salary_advance_payment) as luong_nhan_vien from salary; ", nativeQuery = true)
     Integer luong();
 }
