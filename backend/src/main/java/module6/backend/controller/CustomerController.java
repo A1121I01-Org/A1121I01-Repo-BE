@@ -30,8 +30,6 @@ import java.util.List;
 import java.util.List;
 import java.util.Optional;
 
-
-
 @RestController
 @CrossOrigin("*")
 @RequestMapping("api/customer")
@@ -58,9 +56,9 @@ public class CustomerController {
 
     //  HieuNT  get list customer  not pagination
     @GetMapping("")
-    public ResponseEntity<List<Customer>> getAllCustomer(){
+    public ResponseEntity<List<Customer>> getAllCustomer() {
         List<Customer> customerList = this.customerService.getAllCustomer();
-        if (customerList.isEmpty()){
+        if (customerList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(customerList, HttpStatus.OK);
@@ -91,11 +89,11 @@ public class CustomerController {
     //   HieuNT search customer by name and phone
     @GetMapping(value = "/search-customer")
     public ResponseEntity<List<Customer>> searchCustomerByNameAndPhone(@RequestParam("name") String name, @RequestParam("phone") String phone) {
-        List<Customer> isCustomerExist = customerService.searchCustomerByNameAndPhone(name,phone);
+        List<Customer> isCustomerExist = customerService.searchCustomerByNameAndPhone(name, phone);
 
 
-        if (isCustomerExist != null){
-            return new ResponseEntity<>(isCustomerExist,HttpStatus.OK);
+        if (isCustomerExist != null) {
+            return new ResponseEntity<>(isCustomerExist, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -119,5 +117,23 @@ public class CustomerController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(customerTypes, HttpStatus.OK);
+    }
+
+    // DuyDTT tạo mới khách hàng
+    @PostMapping("customer-create")
+    public ResponseEntity<Customer> createNewCustomer(@RequestBody Customer customer) {
+        customerService.createCustomer(customer.getCustomerName(), customer.getCustomerCode(), customer.getCustomerAvatar(), customer.getCustomerAddress(), customer.getCustomerPhone(), customer.getCustomerEmail(), customer.getCustomerTypeId().getCustomerTypeId());
+        return new ResponseEntity<>(customer, HttpStatus.CREATED);
+    }
+
+    // DuyDTT cập nhật khách hàng
+    @PatchMapping("update")
+    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
+        Optional<Customer> customerOptional = customerService.findCustomerById(customer.getCustomerId());
+        if (!customerOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        customerService.updateCustomer(customer.getCustomerName(), customer.getCustomerCode(), customer.getCustomerAvatar(), customer.getCustomerAddress(), customer.getCustomerPhone(), customer.getCustomerEmail(), customer.getCustomerTypeId().getCustomerTypeId(), customer.getCustomerId());
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 }

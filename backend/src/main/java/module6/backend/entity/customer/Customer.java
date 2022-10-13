@@ -6,7 +6,7 @@ import module6.backend.util.cartValidator.PhoneCustom;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
-@Entity(name = "customerEntity")
+@Entity
 @Table(name = "customer")
 public class Customer {
     @Id

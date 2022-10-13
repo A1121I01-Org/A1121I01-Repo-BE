@@ -7,7 +7,6 @@ import java.util.Optional;
 
 
 public interface ICustomerService {
-    void createCustomer(String name, String code, String avt, String address, String phone, String email, Long customerType);
 
     Customer getCustomerByCode(String codeCustomer);
 
@@ -21,5 +20,9 @@ public interface ICustomerService {
     List<Customer> searchCustomerByNameAndPhone(String name, String phone);
 
     Optional<Customer> findCustomerById(Long id);
+
+    void updateCustomer(String name, String code, String avatar, String address, String phone, String email, Long typeId, Long id);
+
+    void createCustomer(String name, String code, String avt, String address, String phone, String email, Long customerType);
 
 }
