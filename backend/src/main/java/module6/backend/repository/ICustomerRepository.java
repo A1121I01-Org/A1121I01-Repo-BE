@@ -28,4 +28,8 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     // Thắng code tìm kiếm kiểm tra code customer có tồn tại không
     @Query(value = "SELECT customer_code FROM customer;", nativeQuery = true)
     List<String> findAllCustomerImportString();
+
+    // Thắng code tìm kiếm kiểm tra phone customer có tồn tại không
+    @Query(value = "SELECT customer_phone FROM customer;", nativeQuery = true)
+    List<String> findAllCustomerPhoneImportString();
 }

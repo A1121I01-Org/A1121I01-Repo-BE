@@ -71,7 +71,7 @@ public class PDFGeneratorImportServiceImpl {
             Paragraph para2 = new Paragraph("Tên nhà cung cấp: " + import1.getImportMaterialId().getMaterialCustomerId().getCustomerName(), font);
             font.setSize(16);
             document.add(para2);
-            Paragraph para3 = new Paragraph("Mã nhà cung cấp: " + import1.getImportMaterialId().getMaterialCustomerId().getCustomerName(), font);
+            Paragraph para3 = new Paragraph("Mã nhà cung cấp: " + import1.getImportMaterialId().getMaterialCustomerId().getCustomerCode(), font);
             document.add(para3);
             Paragraph para4 = new Paragraph("Địa chỉ: " + import1.getImportMaterialId().getMaterialCustomerId().getCustomerAddress(), font);
             document.add(para4);

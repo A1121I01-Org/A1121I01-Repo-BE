@@ -36,6 +36,8 @@ public interface IImportService {
 
     List<String> findAllCustomerImportString();
 
+    List<String> findAllCustomerPhoneImportString();
+
     List<MaterialType> findAllMaterialTypeImport();
 
 }

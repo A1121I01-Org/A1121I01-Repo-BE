@@ -87,6 +87,17 @@ public class ImportController {
         }
     }
 
+    //Thắng code list customer phone import string kiểm tra code
+    @GetMapping("import-phone-customer-list-string")
+    public ResponseEntity<List<String>> findAllImportPhoneCustomerString() {
+        List<String> phoneCustomerList = importService.findAllCustomerPhoneImportString();
+        if (phoneCustomerList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(phoneCustomerList, HttpStatus.OK);
+        }
+    }
+
     //Thắng code tìm import theo id
     @GetMapping("import-detail/{id}")
     public ResponseEntity<Import> findImportById(@PathVariable Long id) {

@@ -65,7 +65,7 @@ public class ImportServiceImpl implements IImportService {
         Integer quantityMaterial = importAfterUpdate.getImportMaterialId().getMaterialQuantity()
                 - importQuantityBeforeUpdate
                 + importAfterUpdate.getImportQuantity();
-        if (quantityMaterial > 0) {
+        if (quantityMaterial >= 0) {
             materialRepository.updateMaterialImport(importAfterUpdate.getImportMaterialId().getMaterialCode(), importAfterUpdate.getImportMaterialId().getMaterialName(), importAfterUpdate.getImportMaterialId().getMaterialUnit(), quantityMaterial, importAfterUpdate.getImportMaterialId().getMaterialId());
             importRepository.updateImport(importAfterUpdate.getImportCode(), importAfterUpdate.getImportStartDate(), importAfterUpdate.getImportQuantity(), importAfterUpdate.getImportAccountId().getAccountId(), importAfterUpdate.getImportMaterialId().getMaterialId(), importAfterUpdate.getImportId());
         }
@@ -130,6 +130,11 @@ public class ImportServiceImpl implements IImportService {
     @Override
     public List<String> findAllCustomerImportString() {
         return customerRepository.findAllCustomerImportString();
+    }
+
+    @Override
+    public List<String> findAllCustomerPhoneImportString() {
+        return customerRepository.findAllCustomerPhoneImportString();
     }
 
     // Thắng code list material type
