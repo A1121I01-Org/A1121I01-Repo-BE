@@ -1,14 +1,26 @@
 package module6.backend.service;
 
 import module6.backend.entity.cart.Cart;
+import module6.backend.entity.cart.CartMaterial;
 import module6.backend.entity.customer.Customer;
+import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ICartService {
-    List<Cart> findByCartStatusId();
 
-    void updateCartStatusId(List<Cart> carts);
+    void updateCartStatusAndCustomer(Long idCustomer , Long idCart, LocalDate date, String code);
 
-    void deleteCartByCartId(Long cartId);
+    void sendEmail(Long[] id,Customer customer);
+
+    void updateCart(Integer quantity , Integer money , Long id);
+
+    Long getTypeId();
+
+    String randomCustomerCode();
+
+    String randomCartCode();
+
+    Cart findByCartId(Long id);
 }

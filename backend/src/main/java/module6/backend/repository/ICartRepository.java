@@ -8,20 +8,27 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.time.LocalDate;
+
 
 @Repository
 @Transactional
 public interface ICartRepository extends JpaRepository<Cart, Long> {
 
-    @Query(value = "SELECT * FROM cart WHERE cart_status_id = 1;", nativeQuery = true)
-    List<Cart> findByCartStatusId();
+    @Modifying
+    @Query(value = "UPDATE cart SET cart_status_id = 2 , cart_customer_id = :id1, cart_date_create= :date, cart_code = :code WHERE cart_id = :id2", nativeQuery = true)
+    void updateCartStatusAndCustomer(@Param("id1") Long idCustomer, @Param("id2") Long idCart, @Param("date") LocalDate date, @Param("code") String code);
 
     @Modifying
-    @Query(value = "UPDATE cart SET cart_status_id = 2 WHERE cart_id=:cartId ", nativeQuery = true)
-    void updateCartStatusId(@Param("cartId") Long cartId);
+    @Query(value = "UPDATE cart SET cart_quantity = :quantity , cart_total_money = :money WHERE cart_id = :idCart ", nativeQuery = true)
+    void updateCart(@Param("quantity") Integer quantity,@Param("money") Integer money,@Param("idCart") Long idCart);
 
-    @Modifying
-    @Query(value = "DELETE from cart where cart_id =:cartId and cart_status_id = 1", nativeQuery = true)
-    void deleteCartByCartId(@Param("cartId") Long cartId);
+    @Query(value = "SELECT customer_code FROM customer", nativeQuery = true)
+    String[] listCustomerCode();
+
+    @Query(value = "SELECT cart_code FROM cart ", nativeQuery = true)
+    String[] listCartCode();
+
+    @Query(value = "SELECT * FROM cart WHERE cart_id = :id", nativeQuery = true)
+    Cart findByCartId(@Param("id") Long id);
 }
