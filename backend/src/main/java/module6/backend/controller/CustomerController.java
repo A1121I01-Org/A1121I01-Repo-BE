@@ -1,16 +1,10 @@
 package module6.backend.controller;
 
 
-import module6.backend.entity.cart.Cart;
-import module6.backend.entity.cart.CartMaterial;
-import module6.backend.entity.customer.Customer;
-import module6.backend.repository.ICartRepository;
-import module6.backend.repository.ICustomerRepository;
-
 import module6.backend.entity.customer.Customer;
 import module6.backend.entity.customer.CustomerType;
-
-import module6.backend.service.ICustomerService;
+import module6.backend.repository.ICartRepository;
+import module6.backend.repository.ICustomerRepository;
 import module6.backend.service.ICustomerTypeService;
 import module6.backend.service.Impl.CartMaterialServiceImpl;
 import module6.backend.service.Impl.CartServiceImpl;
@@ -19,13 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 import java.util.List;
 import java.util.Optional;

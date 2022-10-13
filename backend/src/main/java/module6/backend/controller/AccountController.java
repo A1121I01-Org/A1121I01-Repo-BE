@@ -40,13 +40,13 @@ public class AccountController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             String originalPasswordEncode = account.get().getPassword();
-            boolean checkPassword = passwordEncoder.matches(password.getOldPassword(),originalPasswordEncode);
+            boolean checkPassword = passwordEncoder.matches(password.getOldPassword(), originalPasswordEncode);
             if (checkPassword) {
                 if (!password.getNewPassword().equals(password.getConfirmPassword())) {
                     return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
                 } else {
                     String newPassWordEncode = new BCryptPasswordEncoder().encode(password.getNewPassword());
-                    accountService.updatePassword(newPassWordEncode , id);
+                    accountService.updatePassword(newPassWordEncode, id);
 
                     return new ResponseEntity<>(HttpStatus.OK);
                 }
@@ -64,11 +64,12 @@ public class AccountController {
             return new ResponseEntity<Account>(account, HttpStatus.FOUND);
         return new ResponseEntity<Account>(HttpStatus.NOT_FOUND);
     }
+
     //NhiVP lay danh sach username
     @GetMapping("/list-Username")
     public ResponseEntity<List<String>> findAllUsername() {
         List<String> allUsername = accountService.findAllUsername();
-        if (allUsername.isEmpty()){
+        if (allUsername.isEmpty()) {
             return new ResponseEntity<List<String>>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<List<String>>(allUsername, HttpStatus.OK);
