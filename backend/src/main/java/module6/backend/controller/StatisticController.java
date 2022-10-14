@@ -2,6 +2,7 @@ package module6.backend.controller;
 
 import module6.backend.entity.cart.Cart;
 import module6.backend.entity.customer.Customer;
+import module6.backend.repository.ICustomerRepository;
 import module6.backend.service.IStatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,6 +21,9 @@ public class StatisticController {
     @Autowired
     private IStatisticService statisticService;
 
+    @Autowired
+    private ICustomerRepository customerRepository;
+
     // HuyenNTD - Thong ke khach hang tiem nang
     @GetMapping("/list/customer")
     public ResponseEntity<List<String>> getAll() {
@@ -27,7 +31,11 @@ public class StatisticController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-
+    @GetMapping("/list/customers")
+    public ResponseEntity<String[]> data1() {
+        String[] data = customerRepository.findAllPotentialCustomer();
+        return new ResponseEntity<String[]>(data, HttpStatus.OK);
+    }
 
     @GetMapping("/search/customer")
     public ResponseEntity<List<String>> searchPotentialCustomers(@RequestParam String fromMonth, @RequestParam String toMonth,

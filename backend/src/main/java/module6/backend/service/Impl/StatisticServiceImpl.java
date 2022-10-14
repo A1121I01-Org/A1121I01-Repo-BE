@@ -30,7 +30,6 @@ public class StatisticServiceImpl implements IStatisticService {
         return customerRepository.findAllCustomer();
     }
 
-
     @Override
     public List<String> searchForPotentialCustomers(String fromMonth, String toMonth, String year) {
         return customerRepository.findForPotentialCustomers(fromMonth, toMonth, year);
