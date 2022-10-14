@@ -2,6 +2,7 @@ package module6.backend.controller;
 
 import module6.backend.entity.ClassDTO.MaterialStatisticDTO;
 import module6.backend.entity.material.Material;
+import module6.backend.repository.ICustomerRepository;
 import module6.backend.repository.IMaterialRepository;
 import module6.backend.entity.cart.Cart;
 import module6.backend.entity.customer.Customer;
@@ -44,6 +45,9 @@ public class StatisticController {
 
     @Autowired
     private PDFStatisticMaterialsImpl pdfStatisticMaterials;
+
+    @Autowired
+    private ICustomerRepository customerRepository;
 
     @Autowired
     private IMaterialRepository materialRepository;
@@ -121,6 +125,12 @@ public class StatisticController {
     public ResponseEntity<List<String>> getAll() {
         List<String> list = statisticService.findAllStatisticCustomer();
         return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    @GetMapping("/list/customers")
+    public ResponseEntity<String[]> getAllCustomer() {
+        String[] data = customerRepository.findAllPotentialCustomer();
+        return new ResponseEntity<String[]>(data, HttpStatus.OK);
     }
 
     @GetMapping("/search/customer")
