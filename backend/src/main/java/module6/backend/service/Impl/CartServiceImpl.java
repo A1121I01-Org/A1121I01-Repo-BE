@@ -9,4 +9,19 @@ import org.springframework.stereotype.Service;
 public class CartServiceImpl implements ICartService {
     @Autowired
     private ICartRepository cartRepository;
+
+    @Override
+    public Integer displayHuy() {
+        return cartRepository.huy();
+    }
+
+    @Override
+    public Integer displayTra() {
+        return cartRepository.tra();
+    }
+
+    @Override
+    public Integer displayBan() {
+        return cartRepository.ban();
+    }
 }
