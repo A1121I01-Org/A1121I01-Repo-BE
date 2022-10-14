@@ -35,4 +35,5 @@ public class StatisticServiceImpl implements IStatisticService {
     public List<String> searchForPotentialCustomers(String fromMonth, String toMonth, String year) {
         return customerRepository.findForPotentialCustomers(fromMonth, toMonth, year);
     }
+    // abc
 }
