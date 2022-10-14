@@ -20,9 +20,4 @@ public class SalaryController {
     @Autowired
     private IEmployeeService employeeService;
 
-    @GetMapping("/luongNV")
-    public ResponseEntity<Integer> luongNV() {
-        Integer luong = salaryService.displayLuong();
-        return new ResponseEntity<>(luong, HttpStatus.OK);
-    }
 }
