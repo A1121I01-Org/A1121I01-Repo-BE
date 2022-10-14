@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin
 @RequestMapping("api/customer")
 public class CustomerController {
     @Autowired
@@ -66,6 +66,7 @@ public class CustomerController {
     @DeleteMapping("/customer-delete/{id}")
     public ResponseEntity<Customer> delete(@PathVariable("id") Long id) {
         Optional<Customer> customerOptional = customerService.findCustomerById(id);
+        System.out.println(2);
         if (!customerOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -107,14 +108,15 @@ public class CustomerController {
     }
 
     // DuyDTT tạo mới khách hàng
-    @PostMapping("customer-create")
+    @PostMapping("/customer-create")
     public ResponseEntity<Customer> createNewCustomer(@RequestBody Customer customer) {
+        System.out.println(0);
         customerService.createCustomer(customer.getCustomerName(), customer.getCustomerCode(), customer.getCustomerAvatar(), customer.getCustomerAddress(), customer.getCustomerPhone(), customer.getCustomerEmail(), customer.getCustomerTypeId().getCustomerTypeId());
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
 
     // DuyDTT cập nhật khách hàng
-    @PatchMapping("update")
+    @PatchMapping("/update")
     public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
         Optional<Customer> customerOptional = customerService.findCustomerById(customer.getCustomerId());
         if (!customerOptional.isPresent()) {
