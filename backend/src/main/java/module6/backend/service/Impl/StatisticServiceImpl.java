@@ -7,8 +7,9 @@ import module6.backend.repository.IEmployeeRepository;
 import module6.backend.repository.IMaterialRepository;
 import module6.backend.service.IStatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -23,6 +24,17 @@ public class StatisticServiceImpl implements IStatisticService {
 
     @Autowired
     private IMaterialRepository materialRepository;
+
+    //HoangTND - Statistic Material
+    @Override
+    public List<String> findAllStatisticMaterial() {
+        return materialRepository.findAllStatisticMaterial();
+    }
+
+    @Override
+    public List<String> searchStatisticMaterial(String fromDate, String toDate) {
+        return materialRepository.searchStatisticMaterial(fromDate, toDate);
+    }
 
     // HuyenNTD - Thong ke khach hang tiem nang
     @Override
