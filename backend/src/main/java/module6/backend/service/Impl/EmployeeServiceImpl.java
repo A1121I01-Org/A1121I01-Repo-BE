@@ -45,5 +45,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public List<String> findAllEmployeeDontHasAccount() {
         return employeeRepository.findAllEmployeeDontHasAccount();
     }
+
+    @Override
+    public List<String> findAllPhone() {
+        return employeeRepository.findAllPhone();
+    }
 }
 

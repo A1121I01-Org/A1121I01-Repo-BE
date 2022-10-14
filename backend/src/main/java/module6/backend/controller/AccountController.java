@@ -75,7 +75,7 @@ public class AccountController {
 
     //NhiVP create account
     @PostMapping("/create-Account")
-    public ResponseEntity<?> createAccount(@RequestBody EmployeeAccount employeeAccount) {
+    public ResponseEntity<EmployeeAccount> createAccount(@RequestBody EmployeeAccount employeeAccount) {
         accountService.createEmployeeAccount(employeeAccount);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

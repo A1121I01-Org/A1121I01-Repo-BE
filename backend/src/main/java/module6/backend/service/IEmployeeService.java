@@ -17,4 +17,6 @@ public interface IEmployeeService {
     List<String> findAllEmployeeHasAccount();
     //NhiVP code lấy danh sách mã nhân viên chưa có tài khoản
     List<String> findAllEmployeeDontHasAccount();
+    //NhiVP code lấy danh sách số điện thoại
+    List<String> findAllPhone();
 }

@@ -19,7 +19,7 @@ import java.util.Optional;
 
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin
 @RequestMapping("api/employee")
 public class EmployeeController {
     @Autowired
@@ -93,7 +93,7 @@ public class EmployeeController {
     public ResponseEntity<List<String>> findAllEmployeeHasAccount() {
         List<String> employees = employeeService.findAllEmployeeHasAccount();
         if (employees.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
@@ -102,9 +102,18 @@ public class EmployeeController {
     public ResponseEntity<List<String>> findAllEmployeeDontHasAccount() {
         List<String> employees = employeeService.findAllEmployeeDontHasAccount();
         if (employees.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+    //NhiVP lấy danh sách số điện thoại
+    @GetMapping("/list-Phone")
+    public ResponseEntity<List<String>> findAllPhone() {
+        List<String> allPhone = employeeService.findAllPhone();
+        if (allPhone.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(allPhone, HttpStatus.OK);
     }
 
     //NhiVP lấy danh sách chức vụ trừ chức vụ quản lý
