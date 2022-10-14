@@ -1,17 +1,17 @@
 package module6.backend.controller;
 
+import module6.backend.entity.cart.Cart;
 import module6.backend.entity.customer.Customer;
 import module6.backend.service.IStatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -21,12 +21,18 @@ public class StatisticController {
     private IStatisticService statisticService;
 
     // HuyenNTD - Thong ke khach hang tiem nang
-    public ResponseEntity<Page<Customer>> findForPotentialCustomers (@RequestParam LocalDate cartDateCreate, @RequestParam int pageable) {
-        Page<Customer> customerPage = statisticService.findForPotentialCustomers(cartDateCreate, pageable);
-        if(customerPage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(customerPage, HttpStatus.OK);
+    @GetMapping("/list/customer")
+    public ResponseEntity<List<String>> getAll() {
+        List<String> list = statisticService.findAllStatisticCustomer();
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+
+
+    @GetMapping("/search/customer")
+    public ResponseEntity<List<String>> searchPotentialCustomers(@RequestParam String fromMonth, @RequestParam String toMonth,
+                                                                 @RequestParam String year) {
+        List<String> list = statisticService.searchForPotentialCustomers(fromMonth, toMonth, year);
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
 }

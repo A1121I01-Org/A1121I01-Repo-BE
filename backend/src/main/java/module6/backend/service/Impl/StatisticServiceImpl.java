@@ -1,5 +1,6 @@
 package module6.backend.service.Impl;
 
+import module6.backend.entity.cart.Cart;
 import module6.backend.entity.customer.Customer;
 import module6.backend.repository.ICustomerRepository;
 import module6.backend.repository.IEmployeeRepository;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class StatisticServiceImpl implements IStatisticService {
@@ -24,7 +26,13 @@ public class StatisticServiceImpl implements IStatisticService {
 
     // HuyenNTD - Thong ke khach hang tiem nang
     @Override
-    public Page<Customer> findForPotentialCustomers(LocalDate cartDateCreate, int pageable) {
-        return customerRepository.findForPotentialCustomers(cartDateCreate);
+    public List<String> findAllStatisticCustomer() {
+        return customerRepository.findAllCustomer();
+    }
+
+
+    @Override
+    public List<String> searchForPotentialCustomers(String fromMonth, String toMonth, String year) {
+        return customerRepository.findForPotentialCustomers(fromMonth, toMonth, year);
     }
 }
