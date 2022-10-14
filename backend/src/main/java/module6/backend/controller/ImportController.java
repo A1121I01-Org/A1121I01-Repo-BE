@@ -21,9 +21,4 @@ public class ImportController {
     @Autowired
     private IMaterialService materialService;
 
-    @GetMapping("/nhaphang")
-    public ResponseEntity<Integer> nhapHang() {
-        Integer nhap = importService.displayNhap();
-        return new ResponseEntity<>(nhap, HttpStatus.OK);
-    }
 }
