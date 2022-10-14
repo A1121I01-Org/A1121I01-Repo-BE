@@ -28,23 +28,6 @@ public class CartController {
     @Autowired
     private ICartStatusService cartStatusService;
 
-    @GetMapping("/huyhang")
-    public ResponseEntity<Integer> huyHang() {
-        Integer huy = cartService.displayHuy();
-        return new ResponseEntity<>(huy, HttpStatus.OK);
-    }
 
-    @GetMapping("/trahang")
-    public ResponseEntity<Integer> traHang() {
-        Integer tra = cartService.displayTra();
-        return new ResponseEntity<>(tra, HttpStatus.OK);
-    }
-
-    @GetMapping("/banhang")
-    public ResponseEntity<Integer> banHang() {
-        System.out.println(1);
-        Integer ban = cartService.displayBan();
-        return new ResponseEntity<>(ban, HttpStatus.OK);
-    }
 
 }
