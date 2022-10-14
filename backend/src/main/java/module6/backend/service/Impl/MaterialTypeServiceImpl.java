@@ -1,5 +1,7 @@
 package module6.backend.service.Impl;
 
+
+import module6.backend.entity.material.Material;
 import module6.backend.entity.material.MaterialType;
 import module6.backend.repository.IMaterialTypeRepository;
 import module6.backend.service.IMaterialTypeService;
@@ -17,4 +19,7 @@ public class MaterialTypeServiceImpl implements IMaterialTypeService {
     public List<MaterialType> findAll() {
         return materialTypeRepository.findAll();
     }
+
 }
+
+

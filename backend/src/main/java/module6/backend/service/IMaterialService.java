@@ -1,4 +1,5 @@
 package module6.backend.service;
+
 import module6.backend.entity.material.Material;
 import java.util.List;
 import org.springframework.data.domain.Page;
@@ -11,5 +12,9 @@ public interface IMaterialService {
 
     Page<Material> findAll(Pageable pageable, String search);
     void deleteById(Long id);
+       Page<Material> getAllMaterialSearch(String search, Integer page, Integer size);
+
+       Page<Material> getAllMaterial(Integer page, Integer size);
 
 }
+
