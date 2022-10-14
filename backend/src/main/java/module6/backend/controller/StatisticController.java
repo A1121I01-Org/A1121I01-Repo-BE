@@ -3,6 +3,8 @@ package module6.backend.controller;
 import module6.backend.entity.cart.Cart;
 import module6.backend.entity.customer.Customer;
 import module6.backend.service.ICartService;
+import module6.backend.service.IImportService;
+import module6.backend.service.ISalaryService;
 import module6.backend.service.IStatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,6 +23,11 @@ public class StatisticController {
     @Autowired
     private IStatisticService statisticService;
 
+    @Autowired
+    private ISalaryService salaryService;
+
+    @Autowired
+    private IImportService importService;
     @Autowired
     private ICartService cartService;
 
@@ -42,14 +49,25 @@ public class StatisticController {
         Integer ban = cartService.displayBan();
         return new ResponseEntity<>(ban, HttpStatus.OK);
     }
+
+    @GetMapping("/nhaphang")
+    public ResponseEntity<Integer> nhapHang() {
+        Integer nhap = importService.displayNhap();
+        return new ResponseEntity<>(nhap, HttpStatus.OK);
+    }
+
+    @GetMapping("/luongNV")
+    public ResponseEntity<Integer> luongNV() {
+        Integer luong = salaryService.displayLuong();
+        return new ResponseEntity<>(luong, HttpStatus.OK);
+    }
+
     // HuyenNTD - Thong ke khach hang tiem nang
     @GetMapping("/list/customer")
     public ResponseEntity<List<String>> getAll() {
         List<String> list = statisticService.findAllStatisticCustomer();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
-
-
 
     @GetMapping("/search/customer")
     public ResponseEntity<List<String>> searchPotentialCustomers(@RequestParam String fromMonth, @RequestParam String toMonth,
