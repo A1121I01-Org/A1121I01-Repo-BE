@@ -2,7 +2,10 @@ package module6.backend.controller;
 
 import module6.backend.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,4 +27,7 @@ public class CartController {
 
     @Autowired
     private ICartStatusService cartStatusService;
+
+
+
 }

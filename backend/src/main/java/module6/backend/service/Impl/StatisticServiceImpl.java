@@ -1,5 +1,7 @@
 package module6.backend.service.Impl;
 
+import module6.backend.entity.cart.Cart;
+import module6.backend.entity.customer.Customer;
 import module6.backend.repository.ICustomerRepository;
 import module6.backend.repository.IEmployeeRepository;
 import module6.backend.repository.IMaterialRepository;
@@ -7,6 +9,9 @@ import module6.backend.service.IStatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -29,5 +34,17 @@ public class StatisticServiceImpl implements IStatisticService {
     @Override
     public List<String> searchStatisticMaterial(String fromDate, String toDate) {
         return materialRepository.searchStatisticMaterial(fromDate, toDate);
+    }
+
+    // HuyenNTD - Thong ke khach hang tiem nang
+    @Override
+    public List<String> findAllStatisticCustomer() {
+        return customerRepository.findAllCustomer();
+    }
+
+
+    @Override
+    public List<String> searchForPotentialCustomers(String fromMonth, String toMonth, String year) {
+        return customerRepository.findForPotentialCustomers(fromMonth, toMonth, year);
     }
 }

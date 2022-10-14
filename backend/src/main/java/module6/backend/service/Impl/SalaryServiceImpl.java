@@ -9,4 +9,9 @@ import org.springframework.stereotype.Service;
 public class SalaryServiceImpl implements ISalaryService {
     @Autowired
     private ISalaryRepository salaryRepository;
+
+    @Override
+    public Integer displayLuong() {
+        return salaryRepository.luong();
+    }
 }

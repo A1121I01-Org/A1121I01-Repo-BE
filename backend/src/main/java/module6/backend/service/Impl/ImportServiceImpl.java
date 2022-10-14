@@ -9,4 +9,9 @@ import org.springframework.stereotype.Service;
 public class ImportServiceImpl implements IImportService {
     @Autowired
     private IImportRepository importRepository;
+
+    @Override
+    public Integer displayNhap() {
+        return importRepository.nhap();
+    }
 }
