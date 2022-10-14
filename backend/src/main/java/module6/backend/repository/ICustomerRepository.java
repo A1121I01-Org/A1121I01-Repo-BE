@@ -52,7 +52,7 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     List<Customer> getAllCustomerWithPagination(int index);
 
     @Modifying
-    @Query(value = "UPDATE FROM customer SET customer_flag=1, customer_id = ?1  WHERE customer_id=?2", nativeQuery = true)
+    @Query(value = "UPDATE customer SET customer_flag=1, customer_id = ?1 WHERE customer_id = ?2", nativeQuery = true)
     void deleteCustomerById(Long id1, Long id2);
 
     @Query(value = "select * from customer where customer_name like %:name% and customer_phone like %:phone%  ", nativeQuery = true)
