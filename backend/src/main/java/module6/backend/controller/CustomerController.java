@@ -1,6 +1,7 @@
 package module6.backend.controller;
 
 import module6.backend.entity.customer.Customer;
+import module6.backend.entity.customer.CustomerType;
 import module6.backend.service.ICustomerService;
 import module6.backend.service.ICustomerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,6 +24,15 @@ public class CustomerController {
     @Autowired
     private ICustomerTypeService customerTypeService;
 
+    @GetMapping("customer-type")
+    public ResponseEntity<List<CustomerType>> findAllCustomerType() {
+        List<CustomerType> customerTypes = customerTypeService.findAllCustomerType();
+        if(customerTypes.isEmpty()) {
+            return new ResponseEntity<>(customerTypes, HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(customerTypes, HttpStatus.OK);
+    }
+
     @GetMapping("customer-findById/{id}")
     public ResponseEntity<Customer> findById(@PathVariable Long id) {
         return new ResponseEntity<>(customerService.findCustomerById(id).get(), HttpStatus.OK);
@@ -29,8 +40,14 @@ public class CustomerController {
 
     @PostMapping("customer-create")
     public ResponseEntity<Customer> createNewCustomer(@RequestBody Customer customer) {
-        customerService.createCustomer(customer.getCustomerName(),customer.getCustomerCode(),customer.getCustomerAvatar(),customer.getCustomerAddress(),customer.getCustomerPhone(),customer.getCustomerEmail(),customer.getCustomerTypeId().getCustomerTypeId());
-        return new ResponseEntity<>(customer, HttpStatus.CREATED);
+        try {
+            customerService.createCustomer(customer.getCustomerName(),customer.getCustomerCode(),customer.getCustomerAvatar(),customer.getCustomerAddress(),customer.getCustomerPhone(),customer.getCustomerEmail(),customer.getCustomerTypeId().getCustomerTypeId());
+            return new ResponseEntity<>(customer, HttpStatus.CREATED);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
+        }
+
     }
 
     @PatchMapping("update")
