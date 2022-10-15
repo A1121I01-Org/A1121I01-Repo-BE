@@ -89,6 +89,7 @@ public class StatisticController {
         return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bais));
     }
 
+    // KimPBH - Thong ke tai chinh
     @GetMapping("/huyhang")
     public ResponseEntity<Integer> huyHang() {
         Integer huy = cartService.displayHuy();
@@ -139,4 +140,5 @@ public class StatisticController {
         List<String> list = statisticService.searchForPotentialCustomers(fromMonth, toMonth, year);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
+
 }
