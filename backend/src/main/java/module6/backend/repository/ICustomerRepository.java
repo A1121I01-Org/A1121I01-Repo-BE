@@ -22,7 +22,8 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     @Query(value = "SELECT * from customer  left join customer_type on customer_type.customer_type_id = customer.customer_id where customer.customer_flag = 0 group by customer.customer_id limit ?1,5", nativeQuery = true)
     List<Customer> getAllCustomerWithPagination(int index);
 
-    @Query(value = "UPDATE FROM customer SET customer_flag=1 and customer_id = ?1  WHERE customer_id=?2", nativeQuery = true)
+    @Modifying
+    @Query(value = "UPDATE customer SET customer_flag=1, customer_id = ?1  WHERE customer_id=?2", nativeQuery = true)
     void deleteCustomerById(Long id1, Long id2);
 
     @Query(value = "select * from customer where customer_name like %:name% and customer_phone like %:phone%  ", nativeQuery = true)
