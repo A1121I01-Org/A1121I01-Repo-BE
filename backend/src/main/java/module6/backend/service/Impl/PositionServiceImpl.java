@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class PositionServiceImpl implements IPositionService {
     @Autowired
@@ -16,5 +17,10 @@ public class PositionServiceImpl implements IPositionService {
     @Override
     public List<Position> findAllPosition() {
         return positionRepository.findAllPosition();
+    }
+
+    @Override
+    public List<Position> findAllEmployeePosition() {
+        return positionRepository.findAllEmployeePosition();
     }
 }

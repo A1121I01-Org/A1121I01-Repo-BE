@@ -1,5 +1,7 @@
 package module6.backend.controller;
 
+import module6.backend.entity.employee.Employee;
+import module6.backend.entity.employee.Position;
 
 import module6.backend.entity.account.Account;
 import module6.backend.entity.employee.Employee;
@@ -19,7 +21,7 @@ import java.util.Optional;
 
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin
 @RequestMapping("api/employee")
 public class EmployeeController {
     @Autowired
@@ -30,6 +32,36 @@ public class EmployeeController {
 
     @Autowired
     private IPositionService positionService;
+
+    @GetMapping("")
+    public ResponseEntity<List<Employee>> getAllEmployee(){
+        List<Employee> employeeList = this.employeeService.getAllEmployee();
+        if (employeeList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(employeeList, HttpStatus.OK);
+    }
+
+    @GetMapping("/employee-pagination/{index}")
+    public ResponseEntity<Iterable<Employee>> getAllEmployeeWithPagination(@PathVariable("index") int index) {
+        List<Employee> employees = (List<Employee>) employeeService.getAllEmployeeWithPagination(index);
+        if (employees.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/employee-delete/{id}")
+    public ResponseEntity<Employee> deleteCustomerById(@PathVariable("id") Long id) {
+        Optional<Employee> employeeOptional = employeeService.findEmployeeById(id);
+        if (!employeeOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        employeeService.deleteEmployeeById(-id, id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 
 
     //  SonLH  Tìm kiếm nhân viên theo id
