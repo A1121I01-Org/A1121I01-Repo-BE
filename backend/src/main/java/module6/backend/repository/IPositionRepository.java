@@ -12,6 +12,4 @@ public interface IPositionRepository extends JpaRepository<Position, Long> {
     @Query(value = "select * from `position` where position_flag = 0 ", nativeQuery = true)
     List<Position> findAllPosition();
 
-    @Query(value = "select * from position where position_flag = 0 ", nativeQuery = true)
-    List<Position> findAllEmployeePosition();
 }

@@ -1,8 +1,5 @@
 package module6.backend.controller;
 
-import module6.backend.entity.employee.Employee;
-import module6.backend.entity.employee.Position;
-
 import module6.backend.entity.account.Account;
 import module6.backend.entity.employee.Employee;
 import module6.backend.entity.employee.Position;
@@ -34,9 +31,9 @@ public class EmployeeController {
     private IPositionService positionService;
 
     @GetMapping("")
-    public ResponseEntity<List<Employee>> getAllEmployee(){
+    public ResponseEntity<List<Employee>> getAllEmployee() {
         List<Employee> employeeList = this.employeeService.getAllEmployee();
-        if (employeeList.isEmpty()){
+        if (employeeList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(employeeList, HttpStatus.OK);
@@ -60,8 +57,6 @@ public class EmployeeController {
         employeeService.deleteEmployeeById(-id, id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
 
 
     //  SonLH  Tìm kiếm nhân viên theo id

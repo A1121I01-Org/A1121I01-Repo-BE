@@ -18,9 +18,4 @@ public class PositionServiceImpl implements IPositionService {
     public List<Position> findAllPosition() {
         return positionRepository.findAllPosition();
     }
-
-    @Override
-    public List<Position> findAllEmployeePosition() {
-        return positionRepository.findAllEmployeePosition();
-    }
 }

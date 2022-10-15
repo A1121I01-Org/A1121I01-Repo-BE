@@ -6,6 +6,4 @@ import java.util.List;
 
 public interface IPositionService {
     List<Position> findAllPosition();
-
-    List<Position> findAllEmployeePosition();
 }

@@ -25,10 +25,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public void updateEmployee(String employeeName, String employeeAvatar, LocalDate employeeDateOfBirth, String employeeGender, String employeeAddress, String employeePhone, Long employeeId) {
-        employeeRepository.updateEmployee(employeeName,employeeAvatar,employeeDateOfBirth,employeeGender,employeeAddress,employeePhone, employeeId);
+        employeeRepository.updateEmployee(employeeName, employeeAvatar, employeeDateOfBirth, employeeGender, employeeAddress, employeePhone, employeeId);
 
     }
-    private IEmployeeRepository iEmployeeRepository;
 
     @Override
     public Optional<Employee> findById(Long id) {
