@@ -13,8 +13,19 @@ public interface IEmployeeService {
 
     //NhiVP code tim employee bang code
     Employee findEmployeeByCode(String code);
+
     //NhiVP code tim employee da co account
     List<String> findAllEmployeeHasAccount();
+
     //NhiVP code lấy danh sách mã nhân viên chưa có tài khoản
     List<String> findAllEmployeeDontHasAccount();
+
+    Optional<Employee> findById(Long id);
+
+    List<Employee> getAllEmployeeWithPagination(int index);
+
+
+    void deleteEmployeeById(Long id1, Long id2);
+
+    List<Employee> getAllEmployee();
 }
