@@ -16,7 +16,7 @@ public class Customer {
     private String customerEmail;
     private Boolean customerFlag = false;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "customer_type_id")
     private CustomerType customerTypeId;
 

@@ -1,6 +1,5 @@
 package module6.backend.service.Impl;
 
-
 import module6.backend.entity.customer.CustomerType;
 import module6.backend.repository.ICustomerTypeRepository;
 import module6.backend.service.ICustomerTypeService;
