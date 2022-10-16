@@ -26,22 +26,16 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/MaterialController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/MaterialController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/material/MaterialType.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/material/MaterialType.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/IMaterialRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/IMaterialRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/IMaterialService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/IMaterialService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/MaterialServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/MaterialServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/MaterialTypeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/MaterialTypeServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/controller/MaterialController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/controller/MaterialController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/entity/material/MaterialType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/entity/material/MaterialType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/repository/ICartMaterialRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/repository/ICartMaterialRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IMaterialRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IMaterialRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/IMaterialService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/IMaterialService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/MaterialServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/MaterialServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/MaterialTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/MaterialTypeServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +113,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d416e6f7-f786-4963-a57b-2236d8a440c8" name="Default Changelist" comment="" />
+      <changelist id="d28d4222-b528-4557-b815-dbb77afad4df" name="Default Changelist" comment="" />
       <created>1664978875648</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -130,6 +124,7 @@
       <workItem from="1665213337039" duration="4778000" />
       <workItem from="1665382079481" duration="1884000" />
       <workItem from="1665399959488" duration="4753000" />
+      <workItem from="1665930609106" duration="734000" />
     </task>
     <servers />
   </component>
@@ -157,37 +152,49 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1665129358870" />
-    <state width="1493" height="252" key="GridCell.Tab.0.bottom" timestamp="1665724937231">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1665931196338">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1665724937231" />
-    <state width="1493" height="252" key="GridCell.Tab.0.center" timestamp="1665724937231">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1665931196338" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1665931196338">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1665724937231" />
-    <state width="1493" height="252" key="GridCell.Tab.0.left" timestamp="1665724937231">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1665931196338" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1665931196338">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1665724937231" />
-    <state width="1493" height="252" key="GridCell.Tab.0.right" timestamp="1665724937231">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1665931196338" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1665931196338">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1665724937231" />
-    <state width="1493" height="252" key="GridCell.Tab.1.bottom" timestamp="1665724937232">
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1665931196338" />
+    <state width="1493" height="210" key="GridCell.Tab.1.bottom" timestamp="1665931196339">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1665724937232" />
-    <state width="1493" height="252" key="GridCell.Tab.1.center" timestamp="1665724937231">
+    <state width="1493" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1665931196339" />
+    <state width="1493" height="210" key="GridCell.Tab.1.center" timestamp="1665931196339">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1665724937231" />
-    <state width="1493" height="252" key="GridCell.Tab.1.left" timestamp="1665724937231">
+    <state width="1493" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1665931196339" />
+    <state width="1493" height="210" key="GridCell.Tab.1.left" timestamp="1665931196339">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1665724937231" />
-    <state width="1493" height="252" key="GridCell.Tab.1.right" timestamp="1665724937232">
+    <state width="1493" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1665931196339" />
+    <state width="1493" height="210" key="GridCell.Tab.1.right" timestamp="1665931196339">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1665724937232" />
+    <state width="1493" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1665931196339" />
+    <state x="117" y="0" key="MergeDialog" timestamp="1665930986546">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="117" y="0" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1665930986546" />
+    <state x="149" y="116" width="1178" height="429" key="MultipleFileMergeDialog" timestamp="1665930986556">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="149" y="116" width="1178" height="429" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1665930986556" />
+    <state x="460" y="201" key="git4idea.merge.GitPullDialog" timestamp="1665930699001">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="460" y="201" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1665930699001" />
   </component>
 </project>
