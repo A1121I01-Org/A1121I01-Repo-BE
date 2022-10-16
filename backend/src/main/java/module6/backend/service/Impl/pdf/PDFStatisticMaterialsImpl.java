@@ -23,7 +23,7 @@ public class PDFStatisticMaterialsImpl {
             try {
                 PdfWriter.getInstance(document,out);
                 document.open();
-                Font f = new Font(BaseFont.createFont("D:\\CODE\\A1121I1_TranNguyenDiemHoang\\module_6\\VietFontsWeb1_ttf\\vuArial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
+                Font f = new Font(BaseFont.createFont("D:\\VietFontsWeb1_ttf\\vuArial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
                 Font font1 = FontFactory.getFont(FontFactory.TIMES, 20, BaseColor.BLACK);
                 Font font2 = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 13, BaseColor.BLACK);
                 Paragraph para = new Paragraph("Thống kê vật tư", f);
