@@ -1,13 +1,30 @@
 package module6.backend.service;
 
-import module6.backend.entity.cart.Cart;
-import module6.backend.entity.customer.Customer;
-import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public interface IStatisticService {
+
+//    KinPBH - Thong ke tai chinh
+
+    Integer displayHuy();
+
+    Integer searchHuy(@Param("month") String month , @Param("year") String year);
+
+    Integer displayTra();
+
+    Integer searchTra(@Param("month") String month , @Param("year") String year);
+
+    Integer displayBan();
+
+    Integer searchBan(@Param("month") String month , @Param("year") String year);
+
+    Integer displayNhap();
+
+    Integer searchNhap(@Param("month") String month , @Param("year") String year);
+
+//    Integer displayLuong();
 
     // HuyenNTD - Thong ke khach hang tiem nang
 
