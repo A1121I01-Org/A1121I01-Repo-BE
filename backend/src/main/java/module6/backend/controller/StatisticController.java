@@ -1,39 +1,23 @@
 package module6.backend.controller;
 
-import module6.backend.entity.ClassDTO.MaterialStatisticDTO;
-import module6.backend.entity.material.Material;
+import module6.backend.repository.ICartRepository;
 import module6.backend.repository.ICustomerRepository;
+import module6.backend.repository.IImportRepository;
 import module6.backend.repository.IMaterialRepository;
-import module6.backend.entity.cart.Cart;
-import module6.backend.entity.customer.Customer;
-import module6.backend.service.ICartService;
-import module6.backend.service.IImportService;
-import module6.backend.service.ISalaryService;
+import module6.backend.repository.PDFStatisticFinancialServiceImpl;
 import module6.backend.service.IStatisticService;
-import module6.backend.service.Impl.PDFStatisticMaterialsImpl;
+import module6.backend.service.Impl.pdf.PDFStatisticMaterialsImpl;
+import module6.backend.service.Impl.pdf.PDFStatisticFinancialServiceImpl2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -51,17 +35,19 @@ public class StatisticController {
 
     @Autowired
     private IMaterialRepository materialRepository;
+
+    @Autowired
+    private PDFStatisticFinancialServiceImpl2 pdfStatisticFinancialServiceImpl2;
+    @Autowired
+    private IImportRepository iImportRepository;
+    @Autowired
+    private ICartRepository cartRepository;
+
+    @Autowired
+    private PDFStatisticFinancialServiceImpl pdfStatisticFinancialService;
+
     //HoangTND - Statistic Material
     //List material
-
-    @Autowired
-    private ISalaryService salaryService;
-
-    @Autowired
-    private IImportService importService;
-    @Autowired
-    private ICartService cartService;
-
     @GetMapping("/list/material")
     public ResponseEntity<List<String>> data() {
         List<String> data = statisticService.findAllStatisticMaterial();
@@ -92,34 +78,80 @@ public class StatisticController {
     // KimPBH - Thong ke tai chinh
     @GetMapping("/huyhang")
     public ResponseEntity<Integer> huyHang() {
-        Integer huy = cartService.displayHuy();
+        Integer huy = statisticService.displayHuy();
         return new ResponseEntity<>(huy, HttpStatus.OK);
     }
 
     @GetMapping("/trahang")
     public ResponseEntity<Integer> traHang() {
-        Integer tra = cartService.displayTra();
+        Integer tra = statisticService.displayTra();
         return new ResponseEntity<>(tra, HttpStatus.OK);
     }
 
     @GetMapping("/banhang")
     public ResponseEntity<Integer> banHang() {
-        System.out.println(1);
-        Integer ban = cartService.displayBan();
+        Integer ban = statisticService.displayBan();
         return new ResponseEntity<>(ban, HttpStatus.OK);
     }
 
     @GetMapping("/nhaphang")
     public ResponseEntity<Integer> nhapHang() {
-        Integer nhap = importService.displayNhap();
+        Integer nhap = statisticService.displayNhap();
         return new ResponseEntity<>(nhap, HttpStatus.OK);
     }
 
-    @GetMapping("/luongNV")
-    public ResponseEntity<Integer> luongNV() {
-        Integer luong = salaryService.displayLuong();
-        return new ResponseEntity<>(luong, HttpStatus.OK);
+    @GetMapping("/search")
+    public ResponseEntity<Integer[]> huyHang(@RequestParam String month, @RequestParam String year) {
+        if (month.equals("")) {
+            month = "%" + month + "%";
+        }
+        year = "%" + year + "%";
+        Integer huy = statisticService.searchHuy(month,year);
+        if (huy == null) {
+            huy = 0;
+        }
+        Integer tra = statisticService.searchTra(month,year);
+        if (tra == null) {
+            tra = 0;
+        }
+        Integer ban = statisticService.searchBan(month, year);
+        if (ban == null) {
+            ban = 0;
+        }
+        Integer nhap = statisticService.searchNhap(month, year);
+        if (nhap == null) {
+            nhap = 0;
+        }
+        Integer[] search = new Integer[4];
+        search[0] = ban;
+        search[1] = nhap;
+        search[2] = huy;
+        search[3] = tra;
+        return new ResponseEntity<>(search, HttpStatus.OK);
     }
+
+    @PostMapping("/pdf2")
+    public ResponseEntity<InputStreamResource> generatePDF(@RequestBody String[] data) throws IOException {
+        System.out.println(1);
+        ByteArrayInputStream bais = pdfStatisticFinancialServiceImpl2.export(data);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition","inline;filename=cart.pdf");
+        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bais));
+    }
+//    @GetMapping("/luongNV")
+//    public ResponseEntity<Integer> luongNV() {
+//        Integer luong = statisticService.displayLuong();
+//        return new ResponseEntity<>(luong, HttpStatus.OK);
+//    }
+
+//    @PostMapping("/pdf")
+//    public ResponseEntity<InputStreamResource> generatePDF() throws IOException {
+//        String [] data = ICartRepository.ban1();
+//        ByteArrayInputStream bais = pdfStatisticFinancialService.export(data);
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add("Content-Disposition","inline;filename=financial.pdf");
+//        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bais));
+//    }
 
     // HuyenNTD - Thong ke khach hang tiem nang
     @GetMapping("/list/customer")
@@ -140,5 +172,4 @@ public class StatisticController {
         List<String> list = statisticService.searchForPotentialCustomers(fromMonth, toMonth, year);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
-
 }

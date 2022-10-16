@@ -1,10 +1,6 @@
 package module6.backend.service.Impl;
 
-import module6.backend.entity.cart.Cart;
-import module6.backend.entity.customer.Customer;
-import module6.backend.repository.ICustomerRepository;
-import module6.backend.repository.IEmployeeRepository;
-import module6.backend.repository.IMaterialRepository;
+import module6.backend.repository.*;
 import module6.backend.service.IStatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,11 +15,15 @@ public class StatisticServiceImpl implements IStatisticService {
     @Autowired
     private ICustomerRepository customerRepository;
 
-    @Autowired
-    private IEmployeeRepository employeeRepository;
 
     @Autowired
     private IMaterialRepository materialRepository;
+
+    @Autowired
+    private IImportRepository importRepository;
+
+    @Autowired
+    private ICartRepository cartRepository;
 
     //HoangTND - Statistic Material
     @Override
@@ -34,6 +34,55 @@ public class StatisticServiceImpl implements IStatisticService {
     @Override
     public List<String> searchStatisticMaterial(String fromDate, String toDate) {
         return materialRepository.searchStatisticMaterial(fromDate, toDate);
+    }
+
+//    KimPBH - Thong ke tai chinh
+//    @Autowired
+//    private ISalaryRepository salaryRepository;
+
+//    @Override
+//    public Integer displayLuong() {
+//        return salaryRepository.luong();
+//    }
+
+    @Override
+    public Integer displayHuy() {
+        return cartRepository.huy();
+    }
+
+    @Override
+    public Integer searchHuy(String month, String year) {
+        return cartRepository.searchhuy(month, year);
+    }
+
+    @Override
+    public Integer displayTra() {
+        return cartRepository.tra();
+    }
+
+    @Override
+    public Integer searchTra(String month, String year) {
+        return cartRepository.searchtra(month, year);
+    }
+
+    @Override
+    public Integer displayBan() {
+        return cartRepository.ban();
+    }
+
+    @Override
+    public Integer searchBan(String month, String year) {
+        return cartRepository.searchban(month, year);
+    }
+
+    @Override
+    public Integer displayNhap() {
+        return importRepository.nhap();
+    }
+
+    @Override
+    public Integer searchNhap(String month, String year) {
+        return importRepository.searchnhap(month, year);
     }
 
     // HuyenNTD - Thong ke khach hang tiem nang
