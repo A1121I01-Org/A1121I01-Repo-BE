@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 
-
 @Repository
 @Transactional
 public interface ICartRepository extends JpaRepository<Cart, Long> {
@@ -21,7 +20,7 @@ public interface ICartRepository extends JpaRepository<Cart, Long> {
 
     @Modifying
     @Query(value = "UPDATE cart SET cart_quantity = :quantity , cart_total_money = :money WHERE cart_id = :idCart ", nativeQuery = true)
-    void updateCart(@Param("quantity") Integer quantity,@Param("money") Integer money,@Param("idCart") Long idCart);
+    void updateCart(@Param("quantity") Integer quantity, @Param("money") Integer money, @Param("idCart") Long idCart);
 
     @Query(value = "SELECT customer_code FROM customer", nativeQuery = true)
     String[] listCustomerCode();
@@ -31,4 +30,28 @@ public interface ICartRepository extends JpaRepository<Cart, Long> {
 
     @Query(value = "SELECT * FROM cart WHERE cart_id = :id", nativeQuery = true)
     Cart findByCartId(@Param("id") Long id);
+
+    @Query(value = "select sum(cart_total_money) as huy_hang from cart where cart_status_id = 4 group by cart_status_id;",
+            nativeQuery = true)
+    Integer huy();
+
+    @Query(value = "select sum(cart_total_money) as huy_hang from cart where cart_status_id = 4 and month(cart_date_create) like :month and year(cart_date_create) like :year group by cart_status_id;", nativeQuery = true)
+    Integer searchhuy(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "select sum(cart_total_money) as tra_hang from cart where cart_status_id = 3 group by cart_status_id;", nativeQuery = true)
+    Integer tra();
+
+    @Query(value = "select sum(cart_total_money) as huy_hang from cart where cart_status_id = 3 and month(cart_date_create) like :month and year(cart_date_create) like :year group by cart_status_id;", nativeQuery = true)
+    Integer searchtra(@Param("month") String month, @Param("year") String year);
+
+    @Query(value = "select sum(cart_total_money) as nhap_hang from cart where cart_status_id = 2 group by cart_status_id;", nativeQuery = true)
+    Integer ban();
+
+    @Query(value = "select sum(cart_total_money) as huy_hang from cart where cart_status_id = 2 and month(cart_date_create) like :month and year(cart_date_create) like :year group by cart_status_id;", nativeQuery = true)
+    Integer searchban(@Param("month") String month, @Param("year") String year);
+
+//    @Query(value = "select sum(cart_total_money) as nhap_hang from cart where cart_status_id = 2 group by cart_status_id;", nativeQuery = true)
+//    static String[] ban1() {
+//        return new String[0];
+//    }
 }
