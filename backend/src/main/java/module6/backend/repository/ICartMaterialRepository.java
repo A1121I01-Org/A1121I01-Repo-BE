@@ -1,6 +1,5 @@
 package module6.backend.repository;
 
-import module6.backend.entity.cart.Cart;
 import module6.backend.entity.cart.CartMaterial;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -36,4 +35,5 @@ public interface ICartMaterialRepository extends JpaRepository<CartMaterial, Lon
 
     @Query(value = "SELECT * FROM cart_material WHERE cart_material_id = :id AND cart_material_flag = 0;", nativeQuery = true)
     CartMaterial getCartMaterialById(@Param("id") Long id);
+
 }
