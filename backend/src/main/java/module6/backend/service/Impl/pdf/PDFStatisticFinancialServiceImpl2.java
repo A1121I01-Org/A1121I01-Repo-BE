@@ -22,7 +22,7 @@ public class PDFStatisticFinancialServiceImpl2 {
         try {
             PdfWriter.getInstance(document, out);
             document.open();
-            Font f = new Font(BaseFont.createFont("C:\\Users\\PC\\Downloads\\VietFontsWeb1_ttf\\vuArial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
+            Font f = new Font(BaseFont.createFont("D:\\VietFontsWeb1_ttf\\vuArial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
             Font font1 = FontFactory.getFont(FontFactory.TIMES, 20, BaseColor.BLACK);
             Font font2 = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 13, BaseColor.BLACK);
             Paragraph para = new Paragraph("Thống kê ", f);
