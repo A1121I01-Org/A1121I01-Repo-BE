@@ -29,7 +29,7 @@ public class MaterialServiceImpl implements IMaterialService {
 
     @Override
     public void saveMaterial(String code, String name, Integer quantity, Double price, LocalDate hsd, String unit, Long typeId, Long customerId) {
-        materialRepository.createMaterialImport(code, name, quantity, price, hsd, unit, typeId, customerId);
+        materialRepository.createMaterial(code, name, quantity, price, hsd, unit, typeId, customerId);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class MaterialServiceImpl implements IMaterialService {
 
     @Override
     public void updateMaterial(String code, String name, Double price, Integer quantity, LocalDate hsd, String unit, String img, String des, Long typeId, Long customerId, Long materialId) {
-        materialRepository.updateMaterialImport(code, name, price, quantity, hsd, unit, img, des, typeId, customerId, materialId);
+        materialRepository.updateMaterial(code, name, price, quantity, hsd, unit, img, des, typeId, customerId, materialId);
     }
 
     @Override
