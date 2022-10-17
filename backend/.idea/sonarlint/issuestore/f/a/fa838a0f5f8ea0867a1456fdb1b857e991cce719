@@ -1,0 +1,19 @@
+
+X
+java:S4973"<Strings and Boxed types should be compared using "equals()".(î»ƒ†üÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(À©Õ—ıÿÿÿÿ
+U
+java:S3655x":Call "foundImport.isPresent()" before accessing the value.(¯ÆÓ’ÿÿÿÿÿ
+Y
+java:S2583y"DChange this condition so that it does not always evaluate to "false"(Î’‚A
+i	java:S116!"TRename this field "PDFImport" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªë¢
+V
+java:S4684s"@Replace this persistent entity with a simple POJO or DTO object.(´¼¢¯
+<
+java:S1452s"&Remove usage of generic wildcard type.(´¼¢¯
+W
+java:S4684ƒ"@Replace this persistent entity with a simple POJO or DTO object.(’öß 
+=
+java:S1452ƒ"&Remove usage of generic wildcard type.(’öß 
+W
+java:S4684Œ"@Replace this persistent entity with a simple POJO or DTO object.(×ªä‹

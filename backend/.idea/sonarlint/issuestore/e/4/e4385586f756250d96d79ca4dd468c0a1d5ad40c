@@ -1,0 +1,14 @@
+
+t
+java:S2293="YReplace the type specification in this constructor call with the diamond operator ("<>").(³ÚÇùÿÿÿÿ
+t
+java:S2293?"YReplace the type specification in this constructor call with the diamond operator ("<>").(÷¼éûÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(À©Õ—ıÿÿÿÿ
+M	java:S106G"9Replace this use of System.out or System.err by a logger.(€Ë²:
+V
+java:S4684r"@Replace this persistent entity with a simple POJO or DTO object.(”…¨Õ
+S	java:S106s"9Replace this use of System.out or System.err by a logger.(óŠÕÎÿÿÿÿÿ
+[
+java:S4684z"@Replace this persistent entity with a simple POJO or DTO object.(—· ôùÿÿÿÿ
+N
+java:S1128"3Remove this unused import 'javax.validation.Valid'.(æ¤ñ÷úÿÿÿÿ

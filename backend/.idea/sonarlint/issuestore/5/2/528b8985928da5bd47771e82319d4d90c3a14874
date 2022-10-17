@@ -1,0 +1,16 @@
+
+t
+java:S2293q"YReplace the type specification in this constructor call with the diamond operator ("<>").(……»ώÿÿÿÿ
+o
+java:S2293s"YReplace the type specification in this constructor call with the diamond operator ("<>").(¨—°Υ
+p
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ε­„Β
+p
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(β½Ο—
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ΐ©Υ—ύÿÿÿÿ
+=
+java:S1905,"'Remove this unnecessary cast to "List".(ΏΘƒέ
+[
+java:S4684^"@Replace this persistent entity with a simple POJO or DTO object.(Αφ¤νωÿÿÿÿ
+A
+java:S1452^"&Remove usage of generic wildcard type.(Αφ¤νωÿÿÿÿ
