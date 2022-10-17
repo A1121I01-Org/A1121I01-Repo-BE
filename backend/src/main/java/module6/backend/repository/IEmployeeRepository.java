@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
     // Thắng code lấy list admin người thực hiện
-    @Query(value = "SELECT * FROM employee where employee_position_id = 1 and employee_account_id > 0 and employee_position_id > 0 and employee_id > 0;", nativeQuery = true)
+    @Query(value = "SELECT * FROM employee where (employee_position_id = 1 or employee_position_id = 3) and employee_account_id > 0 and employee_position_id > 0 and employee_id > 0;", nativeQuery = true)
     List<Employee> findAllEmployeeImport();
 }

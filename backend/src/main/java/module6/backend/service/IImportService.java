@@ -5,14 +5,14 @@ import module6.backend.entity.customer.Customer;
 import module6.backend.entity.employee.Employee;
 import module6.backend.entity.material.Material;
 import module6.backend.entity.material.MaterialType;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface IImportService {
-    List<Import> findAllImport(Integer page);
-
-    List<Import> findAllImportNotPagination();
+    Page<Import> findAllImport(Pageable page);
 
     List<String> findAllImportString();
 
@@ -38,6 +38,19 @@ public interface IImportService {
 
     List<String> findAllCustomerPhoneImportString();
 
+    List<String> findAllCustomerEmailImportString();
+
     List<MaterialType> findAllMaterialTypeImport();
 
+    List<Import> searchImport(String code, String startDate, String endDate, Integer page);
+
+    List<Import> searchImportCode(String code, Integer page);
+
+    List<Import> searchImportDay(String startDate, String endDate, Integer page);
+
+    List<Import> searchImportNotPagination(String code, String startDate, String endDate);
+
+    List<Import> searchImportDayNotPagination(String startDate, String endDate);
+
+    List<Import> searchImportCodeNotPagination(String code);
 }

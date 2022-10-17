@@ -8,6 +8,8 @@ import module6.backend.entity.material.MaterialType;
 import module6.backend.repository.*;
 import module6.backend.service.IImportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,15 +34,10 @@ public class ImportServiceImpl implements IImportService {
 
     // Thắng code list import
     @Override
-    public List<Import> findAllImport(Integer page) {
+    public Page<Import> findAllImport(Pageable page) {
         return importRepository.findAllImport(page);
     }
 
-    // Thắng code list import chưa phân trang
-    @Override
-    public List<Import> findAllImportNotPagination() {
-        return importRepository.findAllImportNotPagination();
-    }
 
     @Override
     public List<String> findAllImportString() {
@@ -137,9 +134,51 @@ public class ImportServiceImpl implements IImportService {
         return customerRepository.findAllCustomerPhoneImportString();
     }
 
+    @Override
+    public List<String> findAllCustomerEmailImportString() {
+        return customerRepository.findAllCustomerEmailImportString();
+    }
+
     // Thắng code list material type
     @Override
     public List<MaterialType> findAllMaterialTypeImport() {
         return materialTypeRepository.findAllMaterialTypeImport();
+    }
+
+    // Thắng code search import có theo ngày
+    @Override
+    public List<Import> searchImport(String code, String startDate, String endDate, Integer page) {
+        return importRepository.searchImport("%" + code + "%", startDate, endDate, page);
+    }
+
+    // Thắng code search import không có theo ngày
+    @Override
+    public List<Import> searchImportCode(String code, Integer page) {
+        return importRepository.searchImportCode("%" + code + "%", page);
+    }
+
+    // thắng code
+    @Override
+    public List<Import> searchImportDay(String startDate, String endDate, Integer page) {
+        return importRepository.searchImportDay(startDate, endDate, page);
+    }
+
+    //Thắng code search không phân trang
+    // Thắng code search import có theo ngày
+    @Override
+    public List<Import> searchImportNotPagination(String code, String startDate, String endDate) {
+        return importRepository.searchImportNotPagination("%" + code + "%", startDate, endDate);
+    }
+
+    // Thắng code search import không có theo ngày
+    @Override
+    public List<Import> searchImportCodeNotPagination(String code) {
+        return importRepository.searchImportCodeNotPagination("%" + code + "%");
+    }
+
+    // thắng code
+    @Override
+    public List<Import> searchImportDayNotPagination(String startDate, String endDate) {
+        return importRepository.searchImportDayNotPagination(startDate, endDate);
     }
 }

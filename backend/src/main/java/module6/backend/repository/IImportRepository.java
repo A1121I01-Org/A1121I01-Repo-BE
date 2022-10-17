@@ -1,11 +1,13 @@
 package module6.backend.repository;
 
 import module6.backend.entity.Import;
-import module6.backend.entity.employee.Employee;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
@@ -15,16 +17,37 @@ import java.util.Optional;
 @Repository
 public interface IImportRepository extends JpaRepository<Import, Long> {
     // Thắng code list import
-    @Query(value = "select * from import where import_account_id > 0 and import_material_id > 0 and import_id > 0 and import_flag = 0 limit ?1, 5", nativeQuery = true)
-    List<Import> findAllImport(Integer page);
-
-    // Thắng code list import
     @Query(value = "select * from import where import_account_id > 0 and import_material_id > 0 and import_id > 0 and import_flag = 0", nativeQuery = true)
-    List<Import> findAllImportNotPagination();
+    Page<Import> findAllImport(Pageable pageable);
 
     // Thắng code list import
     @Query(value = "select import_code from import", nativeQuery = true)
     List<String> findAllImportString();
+
+    // Thắng code search import có theo ngày
+    @Query(value = "select * from import where import_account_id > 0 and import_material_id > 0 and import_id > 0 and import_flag = 0 and import_code like ?1 and (import_start_date between ?2 and ?3) limit ?4, 5", nativeQuery = true)
+    List<Import> searchImport(String code, String startDate, String endDate, Integer page);
+
+    // Thắng code search import chỉ theo ngày
+    @Query(value = "select * from import where import_account_id > 0 and import_material_id > 0 and import_id > 0 and import_flag = 0 and (import_start_date between ?1 and ?2) limit ?3, 5", nativeQuery = true)
+    List<Import> searchImportDay(String startDate, String endDate, Integer page);
+
+    // Thắng code search import không có theo ngày
+    @Query(value = "select * from import where import_account_id > 0 and import_material_id > 0 and import_id > 0 and import_flag = 0 and import_code like ?1 limit ?2, 5", nativeQuery = true)
+    List<Import> searchImportCode(String code, Integer page);
+
+    // search không phân trang
+    // Thắng code search import có theo ngày
+    @Query(value = "select * from import where import_account_id > 0 and import_material_id > 0 and import_id > 0 and import_flag = 0 and import_code like ?1 and (import_start_date between ?2 and ?3)", nativeQuery = true)
+    List<Import> searchImportNotPagination(String code, String startDate, String endDate);
+
+    // Thắng code search import chỉ theo ngày
+    @Query(value = "select * from import where import_account_id > 0 and import_material_id > 0 and import_id > 0 and import_flag = 0 and (import_start_date between ?1 and ?2)", nativeQuery = true)
+    List<Import> searchImportDayNotPagination(String startDate, String endDate);
+
+    // Thắng code search import không có theo ngày
+    @Query(value = "select * from import where import_account_id > 0 and import_material_id > 0 and import_id > 0 and import_flag = 0 and import_code like ?1", nativeQuery = true)
+    List<Import> searchImportCodeNotPagination(String code);
 
     // Thắng code xoá import
     @Query(value = "UPDATE import SET import_id = ?1, `import_flag` = ?2  WHERE (`import_id` = ?3)", nativeQuery = true)
