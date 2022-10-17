@@ -21,7 +21,11 @@ public interface ICartRepository extends JpaRepository<Cart, Long> {
 
     @Modifying
     @Query(value = "UPDATE cart SET cart_quantity = :quantity , cart_total_money = :money WHERE cart_id = :idCart ", nativeQuery = true)
-    void updateCart(@Param("quantity") Integer quantity,@Param("money") Integer money,@Param("idCart") Long idCart);
+    void updateCart(@Param("quantity") Integer quantity,@Param("money") Double money,@Param("idCart") Long idCart);
+
+    @Modifying
+    @Query(value = " UPDATE material SET material_quantity = :quantity WHERE material_id = :id", nativeQuery = true)
+    void updateQuantityMaterial(@Param("quantity") Integer quantity, @Param("id") Long id);
 
     @Query(value = "SELECT customer_code FROM customer", nativeQuery = true)
     String[] listCustomerCode();

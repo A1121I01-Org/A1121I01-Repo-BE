@@ -64,7 +64,7 @@ public class CartServiceImpl implements ICartService {
     }
 
     @Override
-    public void updateCart(Integer quantity, Integer money, Long id) {
+    public void updateCart(Integer quantity, Double money, Long id) {
         cartRepository.updateCart(quantity,money,id);
     }
 
@@ -110,6 +110,9 @@ public class CartServiceImpl implements ICartService {
             int code = (int) Math.floor(((Math.random() * 89999) + 10000));
             cartrCode = "MHD-" + String.valueOf(code) ;
             for (int i = 0 ; i < code1.length;i++) {
+                if (code1[i] == null) {
+                    continue;
+                }
                 if (code1[i].equals(cartrCode)){
                     check = false;
                     break;
@@ -126,5 +129,10 @@ public class CartServiceImpl implements ICartService {
     @Override
     public Cart findByCartId(Long id) {
         return cartRepository.findByCartId(id);
+    }
+
+    @Override
+    public void updateQuantityMaterial(Integer quantity, Long id) {
+        cartRepository.updateQuantityMaterial(quantity,id);
     }
 }

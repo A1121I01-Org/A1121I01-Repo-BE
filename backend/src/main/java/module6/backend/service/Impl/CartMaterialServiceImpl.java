@@ -33,10 +33,10 @@ public class CartMaterialServiceImpl implements ICartMaterialService {
     }
 
     @Override
-    public List<CartMaterial> findCartMaterialByStatusAndFlagAndId(Long[] cartId) {
+    public List<CartMaterial> findCartMaterialByStatusAndFlagAndMaterialId(Long[] cartId) {
         List<CartMaterial> cartMaterials = new ArrayList<>();
         for (int i =0; i<cartId.length;i++) {
-            cartMaterials.add(cartMaterialRepository.findCartMaterialByStatusAndFlagAndId(cartId[i])) ;
+            cartMaterials.add(cartMaterialRepository.findCartMaterialByStatusAndFlagAndMaterialId(cartId[i])) ;
         }
         return cartMaterials;
     }
@@ -54,5 +54,11 @@ public class CartMaterialServiceImpl implements ICartMaterialService {
     public CartMaterial getCartMaterialById(Long id) {
         return cartMaterialRepository.getCartMaterialById(id);
     }
+
+    @Override
+    public CartMaterial findCartMaterialByStatusAndFlagAndMaterialId1(Long materialId) {
+        return cartMaterialRepository.findCartMaterialByStatusAndFlagAndMaterialId1(materialId);
+    }
+
 
 }

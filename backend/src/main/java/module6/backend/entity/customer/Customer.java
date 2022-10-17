@@ -12,19 +12,19 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerId;
-    @NotBlank(message ="Name can not blank")
+    @NotBlank(message ="Tên không được để trống")
     @Size(min=6 ,max = 50 , message = "Độ dài kí tự từ 6-50 - BE")
     private String customerName;
     private String customerCode;
     private String customerAvatar;
-    @NotBlank(message ="Address can not blank")
+    @NotBlank(message ="Địa chỉ không được để trống")
     @Size(min=6 ,max = 255 , message = "Độ dài kí tự từ 6-255 - BE")
     private String customerAddress;
-    @NotBlank(message ="Phone can not blank")
+    @NotBlank(message ="Số điện thoại không được để trống")
     @PhoneCustom(message = "Số điện thoại đã tồn tại")
     @Pattern(regexp = "^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$" , message = "Số điện thoại không đúng định dạng")
     private String customerPhone;
-    @NotBlank(message ="Email can not blank")
+    @NotBlank(message ="Số điện thoại không được để trống")
     @Email(message = "Email không đúng định dạng")
     @EmailCustom(message = "Email đã tồn tại")
     @Size(min=6 ,max = 50 , message = "Độ dài kí tự từ 6-50 - BE")
