@@ -8,6 +8,7 @@ import module6.backend.service.IMaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -129,9 +130,9 @@ public class MaterialController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping
-    public ResponseEntity<Iterable<Material>> findAllMaterial(Pageable pageable,
-                                                              @RequestParam(defaultValue = "") String search) {
-        List<Material> materialList = materialService.findAll(pageable, search).getContent();
+    public ResponseEntity<Page<Material>> findAllMaterial(@PageableDefault(size = 4) Pageable pageable,
+                                                          @RequestParam(defaultValue = "") String search){
+        Page<Material> materialList = materialService.findAll(pageable, search);
         if (materialList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
