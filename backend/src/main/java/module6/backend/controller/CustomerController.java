@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
+
 
 import javax.validation.Valid;
 import java.util.List;
@@ -44,6 +46,7 @@ public class CustomerController {
 
 
     //  HieuNT  get list customer  not pagination
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("")
     public ResponseEntity<List<Customer>> getAllCustomer() {
         List<Customer> customerList = this.customerService.getAllCustomer();
@@ -54,6 +57,7 @@ public class CustomerController {
     }
 
     /// HieuNT get list with pagination
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("/customer-pagination/{index}")
     public ResponseEntity<List<Customer>> getAllCustomer(@PathVariable("index") int index) {
         List<Customer> customers = customerService.getAllCustomerWithPagination(index);
@@ -65,6 +69,7 @@ public class CustomerController {
 
 
     //  HieuNT  delete customer
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @DeleteMapping("/customer-delete/{id}")
     public ResponseEntity<Customer> delete(@PathVariable("id") Long id) {
         Optional<Customer> customerOptional = customerService.findCustomerById(id);
@@ -77,6 +82,7 @@ public class CustomerController {
     }
 
     //   HieuNT search customer by name and phone
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping(value = "/search-customer")
     public ResponseEntity<List<Customer>> searchCustomerByNameAndPhone(@RequestParam("name") String name, @RequestParam("phone") String phone) {
         List<Customer> isCustomerExist = customerService.searchCustomerByNameAndPhone(name, phone);
@@ -90,6 +96,7 @@ public class CustomerController {
 
 
     //  SonLH  Tìm kiếm khách hàng theo id
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("/detail/{id}")
     public ResponseEntity<Customer> findCustomerById(@PathVariable Long id) {
         Optional<Customer> customerOptional = customerService.findCustomerById(id);
@@ -100,6 +107,7 @@ public class CustomerController {
     }
 
     //  SonLH lấy danh dách loại khách hàng
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("/customer-type")
     public ResponseEntity<List<CustomerType>> findAllCustomerType() {
         List<CustomerType> customerTypes = customerTypeService.findAllCustomerType();
@@ -110,6 +118,7 @@ public class CustomerController {
     }
 
     // DuyDTT tạo mới khách hàng
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @PostMapping("/customer-create")
     public ResponseEntity<Customer> createNewCustomer(@RequestBody Customer customer) {
         System.out.println(0);
@@ -118,6 +127,7 @@ public class CustomerController {
     }
 
     // DuyDTT cập nhật khách hàng
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @PatchMapping("/update")
     public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
         Optional<Customer> customerOptional = customerService.findCustomerById(customer.getCustomerId());

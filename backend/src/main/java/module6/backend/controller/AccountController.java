@@ -33,6 +33,7 @@ public class AccountController {
     }
 
     //AnDVH thay đổi password
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @PatchMapping("update/password/{id}")
     public ResponseEntity<?> updatePassword(@PathVariable("id") Long id, @RequestBody Password password) {
         Optional<Account> account = accountService.findAccountById(id);
@@ -57,6 +58,7 @@ public class AccountController {
     }
 
     //NhiVP get account by username
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/byUsername/{username}")
     public ResponseEntity<Account> findAccountByUsername(@PathVariable("username") String username) {
         Account account = accountService.findAccountByUsername(username);
@@ -66,6 +68,7 @@ public class AccountController {
     }
 
     //NhiVP lay danh sach username
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list-Username")
     public ResponseEntity<List<String>> findAllUsername() {
         List<String> allUsername = accountService.findAllUsername();
