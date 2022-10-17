@@ -16,7 +16,6 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
-
 @RestController
 @CrossOrigin
 @RequestMapping("api/employee")
@@ -107,12 +106,12 @@ public class EmployeeController {
 
     //NhiVP lấy nhân viên theo code
     @GetMapping("/byCode/{code}")
-    public ResponseEntity<Employee> getEmployeeByCode(@PathVariable String code){
+    public ResponseEntity<Employee> getEmployeeByCode(@PathVariable String code) {
         Employee employee = employeeService.findEmployeeByCode(code);
         if (employee == null) {
             return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Employee>(employee,HttpStatus.OK);
+        return new ResponseEntity<Employee>(employee, HttpStatus.OK);
     }
 
     //NhiVP lấy danh sách mã nhân viên đã có tài khoản
@@ -124,6 +123,7 @@ public class EmployeeController {
         }
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
+
     //NhiVP lấy danh sách mã nhân viên chưa có tài khoản
     @GetMapping("/listDontHasAccount")
     public ResponseEntity<List<String>> findAllEmployeeDontHasAccount() {
@@ -136,11 +136,30 @@ public class EmployeeController {
 
     //NhiVP lấy danh sách chức vụ trừ chức vụ quản lý
     @GetMapping("/position-NotManager/list")
-    public ResponseEntity<List<Position>> getPositionNotManager(){
+    public ResponseEntity<List<Position>> getPositionNotManager() {
         List<Position> positions = positionService.findPositionNotManager();
-        if (positions.isEmpty()){
+        if (positions.isEmpty()) {
             return new ResponseEntity<List<Position>>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<Position>>(positions,HttpStatus.OK);
+        return new ResponseEntity<List<Position>>(positions, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/create")
+    public ResponseEntity<Object> createEmployee(@RequestBody @Valid Employee employee, BindingResult bindingResult) {
+        //tạo mới nhân viên
+        try {
+            System.out.println(employee.getEmployeeCode());
+            employeeService.saveEmployee(employee.getEmployeeCode(), employee.getEmployeeName(), employee.getEmployeeAvatar(), employee.getEmployeeDateOfBirth(), employee.getEmployeeGender(), employee.getEmployeeAddress(), employee.getEmployeePhone(), employee.getEmployeeSalary(), employee.getEmployeePositionId().getPositionId());
+            return new ResponseEntity<>(employee, HttpStatus.CREATED);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>(employee, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("position/list")
+    public ResponseEntity<List<Position>> getAllPosition() {
+        List<Position> positions = employeeService.getAllPosition();
+        return new ResponseEntity<>(positions, HttpStatus.OK);
     }
 }
