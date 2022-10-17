@@ -1,6 +1,9 @@
 package module6.backend.entity.employee;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "position")
@@ -11,6 +14,9 @@ public class Position {
     private String positionName;
     private Boolean positionFlag = false;
 
+    @OneToMany(mappedBy = "employeePositionId")
+    @JsonBackReference
+    private Set<Employee> employeeList;
     public Position() {
     }
 
