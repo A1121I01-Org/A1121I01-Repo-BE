@@ -39,9 +39,9 @@ public class CustomerController {
     public ResponseEntity<List<Customer>> getAllCustomerWithPagination(@PathVariable("index") int index) {
         List<Customer> customers = customerService.getAllCustomerWithPagination(index);
         if (customers.isEmpty()) {
-            return new ResponseEntity<List<Customer>>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<Customer>>(customers, HttpStatus.OK);
+        return new ResponseEntity<>(customers, HttpStatus.OK);
     }
 
 
@@ -50,7 +50,7 @@ public class CustomerController {
     public ResponseEntity<Customer> deleteCustomerById(@PathVariable("id") Long id) {
         Optional<Customer> customerOptional = customerService.findCustomerById(id);
         if (!customerOptional.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         customerService.deleteCustomerById(-id, id);
         return new ResponseEntity<>(HttpStatus.OK);

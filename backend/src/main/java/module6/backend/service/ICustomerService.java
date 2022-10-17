@@ -1,7 +1,5 @@
 package module6.backend.service;
-
 import module6.backend.entity.customer.Customer;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
