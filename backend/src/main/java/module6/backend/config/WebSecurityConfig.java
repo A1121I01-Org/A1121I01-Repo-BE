@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -19,6 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 
 @Configuration
 @EnableWebSecurity
@@ -45,9 +47,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		httpSecurity.csrf().disable()
 				.authorizeRequests().antMatchers("/auth/login").permitAll()
 				.antMatchers(HttpHeaders.ALLOW).permitAll()
-//				.antMatchers(GET , "/api/account/create-Account", "/api/account/list-Username").hasAnyAuthority("ROLE_ADMIN")
-				.antMatchers(GET , "/api/account/list-Username").hasAnyAuthority("ROLE_ACCOUNTANT")
-				.antMatchers(GET , "/api/list-Material").permitAll()
+				.antMatchers(GET,"/api/account/**", "/api/customer/**", "/api/employee/**", "/api/import/**", "/api/salary/**", "/api/material/detail", "/api/statistic/**").hasAnyAuthority("ROLE_ADMIN")
+				.antMatchers("/api/customer/**", "/api/import/**", "/api/cart/**").hasAnyAuthority("ROLE_ACCOUNTANT")
+				.antMatchers("/api/customer/**", "/api/employee/**").hasAuthority("ROLE_SELL")
+				.antMatchers(  "/**/*.js", "/**/*.css", "/**/*.jpg", "/**/*.png").permitAll()
 				.anyRequest().authenticated()
 				.and()
 				.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)

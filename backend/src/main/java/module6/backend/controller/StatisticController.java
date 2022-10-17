@@ -14,6 +14,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.ByteArrayInputStream;
@@ -48,24 +49,27 @@ public class StatisticController {
 
     //HoangTND - Statistic Material
     //List material
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/list/material")
     public ResponseEntity<List<String>> data() {
         List<String> data = statisticService.findAllStatisticMaterial();
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
-
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/list/material1")
     public ResponseEntity<String[]> data1() {
         String[] data = materialRepository.findAllStatisticMaterial1();
         return new ResponseEntity<String[]>(data, HttpStatus.OK);
     }
     //Search material
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/search/material")
     public ResponseEntity<List<String>>search(@RequestParam String fromDate, @RequestParam String toDate){
         List<String> data = statisticService.searchStatisticMaterial(fromDate,toDate);
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
     //Print list material
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/pdf")
     public ResponseEntity<InputStreamResource> generatePDF() throws IOException {
         String[] data = materialRepository.findAllStatisticMaterial1();
@@ -76,30 +80,32 @@ public class StatisticController {
     }
 
     // KimPBH - Thong ke tai chinh
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/huyhang")
     public ResponseEntity<Integer> huyHang() {
         Integer huy = statisticService.displayHuy();
         return new ResponseEntity<>(huy, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/trahang")
     public ResponseEntity<Integer> traHang() {
         Integer tra = statisticService.displayTra();
         return new ResponseEntity<>(tra, HttpStatus.OK);
     }
-
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/banhang")
     public ResponseEntity<Integer> banHang() {
         Integer ban = statisticService.displayBan();
         return new ResponseEntity<>(ban, HttpStatus.OK);
     }
-
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/nhaphang")
     public ResponseEntity<Integer> nhapHang() {
         Integer nhap = statisticService.displayNhap();
         return new ResponseEntity<>(nhap, HttpStatus.OK);
     }
-
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/search")
     public ResponseEntity<Integer[]> huyHang(@RequestParam String month, @RequestParam String year) {
         if (month.equals("")) {
@@ -129,7 +135,7 @@ public class StatisticController {
         search[3] = tra;
         return new ResponseEntity<>(search, HttpStatus.OK);
     }
-
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @PostMapping("/pdf2")
     public ResponseEntity<InputStreamResource> generatePDF(@RequestBody String[] data) throws IOException {
         System.out.println(1);
@@ -154,18 +160,21 @@ public class StatisticController {
 //    }
 
     // HuyenNTD - Thong ke khach hang tiem nang
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/list/customer")
     public ResponseEntity<List<String>> getAll() {
         List<String> list = statisticService.findAllStatisticCustomer();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/list/customers")
     public ResponseEntity<String[]> getAllCustomer() {
         String[] data = customerRepository.findAllPotentialCustomer();
         return new ResponseEntity<String[]>(data, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/search/customer")
     public ResponseEntity<List<String>> searchPotentialCustomers(@RequestParam String fromMonth, @RequestParam String toMonth,
                                                                  @RequestParam String year) {

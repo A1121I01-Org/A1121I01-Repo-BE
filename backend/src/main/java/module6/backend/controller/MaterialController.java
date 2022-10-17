@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -70,6 +71,7 @@ public class MaterialController {
      * HieuCLH
      * List san pham moi
      */
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("detail")
     @ResponseStatus(HttpStatus.OK)
     public List<Material> getTopMaterial() {
@@ -80,6 +82,7 @@ public class MaterialController {
     @Autowired
     private ICustomerService customerService;
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @PostMapping("/create")
     public ResponseEntity<Material> saveMaterial(@RequestBody Material material) {
         try {
@@ -92,12 +95,14 @@ public class MaterialController {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("/getById/{id}")
     public ResponseEntity<Material> findById(@PathVariable("id") Long id) {
         Optional<Material> material = materialService.findById(id);
         return new ResponseEntity<>(material.get(), HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @PatchMapping("/update")
     public ResponseEntity<Material> findMaterialById(@RequestBody Material material) {
 //       Material material = materialService.findById(id);
@@ -106,12 +111,14 @@ public class MaterialController {
         return new ResponseEntity<>(material, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("customer/list")
     public ResponseEntity<List<Customer>> findAllCustomer() {
         List<Customer> customers = materialService.findAllCustomer();
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("materialType/list")
     public ResponseEntity<List<MaterialType>> findAllMaterialType() {
         List<MaterialType> materialTypes = materialService.findAllMaterialType();
@@ -120,6 +127,7 @@ public class MaterialController {
     }
 
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping
     public ResponseEntity<Iterable<Material>> findAllMaterial(Pageable pageable,
                                                               @RequestParam(defaultValue = "") String search) {
@@ -130,6 +138,7 @@ public class MaterialController {
         return new ResponseEntity<>(materialList, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("/delete/{id}")
     public ResponseEntity<Material> deleteMaterial(@PathVariable Long id) {
         Optional<Material> materialOptional = materialService.findById(id);
@@ -155,6 +164,7 @@ public class MaterialController {
     /**
      * Get list material.
      */
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("/search")
     public ResponseEntity<Page<Material>> getAllMaterialSearch(@RequestParam("page") Integer page,
                                                                @RequestParam("size") Integer size, @RequestParam("search") String search) {
