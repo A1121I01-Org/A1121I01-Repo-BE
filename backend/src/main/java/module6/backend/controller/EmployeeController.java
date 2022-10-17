@@ -144,6 +144,13 @@ public class EmployeeController {
         return new ResponseEntity<List<Position>>(positions, HttpStatus.OK);
     }
 
+    @PatchMapping("update/{id}  ")
+    public ResponseEntity<?> adminUpdateEmployee(@PathVariable("id") Long id,@RequestBody @Valid Employee employee,BindingResult bindingResult) {
+        System.out.println(employee.getEmployeeCode());
+        employeeService.adminUpdateEmployee(employee.getEmployeeName(),employee.getEmployeeCode(), employee.getEmployeeAvatar(), employee.getEmployeeDateOfBirth(), employee.getEmployeeGender(), employee.getEmployeeAddress(), employee.getEmployeePhone(), employee.getEmployeeSalary(),employee.getEmployeePositionId().getPositionId() ,id);
+        return new ResponseEntity<>(employee,HttpStatus.OK);
+    }
+
     @PostMapping(value = "/create")
     public ResponseEntity<Object> createEmployee(@RequestBody @Valid Employee employee, BindingResult bindingResult) {
         //tạo mới nhân viên
