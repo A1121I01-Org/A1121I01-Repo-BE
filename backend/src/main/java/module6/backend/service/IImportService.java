@@ -42,15 +42,7 @@ public interface IImportService {
 
     List<MaterialType> findAllMaterialTypeImport();
 
-    List<Import> searchImport(String code, String startDate, String endDate, Integer page);
+    Page<Import> searchImport(String code, String startDate, String endDate, Pageable page);
 
-    List<Import> searchImportCode(String code, Integer page);
-
-    List<Import> searchImportDay(String startDate, String endDate, Integer page);
-
-    List<Import> searchImportNotPagination(String code, String startDate, String endDate);
-
-    List<Import> searchImportDayNotPagination(String startDate, String endDate);
-
-    List<Import> searchImportCodeNotPagination(String code);
+    Page<Import> searchImportCode(String code, Pageable page);
 }

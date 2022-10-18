@@ -147,38 +147,13 @@ public class ImportServiceImpl implements IImportService {
 
     // Thắng code search import có theo ngày
     @Override
-    public List<Import> searchImport(String code, String startDate, String endDate, Integer page) {
+    public Page<Import> searchImport(String code, String startDate, String endDate, Pageable page) {
         return importRepository.searchImport("%" + code + "%", startDate, endDate, page);
     }
 
-    // Thắng code search import không có theo ngày
+    // thắng code
     @Override
-    public List<Import> searchImportCode(String code, Integer page) {
+    public Page<Import> searchImportCode(String code, Pageable page) {
         return importRepository.searchImportCode("%" + code + "%", page);
-    }
-
-    // thắng code
-    @Override
-    public List<Import> searchImportDay(String startDate, String endDate, Integer page) {
-        return importRepository.searchImportDay(startDate, endDate, page);
-    }
-
-    //Thắng code search không phân trang
-    // Thắng code search import có theo ngày
-    @Override
-    public List<Import> searchImportNotPagination(String code, String startDate, String endDate) {
-        return importRepository.searchImportNotPagination("%" + code + "%", startDate, endDate);
-    }
-
-    // Thắng code search import không có theo ngày
-    @Override
-    public List<Import> searchImportCodeNotPagination(String code) {
-        return importRepository.searchImportCodeNotPagination("%" + code + "%");
-    }
-
-    // thắng code
-    @Override
-    public List<Import> searchImportDayNotPagination(String startDate, String endDate) {
-        return importRepository.searchImportDayNotPagination(startDate, endDate);
     }
 }

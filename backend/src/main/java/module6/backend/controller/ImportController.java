@@ -47,52 +47,26 @@ public class ImportController {
     }
 
     //Thắng code search list import
-//    @GetMapping("import-search")
-//    public ResponseEntity<List<Import>> searchImport(
-//            @RequestParam Optional<String> code
-//            , @RequestParam Optional<String> startDate
-//            , @RequestParam Optional<String> endDate
-//            , @RequestParam Integer page) {
-//        List<Import> importList;
-//        if ((code.isPresent()) && (startDate.isPresent() && !startDate.get().isEmpty())
-//                && (endDate.isPresent() && !endDate.get().isEmpty())) {
-//            importList = importService.searchImport(code.get(), startDate.get(), endDate.get(), page);
-//        } else if ((startDate.isPresent() && !startDate.get().isEmpty())
-//                && (endDate.isPresent() && !endDate.get().isEmpty())) {
-//            importList = importService.searchImportDay(startDate.get(), endDate.get(), page);
-//        } else if ((code.isPresent())) {
-//            importList = importService.searchImportCode(code.get(), page);
-//        } else {
-//            importList = importService.findAllImport(page);
-//        }
-//        return new ResponseEntity<>(importList, HttpStatus.OK);
-//    }
-
-//    @GetMapping("import-search")
-//    public ResponseEntity<List<Import>> searchImport() {
-//
-//    }
-
-    //Thắng code search list import không phân trang
-//    @GetMapping("import-search-not-pagination")
-//    public ResponseEntity<List<Import>> searchImportNotPagination(
-//            @RequestParam Optional<String> code
-//            , @RequestParam Optional<String> startDate
-//            , @RequestParam Optional<String> endDate) {
-//        List<Import> importList;
-//        if ((code.isPresent()) && (startDate.isPresent() && !startDate.get().isEmpty())
-//                && (endDate.isPresent() && !endDate.get().isEmpty())) {
-//            importList = importService.searchImportNotPagination(code.get(), startDate.get(), endDate.get());
-//        } else if ((startDate.isPresent() && !startDate.get().isEmpty())
-//                && (endDate.isPresent() && !endDate.get().isEmpty())) {
-//            importList = importService.searchImportDayNotPagination(startDate.get(), endDate.get());
-//        } else if ((code.isPresent())) {
-//            importList = importService.searchImportCodeNotPagination(code.get());
-//        } else {
-//            importList = importService.findAllImportNotPagination();
-//        }
-//        return new ResponseEntity<>(importList, HttpStatus.OK);
-//    }
+    @GetMapping("import-search")
+    public ResponseEntity<Page<Import>> searchImport(
+            @PageableDefault(value = 5) Pageable pageable,
+            @RequestParam Optional<String> code
+            , @RequestParam Optional<String> startDate
+            , @RequestParam Optional<String> endDate) {
+        Page<Import> importList;
+        if ((code.isPresent() && !code.get().isEmpty()) && (startDate.isPresent() && !startDate.get().isEmpty())
+                && (endDate.isPresent() && !endDate.get().isEmpty())) {
+            importList = importService.searchImport(code.get(), startDate.get(), endDate.get(), pageable);
+        } else if ((startDate.isPresent() && !startDate.get().isEmpty())
+                && (endDate.isPresent() && !endDate.get().isEmpty())) {
+            importList = importService.searchImport("", startDate.get(), endDate.get(), pageable);
+        } else if (code.isPresent() && !code.get().isEmpty()) {
+            importList = importService.searchImportCode(code.get(), pageable);
+        } else {
+            importList = importService.findAllImport(pageable);
+        }
+        return new ResponseEntity<>(importList, HttpStatus.OK);
+    }
 
     //Thắng code list import string
     @GetMapping("import-list-string")
