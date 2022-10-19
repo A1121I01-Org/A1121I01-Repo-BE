@@ -11,6 +11,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IMaterialService {
+
+    void saveMaterial(String code, String name, Double price, Integer quantity, LocalDate hsd,String img,String des, String unit, Long typeId, Long customerId);
+    Material findById1(Long id);
+
     Optional<Material> findById(Long id);
 
     List<Material> findTopNewMaterial();
@@ -25,9 +29,14 @@ public interface IMaterialService {
 
     void saveMaterial(String code, String name, Integer quantity, Double price, LocalDate hsd, String unit, Long typeId, Long customerId);
 
+
     List<Customer> findAllCustomer();
 
     List<MaterialType> findAllMaterialType();
 
+    void updateMaterial1(String code, String name, Double price, Integer quantity, LocalDate hsd, String img,String des , String unit, Long typeId, Long customerId, Long materialId);
+
+
     void updateMaterial(String code, String name, Double price, Integer quantity, LocalDate hsd, String unit, String img, String des, Long typeId, Long customerId, Long materialId);
+
 }

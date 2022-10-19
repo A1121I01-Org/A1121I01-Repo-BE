@@ -27,6 +27,8 @@ public class Material {
     @JoinColumn(name = "material_customer_id")
     private Customer materialCustomerId;
 
+
+
     public Material() {
     }
 

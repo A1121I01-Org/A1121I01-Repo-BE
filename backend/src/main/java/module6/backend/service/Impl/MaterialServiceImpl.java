@@ -28,11 +28,27 @@ public class MaterialServiceImpl implements IMaterialService {
     private IMaterialTypeRepository materialTypeRepository;
 
     @Override
-    public void saveMaterial(String code, String name, Integer quantity, Double price, LocalDate hsd, String unit, Long typeId, Long customerId) {
-        materialRepository.createMaterialImport(code, name, quantity, price, hsd, unit, typeId, customerId);
+
+    public void saveMaterial(String code, String name,  Double price,Integer quantity, LocalDate hsd,String img,String des, String unit, Long typeId, Long customerId) {
+        materialRepository.createMaterialImport(code, name, price, quantity, hsd, img,des, unit, typeId, customerId);
     }
 
     @Override
+    public Material findById1(Long id) {
+        return null;
+    }
+
+    @Override
+    public Optional findById(Long id) {
+        return materialRepository.findById(id);
+
+    }
+    @Override
+    public void saveMaterial(String code, String name, Integer quantity, Double price, LocalDate hsd, String unit, Long typeId, Long customerId) {
+        materialRepository.createMaterial(code, name, quantity, price, hsd, unit, typeId, customerId);
+    }
+
+        @Override
     public List<Customer> findAllCustomer() {
         return customerRepository.findAll();
     }
@@ -43,14 +59,16 @@ public class MaterialServiceImpl implements IMaterialService {
     }
 
     @Override
+
+    public void updateMaterial1(String code, String name, Double price, Integer quantity, LocalDate hsd, String img, String des, String unit, Long typeId, Long customerId, Long materialId) {
+        materialRepository.updateMaterialImport(code, name, price, quantity, hsd, img, des , unit, typeId, customerId, materialId);
+
+
+    }
+    @Override
     public void updateMaterial(String code, String name, Double price, Integer quantity, LocalDate hsd, String unit, String img, String des, Long typeId, Long customerId, Long materialId) {
         materialRepository.updateMaterialImport(code, name, price, quantity, hsd, unit, img, des, typeId, customerId, materialId);
-    }
 
-    @Override
-
-    public Optional<Material> findById(Long id) {
-        return materialRepository.findById(id);
     }
 
     @Override

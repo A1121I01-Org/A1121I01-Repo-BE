@@ -3,7 +3,10 @@ package module6.backend.entity.material;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.util.Set;
+
 import java.util.List;
+
 
 @Entity
 @Table(name = "material_type")
