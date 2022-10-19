@@ -49,6 +49,7 @@ public class ImportController {
     }
 
     //Thắng code search list import
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("import-search")
     public ResponseEntity<Page<Import>> searchImport(
             @PageableDefault(value = 5) Pageable pageable,
@@ -233,7 +234,6 @@ public class ImportController {
     }
 
     // Thắng code list material type
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("material-type-list")
     public ResponseEntity<List<MaterialType>> findAllMaterialTypeImport() {
         List<MaterialType> materialTypeList = importService.findAllMaterialTypeImport();
