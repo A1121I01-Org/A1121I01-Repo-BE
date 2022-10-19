@@ -8,9 +8,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface IMaterialService {
-    void saveMaterial(String code, String name, Integer quantity, Double price, LocalDate hsd, String unit, Long typeId, Long customerId);
+    void saveMaterial(String code, String name, Double price, Integer quantity, LocalDate hsd,String img,String des, String unit, Long typeId, Long customerId);
     Material findById(Long id);
     List<Customer> findAllCustomer();
     List<MaterialType> findAllMaterialType();
-    void updateMaterial(String code, String name, Double price, Integer quantity, LocalDate hsd, String unit, String img,String des, Long typeId, Long customerId, Long materialId);
+    void updateMaterial(String code, String name, Double price, Integer quantity, LocalDate hsd, String img,String des , String unit, Long typeId, Long customerId, Long materialId);
 }

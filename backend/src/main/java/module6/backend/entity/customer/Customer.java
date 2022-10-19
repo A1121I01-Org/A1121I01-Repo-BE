@@ -1,6 +1,9 @@
 package module6.backend.entity.customer;
 
+import module6.backend.entity.material.Material;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "customer")
@@ -19,6 +22,7 @@ public class Customer {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_type_id")
     private CustomerType customerTypeId;
+
 
     public Customer() {
     }
