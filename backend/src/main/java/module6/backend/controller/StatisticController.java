@@ -56,6 +56,8 @@ public class StatisticController {
         return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bais));
     }
 
+    // aa
+
     @GetMapping("/search/customer")
     public ResponseEntity<String[]> searchPotentialCustomers(@RequestParam String fromMonth, @RequestParam String toMonth,
                                                                  @RequestParam String year) {
