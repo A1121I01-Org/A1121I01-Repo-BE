@@ -4,6 +4,7 @@ import module6.backend.repository.ICartRepository;
 import module6.backend.repository.ICustomerRepository;
 import module6.backend.repository.IImportRepository;
 import module6.backend.repository.IMaterialRepository;
+import module6.backend.service.Impl.pdf.PDFStatisticCustomerImpl;
 import module6.backend.service.Impl.pdf.PDFStatisticFinancialServiceImpl;
 import module6.backend.service.IStatisticService;
 import module6.backend.service.Impl.pdf.PDFStatisticMaterialsImpl;
@@ -46,6 +47,9 @@ public class StatisticController {
 
     @Autowired
     private PDFStatisticFinancialServiceImpl pdfStatisticFinancialService;
+
+    @Autowired
+    private PDFStatisticCustomerImpl pdfStatisticCustomer;
 
     //HoangTND - Statistic Material
     //List material
@@ -172,6 +176,15 @@ public class StatisticController {
     public ResponseEntity<String[]> getAllCustomer() {
         String[] data = customerRepository.findAllPotentialCustomer();
         return new ResponseEntity<String[]>(data, HttpStatus.OK);
+    }
+
+    @GetMapping("/pdf")
+    public ResponseEntity<InputStreamResource> generatePDF2() throws IOException {
+        String[] data = customerRepository.findAllPotentialCustomer();
+        ByteArrayInputStream bais = pdfStatisticCustomer.export(data);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition","inline;filename=cart.pdf");
+        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bais));
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")

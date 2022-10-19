@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -19,8 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d28d4222-b528-4557-b815-dbb77afad4df" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/controller/ImportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/controller/ImportController.java" afterDir="false" />
+    <list default="true" id="d28d4222-b528-4557-b815-dbb77afad4df" name="Default Changelist" comment="test v1">
+      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/pdf/PDFStatisticCustomerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/controller/StatisticController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/controller/StatisticController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/StatisticServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/StatisticServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +50,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <favorite-branches>
       <branch-storage>
@@ -65,25 +78,23 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2FidXEzDbUY6k3BxsG4yn8qDy93" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="show.unlinked.gradle.project.popup" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/CodeGymDN/Project_1_demo/A1121I01-Repo-BE/backend",
+    "spring.configuration.checksum": "3241ca6184e7e06d7e2313367e60913a"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="backend.main" />
@@ -93,6 +104,7 @@
       </method>
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -117,6 +129,7 @@
       <workItem from="1666008967161" duration="3201000" />
       <workItem from="1666027384866" duration="401000" />
       <workItem from="1666150665546" duration="493000" />
+      <workItem from="1666171448281" duration="1025000" />
     </task>
     <task id="LOCAL-00001" summary="test v1">
       <created>1666027636670</created>
@@ -129,7 +142,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -141,7 +154,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test v1" />
