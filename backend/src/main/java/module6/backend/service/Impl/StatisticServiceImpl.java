@@ -8,6 +8,7 @@ import module6.backend.repository.IMaterialRepository;
 import module6.backend.service.IStatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -31,7 +32,7 @@ public class StatisticServiceImpl implements IStatisticService {
     }
 
     @Override
-    public List<String> searchForPotentialCustomers(String fromMonth, String toMonth, String year) {
+    public String[] searchForPotentialCustomers(String fromMonth, String toMonth, String year) {
         return customerRepository.findForPotentialCustomers(fromMonth, toMonth, year);
     }
     // abc
