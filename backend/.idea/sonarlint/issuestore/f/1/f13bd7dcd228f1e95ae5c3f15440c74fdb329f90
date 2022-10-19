@@ -1,18 +1,0 @@
-
-Q	java:S107V"<Method has 8 parameters, which is greater than 7 authorized.(Æ‘œü
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÇŒ¹óúÿÿÿÿ
-X
-java:S1128"=Remove this unused import 'module6.backend.entity.cart.Cart'.(Á§Ãóûÿÿÿÿ
-\
-java:S1128"ARemove this unused import 'org.springframework.data.domain.Page'.(˜âüÿÿÿÿ
-9
-java:S1128
-"Remove this duplicated import.(Äºöïşÿÿÿÿ
-4
-java:S1128"Remove this duplicated import.(©”šô
-K
-java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èıÿÿÿÿ
-9
-java:S1128"Remove this duplicated import.(Õë±Äøÿÿÿÿ
-9
-java:S1128"Remove this duplicated import.(¨˜ëİüÿÿÿÿ

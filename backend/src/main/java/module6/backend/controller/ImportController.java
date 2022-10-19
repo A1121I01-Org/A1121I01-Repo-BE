@@ -9,10 +9,14 @@ import module6.backend.service.IImportService;
 import module6.backend.service.Impl.pdf.PDFGeneratorImportServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,9 +37,10 @@ public class ImportController {
     private PDFGeneratorImportServiceImpl PDFImport;
 
     //Thắng code list import
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("import-list")
-    public ResponseEntity<List<Import>> findAllImport(@RequestParam Integer page) {
-        List<Import> importList = importService.findAllImport(page);
+    public ResponseEntity<Page<Import>> findAllImport(@PageableDefault(value = 5) Pageable pageable) {
+        Page<Import> importList = importService.findAllImport(pageable);
         if (importList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
@@ -43,18 +48,31 @@ public class ImportController {
         }
     }
 
-    //Thắng code list import
-    @GetMapping("import-list-not-pagination")
-    public ResponseEntity<List<Import>> findAllImportNotPagination() {
-        List<Import> importList = importService.findAllImportNotPagination();
-        if (importList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    //Thắng code search list import
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
+    @GetMapping("import-search")
+    public ResponseEntity<Page<Import>> searchImport(
+            @PageableDefault(value = 5) Pageable pageable,
+            @RequestParam Optional<String> code
+            , @RequestParam Optional<String> startDate
+            , @RequestParam Optional<String> endDate) {
+        Page<Import> importList;
+        if ((code.isPresent() && !code.get().isEmpty()) && (startDate.isPresent() && !startDate.get().isEmpty())
+                && (endDate.isPresent() && !endDate.get().isEmpty())) {
+            importList = importService.searchImport(code.get(), startDate.get(), endDate.get(), pageable);
+        } else if ((startDate.isPresent() && !startDate.get().isEmpty())
+                && (endDate.isPresent() && !endDate.get().isEmpty())) {
+            importList = importService.searchImport("", startDate.get(), endDate.get(), pageable);
+        } else if (code.isPresent() && !code.get().isEmpty()) {
+            importList = importService.searchImportCode(code.get(), pageable);
         } else {
-            return new ResponseEntity<>(importList, HttpStatus.OK);
+            importList = importService.findAllImport(pageable);
         }
+        return new ResponseEntity<>(importList, HttpStatus.OK);
     }
 
     //Thắng code list import string
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("import-list-string")
     public ResponseEntity<List<String>> findAllImportString() {
         List<String> importList = importService.findAllImportString();
@@ -77,6 +95,7 @@ public class ImportController {
     }
 
     //Thắng code list customer import string kiểm tra code
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("import-customer-list-string")
     public ResponseEntity<List<String>> findAllImportCustomerString() {
         List<String> importCustomerList = importService.findAllCustomerImportString();
@@ -87,7 +106,30 @@ public class ImportController {
         }
     }
 
+    //Thắng code list customer phone import string kiểm tra code
+    @GetMapping("import-phone-customer-list-string")
+    public ResponseEntity<List<String>> findAllImportPhoneCustomerString() {
+        List<String> phoneCustomerList = importService.findAllCustomerPhoneImportString();
+        if (phoneCustomerList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(phoneCustomerList, HttpStatus.OK);
+        }
+    }
+
+    //Thắng code list customer phone import string kiểm tra code
+    @GetMapping("import-email-customer-list-string")
+    public ResponseEntity<List<String>> findAllImportEmailCustomerString() {
+        List<String> emailCustomerList = importService.findAllCustomerEmailImportString();
+        if (emailCustomerList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(emailCustomerList, HttpStatus.OK);
+        }
+    }
+
     //Thắng code tìm import theo id
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("import-detail/{id}")
     public ResponseEntity<Import> findImportById(@PathVariable Long id) {
         Optional<Import> importById = importService.findImportById(id);
@@ -99,6 +141,7 @@ public class ImportController {
     }
 
     //Thắng code xoá import
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @DeleteMapping("import-delete/{id}")
     public ResponseEntity<Import> deleteCustomer(@PathVariable("id") Long id) {
         Optional<Import> foundImport = importService.findImportById(id);
@@ -111,6 +154,7 @@ public class ImportController {
     }
 
     //Thắng code cập nhật import
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @PutMapping("import-update/{id}")
     public ResponseEntity<?> updateImport(@PathVariable("id") Long id, @Valid @RequestBody Import importUpdate, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -127,6 +171,7 @@ public class ImportController {
     }
 
     //Thắng code thêm mới import
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @PostMapping("import-create")
     public ResponseEntity<?> saveImport(@Valid @RequestBody Import importCreate, BindingResult bindingResult) {
         if (bindingResult.hasErrors() || (importService.findImportByCode(importCreate.getImportCode()) != null)) {
@@ -136,6 +181,7 @@ public class ImportController {
         return new ResponseEntity<>(importCreate, HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @PostMapping("/import-pdf")
     public ResponseEntity<InputStreamResource> generatePDF(@RequestBody Import import1) throws IOException {
         Employee employeePDF = null;
@@ -152,6 +198,7 @@ public class ImportController {
     }
 
     //Thắng code list nhà cung cấp
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("customer-list")
     public ResponseEntity<List<Customer>> findAllCustomer() {
         List<Customer> customerList = importService.findAllCustomerImport();
@@ -163,6 +210,7 @@ public class ImportController {
     }
 
     //Thắng code lấy list admin
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("employee-list")
     public ResponseEntity<List<Employee>> findAllEmployee() {
         List<Employee> employeeList = importService.findAllEmployeeImport();
@@ -174,6 +222,7 @@ public class ImportController {
     }
 
     // Thắng code list material theo customer_id
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("material-list/{id}")
     public ResponseEntity<List<Material>> findAllMaterialImport(@PathVariable("id") Long id) {
         List<Material> materialList = importService.findAllMaterialImport(id);

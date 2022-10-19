@@ -13,9 +13,11 @@ public interface ICartMaterialService {
 
     void deleteCartByCartId2(Long[] cartId);
 
-    List<CartMaterial> findCartMaterialByStatusAndFlagAndId(Long[] cartId);
+    List<CartMaterial> findCartMaterialByStatusAndFlagAndMaterialId(Long[] cartId);
 
     List<CartMaterial> findCartMaterialByFlagAndId(Long[] cartId);
 
     CartMaterial getCartMaterialById( Long id);
+
+    CartMaterial findCartMaterialByStatusAndFlagAndMaterialId1( Long materialId);
 }

@@ -1,18 +1,0 @@
-
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(•‰õÊúÿÿÿÿ
-T
-java:S1854"9Remove this useless assignment to local variable "font1".(¿ß‰„ûÿÿÿÿ
-O
-java:S1854"9Remove this useless assignment to local variable "font2".(çÙÌ 
-E
-java:S1481"*Remove this unused "font1" local variable.(¿ß‰„ûÿÿÿÿ
-@
-java:S1481"*Remove this unused "font2" local variable.(çÙÌ 
-g
-java:S1128"QRemove this unused import 'module6.backend.entity.ClassDTO.MaterialStatisticDTO'.(İÍ¼Ó
-X
-java:S1128"=Remove this unused import 'module6.backend.entity.cart.Cart'.(Á§Ãóûÿÿÿÿ
-[
-java:S1128	"ERemove this unused import 'module6.backend.entity.cart.CartMaterial'.(äûæœ
-F
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ

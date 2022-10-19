@@ -1,7 +1,8 @@
 package module6.backend.service;
 
-import java.util.List;
 import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 
 public interface IStatisticService {
@@ -33,5 +34,5 @@ public interface IStatisticService {
     // HuyenNTD - Thong ke khach hang tiem nang
 
     List<String> findAllStatisticCustomer();
-    List<String> searchForPotentialCustomers(String fromMonth, String toMonth, String year);
+    String[] searchForPotentialCustomers(String fromMonth, String toMonth, String year);
 }

@@ -14,7 +14,7 @@ public interface ICartService {
 
     void sendEmail(Long[] id,Customer customer);
 
-    void updateCart(Integer quantity , Integer money , Long id);
+    void updateCart(Integer quantity , Double money , Long id);
 
     Long getTypeId();
 
@@ -23,4 +23,6 @@ public interface ICartService {
     String randomCartCode();
 
     Cart findByCartId(Long id);
+
+    void updateQuantityMaterial(Integer quantity,Long id);
 }

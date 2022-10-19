@@ -18,6 +18,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -108,7 +109,7 @@ public class CartController {
     @PostMapping("/checkCart")
     public ResponseEntity<List<CartMaterial>> checkCart(@RequestBody Long[] cartId) {
         try {
-            List<CartMaterial> cartMaterials = cartMaterialService.findCartMaterialByStatusAndFlagAndId(cartId);
+            List<CartMaterial> cartMaterials = cartMaterialService.findCartMaterialByStatusAndFlagAndMaterialId(cartId);
             return new ResponseEntity<>(cartMaterials,HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -118,7 +119,7 @@ public class CartController {
     /** Update cart status by cart id , quantity , total money - SyNV. */
     @GetMapping("/update")
     public ResponseEntity<?> updateCart1(@RequestParam("quantity") Integer quantity,
-                                         @RequestParam("money") Integer money,@RequestParam("id") Long id) {
+                                         @RequestParam("money") Double money,@RequestParam("id") Long id) {
         try{
             cartService.updateCart(quantity,money,id);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -142,16 +143,18 @@ public class CartController {
 
     /** Add customer and insert customer to cart - SyNV. */
     @PostMapping("/insert/{cartId}")
-    public ResponseEntity<?> insertMaterialToCart(@RequestBody Customer customer, @PathVariable("cartId") Long[] cartId) {
+    public ResponseEntity<?> insertMaterialToCart(@Valid @RequestBody Customer customer, @PathVariable("cartId") Long[] cartId) {
         try {
             customer.setCustomerAvatar("img");
             String customerCode = cartService.randomCustomerCode();
             Long customerType = cartService.getTypeId();
             customerService.createCustomer(customer.getCustomerName(),customerCode,customer.getCustomerAvatar(),customer.getCustomerAddress(),customer.getCustomerPhone(),customer.getCustomerEmail(),customerType);
             Customer customer1 = customerService.getCustomerByCode(customerCode);
-            List<CartMaterial> carts = cartMaterialService.findCartMaterialByStatusAndFlagAndId(cartId);
+            List<CartMaterial> carts = cartMaterialService.findCartMaterialByStatusAndFlagAndMaterialId(cartId);
             String cartCode = cartService.randomCartCode();
             for (CartMaterial cartMaterial: carts) {
+                Integer quantity = cartMaterial.getMaterialId().getMaterialQuantity()- cartMaterial.getCartId().getCartQuantity();
+                cartService.updateQuantityMaterial(quantity,cartMaterial.getMaterialId().getMaterialId());
                 cartService.updateCartStatusAndCustomer(customer1.getCustomerId(),cartMaterial.getCartId().getCartId(),java.time.LocalDate.now(),cartCode);
             }
             cartService.sendEmail(cartId,customer1);
@@ -176,17 +179,30 @@ public class CartController {
     }
 
     /** Add material to cart - SyNV. */
-    @PostMapping("/insertMaterial")
+    @PostMapping("/addMaterialCart")
     public ResponseEntity<?> insertMaterialCart(@RequestBody Material material) {
         try {
-            CartStatus cartStatus = cartStatusRepository.getCartStatus();
-            Cart cart = new Cart(1,material.getMaterialPrice(),cartStatus);
-            cartRepository.save(cart);
-            CartMaterial cartMaterial = new CartMaterial(cart,false,material);
-            cartMaterialRepository.save(cartMaterial);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            Long[] materialId = cartMaterialRepository.getCartMaterialByIdAndStatus();
+            CartMaterial cartMaterial0 = cartMaterialService.findCartMaterialByStatusAndFlagAndMaterialId1(material.getMaterialId());
+            for (int i = 0 ; i< materialId.length;i++) {
+                if (materialId[i] == material.getMaterialId()) {
+                    if (material.getMaterialQuantity() > cartMaterial0.getCartId().getCartQuantity()) {
+                        cartService.updateCart(cartMaterial0.getCartId().getCartQuantity()+1,(cartMaterial0.getCartId().getCartQuantity()+1)*cartMaterial0.getMaterialId().getMaterialPrice(),cartMaterial0.getCartId().getCartId());
+                    }
+                    break;
+                } else {
+                    if (i == materialId.length-1) {
+                        CartStatus cartStatus = cartStatusRepository.getCartStatus();
+                        Cart cart = new Cart(1,material.getMaterialPrice(),cartStatus);
+                        cartRepository.save(cart);
+                        CartMaterial cartMaterial = new CartMaterial(cart,false,material);
+                        cartMaterialRepository.save(cartMaterial);
+                        return new ResponseEntity<>(HttpStatus.CREATED);
+                    }
+                }
+            }
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }

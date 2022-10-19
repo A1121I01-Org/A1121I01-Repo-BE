@@ -1,21 +1,0 @@
-
-Q	java:S107B"<Method has 8 parameters, which is greater than 7 authorized.(¬Æ¾
-Q	java:S107n"<Method has 8 parameters, which is greater than 7 authorized.(çÄ§Õ
-W	java:S107s"=Method has 11 parameters, which is greater than 7 authorized.(øÃ¢–ıÿÿÿÿ
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÇŒ¹óúÿÿÿÿ
-P
-java:S1128":Remove this unused import 'module6.backend.entity.Import'.(ÛåÒ…
-9
-java:S1128"Remove this duplicated import.(‡ë‚Öıÿÿÿÿ
-9
-java:S1128"Remove this duplicated import.(Äºöïşÿÿÿÿ
-4
-java:S1128"Remove this duplicated import.(©”šô
-9
-java:S1128"Remove this duplicated import.(Äºöïşÿÿÿÿ
-9
-java:S1128"Remove this duplicated import.(›‘¬èıÿÿÿÿ
-A
-java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü
-9
-java:S1128"Remove this duplicated import.(Õë±Äøÿÿÿÿ

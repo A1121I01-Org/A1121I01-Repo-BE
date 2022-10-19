@@ -1,13 +1,13 @@
 package module6.backend.service.Impl;
 
-import module6.backend.repository.*;
+import module6.backend.repository.ICartRepository;
+import module6.backend.repository.ICustomerRepository;
+import module6.backend.repository.IImportRepository;
+import module6.backend.repository.IMaterialRepository;
 import module6.backend.service.IStatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -91,9 +91,8 @@ public class StatisticServiceImpl implements IStatisticService {
         return customerRepository.findAllCustomer();
     }
 
-
     @Override
-    public List<String> searchForPotentialCustomers(String fromMonth, String toMonth, String year) {
+    public String[] searchForPotentialCustomers(String fromMonth, String toMonth, String year) {
         return customerRepository.findForPotentialCustomers(fromMonth, toMonth, year);
     }
 }

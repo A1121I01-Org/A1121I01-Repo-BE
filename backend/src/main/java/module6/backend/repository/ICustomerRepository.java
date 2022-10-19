@@ -1,22 +1,13 @@
 package module6.backend.repository;
 
-import module6.backend.entity.cart.Cart;
 import module6.backend.entity.customer.Customer;
-import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Optional;
-
-
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,10 +18,10 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
 
     @Query(value = "select customer_code , customer_name , count(cart_customer_id), sum(cart_total_money) from customer\n" +
             "join cart on cart.cart_customer_id = customer.customer_id\n" +
-            "group by cart_customer_id", nativeQuery = true)
+            "group by cart_customer_id ", nativeQuery = true)
     List<String> findAllCustomer();
 
-    @Query(value = "select customer_code , customer_name , cart_customer_id, cart_total_money from customer\n" +
+    @Query(value = "select customer_code , customer_name , count(cart_customer_id), sum(cart_total_money) from customer\n" +
             "join cart on cart.cart_customer_id = customer.customer_id\n" +
             "group by cart_customer_id", nativeQuery = true)
     String[] findAllPotentialCustomer();
@@ -64,6 +55,14 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     @Query(value = "SELECT customer_code FROM customer;", nativeQuery = true)
     List<String> findAllCustomerImportString();
 
+    // Thắng code tìm kiếm kiểm tra phone customer có tồn tại không
+    @Query(value = "SELECT customer_phone FROM customer;", nativeQuery = true)
+    List<String> findAllCustomerPhoneImportString();
+
+    // Thắng code tìm kiếm kiểm tra email customer có tồn tại không
+    @Query(value = "SELECT customer_email FROM customer;", nativeQuery = true)
+    List<String> findAllCustomerEmailImportString();
+
     @Query(value = "select * from customer where customer_type_id  > 0 and customer_flag = 0", nativeQuery = true)
     List<Customer> getAllCustomer();
 
@@ -94,7 +93,13 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
             "join cart_status on cart_status.cart_status_id = cart.cart_status_id\n" +
             "where (month(cart_date_create) between :fromMonth and :toMonth) and year(cart_date_create) = :year and cart_status_name = 'đã thanh toán'\n" +
             "group by cart_customer_id", nativeQuery = true)
-    List<String> findForPotentialCustomers(@Param("fromMonth") String fromMonth,
-                                           @Param("toMonth") String toMonth,
-                                           @Param("year") String year);
+    String[] findForPotentialCustomers(@Param("fromMonth") String fromMonth,
+                                       @Param("toMonth") String toMonth,
+                                       @Param("year") String year);
 }
+
+
+//@Query(value = "select customer_code, customer_name, count(cart_customer_id) as SLDonHang, sum(cart_total_money) as TongGiaTri from customer\n" +
+//        "join cart on cart.cart_customer_id = customer.customer_id \n" +
+//        "join cart_status on cart_status.cart_status_id = cart.cart_status_id\n" +
+//        "group by cart_customer_id", nativeQuery = true)

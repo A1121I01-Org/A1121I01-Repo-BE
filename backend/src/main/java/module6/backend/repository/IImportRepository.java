@@ -1,6 +1,8 @@
 package module6.backend.repository;
 
 import module6.backend.entity.Import;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -27,11 +29,19 @@ public interface IImportRepository extends JpaRepository<Import, Long> {
 
     // Thắng code list import
     @Query(value = "select * from import where import_account_id > 0 and import_material_id > 0 and import_id > 0 and import_flag = 0", nativeQuery = true)
-    List<Import> findAllImportNotPagination();
+    Page<Import> findAllImport(Pageable pageable);
 
     // Thắng code list import
     @Query(value = "select import_code from import", nativeQuery = true)
     List<String> findAllImportString();
+
+    // Thắng code search import
+    @Query(value = "select * from import where import_account_id > 0 and import_material_id > 0 and import_id > 0 and import_flag = 0 and import_code like ?1 and (import_start_date between ?2 and ?3)", nativeQuery = true)
+    Page<Import> searchImport(String code, String startDate, String endDate, Pageable pageable);
+
+    // Thắng code search import chỉ code
+    @Query(value = "select * from import where import_account_id > 0 and import_material_id > 0 and import_id > 0 and import_flag = 0 and import_code like ?1", nativeQuery = true)
+    Page<Import> searchImportCode(String importCode, Pageable pageable);
 
     // Thắng code xoá import
     @Query(value = "UPDATE import SET import_id = ?1, `import_flag` = ?2  WHERE (`import_id` = ?3)", nativeQuery = true)
