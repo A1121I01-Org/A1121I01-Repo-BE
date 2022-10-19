@@ -63,6 +63,4 @@ public class StatisticController {
         String[] list = statisticService.searchForPotentialCustomers(fromMonth, toMonth, year);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
-
-    //aa
 }
