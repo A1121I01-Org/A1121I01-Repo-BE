@@ -9,6 +9,9 @@ import module6.backend.service.IImportService;
 import module6.backend.service.Impl.pdf.PDFGeneratorImportServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -36,8 +39,8 @@ public class ImportController {
     //Thắng code list import
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("import-list")
-    public ResponseEntity<List<Import>> findAllImport(@RequestParam Integer page) {
-        List<Import> importList = importService.findAllImport(page);
+    public ResponseEntity<Page<Import>> findAllImport(@PageableDefault(value = 5) Pageable pageable) {
+        Page<Import> importList = importService.findAllImport(pageable);
         if (importList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
@@ -45,16 +48,26 @@ public class ImportController {
         }
     }
 
-    //Thắng code list import
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
-    @GetMapping("import-list-not-pagination")
-    public ResponseEntity<List<Import>> findAllImportNotPagination() {
-        List<Import> importList = importService.findAllImportNotPagination();
-        if (importList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    //Thắng code search list import
+    @GetMapping("import-search")
+    public ResponseEntity<Page<Import>> searchImport(
+            @PageableDefault(value = 5) Pageable pageable,
+            @RequestParam Optional<String> code
+            , @RequestParam Optional<String> startDate
+            , @RequestParam Optional<String> endDate) {
+        Page<Import> importList;
+        if ((code.isPresent() && !code.get().isEmpty()) && (startDate.isPresent() && !startDate.get().isEmpty())
+                && (endDate.isPresent() && !endDate.get().isEmpty())) {
+            importList = importService.searchImport(code.get(), startDate.get(), endDate.get(), pageable);
+        } else if ((startDate.isPresent() && !startDate.get().isEmpty())
+                && (endDate.isPresent() && !endDate.get().isEmpty())) {
+            importList = importService.searchImport("", startDate.get(), endDate.get(), pageable);
+        } else if (code.isPresent() && !code.get().isEmpty()) {
+            importList = importService.searchImportCode(code.get(), pageable);
         } else {
-            return new ResponseEntity<>(importList, HttpStatus.OK);
+            importList = importService.findAllImport(pageable);
         }
+        return new ResponseEntity<>(importList, HttpStatus.OK);
     }
 
     //Thắng code list import string
@@ -70,7 +83,6 @@ public class ImportController {
     }
 
     //Thắng code list material import string
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("import-material-list-string")
     public ResponseEntity<List<String>> findAllImportMaterialString() {
         List<String> importMaterialList = importService.findAllMaterialImportString();
@@ -90,6 +102,28 @@ public class ImportController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<>(importCustomerList, HttpStatus.OK);
+        }
+    }
+
+    //Thắng code list customer phone import string kiểm tra code
+    @GetMapping("import-phone-customer-list-string")
+    public ResponseEntity<List<String>> findAllImportPhoneCustomerString() {
+        List<String> phoneCustomerList = importService.findAllCustomerPhoneImportString();
+        if (phoneCustomerList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(phoneCustomerList, HttpStatus.OK);
+        }
+    }
+
+    //Thắng code list customer phone import string kiểm tra code
+    @GetMapping("import-email-customer-list-string")
+    public ResponseEntity<List<String>> findAllImportEmailCustomerString() {
+        List<String> emailCustomerList = importService.findAllCustomerEmailImportString();
+        if (emailCustomerList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(emailCustomerList, HttpStatus.OK);
         }
     }
 
