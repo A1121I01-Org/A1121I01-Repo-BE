@@ -2,7 +2,7 @@ package module6.backend.entity.customer;
 
 import javax.persistence.*;
 
-@Entity(name = "customerEntity")
+@Entity
 @Table(name = "customer")
 public class Customer {
     @Id
@@ -16,7 +16,7 @@ public class Customer {
     private String customerEmail;
     private Boolean customerFlag = false;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "customer_type_id")
     private CustomerType customerTypeId;
 

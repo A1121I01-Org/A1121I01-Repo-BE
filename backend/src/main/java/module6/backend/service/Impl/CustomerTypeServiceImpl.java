@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class CustomerTypeServiceImpl implements ICustomerTypeService {
     @Autowired
@@ -17,4 +18,5 @@ public class CustomerTypeServiceImpl implements ICustomerTypeService {
     public List<CustomerType> findAllCustomerType() {
         return customerTypeRepository.findAllCustomerType();
     }
+
 }
