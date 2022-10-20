@@ -1,5 +1,7 @@
 package module6.backend.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
@@ -33,6 +35,6 @@ public interface IStatisticService {
 
     // HuyenNTD - Thong ke khach hang tiem nang
 
-    List<String> findAllStatisticCustomer();
+    Page<String> findAllStatisticCustomer(Pageable pageable);
     String[] searchForPotentialCustomers(String fromMonth, String toMonth, String year);
 }

@@ -1,6 +1,8 @@
 package module6.backend.repository;
 
 import module6.backend.entity.customer.Customer;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -16,10 +18,8 @@ import java.util.Optional;
 public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     // HuyenNTD - Thong ke khach hang tiem nang
 
-    @Query(value = "select customer_code , customer_name , count(cart_customer_id), sum(cart_total_money) from customer\n" +
-            "join cart on cart.cart_customer_id = customer.customer_id\n" +
-            "group by cart_customer_id ", nativeQuery = true)
-    List<String> findAllCustomer();
+    @Query(value = "select `customer`.customer_code , `customer`.customer_name , count(`cart`.cart_customer_id), sum(`cart`.cart_total_money) from `customer` join `cart` on `cart`.cart_customer_id = `customer`.customer_id group by `cart`.cart_customer_id", nativeQuery = true)
+    Page<String> findAllCustomer(Pageable pageable);
 
     @Query(value = "select customer_code , customer_name , count(cart_customer_id), sum(cart_total_money) from customer\n" +
             "join cart on cart.cart_customer_id = customer.customer_id\n" +

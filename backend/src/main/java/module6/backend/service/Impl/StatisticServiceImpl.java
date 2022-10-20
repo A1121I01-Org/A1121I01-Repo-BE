@@ -6,6 +6,8 @@ import module6.backend.repository.IImportRepository;
 import module6.backend.repository.IMaterialRepository;
 import module6.backend.service.IStatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -87,8 +89,8 @@ public class StatisticServiceImpl implements IStatisticService {
 
     // HuyenNTD - Thong ke khach hang tiem nang
     @Override
-    public List<String> findAllStatisticCustomer() {
-        return customerRepository.findAllCustomer();
+    public Page<String> findAllStatisticCustomer(Pageable pageable) {
+        return customerRepository.findAllCustomer(pageable);
     }
 
     @Override

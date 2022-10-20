@@ -11,6 +11,9 @@ import module6.backend.service.Impl.pdf.PDFStatisticFinancialServiceImpl2;
 import module6.backend.service.Impl.pdf.PDFStatisticMaterialsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -175,8 +178,8 @@ public class StatisticController {
     // HuyenNTD - Thong ke khach hang tiem nang
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/list/customer")
-    public ResponseEntity<List<String>> getAll() {
-        List<String> list = statisticService.findAllStatisticCustomer();
+    public ResponseEntity<Page<String>> getAll(@PageableDefault(value = 5) Pageable pageable) {
+        Page<String> list = statisticService.findAllStatisticCustomer(pageable);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
