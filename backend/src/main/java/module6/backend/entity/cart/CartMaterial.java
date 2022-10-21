@@ -10,13 +10,13 @@ public class CartMaterial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cartMaterialId;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "cart_id")
     private Cart cartId;
 
     private Boolean cartMaterialFlag = false;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "material_id")
     private Material materialId;
 
@@ -31,6 +31,12 @@ public class CartMaterial {
         this.cartMaterialFlag = cartMaterialFlag;
         this.materialId = materialId;
         this.cartMaterialReason = cartMaterialReason;
+    }
+
+    public CartMaterial(Cart cartId, Boolean cartMaterialFlag, Material materialId) {
+        this.cartId = cartId;
+        this.cartMaterialFlag = cartMaterialFlag;
+        this.materialId = materialId;
     }
 
     public Long getCartMaterialId() {

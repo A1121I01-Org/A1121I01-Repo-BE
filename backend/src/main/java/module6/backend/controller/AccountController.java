@@ -17,13 +17,13 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Optional;
 
-
 @RestController
 @CrossOrigin
 @RequestMapping("api/account")
 public class AccountController {
     @Autowired
     private IAccountService accountService;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -33,6 +33,7 @@ public class AccountController {
     }
 
     //AnDVH thay đổi password
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @PatchMapping("update/password/{id}")
     public ResponseEntity<?> updatePassword(@PathVariable("id") Long id, @RequestBody Password password) {
         Optional<Account> account = accountService.findAccountById(id);
@@ -40,23 +41,24 @@ public class AccountController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             String originalPasswordEncode = account.get().getPassword();
-            boolean checkPassword = passwordEncoder.matches(password.getOldPassword(),originalPasswordEncode);
+            boolean checkPassword = passwordEncoder.matches(password.getOldPassword(), originalPasswordEncode);
             if (checkPassword) {
                 if (!password.getNewPassword().equals(password.getConfirmPassword())) {
-                    return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
+                    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
                 } else {
                     String newPassWordEncode = new BCryptPasswordEncoder().encode(password.getNewPassword());
-                    accountService.updatePassword(newPassWordEncode , id);
+                    accountService.updatePassword(newPassWordEncode, id);
 
                     return new ResponseEntity<>(HttpStatus.OK);
                 }
             } else {
-                return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
         }
     }
 
     //NhiVP get account by username
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/byUsername/{username}")
     public ResponseEntity<Account> findAccountByUsername(@PathVariable("username") String username) {
         Account account = accountService.findAccountByUsername(username);
@@ -64,11 +66,13 @@ public class AccountController {
             return new ResponseEntity<Account>(account, HttpStatus.FOUND);
         return new ResponseEntity<Account>(HttpStatus.NOT_FOUND);
     }
+
     //NhiVP lay danh sach username
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list-Username")
     public ResponseEntity<List<String>> findAllUsername() {
         List<String> allUsername = accountService.findAllUsername();
-        if (allUsername.isEmpty()){
+        if (allUsername.isEmpty()) {
             return new ResponseEntity<List<String>>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<List<String>>(allUsername, HttpStatus.OK);
