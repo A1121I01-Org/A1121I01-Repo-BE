@@ -1,5 +1,4 @@
 package module6.backend.entity.account;
-
 import javax.persistence.*;
 
 @Entity
