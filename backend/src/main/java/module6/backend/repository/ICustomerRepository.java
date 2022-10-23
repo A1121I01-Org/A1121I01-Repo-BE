@@ -16,10 +16,10 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     Customer findByCustomerCode(String codeCustomer);
 
     // Thắng code thêm mới Nhà cung cấp (Import)
-    @Query(value = "INSERT INTO `customer` (`customer_name`, `customer_code`, `customer_address`, `customer_phone`, `customer_email`, `customer_type_id`) VALUES (?1, ?2, ?3, ?4, ?5, ?6);", nativeQuery = true)
+    @Query(value = "INSERT INTO `customer` (`customer_name`, `customer_code`, `customer_address`, `customer_phone`, `customer_email`, `customer_type_id`, `customer_avatar`) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7);", nativeQuery = true)
     @Transactional
     @Modifying
-    void createCustomerImport(String name, String code, String address, String phone, String email, Long customerTypeId);
+    void createCustomerImport(String name, String code, String address, String phone, String email, Long customerTypeId, String customerAvatar);
 
     // Thắng code tìm kiếm nhà cung cấp
     @Query(value = "SELECT * FROM customer where customer_type_id = 3 and customer_id > 0;", nativeQuery = true)

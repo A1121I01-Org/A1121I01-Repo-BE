@@ -74,17 +74,17 @@ public class ImportServiceImpl implements IImportService {
         Integer quantity = importCreate.getImportMaterialId().getMaterialQuantity() + importCreate.getImportQuantity();
 
         if (customerRepository.findByCustomerCode(customerCreate.getCustomerCode()) == null) {
-            customerRepository.createCustomerImport(customerCreate.getCustomerName(), customerCreate.getCustomerCode(), customerCreate.getCustomerAddress(), customerCreate.getCustomerPhone(), customerCreate.getCustomerEmail(), customerCreate.getCustomerTypeId().getCustomerTypeId());
+            customerRepository.createCustomerImport(customerCreate.getCustomerName(), customerCreate.getCustomerCode(), customerCreate.getCustomerAddress(), customerCreate.getCustomerPhone(), customerCreate.getCustomerEmail(), customerCreate.getCustomerTypeId().getCustomerTypeId(), customerCreate.getCustomerAvatar());
             Customer customer = customerRepository.findByCustomerCode(customerCreate.getCustomerCode());
 
             materialCreate.setMaterialCustomerId(customer);
 
-            materialRepository.createMaterialImport(materialCreate.getMaterialCode(), materialCreate.getMaterialName(), quantity, materialCreate.getMaterialPrice(), materialCreate.getMaterialExpiridate(), materialCreate.getMaterialUnit(), materialCreate.getMaterialTypeId().getMaterialTypeId(), materialCreate.getMaterialCustomerId().getCustomerId());
+            materialRepository.createMaterialImport(materialCreate.getMaterialCode(), materialCreate.getMaterialName(), quantity, materialCreate.getMaterialPrice(), materialCreate.getMaterialExpiridate(), materialCreate.getMaterialUnit(), materialCreate.getMaterialTypeId().getMaterialTypeId(), materialCreate.getMaterialCustomerId().getCustomerId(), materialCreate.getMaterialImage(), materialCreate.getMaterialDescribe());
             Material material = materialRepository.findByMaterialCode(materialCreate.getMaterialCode());
             importRepository.createImport(importCreate.getImportCode(), importCreate.getImportStartDate(), importCreate.getImportQuantity(), importCreate.getImportAccountId().getAccountId(), material.getMaterialId());
 
         } else if (materialRepository.findByMaterialCode(materialCreate.getMaterialCode()) == null) {
-            materialRepository.createMaterialImport(materialCreate.getMaterialCode(), materialCreate.getMaterialName(), quantity, materialCreate.getMaterialPrice(), materialCreate.getMaterialExpiridate(), materialCreate.getMaterialUnit(), materialCreate.getMaterialTypeId().getMaterialTypeId(), customerCreate.getCustomerId());
+            materialRepository.createMaterialImport(materialCreate.getMaterialCode(), materialCreate.getMaterialName(), quantity, materialCreate.getMaterialPrice(), materialCreate.getMaterialExpiridate(), materialCreate.getMaterialUnit(), materialCreate.getMaterialTypeId().getMaterialTypeId(), customerCreate.getCustomerId(), materialCreate.getMaterialImage(), materialCreate.getMaterialDescribe());
             Material material = materialRepository.findByMaterialCode(materialCreate.getMaterialCode());
             importRepository.createImport(importCreate.getImportCode(), importCreate.getImportStartDate(), importCreate.getImportQuantity(), importCreate.getImportAccountId().getAccountId(), material.getMaterialId());
         } else {
