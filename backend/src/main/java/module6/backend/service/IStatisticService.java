@@ -11,6 +11,7 @@ public interface IStatisticService {
     //HoangTND - Statistic Material
     List<String> findAllStatisticMaterial();
     List<String> searchStatisticMaterial(String fromDate, String toDate);
+    String[] chartStatisticMaterial();
 
 
 //    KinPBH - Thong ke tai chinh

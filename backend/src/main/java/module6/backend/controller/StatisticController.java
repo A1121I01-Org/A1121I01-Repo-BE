@@ -90,6 +90,13 @@ public class StatisticController {
         return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bais));
     }
 
+    //ChartStatisticMaterial
+    @GetMapping("/chart")
+    public ResponseEntity<String[]>chart(){
+        String[] data = statisticService.chartStatisticMaterial();
+        return new ResponseEntity<>(data, HttpStatus.OK);
+    }
+
     // KimPBH - Thong ke tai chinh
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/huyhang")

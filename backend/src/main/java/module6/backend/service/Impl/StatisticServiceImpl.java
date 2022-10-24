@@ -38,6 +38,11 @@ public class StatisticServiceImpl implements IStatisticService {
         return materialRepository.searchStatisticMaterial(fromDate, toDate);
     }
 
+    @Override
+    public String[] chartStatisticMaterial() {
+        return materialRepository.chartStatisticMaterial();
+    }
+
 //    KimPBH - Thong ke tai chinh
 //    @Autowired
 //    private ISalaryRepository salaryRepository;

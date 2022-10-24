@@ -58,6 +58,14 @@ public interface IMaterialRepository extends JpaRepository<Material, Long> {
             "    join cart on cart.cart_id = cart_material.cart_id;", nativeQuery = true)
     List<String> getData();
 
+    //Chart material
+    @Query(value = "select material.material_name, sum(`import`.import_quantity), sum(cart.cart_quantity), sum(material.material_quantity) from `import` \n" +
+            "join material on `import`.import_material_id = material.material_id\n" +
+            "join cart_material on cart_material.material_id = material.material_id\n" +
+            "join cart on cart.cart_id = cart_material.cart_id\n" +
+            "group by `import`.import_material_id; ", nativeQuery = true)
+    String[] chartStatisticMaterial();
+
 
     // Thắng code tìm kiếm material theo material code
     Material findByMaterialCode(String materialCode);
