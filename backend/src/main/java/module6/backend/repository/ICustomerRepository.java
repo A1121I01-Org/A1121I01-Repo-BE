@@ -1,12 +1,10 @@
 package module6.backend.repository;
 
-import module6.backend.entity.cart.Cart;
 import module6.backend.entity.customer.Customer;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -15,22 +13,15 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-
 @Repository
 @Transactional
 public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     // HuyenNTD - Thong ke khach hang tiem nang
 
-    @Query(value = "select customer_code , customer_name , count(cart_customer_id), sum(cart_total_money) from customer\n" +
-            "join cart on cart.cart_customer_id = customer.customer_id\n" +
-            "group by cart_customer_id", nativeQuery = true)
-    List<String> findAllCustomer();
+    @Query(value = "select `customer`.customer_code , `customer`.customer_name , count(`cart`.cart_customer_id), sum(`cart`.cart_total_money) from `customer` join `cart` on `cart`.cart_customer_id = `customer`.customer_id group by `cart`.cart_customer_id", nativeQuery = true)
+    Page<String> findAllCustomer(Pageable pageable);
 
-    @Query(value = "select customer_code , customer_name , cart_customer_id, cart_total_money from customer\n" +
+    @Query(value = "select customer_code , customer_name , count(cart_customer_id), sum(cart_total_money) from customer\n" +
             "join cart on cart.cart_customer_id = customer.customer_id\n" +
             "group by cart_customer_id", nativeQuery = true)
     String[] findAllPotentialCustomer();
@@ -51,10 +42,10 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     Customer findByCustomerCode(String codeCustomer);
 
     // Thắng code thêm mới Nhà cung cấp (Import)
-    @Query(value = "INSERT INTO `customer` (`customer_name`, `customer_code`, `customer_address`, `customer_phone`, `customer_email`, `customer_type_id`) VALUES (?1, ?2, ?3, ?4, ?5, ?6);", nativeQuery = true)
+    @Query(value = "INSERT INTO `customer` (`customer_name`, `customer_code`, `customer_address`, `customer_phone`, `customer_email`, `customer_type_id`, `customer_avatar`) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7);", nativeQuery = true)
     @Transactional
     @Modifying
-    void createCustomerImport(String name, String code, String address, String phone, String email, Long customerTypeId);
+    void createCustomerImport(String name, String code, String address, String phone, String email, Long customerTypeId, String customerAvatar);
 
     // Thắng code tìm kiếm nhà cung cấp
     @Query(value = "SELECT * FROM customer where customer_type_id = 3 and customer_id > 0;", nativeQuery = true)
@@ -102,7 +93,14 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
             "join cart_status on cart_status.cart_status_id = cart.cart_status_id\n" +
             "where (month(cart_date_create) between :fromMonth and :toMonth) and year(cart_date_create) = :year and cart_status_name = 'đã thanh toán'\n" +
             "group by cart_customer_id", nativeQuery = true)
-    List<String> findForPotentialCustomers(@Param("fromMonth") String fromMonth,
-                                           @Param("toMonth") String toMonth,
-                                           @Param("year") String year);
+
+    String[] findForPotentialCustomers(@Param("fromMonth") String fromMonth,
+                                       @Param("toMonth") String toMonth,
+                                       @Param("year") String year);
 }
+
+
+//@Query(value = "select customer_code, customer_name, count(cart_customer_id) as SLDonHang, sum(cart_total_money) as TongGiaTri from customer\n" +
+//        "join cart on cart.cart_customer_id = customer.customer_id \n" +
+//        "join cart_status on cart_status.cart_status_id = cart.cart_status_id\n" +
+//        "group by cart_customer_id", nativeQuery = true)
