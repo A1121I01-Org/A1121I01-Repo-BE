@@ -60,7 +60,7 @@ public class CartController {
     private ICartRepository cartRepository;
 
     /** Get list cart by status id - SyNV. */
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("/list")
     public ResponseEntity<List<CartMaterial>> getCartByStatus() {
         try {
@@ -74,7 +74,7 @@ public class CartController {
         }
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("/list2")
     public ResponseEntity<List<Material>> get() {
         try {
