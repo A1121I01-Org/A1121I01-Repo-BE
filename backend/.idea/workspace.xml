@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d28d4222-b528-4557-b815-dbb77afad4df" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/3/43f4ea0eefcb0e42d3b96f13e50b02474a0d9632" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5feb8900254c7e6adf6942c8a5a8a36d480e3adc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/StatisticController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/StatisticController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/StatisticServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/StatisticServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/controller/StatisticController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/controller/StatisticController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IMaterialRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IMaterialRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/IStatisticService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/IStatisticService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/StatisticServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/StatisticServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/.." source="HieuCLH-material-detail" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="HieuCLH-material-detail" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2FidXEzDbUY6k3BxsG4yn8qDy93" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../A1121I01-Repo-BE/backend" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+
+  <component name="RunManager">
+    <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="backend.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="module6.backend.BackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d28d4222-b528-4557-b815-dbb77afad4df" name="Default Changelist" comment="" />
+      <created>1664978875648</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1664978875648</updated>
+      <workItem from="1664978881073" duration="481000" />
+      <workItem from="1665125931682" duration="3403000" />
+      <workItem from="1665140918072" duration="3625000" />
+      <workItem from="1665213337039" duration="4778000" />
+      <workItem from="1665382079481" duration="1884000" />
+      <workItem from="1665399959488" duration="4753000" />
+      <workItem from="1665930609106" duration="734000" />
+      <workItem from="1665933604616" duration="21000" />
+      <workItem from="1665941636811" duration="1394000" />
+      <workItem from="1665996875802" duration="1158000" />
+      <workItem from="1666189557636" duration="34000" />
+      <workItem from="1666258128309" duration="636000" />
+      <workItem from="1666281024853" duration="6134000" />
+      <workItem from="1666292106830" duration="1848000" />
+      <workItem from="1666349522395" duration="1239000" />
+      <workItem from="1666350964270" duration="70000" />
+      <workItem from="1666351396014" duration="538000" />
+      <workItem from="1666352872338" duration="1021000" />
+      <workItem from="1666355302182" duration="152000" />
+      <workItem from="1666355644018" duration="2449000" />
+      <workItem from="1666376096851" duration="690000" />
+      <workItem from="1666409845349" duration="594000" />
+      <workItem from="1666454442986" duration="1309000" />
+      <workItem from="1666516167395" duration="1497000" />
+      <workItem from="1666589272506" duration="1545000" />
+      <workItem from="1666604510998" duration="1431000" />
+    </task>
+    <task id="LOCAL-00001" summary="6:16 21/10 be">
+      <created>1666350998197</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1666350998197</updated>
+    </task>
+    <task id="LOCAL-00002" summary="merge import 24/10">
+      <created>1666590624815</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1666590624815</updated>
+    </task>
+    <task id="LOCAL-00003" summary="merge import 24/10">
+      <created>1666590633195</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1666590633195</updated>
+    </task>
+    <task id="LOCAL-00004" summary="merge import 24/10">
+      <created>1666590640357</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1666590640357</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="6:16 21/10 be" />
+    <MESSAGE value="merge import 24/10" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge import 24/10" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="551" y="114" key="#com.intellij.ide.util.MemberChooser" timestamp="1666605805049">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state x="574" y="119" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1665127307577" />
+    <state x="551" y="114" key="#com.intellij.ide.util.MemberChooser/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666605805049" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1665933241849">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1665933241849" />
+    <state x="93" y="93" width="1288" height="603" key="DiffContextDialog" timestamp="1666188925292">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state x="93" y="93" width="1288" height="603" key="DiffContextDialog/0.0.1475.789@0.0.1475.789" timestamp="1666188925292" />
+    <state x="527" y="160" key="FileChooserDialogImpl" timestamp="1666605753056">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state x="527" y="160" key="FileChooserDialogImpl/0.0.1475.789@0.0.1475.789" timestamp="1666355453878" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1665129358870" />
+    <state x="527" y="160" key="FileChooserDialogImpl/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666605753056" />
+    <state x="572" y="297" key="Github.CreateGistDialog" timestamp="1666290908739">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state x="572" y="297" key="Github.CreateGistDialog/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666290908739" />
+    <state width="1431" height="169" key="GridCell.Tab.0.bottom" timestamp="1666606096075">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state width="1431" height="513" key="GridCell.Tab.0.bottom/0.0.1475.789@0.0.1475.789" timestamp="1666361987132" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1665933625107" />
+    <state width="1431" height="169" key="GridCell.Tab.0.bottom/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666606096075" />
+    <state width="1431" height="169" key="GridCell.Tab.0.center" timestamp="1666606096075">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state width="1431" height="513" key="GridCell.Tab.0.center/0.0.1475.789@0.0.1475.789" timestamp="1666361987131" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1665933625107" />
+    <state width="1431" height="169" key="GridCell.Tab.0.center/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666606096075" />
+    <state width="1431" height="169" key="GridCell.Tab.0.left" timestamp="1666606096075">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state width="1431" height="513" key="GridCell.Tab.0.left/0.0.1475.789@0.0.1475.789" timestamp="1666361987131" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1665933625106" />
+    <state width="1431" height="169" key="GridCell.Tab.0.left/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666606096075" />
+    <state width="1431" height="169" key="GridCell.Tab.0.right" timestamp="1666606096075">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state width="1431" height="513" key="GridCell.Tab.0.right/0.0.1475.789@0.0.1475.789" timestamp="1666361987132" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1665933625107" />
+    <state width="1431" height="169" key="GridCell.Tab.0.right/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666606096075" />
+    <state width="1431" height="169" key="GridCell.Tab.1.bottom" timestamp="1666606096076">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state width="1431" height="513" key="GridCell.Tab.1.bottom/0.0.1475.789@0.0.1475.789" timestamp="1666361987132" />
+    <state width="1493" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1665933625108" />
+    <state width="1431" height="169" key="GridCell.Tab.1.bottom/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666606096076" />
+    <state width="1431" height="169" key="GridCell.Tab.1.center" timestamp="1666606096076">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state width="1431" height="513" key="GridCell.Tab.1.center/0.0.1475.789@0.0.1475.789" timestamp="1666361987132" />
+    <state width="1493" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1665933625108" />
+    <state width="1431" height="169" key="GridCell.Tab.1.center/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666606096076" />
+    <state width="1431" height="169" key="GridCell.Tab.1.left" timestamp="1666606096075">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state width="1431" height="513" key="GridCell.Tab.1.left/0.0.1475.789@0.0.1475.789" timestamp="1666361987132" />
+    <state width="1493" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1665933625107" />
+    <state width="1431" height="169" key="GridCell.Tab.1.left/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666606096075" />
+    <state width="1431" height="169" key="GridCell.Tab.1.right" timestamp="1666606096076">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state width="1431" height="513" key="GridCell.Tab.1.right/0.0.1475.789@0.0.1475.789" timestamp="1666361987132" />
+    <state width="1493" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1665933625108" />
+    <state width="1431" height="169" key="GridCell.Tab.1.right/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666606096076" />
+    <state width="1417" height="244" key="GridCell.Tab.2.bottom" timestamp="1666290973289">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state width="1417" height="244" key="GridCell.Tab.2.bottom/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666290973289" />
+    <state width="1417" height="244" key="GridCell.Tab.2.center" timestamp="1666290973289">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state width="1417" height="244" key="GridCell.Tab.2.center/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666290973289" />
+    <state width="1417" height="244" key="GridCell.Tab.2.left" timestamp="1666290973289">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state width="1417" height="244" key="GridCell.Tab.2.left/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666290973289" />
+    <state width="1417" height="244" key="GridCell.Tab.2.right" timestamp="1666290973289">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state width="1417" height="244" key="GridCell.Tab.2.right/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666290973289" />
+    <state x="112" y="0" width="1194" height="789" key="MergeDialog" timestamp="1666589785622">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state x="117" y="0" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1665930986546" />
+    <state x="112" y="0" width="1194" height="789" key="MergeDialog/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666589785622" />
+    <state x="359" y="214" width="907" height="478" key="MultipleFileMergeDialog" timestamp="1666589785636">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state x="149" y="116" width="1178" height="429" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1665930986556" />
+    <state x="359" y="214" width="907" height="478" key="MultipleFileMergeDialog/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666589785636" />
+    <state x="330" y="128" key="Vcs.Push.Dialog.v2" timestamp="1666590654731">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state x="330" y="128" key="Vcs.Push.Dialog.v2/0.0.1475.789@0.0.1475.789" timestamp="1666351006019" />
+    <state x="330" y="128" key="Vcs.Push.Dialog.v2/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666590654731" />
+    <state x="93" y="93" width="1288" height="603" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1666293541687">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state x="93" y="93" width="1288" height="603" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1475.789@0.0.1475.789" timestamp="1666188925292" />
+    <state x="93" y="93" width="1288" height="603" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666293541687" />
+    <state x="442" y="192" key="git4idea.merge.GitPullDialog" timestamp="1666589338729">
+      <screen x="0" y="0" width="1475" height="789" />
+    </state>
+    <state x="460" y="201" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1665930699001" />
+    <state x="442" y="192" key="git4idea.merge.GitPullDialog/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666589338729" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/module6/backend/controller/StatisticController.java</url>
+          <line>188</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
