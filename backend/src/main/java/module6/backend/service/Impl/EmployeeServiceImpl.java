@@ -7,9 +7,12 @@ import module6.backend.repository.IPositionRepository;
 import module6.backend.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -34,6 +37,31 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public List<Position> getAllPosition() {
         return positionRepository.findAllPosition();
+    }
+
+    @Override
+    public Map<String, String> validateEmployee(BindingResult bindingResult) {
+        Map<String, String> errors = new HashMap<>();
+        if(bindingResult.hasErrors()) {
+            if(bindingResult.hasFieldErrors("employeeName")) {
+                errors.put("employeeName", "Họ tên chưa đúng định dạng");
+            }
+            if(bindingResult.hasFieldErrors("employeeAddress")) {
+                errors.put("employeeAddress", "Địa chỉ vượt quá độ dài cho phép");
+            }
+            if(bindingResult.hasFieldErrors("employeePhone")) {
+                errors.put("employeePhone", "Số điện thoại không đúng định dạng");
+            }
+            if(bindingResult.hasFieldErrors("employeeDateOfBirth")) {
+                errors.put("employeeDateOfBirth", "Ngày sinh không đúng định dạng hoặc tuổi nhỏ hơn 18");
+            }
+        }
+        return errors;
+    }
+
+    @Override
+    public Optional<Employee> findEmployeeByAccountId(Long accountId) {
+        return this.employeeRepository.findEmployeeByAccountId(accountId);
     }
 
     @Override
