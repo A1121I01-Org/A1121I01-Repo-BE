@@ -83,8 +83,6 @@ t
 Dsrc/main/java/module6/backend/util/cartValidator/PhoneValidator.java,5\a\5a2131265860fc78f10776383b48506024eea7c6
 p
 @src/main/java/module6/backend/security/jwt/JwtRequestFilter.java,0\1\01704365e3bc375ad827b3ddef81a8b72fbf8bfb
-m
-=src/main/java/module6/backend/repository/ICartRepository.java,d\b\dbbbf341fb042f2fa35ed92d66cbd3bc81cb7d70
 q
 Asrc/main/java/module6/backend/repository/IEmployeeRepository.java,3\1\31f432d75322519c444cf27ca34e3e868343d1d6
 t
@@ -97,5 +95,17 @@ p
 @src/main/java/module6/backend/controller/EmployeeController.java,5\2\528b8985928da5bd47771e82319d4d90c3a14874
 e
 5src/main/java/module6/backend/BackendApplication.java,9\c\9c36abef4fbdf75e71d8fe4bfe7d6a6a0d36e473
+l
+<src/main/java/module6/backend/service/IStatisticService.java,4\a\4a2644c9e38ca4915ff95557687795b17186b2c9
+t
+Dsrc/main/java/module6/backend/service/Impl/StatisticServiceImpl.java,4\3\43f4ea0eefcb0e42d3b96f13e50b02474a0d9632
+m
+=src/main/java/module6/backend/repository/ICartRepository.java,d\b\dbbbf341fb042f2fa35ed92d66cbd3bc81cb7d70
+o
+?src/main/java/module6/backend/controller/AccountController.java,0\1\015b6e800fcbf7908d819c7a9d97b2fc338a670f
+p
+@src/main/java/module6/backend/controller/CustomerController.java,e\4\e4385586f756250d96d79ca4dd468c0a1d5ad40c
 q
 Asrc/main/java/module6/backend/repository/ICustomerRepository.java,f\1\f13bd7dcd228f1e95ae5c3f15440c74fdb329f90
+q
+Asrc/main/java/module6/backend/controller/StatisticController.java,5\f\5feb8900254c7e6adf6942c8a5a8a36d480e3adc
