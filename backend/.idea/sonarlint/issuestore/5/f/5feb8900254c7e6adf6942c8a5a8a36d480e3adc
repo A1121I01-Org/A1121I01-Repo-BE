@@ -1,0 +1,21 @@
+
+t
+java:S2293G"YReplace the type specification in this constructor call with the diamond operator ("<>").(¡©‰‹ýÿÿÿÿ
+u
+java:S2293Í"YReplace the type specification in this constructor call with the diamond operator ("<>").(¡©‰‹ýÿÿÿÿ
+j
+java:S1192Y"TDefine a constant instead of duplicating this literal "Content-Disposition" 3 times.(ú•›±
+o
+java:S1192Y"YDefine a constant instead of duplicating this literal "inline;filename=cart.pdf" 3 times.(ú•›±
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(À©Õ—ýÿÿÿÿ
+Q	java:S125/"<This block of commented-out lines of code should be removed.(­øšõ
+T	java:S106œ"9Replace this use of System.out or System.err by a logger.(ìÑÑÈÿÿÿÿÿ
+R	java:S125£"<This block of commented-out lines of code should be removed.(ßñÑ©
+W	java:S125©"<This block of commented-out lines of code should be removed.(ÐÏúƒýÿÿÿÿ
+W	java:S125»"<This block of commented-out lines of code should be removed.(ŒíŠÂøÿÿÿÿ
+b
+java:S1128"GRemove this unused import 'module6.backend.repository.ICartRepository'.(Œú“Ìøÿÿÿÿ
+d
+java:S1128"IRemove this unused import 'module6.backend.repository.IImportRepository'.(ªÒÜ”ýÿÿÿÿ
+y
+java:S1128	"^Remove this unused import 'module6.backend.service.Impl.pdf.PDFStatisticFinancialServiceImpl'.(†½»üÿÿÿÿ
