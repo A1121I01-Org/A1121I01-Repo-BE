@@ -100,7 +100,7 @@ public class EmployeeController {
     @PatchMapping("update/{id}")
     public ResponseEntity<?> updateEmployee(@PathVariable("id") Long id, @Valid @RequestBody Employee employee, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
         Optional<Employee> foundEmployee = employeeService.findEmployeeById(id);
