@@ -28,13 +28,15 @@ class BackendApplicationTests {
     ICustomerService customerService ;
     @Autowired
     private MockMvc mockMvc;
+
+//    HieuNT test list customer
     @Test
     void contextLoads() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/api/customer"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful());
     }
-
+    //    HieuNT test delete customer
     @Test
      void deleteCustomerById() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.delete("/api/customer/customer-delete/{id}","null"))

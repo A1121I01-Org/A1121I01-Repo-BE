@@ -2,8 +2,11 @@ package module6.backend.entity;
 
 import module6.backend.entity.account.Account;
 import module6.backend.entity.material.Material;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Entity
@@ -12,8 +15,15 @@ public class Import {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long importId;
+    @NotEmpty
+    @Length(max = 20)
+    @Pattern(regexp = "HDN-\\d{3}")
     private String importCode;
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate importStartDate;
+    @NotNull
+    @Min(0)
     private Integer importQuantity;
     private Boolean importFlag = false;
     @ManyToOne(cascade = CascadeType.ALL)

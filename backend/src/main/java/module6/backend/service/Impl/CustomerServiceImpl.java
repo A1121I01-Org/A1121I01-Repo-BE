@@ -15,6 +15,11 @@ public class CustomerServiceImpl implements ICustomerService {
     private ICustomerRepository customerRepository;
 
     @Override
+    public Customer getCustomerByCode(String codeCustomer) {
+        return customerRepository.getCustomerByCode(codeCustomer);
+    }
+
+    @Override
     public List<Customer> getAllCustomer() {
         return customerRepository.getAllCustomer();
     }
@@ -38,7 +43,6 @@ public class CustomerServiceImpl implements ICustomerService {
     public Optional<Customer> findCustomerById(Long id) {
         return customerRepository.findCustomerById(id);
     }
-
 
     @Override
     public void createCustomer(String name, String code, String avt, String address, String phone, String email, Long customerType) {

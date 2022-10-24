@@ -4,7 +4,12 @@ import module6.backend.entity.customer.Customer;
 import java.util.List;
 import java.util.Optional;
 
+
 public interface ICustomerService {
+
+    Customer getCustomerByCode(String codeCustomer);
+
+
     List<Customer> getAllCustomer();
 
     List<Customer> getAllCustomerWithPagination(int index);
