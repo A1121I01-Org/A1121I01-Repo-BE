@@ -16,7 +16,6 @@ import java.util.Optional;
 @Repository
 public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     // HuyenNTD - Thong ke khach hang tiem nang
-
     @Query(value = "select customer_code , customer_name , count(cart_customer_id), sum(cart_total_money) from customer\n"+
             "join cart on cart.cart_customer_id = customer.customer_id\n" +
             "group by cart_customer_id ", nativeQuery = true)
@@ -35,6 +34,11 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     String[] findForPotentialCustomers(@Param("fromMonth") String fromMonth,
                                        @Param("toMonth") String toMonth,
                                        @Param("year") String year);
+
+//    @Query(value = "select customer_code , customer_name , count(cart_customer_id), sum(cart_total_money) from customer\n"+
+//            "join cart on cart.cart_customer_id = customer.customer_id\n" +
+//            "group by cart_customer_id ", nativeQuery = true)
+//    String[] chartCustomer();
 }
 
 

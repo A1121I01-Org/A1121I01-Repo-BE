@@ -35,5 +35,10 @@ public class StatisticServiceImpl implements IStatisticService {
     public String[] searchForPotentialCustomers(String fromMonth, String toMonth, String year) {
         return customerRepository.findForPotentialCustomers(fromMonth, toMonth, year);
     }
+
+//    @Override
+//    public String[] chartCustomer() {
+//        return customerRepository.chartCustomer();
+//    }
     // abc
 }

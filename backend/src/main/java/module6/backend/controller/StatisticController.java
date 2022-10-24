@@ -63,4 +63,11 @@ public class StatisticController {
         String[] list = statisticService.searchForPotentialCustomers(fromMonth, toMonth, year);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
+
+//    @GetMapping("/chart")
+//    public ResponseEntity<String[]>chart(){
+//        String[] data = statisticService.chartCustomer();
+//        return new ResponseEntity<>(data, HttpStatus.OK);
+//    }
+
 }

@@ -14,4 +14,5 @@ public interface IStatisticService {
 
     List<String> findAllStatisticCustomer();
     String[] searchForPotentialCustomers(String fromMonth, String toMonth, String year);
+//    String[] chartCustomer();
 }
