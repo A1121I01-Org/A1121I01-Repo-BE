@@ -26,7 +26,7 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     @Modifying
     void deleteCustomerById(Long id1, Long id2);
 
-    @Query(value = "select * from customer where customer_name like %:name% and customer_phone like %:phone%  ", nativeQuery = true)
+    @Query(value = "select * from customer where customer_name like %:name% and customer_phone like %:phone% and customer_type_id  > 0 and customer_flag = 0", nativeQuery = true)
     List<Customer> searchCustomerByNameAndPhone(@Param("name") String name, @Param("phone") String phone);
 
     @Query(value = "select * from customer where customer_id = ?1 and customer_type_id > 0 and customer_flag = 0 ", nativeQuery = true)
