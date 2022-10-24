@@ -31,7 +31,6 @@ public class Account {
                     @JoinColumn(name = "role_id")
             }
     )
-    @JsonBackReference
     private Set<Role> roles;
     public Account() {
     }
