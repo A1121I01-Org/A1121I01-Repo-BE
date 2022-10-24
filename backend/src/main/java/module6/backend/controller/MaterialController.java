@@ -5,7 +5,9 @@ import module6.backend.service.ICustomerService;
 import module6.backend.service.IMaterialService;
 import module6.backend.service.IMaterialTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,9 +30,9 @@ public class MaterialController {
     private ICustomerService customerService;
 
     @GetMapping
-        public ResponseEntity<Iterable<Material>> findAllMaterial(Pageable pageable,
+        public ResponseEntity<Page<Material>> findAllMaterial(@PageableDefault(size = 4) Pageable pageable,
                                                                   @RequestParam(defaultValue = "") String search){
-        List<Material> materialList = materialService.findAll(pageable, search).getContent();
+        Page<Material> materialList = materialService.findAll(pageable, search);
         if (materialList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
