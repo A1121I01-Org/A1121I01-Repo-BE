@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin
 @RequestMapping("api/salary")
 public class SalaryController {
     @Autowired
@@ -16,4 +16,5 @@ public class SalaryController {
 
     @Autowired
     private IEmployeeService employeeService;
+
 }
