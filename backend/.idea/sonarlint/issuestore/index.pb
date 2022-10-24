@@ -93,3 +93,13 @@ q
 Asrc/main/java/module6/backend/service/Impl/ImportServiceImpl.java,a\8\a8369056149159c5454f3177822ac754bcdc3c70
 p
 @src/main/java/module6/backend/controller/MaterialController.java,e\b\eb0ace6e83288c1e434ebcf0bdeac82522cd94c8
+p
+@src/main/java/module6/backend/controller/EmployeeController.java,5\2\528b8985928da5bd47771e82319d4d90c3a14874
+e
+5src/main/java/module6/backend/BackendApplication.java,9\c\9c36abef4fbdf75e71d8fe4bfe7d6a6a0d36e473
+t
+Dsrc/main/java/module6/backend/service/Impl/StatisticServiceImpl.java,4\3\43f4ea0eefcb0e42d3b96f13e50b02474a0d9632
+q
+Asrc/main/java/module6/backend/repository/ICustomerRepository.java,f\1\f13bd7dcd228f1e95ae5c3f15440c74fdb329f90
+q
+Asrc/main/java/module6/backend/controller/StatisticController.java,5\f\5feb8900254c7e6adf6942c8a5a8a36d480e3adc
