@@ -1,15 +1,0 @@
-
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(À©Õ—ıÿÿÿÿ
-R
-java:S3655j"7Call "material.isPresent()" before accessing the value.(¡Ûôúüÿÿÿÿ
-V	java:S125"<This block of commented-out lines of code should be removed.(–úÆÔøÿÿÿÿ
-Q	java:S125+"<This block of commented-out lines of code should be removed.(íÌ·ß
-[
-java:S4684X"@Replace this persistent entity with a simple POJO or DTO object.(´âïªÿÿÿÿÿ
-S	java:S106Z"9Replace this use of System.out or System.err by a logger.(éööëşÿÿÿÿ
-S	java:S106a"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
-[
-java:S4684o"@Replace this persistent entity with a simple POJO or DTO object.(±×©ıÿÿÿÿ
-S	java:S106q"9Replace this use of System.out or System.err by a logger.(éööëşÿÿÿÿ
-V	java:S125p"<This block of commented-out lines of code should be removed.(ÏÉ æıÿÿÿÿ
-T	java:S106„"9Replace this use of System.out or System.err by a logger.(ÄõÛçûÿÿÿÿ
