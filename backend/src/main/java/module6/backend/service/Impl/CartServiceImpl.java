@@ -35,17 +35,18 @@ public class CartServiceImpl implements ICartService {
     private String codeBill = "";
 
     @Override
-    public void updateCartStatusAndCustomer(Long idCustomer, Long idCart , LocalDate date, String code) {
-        cartRepository.updateCartStatusAndCustomer(idCustomer,idCart, date,code);
+    public void updateCartStatusAndCustomer(Long idCustomer, Long idCart, LocalDate date, String code) {
+        cartRepository.updateCartStatusAndCustomer(idCustomer, idCart, date, code);
     }
 
     @Override
     public void sendEmail(Long[] cartId, Customer customer) {
-       List<CartMaterial> cartMaterials = cartMaterialService.findCartMaterialByFlagAndId(cartId);
-       for(CartMaterial cart : cartMaterials){
-          totalMoneyBill = totalMoneyBill + cart.getCartId().getCartTotalMoney();
-          codeBill = cart.getCartId().getCartCode();
-       }
+        totalMoneyBill = 0.0;
+        List<CartMaterial> cartMaterials = cartMaterialService.findCartMaterialByFlagAndId(cartId);
+        for (CartMaterial cart : cartMaterials) {
+            totalMoneyBill = totalMoneyBill + cart.getCartId().getCartTotalMoney();
+            codeBill = cart.getCartId().getCartCode();
+        }
         try {
             DataMail dataMail = new DataMail();
             dataMail.setTo(customer.getCustomerEmail());
@@ -56,23 +57,23 @@ public class CartServiceImpl implements ICartService {
             props.put("customer", customer);
             props.put("totalMoneyBill", totalMoneyBill);
             dataMail.setProps(props);
-            dataMailService.sendMail(dataMail,"Mail");
+            dataMailService.sendMail(dataMail, "Mail");
             System.out.println("Send Mail pass");
-        } catch (MessagingException exp){
+        } catch (MessagingException exp) {
             exp.printStackTrace();
         }
     }
 
     @Override
     public void updateCart(Integer quantity, Double money, Long id) {
-        cartRepository.updateCart(quantity,money,id);
+        cartRepository.updateCart(quantity, money, id);
     }
 
     @Override
     public Long getTypeId() {
         List<CustomerType> customerTypes = customerTypeRepository.findAll();
         Long customerTypes1 = 0L;
-        for (CustomerType customerType: customerTypes) {
+        for (CustomerType customerType : customerTypes) {
             customerTypes1 = customerType.getCustomerTypeId();
             break;
         }
@@ -86,13 +87,13 @@ public class CartServiceImpl implements ICartService {
         boolean check = true;
         do {
             int code = (int) Math.floor(((Math.random() * 89999) + 10000));
-            customerCode = "MKH-" + String.valueOf(code) ;
-            for (int i = 0 ; i < code1.length;i++) {
-                if (code1[i].equals(customerCode)){
+            customerCode = "MKH-" + String.valueOf(code);
+            for (int i = 0; i < code1.length; i++) {
+                if (code1[i].equals(customerCode)) {
                     check = false;
                     break;
                 } else {
-                    if (i == code1.length-1){
+                    if (i == code1.length - 1) {
                         check = true;
                     }
                 }
@@ -108,16 +109,16 @@ public class CartServiceImpl implements ICartService {
         boolean check = true;
         do {
             int code = (int) Math.floor(((Math.random() * 89999) + 10000));
-            cartrCode = "MHD-" + String.valueOf(code) ;
-            for (int i = 0 ; i < code1.length;i++) {
+            cartrCode = "MHD-" + String.valueOf(code);
+            for (int i = 0; i < code1.length; i++) {
                 if (code1[i] == null) {
                     continue;
                 }
-                if (code1[i].equals(cartrCode)){
+                if (code1[i].equals(cartrCode)) {
                     check = false;
                     break;
                 } else {
-                    if (i == code1.length-1){
+                    if (i == code1.length - 1) {
                         check = true;
                     }
                 }
@@ -133,6 +134,6 @@ public class CartServiceImpl implements ICartService {
 
     @Override
     public void updateQuantityMaterial(Integer quantity, Long id) {
-        cartRepository.updateQuantityMaterial(quantity,id);
+        cartRepository.updateQuantityMaterial(quantity, id);
     }
 }
