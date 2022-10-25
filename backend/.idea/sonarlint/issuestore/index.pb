@@ -11,8 +11,6 @@ n
 >src/main/java/module6/backend/controller/SalaryController.java,a\4\a462140ef873ec1a9c13f6ecf4fa2217f109aeb8
 m
 =src/main/java/module6/backend/entity/account/AccountRole.java,0\2\02b2f607bacd0cf379c2598622674ca64cde5c57
-i
-9src/main/java/module6/backend/entity/account/Account.java,c\8\c8aa42e1232abac7931b19f175c159390aef086f
 f
 6src/main/java/module6/backend/entity/account/Role.java,3\3\339a32ee3e40ecf61a3cbe11b8f2d571ecf5366a
 c
@@ -43,10 +41,6 @@ o
 ?src/main/java/module6/backend/entity/material/MaterialType.java,7\e\7e39ca8d2b96306487f1dd114055caf1a703975d
 `
 0src/main/java/module6/backend/entity/Import.java,6\2\6294910f276b9d7663d226a578263fdf4010ef03
-o
-?src/main/java/module6/backend/payload/request/LoginRequest.java,9\4\94bb68f4a161e02540ee7828501467d5bb119344
-o
-?src/main/java/module6/backend/payload/response/JwtResponse.java,1\0\10e8ba54f74d41314e152edbebdc2acbcb4faf19
 u
 Esrc/main/java/module6/backend/repository/ICartMaterialRepository.java,1\1\11df97332f0a9cbda00f2da500b135d93ab05c7b
 s

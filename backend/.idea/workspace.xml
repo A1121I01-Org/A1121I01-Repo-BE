@@ -33,7 +33,6 @@
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/StatisticController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/StatisticController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/StatisticServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/StatisticServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/controller/StatisticController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/controller/StatisticController.java" afterDir="false" />
@@ -41,7 +40,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/IStatisticService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/IStatisticService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/StatisticServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/StatisticServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,13 +63,6 @@
       </state>
     </system>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <favorite-branches>
       <branch-storage>
@@ -88,7 +79,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="account-manager" />
+        <entry key="$PROJECT_DIR$/.." value="NhiVP-account-create" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -102,22 +93,21 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-
-  <component name="PropertiesComponent">
-    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../A1121I01-Repo-BE/backend" />
-    <property name="show.unlinked.gradle.project.popup" value="true" />
-  </component>
-
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;3241ca6184e7e06d7e2313367e60913a&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RunManager">
     <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="backend.main" />
@@ -133,7 +123,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d28d4222-b528-4557-b815-dbb77afad4df" name="Default Changelist" comment="" />
+      <changelist id="86fcc753-8dfb-4e92-a586-d3dface347ee" name="Changes" comment="" />
       <created>1664978875648</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -153,47 +143,10 @@
       <workItem from="1666281024853" duration="6134000" />
       <workItem from="1666292106830" duration="1848000" />
       <workItem from="1666349522395" duration="1239000" />
-      <workItem from="1666350964270" duration="70000" />
-      <workItem from="1666351396014" duration="538000" />
-      <workItem from="1666352872338" duration="1021000" />
-      <workItem from="1666355302182" duration="152000" />
-      <workItem from="1666355644018" duration="2449000" />
-      <workItem from="1666376096851" duration="690000" />
-      <workItem from="1666409845349" duration="594000" />
-      <workItem from="1666454442986" duration="1309000" />
-      <workItem from="1666516167395" duration="1497000" />
-      <workItem from="1666589272506" duration="1545000" />
-      <workItem from="1666604510998" duration="1431000" />
+      <workItem from="1666625092763" duration="865000" />
+      <workItem from="1666698144440" duration="453000" />
+      <workItem from="1666706962232" duration="528000" />
     </task>
-    <task id="LOCAL-00001" summary="6:16 21/10 be">
-      <created>1666350998197</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1666350998197</updated>
-    </task>
-    <task id="LOCAL-00002" summary="merge import 24/10">
-      <created>1666590624815</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1666590624815</updated>
-    </task>
-    <task id="LOCAL-00003" summary="merge import 24/10">
-      <created>1666590633195</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1666590633195</updated>
-    </task>
-    <task id="LOCAL-00004" summary="merge import 24/10">
-      <created>1666590640357</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1666590640357</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,11 +162,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="6:16 21/10 be" />
-    <MESSAGE value="merge import 24/10" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge import 24/10" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
