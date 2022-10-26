@@ -20,261 +20,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d28d4222-b528-4557-b815-dbb77afad4df" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gradle/6.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.1/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.8/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.8/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/md5-checksums.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.4/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.4/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/checksums/checksums.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/dependencies-accessors/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/7.5/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/configuration-cache/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries-with-intellij-classes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/1/31f432d75322519c444cf27ca34e3e868343d1d6" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/3/43f4ea0eefcb0e42d3b96f13e50b02474a0d9632" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/2/528b8985928da5bd47771e82319d4d90c3a14874" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5feb8900254c7e6adf6942c8a5a8a36d480e3adc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/c/9c36abef4fbdf75e71d8fe4bfe7d6a6a0d36e473" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8369056149159c5454f3177822ac754bcdc3c70" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/b/eb0ace6e83288c1e434ebcf0bdeac82522cd94c8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/BackendApplication.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/common/ApplicationNoSecurity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/config/CorsConfig$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/config/CorsConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/config/ThymeleafTemplateConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/config/WebSecurityConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/AccountController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/CartController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/CustomerController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/EmployeeController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/ImportController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/LoginController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/MaterialController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/SalaryController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/StatisticController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/dto/CustomerStatisticDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/ClassDTO/CustomerStatisticDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/ClassDTO/EmployeeAccount.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/ClassDTO/MaterialStatisticDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/ClassDTO/Password.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/Import.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/account/Account.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/account/AccountRole.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/account/Role.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/cart/Cart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/cart/CartMaterial.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/cart/CartStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/cart/DataMail.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/customer/Customer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/customer/CustomerType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/employee/Employee.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/employee/Position.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/employee/Salary.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/material/Material.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/material/MaterialType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/payload/request/LoginRequest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/payload/response/JwtResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/IAccountRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/IAccountRoleRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/ICartMaterialRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/ICartRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/ICartStatusRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/ICustomerRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/ICustomerTypeRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/IEmployeeRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/IImportRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/IMaterialRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/IMaterialTypeRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/IPositionRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/IRoleRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/ISalaryRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/security/jwt/JwtAuthenticationEntryPoint.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/security/jwt/JwtRequestFilter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/security/jwt/JwtServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/security/utils/JwtUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/IAccountRoleService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/IAccountService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/ICartMaterialService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/ICartService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/ICartStatusService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/ICustomerService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/ICustomerTypeService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/IEmployeeService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/IImportService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/IMaterialService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/IMaterialTypeService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/IPositionService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/IRoleService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/ISalaryService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/IStatisticService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/AccountRoleServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/AccountServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/CartMaterialServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/CartServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/CartStatusServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/CustomerServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/CustomerTypeServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/DataMailServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/EmployeeServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/ImportServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/MaterialServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/MaterialTypeServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/PDFCartGeneratorServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/PositionServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/RoleServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/SalaryServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/StatisticServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/pdf/PDFGeneratorImportServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/pdf/PDFStatisticCustomerImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/pdf/PDFStatisticFinancialServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/pdf/PDFStatisticFinancialServiceImpl2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/pdf/PDFStatisticMaterialsImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/util/cartValidator/EmailCustom.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/util/cartValidator/EmailValidator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/util/cartValidator/PhoneCustom.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/util/cartValidator/PhoneValidator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/resources/main/templates/Mail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/common/ApplicationNoSecurity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/config/CorsConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/config/ThymeleafTemplateConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/config/WebSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/dto/CustomerStatisticDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/entity/ClassDTO/CustomerStatisticDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/entity/ClassDTO/EmployeeAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/entity/ClassDTO/MaterialStatisticDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/entity/ClassDTO/Password.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/entity/cart/DataMail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/payload/request/LoginRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/payload/response/JwtResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/security/jwt/JwtAuthenticationEntryPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/security/jwt/JwtRequestFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/security/jwt/JwtServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/security/utils/JwtUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/DataMailServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/PDFCartGeneratorServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/pdf/PDFGeneratorImportServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/pdf/PDFStatisticCustomerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/pdf/PDFStatisticFinancialServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/pdf/PDFStatisticFinancialServiceImpl2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/pdf/PDFStatisticMaterialsImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/util/cartValidator/EmailCustom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/util/cartValidator/EmailValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/util/cartValidator/PhoneCustom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module6/backend/util/cartValidator/PhoneValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Mail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/BackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/BackendApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/controller/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/3/936941e7e2029f0a347b39824da7966df28fe194" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/c/9c36abef4fbdf75e71d8fe4bfe7d6a6a0d36e473" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8369056149159c5454f3177822ac754bcdc3c70" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/CustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/controller/CustomerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/account/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/entity/account/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/ICustomerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/repository/ICustomerRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/AccountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/AccountServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/CustomerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/CustomerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/RoleServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module6/backend/service/Impl/RoleServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/controller/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/controller/ImportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/controller/ImportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/controller/MaterialController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/controller/MaterialController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/controller/SalaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/controller/SalaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/controller/StatisticController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/controller/StatisticController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/entity/Import.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/entity/Import.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/entity/account/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/entity/account/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/entity/account/AccountRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/entity/account/AccountRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/entity/cart/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/entity/cart/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/entity/cart/CartMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/entity/cart/CartMaterial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/entity/customer/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/entity/customer/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/entity/employee/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/entity/employee/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/entity/employee/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/entity/employee/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/entity/material/MaterialType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/entity/material/MaterialType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IAccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IAccountRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/repository/ICartMaterialRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/repository/ICartMaterialRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/repository/ICartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/repository/ICartRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/repository/ICartStatusRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/repository/ICartStatusRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/repository/ICustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/repository/ICustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IEmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IEmployeeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IImportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IImportRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IMaterialRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IMaterialRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IMaterialTypeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IMaterialTypeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IPositionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IPositionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IRoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/repository/IRoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/repository/ISalaryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/repository/ISalaryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/IAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/IAccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/ICartMaterialService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/ICartMaterialService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/ICartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/ICartService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/ICustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/IEmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/IEmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/IImportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/IImportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/IMaterialService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/IMaterialService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/IMaterialTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/IMaterialTypeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/IPositionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/IPositionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/IRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/IRoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/IStatisticService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/IStatisticService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/AccountServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/CartMaterialServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/CartMaterialServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/CartServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/CartStatusServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/CartStatusServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/CustomerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/EmployeeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/ImportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/ImportServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/MaterialServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/MaterialServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/MaterialTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/MaterialTypeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/PositionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/PositionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/RoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/StatisticServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module6/backend/service/Impl/StatisticServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/module6/backend/BackendApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/module6/backend/BackendApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -337,7 +109,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
@@ -385,6 +160,8 @@
       <workItem from="1666454442986" duration="1309000" />
       <workItem from="1666516167395" duration="1497000" />
       <workItem from="1666589272506" duration="520000" />
+      <workItem from="1666607855077" duration="5057000" />
+      <workItem from="1666754598841" duration="6299000" />
     </task>
     <task id="LOCAL-00001" summary="6:16 21/10 be">
       <created>1666350998197</created>
@@ -416,9 +193,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="6:16 21/10 be" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="574" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1665127307577">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="510" y="105" key="#com.intellij.ide.util.MemberChooser" timestamp="1666775525265">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="510" y="105" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1666775525265" />
     <state x="574" y="119" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1665127307577" />
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1665933241849">
       <screen x="0" y="0" width="1536" height="824" />
@@ -438,51 +216,59 @@
       <screen x="0" y="0" width="1475" height="789" />
     </state>
     <state x="572" y="297" key="Github.CreateGistDialog/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666290908739" />
-    <state width="1431" height="513" key="GridCell.Tab.0.bottom" timestamp="1666377448923">
-      <screen x="0" y="0" width="1475" height="789" />
+    <state width="1323" height="2" key="GridCell.Tab.0.bottom" timestamp="1666776097407">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1323" height="2" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1666776097407" />
     <state width="1431" height="513" key="GridCell.Tab.0.bottom/0.0.1475.789@0.0.1475.789" timestamp="1666361987132" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1665933625107" />
     <state width="1431" height="513" key="GridCell.Tab.0.bottom/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666377448923" />
-    <state width="1431" height="513" key="GridCell.Tab.0.center" timestamp="1666377448923">
-      <screen x="0" y="0" width="1475" height="789" />
+    <state width="1323" height="2" key="GridCell.Tab.0.center" timestamp="1666776097407">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1323" height="2" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1666776097407" />
     <state width="1431" height="513" key="GridCell.Tab.0.center/0.0.1475.789@0.0.1475.789" timestamp="1666361987131" />
     <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1665933625107" />
     <state width="1431" height="513" key="GridCell.Tab.0.center/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666377448923" />
-    <state width="1431" height="513" key="GridCell.Tab.0.left" timestamp="1666377448923">
-      <screen x="0" y="0" width="1475" height="789" />
+    <state width="1323" height="2" key="GridCell.Tab.0.left" timestamp="1666776097407">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1323" height="2" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1666776097407" />
     <state width="1431" height="513" key="GridCell.Tab.0.left/0.0.1475.789@0.0.1475.789" timestamp="1666361987131" />
     <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1665933625106" />
     <state width="1431" height="513" key="GridCell.Tab.0.left/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666377448923" />
-    <state width="1431" height="513" key="GridCell.Tab.0.right" timestamp="1666377448923">
-      <screen x="0" y="0" width="1475" height="789" />
+    <state width="1323" height="2" key="GridCell.Tab.0.right" timestamp="1666776097407">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1323" height="2" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1666776097407" />
     <state width="1431" height="513" key="GridCell.Tab.0.right/0.0.1475.789@0.0.1475.789" timestamp="1666361987132" />
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1665933625107" />
     <state width="1431" height="513" key="GridCell.Tab.0.right/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666377448923" />
-    <state width="1431" height="513" key="GridCell.Tab.1.bottom" timestamp="1666377448923">
-      <screen x="0" y="0" width="1475" height="789" />
+    <state width="1323" height="2" key="GridCell.Tab.1.bottom" timestamp="1666776097407">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1323" height="2" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1666776097407" />
     <state width="1431" height="513" key="GridCell.Tab.1.bottom/0.0.1475.789@0.0.1475.789" timestamp="1666361987132" />
     <state width="1493" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1665933625108" />
     <state width="1431" height="513" key="GridCell.Tab.1.bottom/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666377448923" />
-    <state width="1431" height="513" key="GridCell.Tab.1.center" timestamp="1666377448923">
-      <screen x="0" y="0" width="1475" height="789" />
+    <state width="1323" height="2" key="GridCell.Tab.1.center" timestamp="1666776097407">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1323" height="2" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1666776097407" />
     <state width="1431" height="513" key="GridCell.Tab.1.center/0.0.1475.789@0.0.1475.789" timestamp="1666361987132" />
     <state width="1493" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1665933625108" />
     <state width="1431" height="513" key="GridCell.Tab.1.center/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666377448923" />
-    <state width="1431" height="513" key="GridCell.Tab.1.left" timestamp="1666377448923">
-      <screen x="0" y="0" width="1475" height="789" />
+    <state width="1323" height="2" key="GridCell.Tab.1.left" timestamp="1666776097407">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1323" height="2" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1666776097407" />
     <state width="1431" height="513" key="GridCell.Tab.1.left/0.0.1475.789@0.0.1475.789" timestamp="1666361987132" />
     <state width="1493" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1665933625107" />
     <state width="1431" height="513" key="GridCell.Tab.1.left/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666377448923" />
-    <state width="1431" height="513" key="GridCell.Tab.1.right" timestamp="1666377448923">
-      <screen x="0" y="0" width="1475" height="789" />
+    <state width="1323" height="2" key="GridCell.Tab.1.right" timestamp="1666776097407">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1323" height="2" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1666776097407" />
     <state width="1431" height="513" key="GridCell.Tab.1.right/0.0.1475.789@0.0.1475.789" timestamp="1666361987132" />
     <state width="1493" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1665933625108" />
     <state width="1431" height="513" key="GridCell.Tab.1.right/1920.-6.1475.789/0.0.1475.789@0.0.1475.789" timestamp="1666377448923" />

@@ -1,6 +1,7 @@
 package module6.backend.controller;
 
 
+import module6.backend.entity.Import;
 import module6.backend.entity.customer.Customer;
 import module6.backend.entity.customer.CustomerType;
 import module6.backend.repository.ICartRepository;
@@ -11,6 +12,9 @@ import module6.backend.service.Impl.CartServiceImpl;
 import module6.backend.service.Impl.CustomerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -58,13 +62,22 @@ public class CustomerController {
 
     /// HieuNT get list with pagination
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
-    @GetMapping("/customer-pagination/{index}")
-    public ResponseEntity<List<Customer>> getAllCustomerWithPagination(@PathVariable("index") int index) {
-        List<Customer> customers = customerService.getAllCustomerWithPagination(index);
-        if (customers.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//    @GetMapping("/customer-pagination/{index}")
+    @GetMapping("/customer-list")
+//    public ResponseEntity<List<Customer>> getAllCustomerWithPagination(@PathVariable("index") int index) {
+//        List<Customer> customers = customerService.getAllCustomerWithPagination(index);
+//        if (customers.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<>(customers, HttpStatus.OK);
+//    }
+    public ResponseEntity<Page<Customer>> findAllCustomer(@PageableDefault(value = 5) Pageable pageable) {
+        Page<Customer> customerPage = customerService.findAllCustomer1(pageable);
+        if (customerPage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(customerPage, HttpStatus.OK);
         }
-        return new ResponseEntity<>(customers, HttpStatus.OK);
     }
 
 
@@ -84,13 +97,30 @@ public class CustomerController {
     //   HieuNT search customer by name and phone
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping(value = "/customer-search")
-    public ResponseEntity<List<Customer>> searchCustomerByNameAndPhone(@RequestParam("name") String name, @RequestParam("phone") String phone) {
-
-        List<Customer> isCustomerExist = customerService.searchCustomerByNameAndPhone(name,phone);
-        if (isCustomerExist != null) {
-            return new ResponseEntity<>(isCustomerExist, HttpStatus.OK);
+//    public ResponseEntity<List<Customer>> searchCustomerByNameAndPhone(@RequestParam("name") String name, @RequestParam("phone") String phone) {
+//
+//        List<Customer> isCustomerExist = customerService.searchCustomerByNameAndPhone(name,phone);
+//        if (isCustomerExist != null) {
+//            return new ResponseEntity<>(isCustomerExist, HttpStatus.OK);
+//        }
+//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//    }
+    public ResponseEntity<Page<Customer>> searchCustomer(
+            @PageableDefault(value = 5) Pageable pageable,
+            @RequestParam Optional<String> name,
+            @RequestParam Optional<String> phone) {
+        Page<Customer> customerPage;
+        if ((name.isPresent() && !name.get().isEmpty()) && (phone.isPresent() && !phone.get().isEmpty())) {
+            customerPage = customerService.searchCustomer(name.get(), phone.get(), pageable);
+        } else if ((name.isPresent() && !name.get().isEmpty())
+                && (phone.isPresent() && !phone.get().isEmpty())) {
+            customerPage = customerService.searchCustomer(name.get(),phone.get(), pageable);
+        } else if (name.isPresent() && !name.get().isEmpty()) {
+            customerPage = customerService.searchCustomerName(name.get(), pageable);
+        } else {
+            customerPage = customerService.findAllCustomer1(pageable);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(customerPage, HttpStatus.OK);
     }
 
 
