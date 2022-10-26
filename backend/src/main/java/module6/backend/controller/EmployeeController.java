@@ -103,12 +103,12 @@ public class EmployeeController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping("/getEmployeeByAccount/{accountId}")
     public ResponseEntity<Employee> findEployeeByAccountId(@PathVariable("accountId") Long accountId) {
-       Optional<Employee> employee = this.employeeService.findEmployeeByAccountId(accountId);
-       if(employee.isPresent()) {
-           return new ResponseEntity<>(employee.get(), HttpStatus.OK);
-       }else {
-           return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-       }
+        Optional<Employee> employee = this.employeeService.findEmployeeByAccountId(accountId);
+        if (employee.isPresent()) {
+            return new ResponseEntity<>(employee.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     //    AnDVH cập nhật nhân viên
@@ -123,7 +123,7 @@ public class EmployeeController {
                 errors.put(fieldName, errorMessage);
             });
             System.out.println(errors);
-            return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
 
         Optional<Employee> foundEmployee = employeeService.findEmployeeById(id);

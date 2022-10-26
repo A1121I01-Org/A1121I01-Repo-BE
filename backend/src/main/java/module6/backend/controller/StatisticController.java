@@ -4,12 +4,16 @@ import module6.backend.repository.ICartRepository;
 import module6.backend.repository.ICustomerRepository;
 import module6.backend.repository.IImportRepository;
 import module6.backend.repository.IMaterialRepository;
-import module6.backend.service.Impl.pdf.PDFStatisticFinancialServiceImpl;
 import module6.backend.service.IStatisticService;
-import module6.backend.service.Impl.pdf.PDFStatisticMaterialsImpl;
+import module6.backend.service.Impl.PDFStatisticMaterialsImpl;
+import module6.backend.service.Impl.pdf.PDFStatisticCustomerImpl;
+import module6.backend.service.Impl.pdf.PDFStatisticFinancialServiceImpl;
 import module6.backend.service.Impl.pdf.PDFStatisticFinancialServiceImpl2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -39,13 +43,17 @@ public class StatisticController {
 
     @Autowired
     private PDFStatisticFinancialServiceImpl2 pdfStatisticFinancialServiceImpl2;
-    @Autowired
-    private IImportRepository iImportRepository;
-    @Autowired
-    private ICartRepository cartRepository;
+//    @Autowired
+//    private IImportRepository iImportRepository;
+//
+//    @Autowired
+//    private ICartRepository cartRepository;
+//
+//    @Autowired
+//    private PDFStatisticFinancialServiceImpl pdfStatisticFinancialService;
 
     @Autowired
-    private PDFStatisticFinancialServiceImpl pdfStatisticFinancialService;
+    private PDFStatisticCustomerImpl pdfStatisticCustomer;
 
     //HoangTND - Statistic Material
     //List material
@@ -55,28 +63,38 @@ public class StatisticController {
         List<String> data = statisticService.findAllStatisticMaterial();
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
+
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/list/material1")
     public ResponseEntity<String[]> data1() {
         String[] data = materialRepository.findAllStatisticMaterial1();
         return new ResponseEntity<String[]>(data, HttpStatus.OK);
     }
+
     //Search material
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/search/material")
-    public ResponseEntity<List<String>>search(@RequestParam String fromDate, @RequestParam String toDate){
-        List<String> data = statisticService.searchStatisticMaterial(fromDate,toDate);
+    public ResponseEntity<List<String>> search(@RequestParam String fromDate, @RequestParam String toDate) {
+        List<String> data = statisticService.searchStatisticMaterial(fromDate, toDate);
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
+
     //Print list material
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/pdf")
-    public ResponseEntity<InputStreamResource> generatePDF() throws IOException {
+    public ResponseEntity<InputStreamResource> generatePDFHoang() throws IOException {
         String[] data = materialRepository.findAllStatisticMaterial1();
         ByteArrayInputStream bais = pdfStatisticMaterials.export(data);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition","inline;filename=cart.pdf");
+        headers.add("Content-Disposition", "inline;filename=cart.pdf");
         return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bais));
+    }
+
+    //ChartStatisticMaterial
+    @GetMapping("/chart")
+    public ResponseEntity<String[]>chart(){
+        String[] data = statisticService.chartStatisticMaterial();
+        return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
     // KimPBH - Thong ke tai chinh
@@ -93,18 +111,21 @@ public class StatisticController {
         Integer tra = statisticService.displayTra();
         return new ResponseEntity<>(tra, HttpStatus.OK);
     }
+
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/banhang")
     public ResponseEntity<Integer> banHang() {
         Integer ban = statisticService.displayBan();
         return new ResponseEntity<>(ban, HttpStatus.OK);
     }
+
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/nhaphang")
     public ResponseEntity<Integer> nhapHang() {
         Integer nhap = statisticService.displayNhap();
         return new ResponseEntity<>(nhap, HttpStatus.OK);
     }
+
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/search")
     public ResponseEntity<Integer[]> huyHang(@RequestParam String month, @RequestParam String year) {
@@ -112,11 +133,11 @@ public class StatisticController {
             month = "%" + month + "%";
         }
         year = "%" + year + "%";
-        Integer huy = statisticService.searchHuy(month,year);
+        Integer huy = statisticService.searchHuy(month, year);
         if (huy == null) {
             huy = 0;
         }
-        Integer tra = statisticService.searchTra(month,year);
+        Integer tra = statisticService.searchTra(month, year);
         if (tra == null) {
             tra = 0;
         }
@@ -135,13 +156,14 @@ public class StatisticController {
         search[3] = tra;
         return new ResponseEntity<>(search, HttpStatus.OK);
     }
+
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @PostMapping("/pdf2")
-    public ResponseEntity<InputStreamResource> generatePDF(@RequestBody String[] data) throws IOException {
+    public ResponseEntity<InputStreamResource> generatePDFKim(@RequestBody String[] data) throws IOException {
         System.out.println(1);
         ByteArrayInputStream bais = pdfStatisticFinancialServiceImpl2.export(data);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition","inline;filename=cart.pdf");
+        headers.add("Content-Disposition", "inline;filename=cart.pdf");
         return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bais));
     }
 //    @GetMapping("/luongNV")
@@ -159,12 +181,28 @@ public class StatisticController {
 //        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bais));
 //    }
 
+
     // HuyenNTD - Thong ke khach hang tiem nang
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/list/customer")
-    public ResponseEntity<List<String>> getAll() {
-        List<String> list = statisticService.findAllStatisticCustomer();
+    public ResponseEntity<Page<String>> getAll(@PageableDefault(value = 5) Pageable pageable) {
+        Page<String> list = statisticService.findAllStatisticCustomer(pageable);
         return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+//    @GetMapping("/list/customers")
+//    public ResponseEntity<String[]> dataHuyen() {
+//        String[] data = customerRepository.findAllPotentialCustomer();
+//        return new ResponseEntity<String[]>(data, HttpStatus.OK);
+//    }
+
+    @GetMapping("/pdf-huyen")
+    public ResponseEntity<InputStreamResource> generatePDFHuyen() throws IOException {
+        String[] data = customerRepository.findAllPotentialCustomer();
+        ByteArrayInputStream bais = pdfStatisticCustomer.export(data);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline;filename=cart.pdf");
+        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bais));
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
@@ -176,9 +214,9 @@ public class StatisticController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/search/customer")
-    public ResponseEntity<List<String>> searchPotentialCustomers(@RequestParam String fromMonth, @RequestParam String toMonth,
-                                                                 @RequestParam String year) {
-        List<String> list = statisticService.searchForPotentialCustomers(fromMonth, toMonth, year);
+    public ResponseEntity<String[]> searchPotentialCustomers(@RequestParam String fromMonth, @RequestParam String toMonth,
+                                                             @RequestParam String year) {
+        String[] list = statisticService.searchForPotentialCustomers(fromMonth, toMonth, year);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 }

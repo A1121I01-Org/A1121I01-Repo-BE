@@ -60,7 +60,6 @@ public class CartController {
     private ICartRepository cartRepository;
 
     /** Get list cart by status id - SyNV. */
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/list")
     public ResponseEntity<List<CartMaterial>> getCartByStatus() {
         try {
@@ -74,7 +73,6 @@ public class CartController {
         }
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/list2")
     public ResponseEntity<List<Material>> get() {
         try {
@@ -86,7 +84,6 @@ public class CartController {
     }
 
     /** Delete cart by cart id - SyNV. */
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteCart(@PathVariable("id") Long cartId) {
         try {
@@ -98,7 +95,6 @@ public class CartController {
     }
 
     /** Delete cart by list cart id - SyNV. */
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @PostMapping("/delete")
     public ResponseEntity<?> deleteCart2(@RequestBody Long[] cartId) {
         try {
@@ -110,7 +106,6 @@ public class CartController {
     }
 
     /**Check cart - SyNV. */
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @PostMapping("/checkCart")
     public ResponseEntity<List<CartMaterial>> checkCart(@RequestBody Long[] cartId) {
         try {
@@ -122,7 +117,6 @@ public class CartController {
     }
 
     /** Update cart status by cart id , quantity , total money - SyNV. */
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/update")
     public ResponseEntity<?> updateCart1(@RequestParam("quantity") Integer quantity,
                                          @RequestParam("money") Double money,@RequestParam("id") Long id) {
@@ -136,7 +130,6 @@ public class CartController {
     }
 
     /** Export file PDF for bill payment - SyNV. */
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @PostMapping("/pdf")
     public ResponseEntity<InputStreamResource> generatePDF(@RequestBody Long[] cartId) throws IOException {
         List<CartMaterial> carts = cartMaterialService.findCartMaterialByFlagAndId(cartId);
@@ -149,7 +142,6 @@ public class CartController {
     }
 
     /** Add customer and insert customer to cart - SyNV. */
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @PostMapping("/insert/{cartId}")
     public ResponseEntity<?> insertMaterialToCart(@Valid @RequestBody Customer customer, @PathVariable("cartId") Long[] cartId) {
         try {
@@ -187,7 +179,6 @@ public class CartController {
     }
 
     /** Add material to cart - SyNV. */
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @PostMapping("/addMaterialCart")
     public ResponseEntity<?> insertMaterialCart(@RequestBody Material material) {
         try {

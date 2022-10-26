@@ -3,6 +3,7 @@ package module6.backend.service;
 import module6.backend.entity.employee.Employee;
 import module6.backend.entity.employee.Position;
 import org.springframework.validation.BindingResult;
+import module6.backend.entity.employee.Position;
 
 import java.time.LocalDate;
 import java.util.List;
