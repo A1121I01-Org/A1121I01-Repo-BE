@@ -1,0 +1,14 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(“ร้ÿÿÿÿÿ
+R
+java:S3655W"7Call "Optional#isPresent()" before accessing the value.(ใดูþÿÿÿÿ
+R
+java:S3655b"7Call "Optional#isPresent()" before accessing the value.(ใดูþÿÿÿÿ
+R
+java:S1854:"<Remove this useless assignment to local variable "sellRole".(ท๘’
+]
+java:S18549"BRemove this useless assignment to local variable "accountantRole".(อ๊ฉÝ๙ÿÿÿÿ
+N
+java:S14819"3Remove this unused "accountantRole" local variable.(อ๊ฉÝ๙ÿÿÿÿ
+C
+java:S1481:"-Remove this unused "sellRole" local variable.(ท๘’
