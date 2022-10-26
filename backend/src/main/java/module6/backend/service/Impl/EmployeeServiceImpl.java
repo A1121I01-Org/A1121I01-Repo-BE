@@ -100,6 +100,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
+    public Optional<Employee> findById(Long id) {
+        return employeeRepository.findEmployeeById(id);
+    }
+
+    @Override
     public Optional<Employee> findEmployeeById(Long id) {
         return employeeRepository.findEmployeeById(id);
     }
