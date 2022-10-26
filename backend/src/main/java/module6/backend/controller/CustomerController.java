@@ -137,4 +137,16 @@ public class CustomerController {
         customerService.updateCustomer(customer.getCustomerName(), customer.getCustomerCode(), customer.getCustomerAvatar(), customer.getCustomerAddress(), customer.getCustomerPhone(), customer.getCustomerEmail(), customer.getCustomerTypeId().getCustomerTypeId(), customer.getCustomerId());
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
+
+    //Duy code list customer string kiểm tra code
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
+    @GetMapping("/customer-list-string")
+    public ResponseEntity<List<String>> findAllImportCustomerString() {
+        List<String> importCustomerList = customerService.findAllCustomerImportString();
+        if (importCustomerList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(importCustomerList, HttpStatus.OK);
+        }
+    }
 }

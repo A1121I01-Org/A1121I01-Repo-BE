@@ -21,6 +21,8 @@ public interface ICustomerService {
 
     Optional<Customer> findCustomerById(Long id);
 
+    List<String> findAllCustomerImportString();
+
     void updateCustomer(String name, String code, String avatar, String address, String phone, String email, Long typeId, Long id);
 
     void createCustomer(String name, String code, String avt, String address, String phone, String email, Long customerType);
