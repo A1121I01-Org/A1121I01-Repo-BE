@@ -8,6 +8,8 @@ import module6.backend.entity.material.MaterialType;
 import module6.backend.repository.*;
 import module6.backend.service.IImportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,15 +34,10 @@ public class ImportServiceImpl implements IImportService {
 
     // Thắng code list import
     @Override
-    public List<Import> findAllImport(Integer page) {
+    public Page<Import> findAllImport(Pageable page) {
         return importRepository.findAllImport(page);
     }
 
-    // Thắng code list import chưa phân trang
-    @Override
-    public List<Import> findAllImportNotPagination() {
-        return importRepository.findAllImportNotPagination();
-    }
 
     @Override
     public List<String> findAllImportString() {
@@ -65,7 +62,7 @@ public class ImportServiceImpl implements IImportService {
         Integer quantityMaterial = importAfterUpdate.getImportMaterialId().getMaterialQuantity()
                 - importQuantityBeforeUpdate
                 + importAfterUpdate.getImportQuantity();
-        if (quantityMaterial > 0) {
+        if (quantityMaterial >= 0) {
             materialRepository.updateMaterialImport(importAfterUpdate.getImportMaterialId().getMaterialCode(), importAfterUpdate.getImportMaterialId().getMaterialName(), importAfterUpdate.getImportMaterialId().getMaterialUnit(), quantityMaterial, importAfterUpdate.getImportMaterialId().getMaterialId());
             importRepository.updateImport(importAfterUpdate.getImportCode(), importAfterUpdate.getImportStartDate(), importAfterUpdate.getImportQuantity(), importAfterUpdate.getImportAccountId().getAccountId(), importAfterUpdate.getImportMaterialId().getMaterialId(), importAfterUpdate.getImportId());
         }
@@ -77,17 +74,17 @@ public class ImportServiceImpl implements IImportService {
         Integer quantity = importCreate.getImportMaterialId().getMaterialQuantity() + importCreate.getImportQuantity();
 
         if (customerRepository.findByCustomerCode(customerCreate.getCustomerCode()) == null) {
-            customerRepository.createCustomerImport(customerCreate.getCustomerName(), customerCreate.getCustomerCode(), customerCreate.getCustomerAddress(), customerCreate.getCustomerPhone(), customerCreate.getCustomerEmail(), customerCreate.getCustomerTypeId().getCustomerTypeId());
+            customerRepository.createCustomerImport(customerCreate.getCustomerName(), customerCreate.getCustomerCode(), customerCreate.getCustomerAddress(), customerCreate.getCustomerPhone(), customerCreate.getCustomerEmail(), customerCreate.getCustomerTypeId().getCustomerTypeId(), customerCreate.getCustomerAvatar());
             Customer customer = customerRepository.findByCustomerCode(customerCreate.getCustomerCode());
 
             materialCreate.setMaterialCustomerId(customer);
 
-            materialRepository.createMaterialImport(materialCreate.getMaterialCode(), materialCreate.getMaterialName(), quantity, materialCreate.getMaterialPrice(), materialCreate.getMaterialExpiridate(), materialCreate.getMaterialUnit(), materialCreate.getMaterialTypeId().getMaterialTypeId(), materialCreate.getMaterialCustomerId().getCustomerId());
+            materialRepository.createMaterialImport(materialCreate.getMaterialCode(), materialCreate.getMaterialName(), quantity, materialCreate.getMaterialPrice(), materialCreate.getMaterialExpiridate(), materialCreate.getMaterialUnit(), materialCreate.getMaterialTypeId().getMaterialTypeId(), materialCreate.getMaterialCustomerId().getCustomerId(), materialCreate.getMaterialImage(), materialCreate.getMaterialDescribe());
             Material material = materialRepository.findByMaterialCode(materialCreate.getMaterialCode());
             importRepository.createImport(importCreate.getImportCode(), importCreate.getImportStartDate(), importCreate.getImportQuantity(), importCreate.getImportAccountId().getAccountId(), material.getMaterialId());
 
         } else if (materialRepository.findByMaterialCode(materialCreate.getMaterialCode()) == null) {
-            materialRepository.createMaterialImport(materialCreate.getMaterialCode(), materialCreate.getMaterialName(), quantity, materialCreate.getMaterialPrice(), materialCreate.getMaterialExpiridate(), materialCreate.getMaterialUnit(), materialCreate.getMaterialTypeId().getMaterialTypeId(), customerCreate.getCustomerId());
+            materialRepository.createMaterialImport(materialCreate.getMaterialCode(), materialCreate.getMaterialName(), quantity, materialCreate.getMaterialPrice(), materialCreate.getMaterialExpiridate(), materialCreate.getMaterialUnit(), materialCreate.getMaterialTypeId().getMaterialTypeId(), customerCreate.getCustomerId(), materialCreate.getMaterialImage(), materialCreate.getMaterialDescribe());
             Material material = materialRepository.findByMaterialCode(materialCreate.getMaterialCode());
             importRepository.createImport(importCreate.getImportCode(), importCreate.getImportStartDate(), importCreate.getImportQuantity(), importCreate.getImportAccountId().getAccountId(), material.getMaterialId());
         } else {
@@ -132,9 +129,31 @@ public class ImportServiceImpl implements IImportService {
         return customerRepository.findAllCustomerImportString();
     }
 
+    @Override
+    public List<String> findAllCustomerPhoneImportString() {
+        return customerRepository.findAllCustomerPhoneImportString();
+    }
+
+    @Override
+    public List<String> findAllCustomerEmailImportString() {
+        return customerRepository.findAllCustomerEmailImportString();
+    }
+
     // Thắng code list material type
     @Override
     public List<MaterialType> findAllMaterialTypeImport() {
         return materialTypeRepository.findAllMaterialTypeImport();
+    }
+
+    // Thắng code search import có theo ngày
+    @Override
+    public Page<Import> searchImport(String code, String startDate, String endDate, Pageable page) {
+        return importRepository.searchImport("%" + code + "%", startDate, endDate, page);
+    }
+
+    // thắng code
+    @Override
+    public Page<Import> searchImportCode(String code, Pageable page) {
+        return importRepository.searchImportCode("%" + code + "%", page);
     }
 }

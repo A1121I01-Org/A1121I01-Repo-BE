@@ -88,7 +88,10 @@ public class MaterialController {
     public ResponseEntity<Material> saveMaterial(@RequestBody Material material) {
         try {
             System.out.println(material.getMaterialCode());
-            materialService.saveMaterial(material.getMaterialCode(), material.getMaterialName(), material.getMaterialQuantity(), material.getMaterialPrice(), material.getMaterialExpiridate(), material.getMaterialUnit(), material.getMaterialTypeId().getMaterialTypeId(), material.getMaterialCustomerId().getCustomerId());
+            materialService.saveMaterial(material.getMaterialCode(), material.getMaterialName()
+                    , material.getMaterialPrice(), material.getMaterialQuantity(), material.getMaterialExpiridate(),
+                    material.getMaterialImage(), material.getMaterialDescribe(), material.getMaterialUnit(),
+                    material.getMaterialTypeId().getMaterialTypeId(), material.getMaterialCustomerId().getCustomerId());
             return new ResponseEntity<>(material, HttpStatus.CREATED);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -108,7 +111,10 @@ public class MaterialController {
     public ResponseEntity<Material> findMaterialById(@RequestBody Material material) {
 //       Material material = materialService.findById(id);
         System.out.println(material.getMaterialCode());
-        materialService.updateMaterial(material.getMaterialCode(), material.getMaterialName(), material.getMaterialPrice(), material.getMaterialQuantity(), material.getMaterialExpiridate(), material.getMaterialUnit(), material.getMaterialImage(), material.getMaterialDescribe(), material.getMaterialTypeId().getMaterialTypeId(), material.getMaterialCustomerId().getCustomerId(), material.getMaterialId());
+        materialService.updateMaterial(material.getMaterialCode(), material.getMaterialName(), material.getMaterialPrice(),
+                material.getMaterialQuantity(), material.getMaterialExpiridate(),
+                material.getMaterialImage(), material.getMaterialDescribe(), material.getMaterialUnit(), material.getMaterialTypeId().getMaterialTypeId(),
+                material.getMaterialCustomerId().getCustomerId(), material.getMaterialId());
         return new ResponseEntity<>(material, HttpStatus.OK);
     }
 
@@ -130,8 +136,8 @@ public class MaterialController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping
-    public ResponseEntity<Page<Material>> findAllMaterial(@PageableDefault(size = 4) Pageable pageable,
-                                                          @RequestParam(defaultValue = "") String search){
+    public ResponseEntity<Page<Material>> findAllMaterial(@PageableDefault(size = 4) Pageable pageable, @RequestParam(defaultValue = "") String search){
+
         Page<Material> materialList = materialService.findAll(pageable, search);
         if (materialList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

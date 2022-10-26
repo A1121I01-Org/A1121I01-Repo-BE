@@ -23,11 +23,15 @@ public interface IMaterialService {
 
     Page<Material> getAllMaterial(Integer page, Integer size);
 
-    void saveMaterial(String code, String name, Integer quantity, Double price, LocalDate hsd, String unit, Long typeId, Long customerId);
-
+    void saveMaterial(String code, String name, Double price, Integer quantity, LocalDate hsd,String img,String des, String unit, Long typeId, Long customerId);
     List<Customer> findAllCustomer();
-
     List<MaterialType> findAllMaterialType();
-
-    void updateMaterial(String code, String name, Double price, Integer quantity, LocalDate hsd, String unit, String img, String des, Long typeId, Long customerId, Long materialId);
+    void updateMaterial(String code, String name, Double price, Integer quantity, LocalDate hsd, String img,String des , String unit, Long typeId, Long customerId, Long materialId);
+//    void saveMaterial(String code, String name, Integer quantity, Double price, LocalDate hsd, String unit, Long typeId, Long customerId);
+//
+//    List<Customer> findAllCustomer();
+//
+//    List<MaterialType> findAllMaterialType();
+//
+//    void updateMaterial(String code, String name, Double price, Integer quantity, LocalDate hsd, String unit, String img, String des, Long typeId, Long customerId, Long materialId);
 }
