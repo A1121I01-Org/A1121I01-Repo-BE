@@ -50,8 +50,6 @@ public class AccountServiceImpl implements IAccountService {
     @Override
     public void initRoleAndAccount() {
         Role adminRole = roleRepository.findRoleByRoleName("ROLE_ADMIN");
-        Role accountantRole = roleRepository.findRoleByRoleName("ROLE_ACCOUNTANT");
-        Role sellRole = roleRepository.findRoleByRoleName("ROLE_SELL");
         if (accountRepository.findAccountByUsername("admin") == null) {
             Account adminUser = new Account();
             adminUser.setUsername("admin");
@@ -80,9 +78,12 @@ public class AccountServiceImpl implements IAccountService {
     public void createEmployeeAccount(EmployeeAccount employeeAccount) {
         if (employeeRepository.findExistEmployeeDontHasAccount(employeeAccount.getEmployee().getEmployeeCode()) != null) {
             Set<Role> roles = new HashSet<>();
-            Role role = roleRepository.findById(employeeAccount.getEmployee().getEmployeePositionId().getPositionId()).get();
+            Optional<Role> role = roleRepository.findById(employeeAccount.getEmployee().getEmployeePositionId().getPositionId());
             Employee employee = employeeRepository.findEmployeeByCode(employeeAccount.getEmployee().getEmployeeCode());
-            roles.add(role);
+            if (role.isPresent()) {
+                Role role1 = role.get();
+                roles.add(role1);
+            }
             Account account = employeeAccount.getAccount();
             account.setRoles(roles);
             account.setPassword(getEncodedPassword(employeeAccount.getAccount().getPassword()));
@@ -91,8 +92,11 @@ public class AccountServiceImpl implements IAccountService {
         } else {
             Set<Role> roles = new HashSet<>();
             employeeRepository.save(employeeAccount.getEmployee());
-            Role role = roleRepository.findById(employeeAccount.getEmployee().getEmployeePositionId().getPositionId()).get();
-            roles.add(role);
+            Optional<Role> role = roleRepository.findById(employeeAccount.getEmployee().getEmployeePositionId().getPositionId());
+            if (role.isPresent()) {
+                Role role1 = role.get();
+                roles.add(role1);
+            }
             Account account = employeeAccount.getAccount();
             account.setRoles(roles);
             account.setPassword(getEncodedPassword(employeeAccount.getAccount().getPassword()));
