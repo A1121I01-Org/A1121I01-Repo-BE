@@ -10,7 +10,9 @@ import java.util.List;
 public interface IStatisticService {
     //HoangTND - Statistic Material
     List<String> findAllStatisticMaterial();
+
     List<String> searchStatisticMaterial(String fromDate, String toDate);
+
     String[] chartStatisticMaterial();
 
 
@@ -18,24 +20,25 @@ public interface IStatisticService {
 
     Integer displayHuy();
 
-    Integer searchHuy(@Param("month") String month , @Param("year") String year);
+    Integer searchHuy(@Param("month") String month, @Param("year") String year);
 
     Integer displayTra();
 
-    Integer searchTra(@Param("month") String month , @Param("year") String year);
+    Integer searchTra(@Param("month") String month, @Param("year") String year);
 
     Integer displayBan();
 
-    Integer searchBan(@Param("month") String month , @Param("year") String year);
+    Integer searchBan(@Param("month") String month, @Param("year") String year);
 
     Integer displayNhap();
 
-    Integer searchNhap(@Param("month") String month , @Param("year") String year);
+    Integer searchNhap(@Param("month") String month, @Param("year") String year);
 
 //    Integer displayLuong();
 
     // HuyenNTD - Thong ke khach hang tiem nang
-
-    Page<String> findAllStatisticCustomer(Pageable pageable);
     String[] searchForPotentialCustomers(String fromMonth, String toMonth, String year);
+
+    List<String> findAllStatisticCustomer();
+//    String[] chartCustomer();
 }

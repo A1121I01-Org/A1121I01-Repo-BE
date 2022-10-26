@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -94,12 +95,18 @@ public class StatisticServiceImpl implements IStatisticService {
 
     // HuyenNTD - Thong ke khach hang tiem nang
     @Override
-    public Page<String> findAllStatisticCustomer(Pageable pageable) {
-        return customerRepository.findAllCustomer(pageable);
+    public List<String> findAllStatisticCustomer() {
+        return customerRepository.findAllCustomer();
     }
 
     @Override
     public String[] searchForPotentialCustomers(String fromMonth, String toMonth, String year) {
         return customerRepository.findForPotentialCustomers(fromMonth, toMonth, year);
     }
+
+//    @Override
+//    public String[] chartCustomer() {
+//        return customerRepository.chartCustomer();
+//    }
+    // abc
 }

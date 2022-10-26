@@ -1,19 +1,13 @@
 package module6.backend.controller;
 
-import module6.backend.repository.ICartRepository;
 import module6.backend.repository.ICustomerRepository;
-import module6.backend.repository.IImportRepository;
 import module6.backend.repository.IMaterialRepository;
 import module6.backend.service.IStatisticService;
 import module6.backend.service.Impl.PDFStatisticMaterialsImpl;
 import module6.backend.service.Impl.pdf.PDFStatisticCustomerImpl;
-import module6.backend.service.Impl.pdf.PDFStatisticFinancialServiceImpl;
 import module6.backend.service.Impl.pdf.PDFStatisticFinancialServiceImpl2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -66,7 +60,7 @@ public class StatisticController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/list/material1")
-    public ResponseEntity<String[]> data1() {
+    public ResponseEntity<String[]> data2() {
         String[] data = materialRepository.findAllStatisticMaterial1();
         return new ResponseEntity<String[]>(data, HttpStatus.OK);
     }
@@ -92,7 +86,7 @@ public class StatisticController {
 
     //ChartStatisticMaterial
     @GetMapping("/chart")
-    public ResponseEntity<String[]>chart(){
+    public ResponseEntity<String[]> chart() {
         String[] data = statisticService.chartStatisticMaterial();
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
@@ -185,16 +179,10 @@ public class StatisticController {
     // HuyenNTD - Thong ke khach hang tiem nang
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/list/customer")
-    public ResponseEntity<Page<String>> getAll(@PageableDefault(value = 5) Pageable pageable) {
-        Page<String> list = statisticService.findAllStatisticCustomer(pageable);
+    public ResponseEntity<List<String>> getAll() {
+        List<String> list = statisticService.findAllStatisticCustomer();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
-
-//    @GetMapping("/list/customers")
-//    public ResponseEntity<String[]> dataHuyen() {
-//        String[] data = customerRepository.findAllPotentialCustomer();
-//        return new ResponseEntity<String[]>(data, HttpStatus.OK);
-//    }
 
     @GetMapping("/pdf-huyen")
     public ResponseEntity<InputStreamResource> generatePDFHuyen() throws IOException {
@@ -219,4 +207,11 @@ public class StatisticController {
         String[] list = statisticService.searchForPotentialCustomers(fromMonth, toMonth, year);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
+
+//    @GetMapping("/chart")
+//    public ResponseEntity<String[]>chart(){
+//        String[] data = statisticService.chartCustomer();
+//        return new ResponseEntity<>(data, HttpStatus.OK);
+//    }
+
 }
