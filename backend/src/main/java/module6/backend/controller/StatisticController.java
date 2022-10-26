@@ -184,21 +184,6 @@ public class StatisticController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @GetMapping("/list/customers")
-    public ResponseEntity<String[]> data1() {
-        String[] data = customerRepository.findAllPotentialCustomer();
-        return new ResponseEntity<String[]>(data, HttpStatus.OK);
-    }
-
-    @GetMapping("/pdf")
-    public ResponseEntity<InputStreamResource> generatePDF() throws IOException {
-        String[] data = customerRepository.findAllPotentialCustomer();
-        ByteArrayInputStream bais = pdfStatisticCustomer.export(data);
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "inline;filename=cart.pdf");
-        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bais));
-    }
-
     @GetMapping("/pdf-huyen")
     public ResponseEntity<InputStreamResource> generatePDFHuyen() throws IOException {
         String[] data = customerRepository.findAllPotentialCustomer();

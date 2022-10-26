@@ -37,9 +37,6 @@ public interface IStatisticService {
 //    Integer displayLuong();
 
     // HuyenNTD - Thong ke khach hang tiem nang
-
-    Page<String> findAllStatisticCustomer(Pageable pageable);
-
     String[] searchForPotentialCustomers(String fromMonth, String toMonth, String year);
 
     List<String> findAllStatisticCustomer();
