@@ -11,10 +11,9 @@ public interface IEmployeeService {
 
     void updateEmployee(String employeeName, String employeeAvatar, LocalDate employeeDateOfBirth, String employeeGender, String employeeAddress, String employeePhone, Long employeeId);
 
-    Optional<Employee> findById(Long id);
-
     List<Employee> getAllEmployeeWithPagination(int index);
 
+    List<Employee> searchEmployeeByName( String name);
 
     void deleteEmployeeById(Long id1, Long id2);
 

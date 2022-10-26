@@ -4,6 +4,7 @@ import module6.backend.entity.employee.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,7 +14,7 @@ import java.util.Optional;
 import java.util.List;
 
 @Repository
-public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
+public interface IEmployeeRepository extends JpaRepository<Employee, String> {
     @Query(value = "select * from employee where employee_id = ?1 and employee_position_id > 0 and employee_account_id > 0 and employee_flag = 0 ", nativeQuery = true)
     Optional<Employee> findEmployeeById(Long id);
 
@@ -33,4 +34,8 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
 
     @Query(value = "select * from employee where employee_position_id  > 0 and employee_flag = 0", nativeQuery = true)
     List<Employee> getAllEmployee();
+
+    @Query(value = "select * from employee where employee_name like %:name%", nativeQuery = true)
+    List<Employee> searchEmployeeByName(@Param("name") String name);
+
 }

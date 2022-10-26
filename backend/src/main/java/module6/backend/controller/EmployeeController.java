@@ -41,11 +41,20 @@ public class EmployeeController {
 
     @GetMapping("/employee-pagination/{index}")
     public ResponseEntity<Iterable<Employee>> getAllEmployeeWithPagination(@PathVariable("index") int index) {
-        List<Employee> employees = (List<Employee>) employeeService.getAllEmployeeWithPagination(index);
+        List<Employee> employees = employeeService.getAllEmployeeWithPagination(index);
         if (employees.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/employee-search")
+    public ResponseEntity<List<Employee>> searchEmployeeByName(@RequestParam("name") String name) {
+        List<Employee> isEmployeeExist = employeeService.searchEmployeeByName(name);
+        if (isEmployeeExist != null){
+            return new ResponseEntity<>(isEmployeeExist,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/employee-delete/{id}")
