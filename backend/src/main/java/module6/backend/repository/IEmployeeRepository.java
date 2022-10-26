@@ -25,10 +25,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
     @Query(value = "SELECT * from employee where employee_code =?1 and employee_flag = 0", nativeQuery = true)
     Employee findEmployeeByCode(String code);
 
-    //NhiVP code tim employee da co account
-    @Query(value = "select * from employee where employee_code =?1 and employee_account_id is not null and employee_flag = 0", nativeQuery = true)
-    Employee findExistEmployeeHasAccount(String code);
-
     //NhiVP code tim employee chua co account
     @Query(value = "select * from employee where employee_code =?1 and employee_account_id is null and employee_flag = 0", nativeQuery = true)
     Employee findExistEmployeeDontHasAccount(String code);
@@ -37,9 +33,12 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
     @Query(value = "select employee_code from employee where employee_code is not null and employee_account_id is not null and employee_flag = 0", nativeQuery = true)
     List<String> findAllEmployeeHasAccount();
 
+    //NhiVP code lấy danh sách mã nhân viên chưa có tài khoản
     @Query(value = "select employee_code from employee where employee_code is not null and employee_account_id is null and employee_flag = 0", nativeQuery = true)
     List<String> findAllEmployeeDontHasAccount();
-
+    //NhiVP code lấy danh sách số điện thoại
+    @Query(value = "select employee_phone from employee where employee_flag = 0", nativeQuery = true)
+    List<String> findAllPhone();
 
     // Thắng code lấy list admin người thực hiện
     @Query(value = "SELECT * FROM employee where (employee_position_id = 1 or employee_position_id = 3) and employee_account_id > 0 and employee_position_id > 0 and employee_id > 0;", nativeQuery = true)

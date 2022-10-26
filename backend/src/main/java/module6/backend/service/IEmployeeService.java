@@ -20,6 +20,8 @@ public interface IEmployeeService {
 
     //NhiVP code lấy danh sách mã nhân viên chưa có tài khoản
     List<String> findAllEmployeeDontHasAccount();
+    //NhiVP code lấy danh sách số điện thoại
+    List<String> findAllPhone();
 
     Optional<Employee> findById(Long id);
 
@@ -35,5 +37,4 @@ public interface IEmployeeService {
     void saveEmployee(String employeeCode, String employeeName, String employeeAvatar, LocalDate employeeDateOfBirth, String employeeGender, String employeeAddress, String employeePhone, Double employeeSalary, Long employeePositionId);
 
     List<Position> getAllPosition();
-
 }

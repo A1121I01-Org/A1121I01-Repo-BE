@@ -66,6 +66,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
+    public List<String> findAllPhone() {
+        return employeeRepository.findAllPhone();
+    }
+
+    @Override
     public Optional<Employee> findById(Long id) {
         return employeeRepository.findById(id);
     }
