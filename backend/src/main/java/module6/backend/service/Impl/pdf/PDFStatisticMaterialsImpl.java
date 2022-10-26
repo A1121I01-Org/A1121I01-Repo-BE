@@ -1,4 +1,4 @@
-package module6.backend.service.Impl;
+package module6.backend.service.Impl.pdf;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -38,6 +38,7 @@ public class PDFStatisticMaterialsImpl {
                 header.setBackgroundColor(BaseColor.LIGHT_GRAY);
                 header.setHorizontalAlignment(Element.ALIGN_CENTER);
                 header.setBorderWidth(1);
+                header.setPhrase(new Phrase(headerTitle,font1));
                 table.addCell(header);
             });
 

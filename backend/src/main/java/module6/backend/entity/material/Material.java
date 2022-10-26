@@ -3,6 +3,8 @@ package module6.backend.entity.material;
 import module6.backend.entity.customer.Customer;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -11,14 +13,21 @@ public class Material {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long materialId;
+    @NotBlank(message = "Không được để trống!")
     private String materialCode;
+    @NotBlank(message = "Không được để trống!")
     private String materialName;
+    @NotNull(message = "Không được để trống!")
     private Double materialPrice;
+    @NotNull(message = "Không được để trống!")
     private Integer materialQuantity = 0;
     private LocalDate materialExpiridate;
+    //hh
     private String materialImage;
+    @NotBlank(message = "Không được để trống!")
     private String materialDescribe;
     private Boolean materialFlag = false;
+    @NotBlank(message = "Không được để trống!")
     private String materialUnit;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "material_type_id")

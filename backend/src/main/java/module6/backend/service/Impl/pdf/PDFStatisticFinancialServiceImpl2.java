@@ -1,6 +1,4 @@
 package module6.backend.service.Impl.pdf;
-
-
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
