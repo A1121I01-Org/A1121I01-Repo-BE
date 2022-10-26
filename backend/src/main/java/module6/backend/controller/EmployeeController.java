@@ -188,24 +188,46 @@ public class EmployeeController {
         return new ResponseEntity<List<Position>>(positions, HttpStatus.OK);
     }
 
-    @PatchMapping("update/{id}  ")
-    public ResponseEntity<?> adminUpdateEmployee(@PathVariable("id") Long id, @RequestBody @Valid Employee employee, BindingResult bindingResult) {
-        System.out.println(employee.getEmployeeCode());
-        employeeService.adminUpdateEmployee(employee.getEmployeeName(), employee.getEmployeeCode(), employee.getEmployeeAvatar(), employee.getEmployeeDateOfBirth(), employee.getEmployeeGender(), employee.getEmployeeAddress(), employee.getEmployeePhone(), employee.getEmployeeSalary(), employee.getEmployeePositionId().getPositionId(), id);
-        return new ResponseEntity<>(employee, HttpStatus.OK);
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @PatchMapping("admin_update/{id}")
+    public ResponseEntity<?> adminUpdateEmployee(@PathVariable("id") Long id,@RequestBody @Valid Employee employee,BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
+        }
+
+        Optional<Employee> foundEmployee = employeeService.findEmployeeById(id);
+        if (!foundEmployee.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            employeeService.adminUpdateEmployee(employee.getEmployeeCode(),employee.getEmployeeName(), employee.getEmployeeAvatar(), employee.getEmployeeDateOfBirth(), employee.getEmployeeGender(), employee.getEmployeeAddress(), employee.getEmployeePhone(), employee.getEmployeeSalary(),employee.getEmployeePositionId().getPositionId() ,id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
     }
 
-    @PostMapping(value = "/create")
-    public ResponseEntity<Object> createEmployee(@RequestBody @Valid Employee employee, BindingResult bindingResult) {
-        //tạo mới nhân viên
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @PostMapping(value = "/admin_create")
+    public ResponseEntity<?> createEmployee(@RequestBody @Valid Employee employee) {
+        System.out.println(1);
         try {
-            System.out.println(employee.getEmployeeCode());
+            Employee employee1 = employee;
             employeeService.saveEmployee(employee.getEmployeeCode(), employee.getEmployeeName(), employee.getEmployeeAvatar(), employee.getEmployeeDateOfBirth(), employee.getEmployeeGender(), employee.getEmployeeAddress(), employee.getEmployeePhone(), employee.getEmployeeSalary(), employee.getEmployeePositionId().getPositionId());
             return new ResponseEntity<>(employee, HttpStatus.CREATED);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return new ResponseEntity<>(employee, HttpStatus.BAD_REQUEST);
         }
+    }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(
+            MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
     }
 
     @GetMapping("position/list")

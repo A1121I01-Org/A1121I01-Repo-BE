@@ -31,10 +31,6 @@ k
 ;src/main/java/module6/backend/entity/customer/Customer.java,c\6\c6079c71aed1406b5ab269861d513d53d61cc8b6
 o
 ?src/main/java/module6/backend/entity/customer/CustomerType.java,0\e\0e561a002b215f053646acd93d8bf5181051e60a
-k
-;src/main/java/module6/backend/entity/employee/Employee.java,6\3\6300ab2becf020783e3c799af87fed8657861dc0
-k
-;src/main/java/module6/backend/entity/employee/Position.java,2\f\2f391b393ae5f3b50b70b203067df613fa31178a
 i
 9src/main/java/module6/backend/entity/employee/Salary.java,d\2\d20d7c41e6598380f39b40b4505fd2428261b7a9
 k
@@ -85,11 +81,7 @@ p
 @src/main/java/module6/backend/security/jwt/JwtRequestFilter.java,0\1\01704365e3bc375ad827b3ddef81a8b72fbf8bfb
 m
 =src/main/java/module6/backend/repository/ICartRepository.java,d\b\dbbbf341fb042f2fa35ed92d66cbd3bc81cb7d70
-q
-Asrc/main/java/module6/backend/repository/IEmployeeRepository.java,3\1\31f432d75322519c444cf27ca34e3e868343d1d6
 t
 Dsrc/main/java/module6/backend/repository/IAccountRoleRepository.java,3\f\3f5e335e0042bf9cb321212f8eae8212c05a1e0b
 q
 Asrc/main/java/module6/backend/service/Impl/ImportServiceImpl.java,a\8\a8369056149159c5454f3177822ac754bcdc3c70
-e
-5src/main/java/module6/backend/BackendApplication.java,9\c\9c36abef4fbdf75e71d8fe4bfe7d6a6a0d36e473

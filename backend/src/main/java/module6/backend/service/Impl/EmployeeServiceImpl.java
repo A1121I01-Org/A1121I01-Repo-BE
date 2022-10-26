@@ -26,8 +26,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 
     @Override
-    public void adminUpdateEmployee(String employeeName, String employeeCode, String employeeAvatar, LocalDate employeeDateOfBirth, String employeeGender, String employeeAddress, String employeePhone, Double employeeSalary, Long employeePositionId, Long employeeId) {
-        employeeRepository.adminUpdateEmployee(employeeName, employeeCode, employeeAvatar, employeeDateOfBirth, employeeGender, employeeAddress, employeePhone, employeeSalary, employeePositionId, employeeId);
+    public void adminUpdateEmployee( String employeeCode,String employeeName, String employeeAvatar, LocalDate employeeDateOfBirth, String employeeGender, String employeeAddress, String employeePhone, Double employeeSalary, Long employeePositionId, Long employeeId) {
+        employeeRepository.adminUpdateEmployee( employeeCode, employeeName,employeeAvatar, employeeDateOfBirth, employeeGender, employeeAddress, employeePhone, employeeSalary, employeePositionId, employeeId);
     }
 
     @Override
