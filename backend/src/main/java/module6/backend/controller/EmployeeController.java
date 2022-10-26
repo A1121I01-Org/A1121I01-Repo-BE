@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+
 @RestController
 @CrossOrigin
 @RequestMapping("api/employee")
@@ -47,11 +48,20 @@ public class EmployeeController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
     @GetMapping("/employee-pagination/{index}")
     public ResponseEntity<Iterable<Employee>> getAllEmployeeWithPagination(@PathVariable("index") int index) {
-        List<Employee> employees = (List<Employee>) employeeService.getAllEmployeeWithPagination(index);
+        List<Employee> employees = employeeService.getAllEmployeeWithPagination(index);
         if (employees.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/employee-search")
+    public ResponseEntity<List<Employee>> searchEmployeeByName(@RequestParam("name") String name) {
+        List<Employee> isEmployeeExist = employeeService.searchEmployeeByName(name);
+        if (isEmployeeExist != null) {
+            return new ResponseEntity<>(isEmployeeExist, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
@@ -167,6 +177,7 @@ public class EmployeeController {
         }
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
+
     //NhiVP lấy danh sách số điện thoại
     @GetMapping("/list-Phone")
     public ResponseEntity<List<String>> findAllPhone() {
@@ -190,7 +201,7 @@ public class EmployeeController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PatchMapping("admin_update/{id}")
-    public ResponseEntity<?> adminUpdateEmployee(@PathVariable("id") Long id,@RequestBody @Valid Employee employee,BindingResult bindingResult) {
+    public ResponseEntity<?> adminUpdateEmployee(@PathVariable("id") Long id, @RequestBody @Valid Employee employee, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
         }
@@ -199,7 +210,7 @@ public class EmployeeController {
         if (!foundEmployee.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            employeeService.adminUpdateEmployee(employee.getEmployeeCode(),employee.getEmployeeName(), employee.getEmployeeAvatar(), employee.getEmployeeDateOfBirth(), employee.getEmployeeGender(), employee.getEmployeeAddress(), employee.getEmployeePhone(), employee.getEmployeeSalary(),employee.getEmployeePositionId().getPositionId() ,id);
+            employeeService.adminUpdateEmployee(employee.getEmployeeCode(), employee.getEmployeeName(), employee.getEmployeeAvatar(), employee.getEmployeeDateOfBirth(), employee.getEmployeeGender(), employee.getEmployeeAddress(), employee.getEmployeePhone(), employee.getEmployeeSalary(), employee.getEmployeePositionId().getPositionId(), id);
             return new ResponseEntity<>(HttpStatus.OK);
         }
     }
@@ -217,6 +228,7 @@ public class EmployeeController {
             return new ResponseEntity<>(employee, HttpStatus.BAD_REQUEST);
         }
     }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
+public interface IEmployeeRepository extends JpaRepository<Employee, String> {
     @Query(value = "select * from employee where employee_id = ?1 and employee_position_id > 0 and employee_account_id > 0 and employee_flag = 0 ", nativeQuery = true)
     Optional<Employee> findEmployeeById(Long id);
 
@@ -56,6 +56,9 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
 
     @Query(value = "select * from employee where employee_position_id  > 0 and employee_flag = 0", nativeQuery = true)
     List<Employee> getAllEmployee();
+
+    @Query(value = "select * from employee where employee_name like %:name%", nativeQuery = true)
+    List<Employee> searchEmployeeByName(@Param("name") String name);
 
     //AnDVH get employee by accountId
     @Query(value = "SELECT * FROM employee WHERE employee_account_id =:accountId AND employee_flag = 0", nativeQuery = true)

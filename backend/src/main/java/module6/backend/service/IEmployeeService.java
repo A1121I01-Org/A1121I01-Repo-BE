@@ -22,6 +22,7 @@ public interface IEmployeeService {
 
     //NhiVP code lấy danh sách mã nhân viên chưa có tài khoản
     List<String> findAllEmployeeDontHasAccount();
+
     //NhiVP code lấy danh sách số điện thoại
     List<String> findAllPhone();
 
@@ -29,6 +30,7 @@ public interface IEmployeeService {
 
     List<Employee> getAllEmployeeWithPagination(int index);
 
+    List<Employee> searchEmployeeByName(String name);
 
     void deleteEmployeeById(Long id1, Long id2);
 

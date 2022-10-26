@@ -65,10 +65,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
         return this.employeeRepository.findEmployeeByAccountId(accountId);
     }
 
-    @Override
-    public Optional<Employee> findEmployeeById(Long id) {
-        return employeeRepository.findEmployeeById(id);
-    }
+//    @Override
+//    public Optional<Employee> findById(Long id) {
+//        return employeeRepository.findEmployeeById(id);
+//    }
 
     @Override
     public void updateEmployee(String employeeName, String employeeAvatar, LocalDate employeeDateOfBirth, String employeeGender, String employeeAddress, String employeePhone, Long employeeId) {
@@ -100,13 +100,18 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public Optional<Employee> findById(Long id) {
-        return employeeRepository.findById(id);
+    public Optional<Employee> findEmployeeById(Long id) {
+        return employeeRepository.findEmployeeById(id);
     }
 
     @Override
     public List<Employee> getAllEmployeeWithPagination(int index) {
         return employeeRepository.getAllEmployeeWithPagination(index);
+    }
+
+    @Override
+    public List<Employee> searchEmployeeByName(String name) {
+        return employeeRepository.searchEmployeeByName(name);
     }
 
     @Override
