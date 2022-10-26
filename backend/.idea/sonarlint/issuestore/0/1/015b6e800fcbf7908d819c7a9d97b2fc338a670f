@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 v
 java:S2293B"YReplace the type specification in this constructor call with the diamond operator ("<>").(®º…á8Âô•ÅÀ0
 v
@@ -12,3 +13,18 @@ C
 java:S1452&"&Remove usage of generic wildcard type.(§…çê8ãö•ÅÀ0
 H
 java:S1452T"&Remove usage of generic wildcard type.(ØœŞøÿÿÿÿ8°÷•ÅÀ0
+=======
+o
+java:S2293B"YReplace the type specification in this constructor call with the diamond operator ("<>").(®º…á
+o
+java:S2293C"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÒÆöÕ
+n
+java:S2293L"YReplace the type specification in this constructor call with the diamond operator ("<>").(ºë
+t
+java:S2293N"YReplace the type specification in this constructor call with the diamond operator ("<>").(ü¯îìùÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(À©Õ—ıÿÿÿÿ
+<
+java:S1452&"&Remove usage of generic wildcard type.(§…çê
+A
+java:S1452T"&Remove usage of generic wildcard type.(ØœŞøÿÿÿÿ
+>>>>>>> 2f7ff7ec8cae7d4ababadcfabf2c2172dd4e1766

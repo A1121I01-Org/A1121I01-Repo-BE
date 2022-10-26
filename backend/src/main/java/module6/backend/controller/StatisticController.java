@@ -5,10 +5,10 @@ import module6.backend.repository.ICustomerRepository;
 import module6.backend.repository.IImportRepository;
 import module6.backend.repository.IMaterialRepository;
 import module6.backend.service.IStatisticService;
+import module6.backend.service.Impl.PDFStatisticMaterialsImpl;
 import module6.backend.service.Impl.pdf.PDFStatisticCustomerImpl;
 import module6.backend.service.Impl.pdf.PDFStatisticFinancialServiceImpl;
 import module6.backend.service.Impl.pdf.PDFStatisticFinancialServiceImpl2;
-import module6.backend.service.Impl.pdf.PDFStatisticMaterialsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Page;
@@ -88,6 +88,13 @@ public class StatisticController {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "inline;filename=cart.pdf");
         return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bais));
+    }
+
+    //ChartStatisticMaterial
+    @GetMapping("/chart")
+    public ResponseEntity<String[]>chart(){
+        String[] data = statisticService.chartStatisticMaterial();
+        return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
     // KimPBH - Thong ke tai chinh
