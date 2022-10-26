@@ -93,6 +93,7 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
             "join cart_status on cart_status.cart_status_id = cart.cart_status_id\n" +
             "where (month(cart_date_create) between :fromMonth and :toMonth) and year(cart_date_create) = :year and cart_status_name = 'đã thanh toán'\n" +
             "group by cart_customer_id", nativeQuery = true)
+
     String[] findForPotentialCustomers(@Param("fromMonth") String fromMonth,
                                        @Param("toMonth") String toMonth,
                                        @Param("year") String year);

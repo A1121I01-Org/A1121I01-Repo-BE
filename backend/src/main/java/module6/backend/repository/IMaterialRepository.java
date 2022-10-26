@@ -29,14 +29,14 @@ public interface IMaterialRepository extends JpaRepository<Material, Long> {
 
     //HoangTND - Statistic Material
     //List material
-    @Query(value = "select material.material_code, material.material_name, `import`.import_quantity, cart.cart_quantity, material.material_quantity from `import` \n" +
+    @Query(value = "select material.material_code, material.material_name, `import`.import_quantity, cart.cart_quantity, material.material_quantity, material.material_unit from `import` \n" +
             "join material on `import`.import_material_id = material.material_id\n" +
             "join cart_material on cart_material.material_id = material.material_id\n" +
             "join cart on cart.cart_id = cart_material.cart_id;  ", nativeQuery = true)
     List<String> findAllStatisticMaterial();
 
     //Search material
-    @Query(value = "select material.material_code, material.material_name, sum(`import`.import_quantity), `import`.import_start_date, cart.cart_quantity, material.material_quantity from `import` \n" +
+    @Query(value = "select material.material_code, material.material_name, sum(`import`.import_quantity), cart.cart_quantity, material.material_quantity, material.material_unit, `import`.import_start_date from `import` \n" +
             "join material on `import`.import_material_id = material.material_id\n" +
             "join cart_material on cart_material.material_id = material.material_id\n" +
             "join cart on cart.cart_id = cart_material.cart_id\n" +
@@ -45,14 +45,14 @@ public interface IMaterialRepository extends JpaRepository<Material, Long> {
     List<String> searchStatisticMaterial(@Param("fromDate") String fromDate,
                                          @Param("toDate") String toDate);
 
-    @Query(value = "select material.material_code, material.material_name, `import`.import_quantity, cart.cart_quantity, material.material_quantity from `import` \n" +
+    @Query(value = "select material.material_code, material.material_name, `import`.import_quantity, cart.cart_quantity, material.material_quantity, material.material_unit from `import` \n" +
             "join material on `import`.import_material_id = material.material_id\n" +
             "join cart_material on cart_material.material_id = material.material_id\n" +
             "join cart on cart.cart_id = cart_material.cart_id;  ", nativeQuery = true)
     String[] findAllStatisticMaterial1();
 
 
-    @Query(value = "select material.material_code, material.material_name, `import`.import_quantity, cart.cart_quantity, material.material_quantity from `import`\n" +
+    @Query(value = "select material.material_code, material.material_name, `import`.import_quantity, cart.cart_quantity, material.material_quantity, material.material_unit from `import`\n" +
             "    join material on `import`.import_material_id = material.material_id\n" +
             "    join cart_material on cart_material.material_id = material.material_id\n" +
             "    join cart on cart.cart_id = cart_material.cart_id;", nativeQuery = true)

@@ -11,10 +11,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -95,12 +99,31 @@ public class EmployeeController {
         return new ResponseEntity<>(positions, HttpStatus.OK);
     }
 
+    // AnDVH tìm employee bằng accountId
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
+    @GetMapping("/getEmployeeByAccount/{accountId}")
+    public ResponseEntity<Employee> findEployeeByAccountId(@PathVariable("accountId") Long accountId) {
+        Optional<Employee> employee = this.employeeService.findEmployeeByAccountId(accountId);
+        if (employee.isPresent()) {
+            return new ResponseEntity<>(employee.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     //    AnDVH cập nhật nhân viên
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @PatchMapping("update/{id}")
     public ResponseEntity<?> updateEmployee(@PathVariable("id") Long id, @Valid @RequestBody Employee employee, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            Map<String, String> errors = new HashMap<>();
+            bindingResult.getAllErrors().forEach((error) -> {
+                String fieldName = ((FieldError) error).getField();
+                String errorMessage = error.getDefaultMessage();
+                errors.put(fieldName, errorMessage);
+            });
+            System.out.println(errors);
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
 
         Optional<Employee> foundEmployee = employeeService.findEmployeeById(id);
@@ -166,10 +189,10 @@ public class EmployeeController {
     }
 
     @PatchMapping("update/{id}  ")
-    public ResponseEntity<?> adminUpdateEmployee(@PathVariable("id") Long id,@RequestBody @Valid Employee employee,BindingResult bindingResult) {
+    public ResponseEntity<?> adminUpdateEmployee(@PathVariable("id") Long id, @RequestBody @Valid Employee employee, BindingResult bindingResult) {
         System.out.println(employee.getEmployeeCode());
-        employeeService.adminUpdateEmployee(employee.getEmployeeName(),employee.getEmployeeCode(), employee.getEmployeeAvatar(), employee.getEmployeeDateOfBirth(), employee.getEmployeeGender(), employee.getEmployeeAddress(), employee.getEmployeePhone(), employee.getEmployeeSalary(),employee.getEmployeePositionId().getPositionId() ,id);
-        return new ResponseEntity<>(employee,HttpStatus.OK);
+        employeeService.adminUpdateEmployee(employee.getEmployeeName(), employee.getEmployeeCode(), employee.getEmployeeAvatar(), employee.getEmployeeDateOfBirth(), employee.getEmployeeGender(), employee.getEmployeeAddress(), employee.getEmployeePhone(), employee.getEmployeeSalary(), employee.getEmployeePositionId().getPositionId(), id);
+        return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
     @PostMapping(value = "/create")

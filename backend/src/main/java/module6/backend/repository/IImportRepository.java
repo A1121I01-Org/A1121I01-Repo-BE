@@ -10,7 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
@@ -23,6 +22,10 @@ public interface IImportRepository extends JpaRepository<Import, Long> {
 
     @Query(value = "select sum(`import`.import_quantity * material.material_price) as tien_nhap_hang from `import` join material on import.import_material_id = material.material_id where month(import_start_date) like :month and year(import_start_date) like :year", nativeQuery = true)
     Integer searchnhap(@Param("month") String month , @Param("year") String year );
+
+    // Thắng code list import
+    @Query(value = "select * from import where import_account_id > 0 and import_material_id > 0 and import_id > 0 and import_flag = 0 limit ?1, 5", nativeQuery = true)
+    List<Import> findAllImport(Integer page);
 
     // Thắng code list import
     @Query(value = "select * from import where import_account_id > 0 and import_material_id > 0 and import_id > 0 and import_flag = 0", nativeQuery = true)

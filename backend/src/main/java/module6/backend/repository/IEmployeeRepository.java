@@ -4,6 +4,7 @@ import module6.backend.entity.employee.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,6 +56,11 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
     @Query(value = "select * from employee where employee_position_id  > 0 and employee_flag = 0", nativeQuery = true)
     List<Employee> getAllEmployee();
 
+    //AnDVH get employee by accountId
+    @Query(value = "SELECT * FROM employee WHERE employee_account_id =:accountId AND employee_flag = 0",nativeQuery = true)
+    Optional<Employee> findEmployeeByAccountId(@Param("accountId") Long accountId);
+
+    // AnDVH update employee
     @Modifying
     @Transactional
     @Query(value = "insert into `employee` (`employee_code`,+ `employee_name`, + `employee_avatar`,+ `employee_date_of_birth`,+`employee_gender`,+` employee_address`,+ `employee_phone`,+`employee_salary`,+` employee_position_id)` +values(?1,?2,?3,?4,?5,?6,?7,?8,?9)", nativeQuery = true)
