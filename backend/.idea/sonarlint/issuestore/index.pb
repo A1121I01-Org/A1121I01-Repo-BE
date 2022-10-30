@@ -25,5 +25,3 @@ k
 ;src/main/java/module6/backend/entity/material/Material.java,e\c\ec315a64d79b59cbc7899b1341c39b8b27df0666
 p
 @src/main/java/module6/backend/controller/MaterialController.java,e\b\eb0ace6e83288c1e434ebcf0bdeac82522cd94c8
-e
-5src/main/java/module6/backend/BackendApplication.java,9\c\9c36abef4fbdf75e71d8fe4bfe7d6a6a0d36e473
