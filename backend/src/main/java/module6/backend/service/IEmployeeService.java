@@ -3,7 +3,6 @@ package module6.backend.service;
 import module6.backend.entity.employee.Employee;
 import module6.backend.entity.employee.Position;
 import org.springframework.validation.BindingResult;
-import module6.backend.entity.employee.Position;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,26 +23,26 @@ public interface IEmployeeService {
     //NhiVP code lấy danh sách mã nhân viên chưa có tài khoản
     List<String> findAllEmployeeDontHasAccount();
 
+    //NhiVP code lấy danh sách số điện thoại
+    List<String> findAllPhone();
+
     Optional<Employee> findById(Long id);
 
     List<Employee> getAllEmployeeWithPagination(int index);
 
+    List<Employee> searchEmployeeByName(String name);
 
     void deleteEmployeeById(Long id1, Long id2);
 
     List<Employee> getAllEmployee();
 
+    public Map<String, String> validateEmployee(BindingResult bindingResult);
+
+    public Optional<Employee> findEmployeeByAccountId(Long accountId);
+
     void adminUpdateEmployee(String employeeName, String employeeCode, String employeeAvatar, LocalDate employeeDateOfBirth, String employeeGender, String employeeAddress, String employeePhone, Double employeeSalary, Long employeePositionId, Long employeeId);
 
-    // AnDVH save updated employee
     void saveEmployee(String employeeCode, String employeeName, String employeeAvatar, LocalDate employeeDateOfBirth, String employeeGender, String employeeAddress, String employeePhone, Double employeeSalary, Long employeePositionId);
 
     List<Position> getAllPosition();
-
-    // AnDVH validate updated employee information
-    Map<String, String> validateEmployee(BindingResult bindingResult);
-
-    // AnDVH find employee by accountId
-    Optional<Employee> findEmployeeByAccountId(Long accountId);
-
 }
