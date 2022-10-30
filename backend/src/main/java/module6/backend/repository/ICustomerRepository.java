@@ -1,5 +1,6 @@
 package module6.backend.repository;
 
+import module6.backend.entity.Import;
 import module6.backend.entity.customer.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,7 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -59,19 +59,37 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     @Query(value = "SELECT customer_email FROM customer;", nativeQuery = true)
     List<String> findAllCustomerEmailImportString();
 
+
+
     @Query(value = "select * from customer where customer_type_id  > 0 and customer_flag = 0", nativeQuery = true)
     List<Customer> getAllCustomer();
 
     @Query(value = "SELECT * from customer  left join customer_type on customer_type.customer_type_id = customer.customer_id where customer.customer_flag = 0 group by customer.customer_id limit ?1,5", nativeQuery = true)
     List<Customer> getAllCustomerWithPagination(int index);
 
+    @Query(value = "select * from customer where customer_type_id  > 0 and customer_flag = 0", nativeQuery = true)
+    Page<Customer> findAllICustomer1(Pageable pageable);
+
+
+
+    //    HieuNT xoa khach hang bang id
+    @Query(value = "UPDATE customer SET customer_flag = 1 , customer_id = ?1  WHERE (customer_id = ?2)", nativeQuery = true)
+    @Transactional
     @Modifying
-    @Query(value = "UPDATE customer SET customer_flag=1, customer_id = ?1 WHERE customer_id = ?2", nativeQuery = true)
+//    @Query(value = "UPDATE customer SET customer_flag=1, customer_id = ?1 WHERE customer_id = ?2", nativeQuery = true)
     void deleteCustomerById(Long id1, Long id2);
 
-    @Query(value = "select * from customer where customer_name like %:name% and customer_phone like %:phone%  ", nativeQuery = true)
+//    HieuNT tim tim khach hang theo ten va so dien thoai
+    @Query(value = "select * from customer where customer_name like %:name% and customer_phone like %:phone% and customer_type_id  > 0 and customer_flag = 0", nativeQuery = true)
     List<Customer> searchCustomerByNameAndPhone(@Param("name") String name, @Param("phone") String phone);
 
+    @Query(value = "select * from customer where customer_name like %:name% and customer_phone like %:phone% and customer_type_id  > 0 and customer_flag = 0", nativeQuery = true)
+    Page<Customer> searchCustomer(@Param("name") String name, @Param("phone") String phone, Pageable pageable);
+
+    @Query(value = "select * from customer where customer_name like %:name%  and customer_type_id  > 0 and customer_flag = 0", nativeQuery = true)
+    Page<Customer> searchCustomerName(@Param("name") String name, Pageable pageable);
+
+//    HieuNT tim khach hang theo id xem khach hang co ton tai hay khong?
     @Query(value = "select * from customer where customer_id = ?1 and customer_type_id > 0 and customer_flag = 0 ", nativeQuery = true)
     Optional<Customer> findCustomerById(Long id);
 

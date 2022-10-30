@@ -1,0 +1,17 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(À©Õ—ıÿÿÿÿ
+Y
+java:S3655o"7Call "material.isPresent()" before accessing the value.(¡Ûôúüÿÿÿÿ8ñşÅ£Á0
+]	java:S125""<This block of commented-out lines of code should be removed.(–úÆÔøÿÿÿÿ8öşÅ£Á0
+X	java:S1250"<This block of commented-out lines of code should be removed.(íÌ·ß8öşÅ£Á0
+]
+java:S4684]"@Replace this persistent entity with a simple POJO or DTO object.(ÅßĞÇ8úşÅ£Á0
+Z	java:S106_"9Replace this use of System.out or System.err by a logger.(éööëşÿÿÿÿ8ûşÅ£Á0
+Z	java:S106f"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ8ışÅ£Á0
+b
+java:S4684t"@Replace this persistent entity with a simple POJO or DTO object.(è³ûÔúÿÿÿÿ8€ÿÅ£Á0
+Z	java:S106v"9Replace this use of System.out or System.err by a logger.(éööëşÿÿÿÿ8ÿÅ£Á0
+]	java:S125u"<This block of commented-out lines of code should be removed.(ÏÉ æıÿÿÿÿ8‚ÿÅ£Á0
+[	java:S106‰"9Replace this use of System.out or System.err by a logger.(ÄõÛçûÿÿÿÿ8„ÿÅ£Á0
+V
+java:S1611À"3Remove the parentheses around the "error" parameter(ı£—Ôúÿÿÿÿ8‹ÿÅ£Á0

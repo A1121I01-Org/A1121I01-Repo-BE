@@ -1,9 +1,12 @@
 package module6.backend.service.Impl;
 
+import module6.backend.entity.Import;
 import module6.backend.entity.customer.Customer;
 import module6.backend.repository.ICustomerRepository;
 import module6.backend.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +33,11 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
+    public Page<Customer> findAllCustomer1(Pageable page) {
+        return customerRepository.findAllICustomer1(page);
+    }
+
+    @Override
     public void deleteCustomerById(Long id1, Long id2) {
         customerRepository.deleteCustomerById(id1, id2);
     }
@@ -37,6 +45,17 @@ public class CustomerServiceImpl implements ICustomerService {
     @Override
     public List<Customer> searchCustomerByNameAndPhone(String name, String phone) {
         return customerRepository.searchCustomerByNameAndPhone(name, phone);
+    }
+
+    @Override
+    public Page<Customer> searchCustomer(String name, String phone, Pageable page) {
+        return customerRepository.searchCustomer(name, phone, page);
+    }
+
+    @Override
+    public Page<Customer> searchCustomerName(String name, Pageable page) {
+        return customerRepository.searchCustomerName(name, page);
+
     }
 
     @Override

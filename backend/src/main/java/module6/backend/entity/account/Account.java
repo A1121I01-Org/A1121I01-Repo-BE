@@ -1,7 +1,9 @@
 package module6.backend.entity.account;
 
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.validator.constraints.Length;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
