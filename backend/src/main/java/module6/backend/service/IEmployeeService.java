@@ -1,7 +1,10 @@
 package module6.backend.service;
 
+import module6.backend.entity.Import;
 import module6.backend.entity.employee.Employee;
 import module6.backend.entity.employee.Position;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.validation.BindingResult;
 
 import java.time.LocalDate;
@@ -32,8 +35,6 @@ public interface IEmployeeService {
 
     List<Employee> searchEmployeeByName(String name);
 
-    void deleteEmployeeById(Long id1, Long id2);
-
     List<Employee> getAllEmployee();
 
     public Map<String, String> validateEmployee(BindingResult bindingResult);
@@ -45,4 +46,8 @@ public interface IEmployeeService {
     void saveEmployee(String employeeCode, String employeeName, String employeeAvatar, LocalDate employeeDateOfBirth, String employeeGender, String employeeAddress, String employeePhone, Double employeeSalary, Long employeePositionId);
 
     List<Position> getAllPosition();
+
+    Page<Employee> findAllEmployee(Pageable page);
+
+    void deleteEmployeeById(long l, boolean b, Long id);
 }

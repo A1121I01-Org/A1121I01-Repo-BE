@@ -1,5 +1,6 @@
 package module6.backend.controller;
 
+import module6.backend.entity.Import;
 import module6.backend.entity.account.Account;
 import module6.backend.entity.employee.Employee;
 import module6.backend.entity.employee.Position;
@@ -7,6 +8,9 @@ import module6.backend.service.IAccountService;
 import module6.backend.service.IEmployeeService;
 import module6.backend.service.IPositionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -34,6 +38,17 @@ public class EmployeeController {
 
     @Autowired
     private IPositionService positionService;
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
+    @GetMapping("employee/list")
+    public ResponseEntity<Page<Employee>> findAllEmployee(@PageableDefault(value = 5) Pageable pageable) {
+        Page<Employee> employeePage = employeeService.findAllEmployee(pageable);
+        if (employeePage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(employeePage, HttpStatus.OK);
+        }
+    }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
     @GetMapping("")
@@ -64,15 +79,27 @@ public class EmployeeController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
+//    @DeleteMapping("/employee-delete/{id}")
+//    public ResponseEntity<Employee> deleteCustomerById(@PathVariable("id") Long id) {
+//        Optional<Employee> employeeOptional = employeeService.findEmployeeById(id);
+//        if (!employeeOptional.isPresent()) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        employeeService.deleteEmployeeById(-id, id);
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @DeleteMapping("/employee-delete/{id}")
-    public ResponseEntity<Employee> deleteCustomerById(@PathVariable("id") Long id) {
+    public ResponseEntity<Employee> deleteEmployeeById(@PathVariable("id") Long id) {
         Optional<Employee> employeeOptional = employeeService.findEmployeeById(id);
         if (!employeeOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            employeeService.deleteEmployeeById(-id, true, id);
+            return new ResponseEntity<>(employeeOptional.get(), HttpStatus.NO_CONTENT);
         }
-        employeeService.deleteEmployeeById(-id, id);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 

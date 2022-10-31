@@ -1,5 +1,6 @@
 package module6.backend.controller;
 
+import module6.backend.entity.Import;
 import module6.backend.entity.customer.Customer;
 import module6.backend.entity.material.Material;
 import module6.backend.entity.material.MaterialType;
@@ -166,11 +167,13 @@ public class MaterialController {
      * Get list material.
      */
     @GetMapping("/list")
-    public ResponseEntity<Page<Material>> getAllMaterial(@RequestParam("page") Integer page,
-                                                         @RequestParam("size") Integer size) {
-
-        Page<Material> materials = materialService.getAllMaterial(page, size);
-        return new ResponseEntity<>(materials, HttpStatus.OK);
+    public ResponseEntity<Page<Material>> getAllMaterial(@PageableDefault(value = 6) Pageable pageable) {
+        Page<Material> materials = materialService.getAllMaterial(pageable);
+        if (materials.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(materials, HttpStatus.OK);
+        }
     }
 
     /**

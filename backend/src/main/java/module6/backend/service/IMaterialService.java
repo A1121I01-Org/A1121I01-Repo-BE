@@ -21,7 +21,7 @@ public interface IMaterialService {
 
     Page<Material> getAllMaterialSearch(String search, Integer page, Integer size);
 
-    Page<Material> getAllMaterial(Integer page, Integer size);
+    Page<Material> getAllMaterial(Pageable pageable);
 
     void saveMaterial(String code, String name, Double price, Integer quantity, LocalDate hsd,String img,String des, String unit, Long typeId, Long customerId);
     List<Customer> findAllCustomer();

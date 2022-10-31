@@ -38,7 +38,7 @@ public class Employee implements Validator {
     @NotBlank(message = "Không được để trống")
     @Pattern(regexp = "^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$")
     private String employeePhone;
-    @NotNull(message = "Không được để trống")
+//    @NotNull(message = "Không được để trống")
     private Double employeeSalary;
     private Boolean employeeFlag = false;
     @ManyToOne(cascade = CascadeType.ALL)
