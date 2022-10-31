@@ -1,0 +1,10 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(À©Õ—ıÿÿÿÿ
+¢
+java:S1862_"„This branch can not be reached because the condition duplicates a previous condition in the same sequence of "if/else if" statements(ºÍÙç8¡œ’¥Á0
+M	java:S106M"9Replace this use of System.out or System.err by a logger.(€Ë²:
+W
+java:S4684„"@Replace this persistent entity with a simple POJO or DTO object.(”…¨Õ
+[	java:S106…"9Replace this use of System.out or System.err by a logger.(óŠÕÎÿÿÿÿÿ8Åœ’¥Á0
+\
+java:S4684"@Replace this persistent entity with a simple POJO or DTO object.(—· ôùÿÿÿÿ
