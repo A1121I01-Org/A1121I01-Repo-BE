@@ -32,10 +32,10 @@ public class Employee implements Validator {
     private LocalDate employeeDateOfBirth;
     @NotBlank(message = "Không được để trống")
     private String employeeGender;
-    @NotBlank(message = "Không được để trống")
+//    @NotBlank(message = "Không được để trống")
     @Length(max = 60)
     private String employeeAddress;
-    @NotBlank(message = "Không được để trống")
+//    @NotBlank(message = "Không được để trống")
     @Pattern(regexp = "^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$")
     private String employeePhone;
 //    @NotNull(message = "Không được để trống")
