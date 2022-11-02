@@ -22,6 +22,9 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
             "group by cart_customer_id ", nativeQuery = true)
     List<String> findAllCustomer();
 
+    @Query(value = "select year(cart_date_create) from cart group by year(cart_date_create); ", nativeQuery = true)
+    List<String> getYearSearch();
+
     @Query(value = "SELECT * FROM CUSTOMER WHERE customer_code = :code", nativeQuery = true)
     Customer getCustomerByCode(@Param("code") String codeCustomer);
 

@@ -34,11 +34,17 @@ public interface IStatisticService {
 
     Integer searchNhap(@Param("month") String month, @Param("year") String year);
 
+    List<String> getYear();
+
+
+
 //    Integer displayLuong();
 
     // HuyenNTD - Thong ke khach hang tiem nang
     String[] searchForPotentialCustomers(String fromMonth, String toMonth, String year);
 
     List<String> findAllStatisticCustomer();
+
+    List<String> getYearSearch();
 //    String[] chartCustomer();
 }

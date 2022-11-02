@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
@@ -81,9 +83,26 @@ public class AccountController {
     //NhiVP create account
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/create-Account")
-    public ResponseEntity<EmployeeAccount> createAccount(@RequestBody EmployeeAccount employeeAccount) {
-        accountService.createEmployeeAccount(employeeAccount);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<?> createAccount(@RequestBody EmployeeAccount employeeAccount, BindingResult bindingResult) throws UsernameNotFoundException {
+//        if (bindingResult.hasErrors()) {
+//            Map<String, String> errors = new HashMap<>();
+//            bindingResult.getAllErrors().forEach((error) -> {
+//                String fieldName = ((FieldError) error).getField();
+//                String errorMessage = error.getDefaultMessage();
+//                errors.put(fieldName, errorMessage);
+//            });
+//            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+//        } else {
+//            accountService.createEmployeeAccount(employeeAccount);
+//            return new ResponseEntity<>(HttpStatus.CREATED);
+//        }
+        if (accountService.findAccountByUsername(employeeAccount.getAccount().getUsername()) != null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
+            accountService.createEmployeeAccount(employeeAccount);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
     }
+
 
 }

@@ -39,7 +39,7 @@ public class EmployeeController {
     @Autowired
     private IPositionService positionService;
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("employee/list")
     public ResponseEntity<Page<Employee>> findAllEmployee(@PageableDefault(value = 5) Pageable pageable) {
         Page<Employee> employeePage = employeeService.findAllEmployee(pageable);
@@ -50,7 +50,7 @@ public class EmployeeController {
         }
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("")
     public ResponseEntity<List<Employee>> getAllEmployee() {
         List<Employee> employeeList = this.employeeService.getAllEmployee();
@@ -60,7 +60,7 @@ public class EmployeeController {
         return new ResponseEntity<>(employeeList, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/employee-pagination/{index}")
     public ResponseEntity<Iterable<Employee>> getAllEmployeeWithPagination(@PathVariable("index") int index) {
         List<Employee> employees = employeeService.getAllEmployeeWithPagination(index);
@@ -90,7 +90,7 @@ public class EmployeeController {
 //        return new ResponseEntity<>(HttpStatus.OK);
 //    }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @DeleteMapping("/employee-delete/{id}")
     public ResponseEntity<Employee> deleteEmployeeById(@PathVariable("id") Long id) {
         Optional<Employee> employeeOptional = employeeService.findEmployeeById(id);
@@ -103,7 +103,7 @@ public class EmployeeController {
     }
 
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     //  SonLH  Tìm kiếm nhân viên theo id
     @GetMapping("/detail/{id}")
     public ResponseEntity<Employee> findEmployeeById(@PathVariable Long id) {
@@ -114,7 +114,7 @@ public class EmployeeController {
         return new ResponseEntity<>(employeeOptional.get(), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     //  SonLH  lấy danh sách account
     @GetMapping("/account")
     public ResponseEntity<List<Account>> findAllAccount() {
@@ -125,7 +125,7 @@ public class EmployeeController {
         return new ResponseEntity<>(accounts, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     //  SonLH  lấy danh sách chức vụ nhân viên
     @GetMapping("/position")
     public ResponseEntity<List<Position>> findAllPosition() {
@@ -137,7 +137,7 @@ public class EmployeeController {
     }
 
     // AnDVH tìm employee bằng accountId
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/getEmployeeByAccount/{accountId}")
     public ResponseEntity<Employee> findEployeeByAccountId(@PathVariable("accountId") Long accountId) {
         Optional<Employee> employee = this.employeeService.findEmployeeByAccountId(accountId);
@@ -149,7 +149,7 @@ public class EmployeeController {
     }
 
     //    AnDVH cập nhật nhân viên
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PatchMapping("update/{id}")
     public ResponseEntity<?> updateEmployee(@PathVariable("id") Long id, @Valid @RequestBody Employee employee, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -172,7 +172,7 @@ public class EmployeeController {
         }
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     //NhiVP lấy nhân viên theo code
     @GetMapping("/byCode/{code}")
     public ResponseEntity<Employee> getEmployeeByCode(@PathVariable String code) {
@@ -184,7 +184,7 @@ public class EmployeeController {
     }
 
     //NhiVP lấy danh sách mã nhân viên đã có tài khoản
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/listHasAccount")
     public ResponseEntity<List<String>> findAllEmployeeHasAccount() {
         List<String> employees = employeeService.findAllEmployeeHasAccount();
@@ -195,7 +195,7 @@ public class EmployeeController {
     }
 
     //NhiVP lấy danh sách mã nhân viên chưa có tài khoản
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/listDontHasAccount")
     public ResponseEntity<List<String>> findAllEmployeeDontHasAccount() {
         List<String> employees = employeeService.findAllEmployeeDontHasAccount();
@@ -216,7 +216,7 @@ public class EmployeeController {
     }
 
     //NhiVP lấy danh sách chức vụ trừ chức vụ quản lý
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/position-NotManager/list")
     public ResponseEntity<List<Position>> getPositionNotManager() {
         List<Position> positions = positionService.findPositionNotManager();

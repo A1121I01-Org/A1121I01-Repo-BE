@@ -174,11 +174,23 @@ public class ImportController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @PostMapping("import-create")
     public ResponseEntity<?> saveImport(@Valid @RequestBody Import importCreate, BindingResult bindingResult) {
-        if (bindingResult.hasErrors() || (importService.findImportByCode(importCreate.getImportCode()) != null)) {
+        if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
-        importService.createImport(importCreate, importCreate.getImportMaterialId(), importCreate.getImportMaterialId().getMaterialCustomerId());
-        return new ResponseEntity<>(importCreate, HttpStatus.CREATED);
+        String message = "";
+        List<String> importCodeList = importService.findAllImportString();
+//        List<String> importMaterialCodeList = importService.findAllMaterialImportString();
+//        List<String> importCustomerCodeList = importService.findAllCustomerImportString();
+//        List<String> phoneCustomerList = importService.findAllCustomerPhoneImportString();
+//        List<String> emailCustomerList = importService.findAllCustomerEmailImportString();
+//        Boolean check = importCodeList.contains(importCreate.getImportCode());
+        if (importCodeList.contains(importCreate.getImportCode())) {
+            message = "Mã nhập kho đã tồn tại";
+            return new ResponseEntity<>(message, HttpStatus.CREATED);
+        } else {
+            importService.createImport(importCreate, importCreate.getImportMaterialId(), importCreate.getImportMaterialId().getMaterialCustomerId());
+            return new ResponseEntity<>(message, HttpStatus.CREATED);
+        }
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")

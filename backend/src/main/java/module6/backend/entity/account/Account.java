@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.Set;
 
@@ -17,8 +18,10 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountId;
     @NotBlank
+    @NotNull
     @Length(max = 20, min = 5)
     @Pattern(regexp = "^[a-z0-9]{5,20}$")
+    @Column(unique = true)
     private String username;
     @NotBlank
     private String password;

@@ -152,6 +152,13 @@ public class StatisticController {
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
+    @GetMapping("/getYear")
+    public ResponseEntity<List<String>> getYear() {
+        List<String> getYear = statisticService.getYear();
+        return new ResponseEntity<>(getYear, HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @PostMapping("/pdf2")
     public ResponseEntity<InputStreamResource> generatePDFKim(@RequestBody String[] data) throws IOException {
         System.out.println(1);
@@ -184,6 +191,7 @@ public class StatisticController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
     @GetMapping("/pdf-huyen")
     public ResponseEntity<InputStreamResource> generatePDFHuyen() throws IOException {
         String[] data = customerRepository.findAllPotentialCustomer();
@@ -206,6 +214,13 @@ public class StatisticController {
                                                              @RequestParam String year) {
         String[] list = statisticService.searchForPotentialCustomers(fromMonth, toMonth, year);
         return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT')")
+    @GetMapping("/yearSearch")
+    public ResponseEntity<List<String>> getYearSearch() {
+        List<String> getYearSearch = statisticService.getYearSearch();
+        return new ResponseEntity<>(getYearSearch, HttpStatus.OK);
     }
 
 //    @GetMapping("/chart")

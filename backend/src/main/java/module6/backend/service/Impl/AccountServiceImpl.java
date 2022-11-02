@@ -80,32 +80,36 @@ public class AccountServiceImpl implements IAccountService {
     //NhiVP code tao account va employee
     @Override
     public void createEmployeeAccount(EmployeeAccount employeeAccount) {
-        if (employeeRepository.findExistEmployeeDontHasAccount(employeeAccount.getEmployee().getEmployeeCode()) != null) {
-            Set<Role> roles = new HashSet<>();
-            Optional<Role> role = roleRepository.findById(employeeAccount.getEmployee().getEmployeePositionId().getPositionId());
-            Employee employee = employeeRepository.findEmployeeByCode(employeeAccount.getEmployee().getEmployeeCode());
-            if (role.isPresent()) {
-                Role role1 = role.get();
-                roles.add(role1);
+        if (accountRepository.findAccountByUsername(employeeAccount.getAccount().getUsername()) != null) {
+            System.out.println("User name existed");
+        }else {
+            if (employeeRepository.findExistEmployeeDontHasAccount(employeeAccount.getEmployee().getEmployeeCode()) != null) {
+                Set<Role> roles = new HashSet<>();
+                Optional<Role> role = roleRepository.findById(employeeAccount.getEmployee().getEmployeePositionId().getPositionId());
+                Employee employee = employeeRepository.findEmployeeByCode(employeeAccount.getEmployee().getEmployeeCode());
+                if (role.isPresent()) {
+                    Role role1 = role.get();
+                    roles.add(role1);
+                }
+                Account account = employeeAccount.getAccount();
+                account.setRoles(roles);
+                account.setPassword(getEncodedPassword(employeeAccount.getAccount().getPassword()));
+                employee.setEmployeeAccountId(account);
+                employeeRepository.save(employee);
+            } else {
+                Set<Role> roles = new HashSet<>();
+                employeeRepository.save(employeeAccount.getEmployee());
+                Optional<Role> role = roleRepository.findById(employeeAccount.getEmployee().getEmployeePositionId().getPositionId());
+                if (role.isPresent()) {
+                    Role role1 = role.get();
+                    roles.add(role1);
+                }
+                Account account = employeeAccount.getAccount();
+                account.setRoles(roles);
+                account.setPassword(getEncodedPassword(employeeAccount.getAccount().getPassword()));
+                employeeAccount.getEmployee().setEmployeeAccountId(account);
+                employeeRepository.save(employeeAccount.getEmployee());
             }
-            Account account = employeeAccount.getAccount();
-            account.setRoles(roles);
-            account.setPassword(getEncodedPassword(employeeAccount.getAccount().getPassword()));
-            employee.setEmployeeAccountId(account);
-            employeeRepository.save(employee);
-        } else {
-            Set<Role> roles = new HashSet<>();
-            employeeRepository.save(employeeAccount.getEmployee());
-            Optional<Role> role = roleRepository.findById(employeeAccount.getEmployee().getEmployeePositionId().getPositionId());
-            if (role.isPresent()) {
-                Role role1 = role.get();
-                roles.add(role1);
-            }
-            Account account = employeeAccount.getAccount();
-            account.setRoles(roles);
-            account.setPassword(getEncodedPassword(employeeAccount.getAccount().getPassword()));
-            employeeAccount.getEmployee().setEmployeeAccountId(account);
-            employeeRepository.save(employeeAccount.getEmployee());
         }
     }
 
