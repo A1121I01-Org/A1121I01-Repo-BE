@@ -141,7 +141,7 @@ public class MaterialController {
 
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
-    @GetMapping("list-material")
+    @GetMapping()
     public ResponseEntity<Page<Material>> findAllMaterial(@PageableDefault(value = 5) Pageable pageable,
                                                           @RequestParam(defaultValue = "") String search){
         Page<Material> materialList = materialService.findAll(pageable, search);
