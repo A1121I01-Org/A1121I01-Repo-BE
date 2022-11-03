@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(“˜Ãéÿÿÿÿÿ
 R
 java:S3655W"7Call "Optional#isPresent()" before accessing the value.(ã´Ùþÿÿÿÿ
@@ -12,3 +13,6 @@ N
 java:S14819"3Remove this unused "accountantRole" local variable.(Íê©Ýùÿÿÿÿ
 C
 java:S1481:"-Remove this unused "sellRole" local variable.(·ø˜’
+=======
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(“˜Ãéÿÿÿÿÿ
+>>>>>>> a5499c2b1407ac47f5d746e06f2186135bfa6eac

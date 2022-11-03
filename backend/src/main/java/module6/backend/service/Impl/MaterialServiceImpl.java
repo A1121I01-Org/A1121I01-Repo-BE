@@ -96,9 +96,8 @@ public class MaterialServiceImpl implements IMaterialService {
     }
 
     @Override
-    public Page<Material> getAllMaterial(Integer page, Integer size) {
-        Pageable paging = PageRequest.of(page, size, Sort.by("materialId").descending());
-        return materialRepository.findAll(paging);
+    public Page<Material> getAllMaterial(Pageable pageable) {
+        return materialRepository.findAll(pageable);
     }
 
 //    @Override

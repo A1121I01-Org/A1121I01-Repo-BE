@@ -17,14 +17,10 @@ import java.util.Optional;
 @Transactional
 public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     // HuyenNTD - Thong ke khach hang tiem nang
-
-    @Query(value = "select `customer`.customer_code , `customer`.customer_name , count(`cart`.cart_customer_id), sum(`cart`.cart_total_money) from `customer` join `cart` on `cart`.cart_customer_id = `customer`.customer_id group by `cart`.cart_customer_id", nativeQuery = true)
-    Page<String> findAllCustomer(Pageable pageable);
-
     @Query(value = "select customer_code , customer_name , count(cart_customer_id), sum(cart_total_money) from customer\n" +
             "join cart on cart.cart_customer_id = customer.customer_id\n" +
-            "group by cart_customer_id", nativeQuery = true)
-    String[] findAllPotentialCustomer();
+            "group by cart_customer_id ", nativeQuery = true)
+    List<String> findAllCustomer();
 
     @Query(value = "SELECT * FROM CUSTOMER WHERE customer_code = :code", nativeQuery = true)
     Customer getCustomerByCode(@Param("code") String codeCustomer);
@@ -106,15 +102,24 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     @Query(value = "insert into customer (customer_name, customer_code, customer_avatar, customer_address, customer_phone, customer_email, customer_type_id) values (?1,?2,?3,?4,?5,?6,?7)", nativeQuery = true)
     void createCustomer(String name, String code, String avt, String address, String phone, String email, Long customerType);
 
+    @Query(value = "select customer_code , customer_name , count(cart_customer_id), sum(cart_total_money) from customer\n" +
+            "join cart on cart.cart_customer_id = customer.customer_id\n" +
+            "group by cart_customer_id", nativeQuery = true)
+    String[] findAllPotentialCustomer();
+
     @Query(value = "select customer_code, customer_name, count(cart_customer_id) as SLDonHang, sum(cart_total_money) as TongGiaTri from customer\n" +
             "join cart on cart.cart_customer_id = customer.customer_id\n" +
             "join cart_status on cart_status.cart_status_id = cart.cart_status_id\n" +
             "where (month(cart_date_create) between :fromMonth and :toMonth) and year(cart_date_create) = :year and cart_status_name = 'đã thanh toán'\n" +
             "group by cart_customer_id", nativeQuery = true)
-
     String[] findForPotentialCustomers(@Param("fromMonth") String fromMonth,
                                        @Param("toMonth") String toMonth,
                                        @Param("year") String year);
+
+//    @Query(value = "select customer_code , customer_name , count(cart_customer_id), sum(cart_total_money) from customer\n"+
+//            "join cart on cart.cart_customer_id = customer.customer_id\n" +
+//            "group by cart_customer_id ", nativeQuery = true)
+//    String[] chartCustomer();
 }
 
 

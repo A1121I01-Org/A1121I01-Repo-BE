@@ -44,7 +44,7 @@ public class AccountController {
             boolean checkPassword = passwordEncoder.matches(password.getOldPassword(), originalPasswordEncode);
             if (checkPassword) {
                 if (!password.getNewPassword().equals(password.getConfirmPassword())) {
-                    return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
+                    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
                 } else {
                     String newPassWordEncode = new BCryptPasswordEncoder().encode(password.getNewPassword());
                     accountService.updatePassword(newPassWordEncode, id);
@@ -52,7 +52,7 @@ public class AccountController {
                     return new ResponseEntity<>(HttpStatus.OK);
                 }
             } else {
-                return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
         }
     }
@@ -81,7 +81,7 @@ public class AccountController {
     //NhiVP create account
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/create-Account")
-    public ResponseEntity<?> createAccount(@RequestBody EmployeeAccount employeeAccount) {
+    public ResponseEntity<EmployeeAccount> createAccount(@RequestBody EmployeeAccount employeeAccount) {
         accountService.createEmployeeAccount(employeeAccount);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

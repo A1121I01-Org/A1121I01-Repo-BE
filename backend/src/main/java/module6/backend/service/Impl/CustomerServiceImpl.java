@@ -64,6 +64,11 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
+    public List<String> findAllCustomerImportString() {
+        return customerRepository.findAllCustomerImportString();
+    }
+
+    @Override
     public void createCustomer(String name, String code, String avt, String address, String phone, String email, Long customerType) {
         customerRepository.createCustomer(name, code, avt, address, phone, email, customerType);
     }

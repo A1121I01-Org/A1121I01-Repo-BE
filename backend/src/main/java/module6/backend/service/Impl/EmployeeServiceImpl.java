@@ -1,11 +1,14 @@
 package module6.backend.service.Impl;
 
+import module6.backend.entity.Import;
 import module6.backend.entity.employee.Employee;
 import module6.backend.entity.employee.Position;
 import module6.backend.repository.IEmployeeRepository;
 import module6.backend.repository.IPositionRepository;
 import module6.backend.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
@@ -19,6 +22,8 @@ import java.util.Optional;
 @Service
 public class EmployeeServiceImpl implements IEmployeeService {
 
+
+
     @Autowired
     private IEmployeeRepository employeeRepository;
     @Autowired
@@ -26,9 +31,21 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 
     @Override
-    public void adminUpdateEmployee(String employeeName, String employeeCode, String employeeAvatar, LocalDate employeeDateOfBirth, String employeeGender, String employeeAddress, String employeePhone, Double employeeSalary, Long employeePositionId, Long employeeId) {
-        employeeRepository.adminUpdateEmployee(employeeName, employeeCode, employeeAvatar, employeeDateOfBirth, employeeGender, employeeAddress, employeePhone, employeeSalary, employeePositionId, employeeId);
+    public void adminUpdateEmployee( String employeeCode,String employeeName, String employeeAvatar, LocalDate employeeDateOfBirth, String employeeGender, String employeeAddress, String employeePhone, Double employeeSalary, Long employeePositionId, Long employeeId) {
+        employeeRepository.adminUpdateEmployee( employeeCode, employeeName,employeeAvatar, employeeDateOfBirth, employeeGender, employeeAddress, employeePhone, employeeSalary, employeePositionId, employeeId);
     }
+
+    @Override
+    public Page<Employee> findAllEmployee(Pageable page) {
+        return employeeRepository.findAllEmployee(page);
+    }
+
+    @Override
+    public void deleteEmployeeById(long l, boolean b, Long id) {
+        employeeRepository.deleteEmployeeById(l, b, id);
+
+    }
+
 
     @Override
     public void saveEmployee(String employeeCode, String employeeName, String employeeAvatar, LocalDate employeeDateOfBirth, String employeeGender, String employeeAddress, String employeePhone, Double employeeSalary, Long employeePositionId) {
@@ -65,10 +82,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
         return this.employeeRepository.findEmployeeByAccountId(accountId);
     }
 
-    @Override
-    public Optional<Employee> findEmployeeById(Long id) {
-        return employeeRepository.findEmployeeById(id);
-    }
 
     @Override
     public void updateEmployee(String employeeName, String employeeAvatar, LocalDate employeeDateOfBirth, String employeeGender, String employeeAddress, String employeePhone, Long employeeId) {
@@ -95,8 +108,18 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
+    public List<String> findAllPhone() {
+        return employeeRepository.findAllPhone();
+    }
+
+    @Override
     public Optional<Employee> findById(Long id) {
-        return employeeRepository.findById(id);
+        return employeeRepository.findEmployeeById(id);
+    }
+
+    @Override
+    public Optional<Employee> findEmployeeById(Long id) {
+        return employeeRepository.findEmployeeById(id);
     }
 
     @Override
@@ -105,9 +128,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public void deleteEmployeeById(Long id1, Long id2) {
-        employeeRepository.deleteEmployeeById(id1, id2);
+    public List<Employee> searchEmployeeByName(String name) {
+        return employeeRepository.searchEmployeeByName(name);
     }
+
 
     @Override
     public List<Employee> getAllEmployee() {

@@ -3,6 +3,7 @@ package module6.backend.entity.employee;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,7 +17,7 @@ public class Position {
 
     @OneToMany(mappedBy = "employeePositionId")
     @JsonBackReference
-    private Set<Employee> employeeList;
+    private List<Employee> employeeList;
     public Position() {
     }
 
@@ -48,5 +49,12 @@ public class Position {
 
     public void setPositionFlag(Boolean positionFlag) {
         this.positionFlag = positionFlag;
+    }
+    public List<Employee> getEmployeeList() {
+        return employeeList;
+    }
+
+    public void setEmployeeList(List<Employee> employeeList) {
+        this.employeeList = employeeList;
     }
 }

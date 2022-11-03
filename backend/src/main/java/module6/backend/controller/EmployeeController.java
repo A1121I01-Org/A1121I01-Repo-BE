@@ -1,5 +1,6 @@
 package module6.backend.controller;
 
+import module6.backend.entity.Import;
 import module6.backend.entity.account.Account;
 import module6.backend.entity.employee.Employee;
 import module6.backend.entity.employee.Position;
@@ -7,6 +8,9 @@ import module6.backend.service.IAccountService;
 import module6.backend.service.IEmployeeService;
 import module6.backend.service.IPositionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+
 @RestController
 @CrossOrigin
 @RequestMapping("api/employee")
@@ -33,6 +38,17 @@ public class EmployeeController {
 
     @Autowired
     private IPositionService positionService;
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
+    @GetMapping("employee/list")
+    public ResponseEntity<Page<Employee>> findAllEmployee(@PageableDefault(value = 5) Pageable pageable) {
+        Page<Employee> employeePage = employeeService.findAllEmployee(pageable);
+        if (employeePage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(employeePage, HttpStatus.OK);
+        }
+    }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
     @GetMapping("")
@@ -47,22 +63,43 @@ public class EmployeeController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
     @GetMapping("/employee-pagination/{index}")
     public ResponseEntity<Iterable<Employee>> getAllEmployeeWithPagination(@PathVariable("index") int index) {
-        List<Employee> employees = (List<Employee>) employeeService.getAllEmployeeWithPagination(index);
+        List<Employee> employees = employeeService.getAllEmployeeWithPagination(index);
         if (employees.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
+    @GetMapping(value = "/employee-search")
+    public ResponseEntity<List<Employee>> searchEmployeeByName(@RequestParam("name") String name) {
+        List<Employee> isEmployeeExist = employeeService.searchEmployeeByName(name);
+        if (isEmployeeExist != null) {
+            return new ResponseEntity<>(isEmployeeExist, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")
+//    @DeleteMapping("/employee-delete/{id}")
+//    public ResponseEntity<Employee> deleteCustomerById(@PathVariable("id") Long id) {
+//        Optional<Employee> employeeOptional = employeeService.findEmployeeById(id);
+//        if (!employeeOptional.isPresent()) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        employeeService.deleteEmployeeById(-id, id);
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @DeleteMapping("/employee-delete/{id}")
-    public ResponseEntity<Employee> deleteCustomerById(@PathVariable("id") Long id) {
+    public ResponseEntity<Employee> deleteEmployeeById(@PathVariable("id") Long id) {
         Optional<Employee> employeeOptional = employeeService.findEmployeeById(id);
         if (!employeeOptional.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            employeeService.deleteEmployeeById(-id, true, id);
+            return new ResponseEntity<>(employeeOptional.get(), HttpStatus.NO_CONTENT);
         }
-        employeeService.deleteEmployeeById(-id, id);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
@@ -152,7 +189,7 @@ public class EmployeeController {
     public ResponseEntity<List<String>> findAllEmployeeHasAccount() {
         List<String> employees = employeeService.findAllEmployeeHasAccount();
         if (employees.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
@@ -163,9 +200,19 @@ public class EmployeeController {
     public ResponseEntity<List<String>> findAllEmployeeDontHasAccount() {
         List<String> employees = employeeService.findAllEmployeeDontHasAccount();
         if (employees.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+
+    //NhiVP lấy danh sách số điện thoại
+    @GetMapping("/list-Phone")
+    public ResponseEntity<List<String>> findAllPhone() {
+        List<String> allPhone = employeeService.findAllPhone();
+        if (allPhone.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(allPhone, HttpStatus.OK);
     }
 
     //NhiVP lấy danh sách chức vụ trừ chức vụ quản lý
@@ -179,24 +226,47 @@ public class EmployeeController {
         return new ResponseEntity<List<Position>>(positions, HttpStatus.OK);
     }
 
-    @PatchMapping("update/{id}  ")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @PatchMapping("admin_update/{id}")
     public ResponseEntity<?> adminUpdateEmployee(@PathVariable("id") Long id, @RequestBody @Valid Employee employee, BindingResult bindingResult) {
-        System.out.println(employee.getEmployeeCode());
-        employeeService.adminUpdateEmployee(employee.getEmployeeName(), employee.getEmployeeCode(), employee.getEmployeeAvatar(), employee.getEmployeeDateOfBirth(), employee.getEmployeeGender(), employee.getEmployeeAddress(), employee.getEmployeePhone(), employee.getEmployeeSalary(), employee.getEmployeePositionId().getPositionId(), id);
-        return new ResponseEntity<>(employee, HttpStatus.OK);
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
+        }
+
+        Optional<Employee> foundEmployee = employeeService.findEmployeeById(id);
+        if (!foundEmployee.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            employeeService.adminUpdateEmployee(employee.getEmployeeCode(), employee.getEmployeeName(), employee.getEmployeeAvatar(), employee.getEmployeeDateOfBirth(), employee.getEmployeeGender(), employee.getEmployeeAddress(), employee.getEmployeePhone(), employee.getEmployeeSalary(), employee.getEmployeePositionId().getPositionId(), id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
     }
 
-    @PostMapping(value = "/create")
-    public ResponseEntity<Object> createEmployee(@RequestBody @Valid Employee employee, BindingResult bindingResult) {
-        //tạo mới nhân viên
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @PostMapping(value = "/admin_create")
+    public ResponseEntity<?> createEmployee(@RequestBody @Valid Employee employee) {
+        System.out.println(1);
         try {
-            System.out.println(employee.getEmployeeCode());
+            Employee employee1 = employee;
             employeeService.saveEmployee(employee.getEmployeeCode(), employee.getEmployeeName(), employee.getEmployeeAvatar(), employee.getEmployeeDateOfBirth(), employee.getEmployeeGender(), employee.getEmployeeAddress(), employee.getEmployeePhone(), employee.getEmployeeSalary(), employee.getEmployeePositionId().getPositionId());
             return new ResponseEntity<>(employee, HttpStatus.CREATED);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return new ResponseEntity<>(employee, HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(
+            MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
     }
 
     @GetMapping("position/list")

@@ -1,0 +1,6 @@
+
+Q	java:S107c"<Method has 8 parameters, which is greater than 7 authorized.(Æ‘œü
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÇŒ¹óúÿÿÿÿ
+Q	java:S125z"<This block of commented-out lines of code should be removed.(è¨½
+P
+java:S1128":Remove this unused import 'module6.backend.entity.Import'.(ÛåÒ…

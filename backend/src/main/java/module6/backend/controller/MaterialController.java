@@ -1,5 +1,6 @@
 package module6.backend.controller;
 
+import module6.backend.entity.Import;
 import module6.backend.entity.customer.Customer;
 import module6.backend.entity.material.Material;
 import module6.backend.entity.material.MaterialType;
@@ -12,9 +13,14 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -85,7 +91,7 @@ public class MaterialController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @PostMapping("/create")
-    public ResponseEntity<Material> saveMaterial(@RequestBody Material material) {
+    public ResponseEntity<Material> saveMaterial(@Valid @RequestBody Material material) {
         try {
             System.out.println(material.getMaterialCode());
             materialService.saveMaterial(material.getMaterialCode(), material.getMaterialName()
@@ -95,7 +101,7 @@ public class MaterialController {
             return new ResponseEntity<>(material, HttpStatus.CREATED);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return new ResponseEntity<>(material, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -108,7 +114,7 @@ public class MaterialController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @PatchMapping("/update")
-    public ResponseEntity<Material> findMaterialById(@RequestBody Material material) {
+    public ResponseEntity<Material> findMaterialById(@Valid @RequestBody Material material) {
 //       Material material = materialService.findById(id);
         System.out.println(material.getMaterialCode());
         materialService.updateMaterial(material.getMaterialCode(), material.getMaterialName(), material.getMaterialPrice(),
@@ -136,8 +142,8 @@ public class MaterialController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping
-    public ResponseEntity<Page<Material>> findAllMaterial(@PageableDefault(size = 4) Pageable pageable, @RequestParam(defaultValue = "") String search){
-
+    public ResponseEntity<Page<Material>> findAllMaterial(@PageableDefault(size = 4) Pageable pageable,
+                                                          @RequestParam(defaultValue = "") String search){
         Page<Material> materialList = materialService.findAll(pageable, search);
         if (materialList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -161,11 +167,13 @@ public class MaterialController {
      * Get list material.
      */
     @GetMapping("/list")
-    public ResponseEntity<Page<Material>> getAllMaterial(@RequestParam("page") Integer page,
-                                                         @RequestParam("size") Integer size) {
-
-        Page<Material> materials = materialService.getAllMaterial(page, size);
-        return new ResponseEntity<>(materials, HttpStatus.OK);
+    public ResponseEntity<Page<Material>> getAllMaterial(@PageableDefault(value = 6) Pageable pageable) {
+        Page<Material> materials = materialService.getAllMaterial(pageable);
+        if (materials.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(materials, HttpStatus.OK);
+        }
     }
 
     /**
@@ -178,6 +186,18 @@ public class MaterialController {
 
         Page<Material> materials = materialService.getAllMaterialSearch(search, page, size);
         return new ResponseEntity<>(materials, HttpStatus.OK);
+    }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(
+            MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
     }
 
 }

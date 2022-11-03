@@ -1,7 +1,6 @@
 package module6.backend.controller;
 
 
-import module6.backend.entity.Import;
 import module6.backend.entity.customer.Customer;
 import module6.backend.entity.customer.CustomerType;
 import module6.backend.repository.ICartRepository;
@@ -20,8 +19,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 
-
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,7 +60,6 @@ public class CustomerController {
     /// HieuNT get list with pagination
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
 //    @GetMapping("/customer-pagination/{index}")
-    @GetMapping("/customer-list")
 //    public ResponseEntity<List<Customer>> getAllCustomerWithPagination(@PathVariable("index") int index) {
 //        List<Customer> customers = customerService.getAllCustomerWithPagination(index);
 //        if (customers.isEmpty()) {
@@ -71,6 +67,7 @@ public class CustomerController {
 //        }
 //        return new ResponseEntity<>(customers, HttpStatus.OK);
 //    }
+    @GetMapping("/customer-list")
     public ResponseEntity<Page<Customer>> findAllCustomer(@PageableDefault(value = 5) Pageable pageable) {
         Page<Customer> customerPage = customerService.findAllCustomer1(pageable);
         if (customerPage.isEmpty()) {
@@ -165,5 +162,17 @@ public class CustomerController {
         }
         customerService.updateCustomer(customer.getCustomerName(), customer.getCustomerCode(), customer.getCustomerAvatar(), customer.getCustomerAddress(), customer.getCustomerPhone(), customer.getCustomerEmail(), customer.getCustomerTypeId().getCustomerTypeId(), customer.getCustomerId());
         return new ResponseEntity<>(customer, HttpStatus.OK);
+    }
+
+    //Duy code list customer string kiểm tra code
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
+    @GetMapping("/customer-list-string")
+    public ResponseEntity<List<String>> findAllImportCustomerString() {
+        List<String> importCustomerList = customerService.findAllCustomerImportString();
+        if (importCustomerList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(importCustomerList, HttpStatus.OK);
+        }
     }
 }

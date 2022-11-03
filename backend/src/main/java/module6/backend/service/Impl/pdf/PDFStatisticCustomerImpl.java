@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.List;
 import java.util.stream.Stream;
 
 @Service
@@ -19,10 +18,9 @@ public class PDFStatisticCustomerImpl {
         Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         try {
-            PdfWriter.getInstance(document,out);
+            PdfWriter.getInstance(document, out);
             document.open();
-
-            Font f = new Font(BaseFont.createFont("D:\\CodeGymDN\\Module_6\\VietFontsWeb1_ttf\\vuArial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
+            Font f = new Font(BaseFont.createFont("D:\\VietFontsWeb1_ttf\\vuArial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
             Font font1 = FontFactory.getFont(FontFactory.TIMES, 20, BaseColor.BLACK);
             Font font2 = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 13, BaseColor.BLACK);
             Paragraph para = new Paragraph("Thống kê khách hàng tiềm năng", f);
@@ -31,17 +29,17 @@ public class PDFStatisticCustomerImpl {
             document.add(Chunk.NEWLINE);
 
             PdfPTable table = new PdfPTable(4);
-            Stream.of("Mã KH ","Tên khách hàng","SL đơn hàng", "Tổng tiền").forEach(headerTitle -> {
+            Stream.of("Mã KH ", "Tên khách hàng", "SL đơn hàng", "Tổng tiền").forEach(headerTitle -> {
                 PdfPCell header = new PdfPCell();
                 Font headerFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
                 header.setBackgroundColor(BaseColor.LIGHT_GRAY);
                 header.setHorizontalAlignment(Element.ALIGN_CENTER);
                 header.setBorderWidth(1);
-                header.setPhrase(new Phrase(headerTitle,headerFont));
+                header.setPhrase(new Phrase(headerTitle, headerFont));
                 table.addCell(header);
             });
 
-            for (int i =0 ; i < data.length; i++) {
+            for (int i = 0; i < data.length; i++) {
                 String[] test = data[i].split(",");
                 PdfPCell titleCell1 = new PdfPCell(new Phrase(test[0]));
                 titleCell1.setPaddingLeft(1);
@@ -75,5 +73,4 @@ public class PDFStatisticCustomerImpl {
         }
         return new ByteArrayInputStream(out.toByteArray());
     }
-
 }

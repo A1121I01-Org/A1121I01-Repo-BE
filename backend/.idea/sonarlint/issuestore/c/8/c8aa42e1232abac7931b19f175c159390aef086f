@@ -1,2 +1,8 @@
 
+<<<<<<< HEAD
 n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ä‰­
+=======
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ä‰­
+q
+java:S1128"ORemove this unused import 'com.fasterxml.jackson.annotation.JsonBackReference'.(»Ôœ¿ýÿÿÿÿ8Ô¹ÐÂ0
+>>>>>>> a5499c2b1407ac47f5d746e06f2186135bfa6eac
