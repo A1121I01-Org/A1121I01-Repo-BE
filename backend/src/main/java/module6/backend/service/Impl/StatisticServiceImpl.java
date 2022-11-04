@@ -93,10 +93,20 @@ public class StatisticServiceImpl implements IStatisticService {
         return importRepository.searchnhap(month, year);
     }
 
+    @Override
+    public List<String> getYear() {
+        return cartRepository.getYear();
+    }
+
     // HuyenNTD - Thong ke khach hang tiem nang
     @Override
     public List<String> findAllStatisticCustomer() {
         return customerRepository.findAllCustomer();
+    }
+
+    @Override
+    public List<String> getYearSearch() {
+        return customerRepository.getYearSearch();
     }
 
     @Override

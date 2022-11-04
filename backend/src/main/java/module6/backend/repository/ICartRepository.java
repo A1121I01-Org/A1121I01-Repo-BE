@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Repository
@@ -53,6 +54,11 @@ public interface ICartRepository extends JpaRepository<Cart, Long> {
 
     @Query(value = "select sum(cart_total_money) as huy_hang from cart where cart_status_id = 2 and month(cart_date_create) like :month and year(cart_date_create) like :year group by cart_status_id;", nativeQuery = true)
     Integer searchban(@Param("month") String month , @Param("year") String year);
+
+    @Query(value = "select year(cart_date_create) from cart group by year(cart_date_create);", nativeQuery = true)
+    List<String> getYear();
+
+
 
 //    @Query(value = "select sum(cart_total_money) as nhap_hang from cart where cart_status_id = 2 group by cart_status_id;", nativeQuery = true)
 //    static String[] ban1() {
