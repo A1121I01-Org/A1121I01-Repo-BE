@@ -34,4 +34,6 @@ public interface ICustomerService {
 
     void createCustomer(String name, String code, String avt, String address, String phone, String email, Long customerType);
 
+    boolean checkExistEmail(Long id, String email);
+
 }

@@ -1,0 +1,23 @@
+
+S
+java:S4973Å"<Strings and Boxed types should be compared using "equals()".(ÌÂ¦ý
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(À©Õ—ýÿÿÿÿ
+Y
+java:S1155D">Use isEmpty() to check whether the collection is empty or not.(Ö³™—úÿÿÿÿ
+A
+java:S1452["&Remove usage of generic wildcard type.(ÛØôçÿÿÿÿÿ
+<
+java:S1452g"&Remove usage of generic wildcard type.(ôÂð
+A
+java:S1452"&Remove usage of generic wildcard type.(¹»õøÿÿÿÿ
+V
+java:S4684š"@Replace this persistent entity with a simple POJO or DTO object.(™üÿ,
+<
+java:S1452š"&Remove usage of generic wildcard type.(™üÿ,
+T	java:S106«"9Replace this use of System.out or System.err by a logger.(©þêÜúÿÿÿÿ
+O
+java:S1611µ"3Remove the parentheses around the "error" parameter(ý£—Ôúÿÿÿÿ
+W
+java:S4684À"@Replace this persistent entity with a simple POJO or DTO object.(€Ë†é
+=
+java:S1452À"&Remove usage of generic wildcard type.(€Ë†é

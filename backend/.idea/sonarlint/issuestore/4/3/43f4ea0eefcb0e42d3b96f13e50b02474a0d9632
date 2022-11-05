@@ -1,0 +1,12 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(“˜Ãéÿÿÿÿÿ
+Q	java:S1251"<This block of commented-out lines of code should be removed.(ä™Íƒ
+Q	java:S1254"<This block of commented-out lines of code should be removed.(÷ä†æ
+]	java:S125v"<This block of commented-out lines of code should be removed.(®§ä¡þÿÿÿÿ8ŽÀ³Ã0
+c
+java:S1128	"ARemove this unused import 'org.springframework.data.domain.Page'.(˜âŽŽüÿÿÿÿ8½šÿÇÃ0
+g
+java:S1128
+"ERemove this unused import 'org.springframework.data.domain.Pageable'.(‡ë‚Öýÿÿÿÿ8¾šÿÇÃ0
+R
+java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èýÿÿÿÿ8¾šÿÇÃ0

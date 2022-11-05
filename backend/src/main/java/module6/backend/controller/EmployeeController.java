@@ -70,13 +70,24 @@ public class EmployeeController {
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
+//    @GetMapping(value = "/employee-search")
+//    public ResponseEntity<List<Employee>> searchEmployeeByName(@RequestParam("name") String name) {
+//        List<Employee> isEmployeeExist = employeeService.searchEmployeeByName(name);
+//        if (isEmployeeExist != null) {
+//            return new ResponseEntity<>(isEmployeeExist, HttpStatus.OK);
+//        }
+//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
     @GetMapping(value = "/employee-search")
-    public ResponseEntity<List<Employee>> searchEmployeeByName(@RequestParam("name") String name) {
-        List<Employee> isEmployeeExist = employeeService.searchEmployeeByName(name);
-        if (isEmployeeExist != null) {
-            return new ResponseEntity<>(isEmployeeExist, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<Page<Employee>> searchEmployeeByName(
+            @PageableDefault(value = 5) Pageable pageable,
+            @RequestParam Optional<String> name) {
+        Page<Employee> employeeList;
+        employeeList = employeeService.searchEmployeeByName(name.get(), pageable);
+
+        return new ResponseEntity<>(employeeList, HttpStatus.OK);
     }
 
 //    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SELL')")

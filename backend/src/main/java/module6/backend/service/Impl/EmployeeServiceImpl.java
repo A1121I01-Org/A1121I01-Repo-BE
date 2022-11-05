@@ -128,9 +128,14 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public List<Employee> searchEmployeeByName(String name) {
-        return employeeRepository.searchEmployeeByName(name);
+    public Page<Employee> searchEmployeeByName(String name, Pageable page) {
+        return employeeRepository.searchEmployeeByName(name, page);
     }
+
+//    @Override
+//    public List<Employee> searchEmployeeByName(String name) {
+//        return employeeRepository.searchEmployeeByName(name);
+//    }
 
 
     @Override

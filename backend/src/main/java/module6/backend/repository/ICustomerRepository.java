@@ -123,6 +123,13 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
 //            "join cart on cart.cart_customer_id = customer.customer_id\n" +
 //            "group by cart_customer_id ", nativeQuery = true)
 //    String[] chartCustomer();
+
+    // Kiểm tra tồn tại email lúc thêm mới
+    Boolean existsByCustomerEmail(String email);
+
+    // Kiểm tra tồn tại email lúc update
+    @Query(value = "select * from customer where customer_email = :email and customer_id != :id", nativeQuery = true)
+    Customer existsEmailExceptCustomerUpdate(Long id, String email);
 }
 
 

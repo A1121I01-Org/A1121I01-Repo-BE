@@ -1,0 +1,5 @@
+
+W	java:S107"=Method has 10 parameters, which is greater than 7 authorized.(ÈÕÑÿÿÿÿÿ
+W	java:S107"=Method has 11 parameters, which is greater than 7 authorized.(øÃ¢–ıÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Éáÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(ù®

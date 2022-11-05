@@ -78,4 +78,14 @@ public class CustomerServiceImpl implements ICustomerService {
         customerRepository.updateCustomer(name, code, avatar, address, phone, email, typeId, id);
     }
 
+    @Override
+    public boolean checkExistEmail(Long id, String email) {
+        // Thêm mới thì id = 0
+        if(id == 0) {
+            return customerRepository.existsByCustomerEmail(email);
+        } else {
+            // nếu tồn tại thì trả về true <=> != null
+            return customerRepository.existsEmailExceptCustomerUpdate(id, email) != null;
+        }
+    }
 }

@@ -33,7 +33,8 @@ public interface IEmployeeService {
 
     List<Employee> getAllEmployeeWithPagination(int index);
 
-    List<Employee> searchEmployeeByName(String name);
+    //    List<Employee> searchEmployeeByName(String name);
+    Page<Employee> searchEmployeeByName(String name, Pageable pageable);
 
     List<Employee> getAllEmployee();
 

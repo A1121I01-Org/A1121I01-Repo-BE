@@ -65,8 +65,11 @@ public interface IEmployeeRepository extends JpaRepository<Employee, String> {
     @Query(value = "select * from employee where employee_position_id  > 0 and employee_flag = 0", nativeQuery = true)
     List<Employee> getAllEmployee();
 
+//    @Query(value = "select * from employee where employee_name like %:name%", nativeQuery = true)
+//    List<Employee> searchEmployeeByName(@Param("name") String name);
+
     @Query(value = "select * from employee where employee_name like %:name%", nativeQuery = true)
-    List<Employee> searchEmployeeByName(@Param("name") String name);
+    Page<Employee> searchEmployeeByName(@Param("name") String name, Pageable pageable);
 
     //AnDVH get employee by accountId
     @Query(value = "SELECT * FROM employee WHERE employee_account_id =:accountId AND employee_flag = 0", nativeQuery = true)

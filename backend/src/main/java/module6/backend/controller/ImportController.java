@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -177,20 +178,82 @@ public class ImportController {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
-        String message = "";
+        List<String> message = new ArrayList<>();
         List<String> importCodeList = importService.findAllImportString();
-//        List<String> importMaterialCodeList = importService.findAllMaterialImportString();
-//        List<String> importCustomerCodeList = importService.findAllCustomerImportString();
-//        List<String> phoneCustomerList = importService.findAllCustomerPhoneImportString();
-//        List<String> emailCustomerList = importService.findAllCustomerEmailImportString();
-//        Boolean check = importCodeList.contains(importCreate.getImportCode());
         if (importCodeList.contains(importCreate.getImportCode())) {
-            message = "Mã nhập kho đã tồn tại";
-            return new ResponseEntity<>(message, HttpStatus.CREATED);
-        } else {
-            importService.createImport(importCreate, importCreate.getImportMaterialId(), importCreate.getImportMaterialId().getMaterialCustomerId());
-            return new ResponseEntity<>(message, HttpStatus.CREATED);
+            message.add("Mã nhập kho đã tồn tại");
         }
+
+        if (!message.isEmpty()) {
+            return new ResponseEntity<>(message.toString(), HttpStatus.BAD_REQUEST);
+        }
+
+        importService.createImport(importCreate, importCreate.getImportMaterialId(), importCreate.getImportMaterialId().getMaterialCustomerId());
+        return new ResponseEntity<>(message, HttpStatus.CREATED);
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
+    @PostMapping("import-material-create")
+    public ResponseEntity<?> saveImportMaterial(@Valid @RequestBody Import importCreate, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
+        }
+        List<String> message = new ArrayList<>();
+        List<String> importCodeList = importService.findAllImportString();
+        List<String> importMaterialCodeList = importService.findAllMaterialImportString();
+        if (importCodeList.contains(importCreate.getImportCode())) {
+            message.add("Mã nhập kho đã tồn tại");
+        }
+        if (importMaterialCodeList.contains(importCreate.getImportMaterialId().getMaterialCode())) {
+            message.add("Mã vật tư đã tồn tại");
+        }
+
+        if (!message.isEmpty()) {
+            return new ResponseEntity<>(message.toString(), HttpStatus.BAD_REQUEST);
+        }
+
+        importService.createImport(importCreate, importCreate.getImportMaterialId(), importCreate.getImportMaterialId().getMaterialCustomerId());
+        return new ResponseEntity<>(message, HttpStatus.CREATED);
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")
+    @PostMapping("import-material-customer-create")
+    public ResponseEntity<?> saveImportMaterialCustomer(@Valid @RequestBody Import importCreate, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
+        }
+        List<String> message = new ArrayList<>();
+        List<String> importCodeList = importService.findAllImportString();
+        List<String> importMaterialCodeList = importService.findAllMaterialImportString();
+        List<String> importCustomerCodeList = importService.findAllCustomerImportString();
+        List<String> phoneCustomerList = importService.findAllCustomerPhoneImportString();
+        List<String> emailCustomerList = importService.findAllCustomerEmailImportString();
+        if (importCodeList.contains(importCreate.getImportCode())) {
+            message.add("Mã nhập kho đã tồn tại");
+        }
+
+        if (importMaterialCodeList.contains(importCreate.getImportMaterialId().getMaterialCode())) {
+            message.add("Mã vật tư đã tồn tại");
+        }
+
+        if (importCustomerCodeList.contains(importCreate.getImportMaterialId().getMaterialCustomerId().getCustomerCode())) {
+            message.add("Mã nhà cung cấp đã tồn tại");
+        }
+
+        if (phoneCustomerList.contains(importCreate.getImportMaterialId().getMaterialCustomerId().getCustomerPhone())) {
+            message.add("Số điện thoại nhà cung cấp đã tồn tại");
+        }
+
+        if (emailCustomerList.contains(importCreate.getImportMaterialId().getMaterialCustomerId().getCustomerEmail())) {
+            message.add("Email nhà cung cấp đã tồn tại");
+        }
+
+        if (!message.isEmpty()) {
+            return new ResponseEntity<>(message.toString(), HttpStatus.BAD_REQUEST);
+        }
+
+        importService.createImport(importCreate, importCreate.getImportMaterialId(), importCreate.getImportMaterialId().getMaterialCustomerId());
+        return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ACCOUNTANT', 'ROLE_SELL')")

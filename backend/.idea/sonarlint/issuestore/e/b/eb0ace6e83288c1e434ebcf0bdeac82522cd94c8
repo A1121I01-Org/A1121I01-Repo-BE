@@ -1,0 +1,19 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(À©Õ—ıÿÿÿÿ
+R
+java:S3655p"7Call "material.isPresent()" before accessing the value.(¡Ûôúüÿÿÿÿ
+V	java:S125#"<This block of commented-out lines of code should be removed.(–úÆÔøÿÿÿÿ
+Q	java:S1251"<This block of commented-out lines of code should be removed.(íÌ·ß
+V
+java:S4684^"@Replace this persistent entity with a simple POJO or DTO object.(ÅßĞÇ
+S	java:S106`"9Replace this use of System.out or System.err by a logger.(éööëşÿÿÿÿ
+S	java:S106g"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
+[
+java:S4684u"@Replace this persistent entity with a simple POJO or DTO object.(è³ûÔúÿÿÿÿ
+S	java:S106w"9Replace this use of System.out or System.err by a logger.(éööëşÿÿÿÿ
+V	java:S125v"<This block of commented-out lines of code should be removed.(ÏÉ æıÿÿÿÿ
+T	java:S106Š"9Replace this use of System.out or System.err by a logger.(ÄõÛçûÿÿÿÿ
+O
+java:S1611Ã"3Remove the parentheses around the "error" parameter(ı£—Ôúÿÿÿÿ
+W
+java:S1128":Remove this unused import 'module6.backend.entity.Import'.(ÛåÒ…8ß¹ÂÃ0

@@ -158,4 +158,9 @@ public class CustomerController {
             return new ResponseEntity<>(importCustomerList, HttpStatus.OK);
         }
     }
+
+    @GetMapping("/checkExistEmail")
+    public ResponseEntity<?> checkExistEmail(@RequestParam Long id, @RequestParam String email) {
+        return new ResponseEntity<>(customerService.checkExistEmail(id, email) ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
+    }
 }
