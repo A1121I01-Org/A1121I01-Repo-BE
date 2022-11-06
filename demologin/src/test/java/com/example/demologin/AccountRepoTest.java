@@ -1,6 +1,7 @@
 package com.example.demologin;
 
 import com.example.demologin.entity.Account;
+import com.example.demologin.entity.Role;
 import com.example.demologin.repository.AccountRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,19 @@ public class AccountRepoTest {
 
         assertThat(saveAccount).isNotNull();
         assertThat(saveAccount.getAccountId()).isGreaterThan(0);
+    }
+
+    @Test
+    public void testAssignRole() {
+        long id = 1;
+        Account account = accountRepository.findById(id).get();
+
+
+        account.addRole(new Role(id));
+
+        Account account1 = accountRepository.save(account);
+
+        assertThat(account1.getRoles()).hasSize(1);
     }
 
 

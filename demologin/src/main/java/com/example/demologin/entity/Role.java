@@ -18,6 +18,10 @@ public class Role {
     public Role() {
     }
 
+    public Role(Long roleId) {
+        this.roleId = roleId;
+    }
+
     public Role(String roleName) {
         this.roleName = roleName;
     }
@@ -41,5 +45,10 @@ public class Role {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    @Override
+    public String toString() {
+        return this.roleName;
     }
 }

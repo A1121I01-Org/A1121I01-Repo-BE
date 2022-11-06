@@ -4,6 +4,7 @@ import com.example.demologin.entity.Customer;
 import com.example.demologin.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -17,6 +18,7 @@ public class RestCustomer {
     @Autowired
     private CustomerRepository customerRepository;
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     @GetMapping
     public List<Customer> getList() {
         return customerRepository.findAll();

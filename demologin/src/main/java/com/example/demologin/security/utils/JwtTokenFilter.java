@@ -1,6 +1,8 @@
 package com.example.demologin.security.utils;
 
 import com.example.demologin.entity.Account;
+import com.example.demologin.entity.Role;
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -46,7 +48,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         UserDetails userDetails = getUserDetails(accesToken);
 
         UsernamePasswordAuthenticationToken authentication
-                = new  UsernamePasswordAuthenticationToken(userDetails, null, null );
+                = new  UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities() );
 
         authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
@@ -54,7 +56,22 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     }
 
     private UserDetails getUserDetails(String accessToken) {
+
         Account account = new Account();
+        Claims claims = jwtTokenUtil.parseClaims(accessToken);
+        String claimRoles = (String) claims.get("roles");
+
+        System.out.println("claims role: " + claimRoles);
+        claimRoles = claimRoles.replace("[", "").replace("]","");
+        String[] roleName = claimRoles.split(",");
+
+        for (String aRoleName: roleName) {
+            account.addRole(new Role(aRoleName));
+        }
+        
+        String subject = (String) claims.get(Claims.SUBJECT);
+
+
         String[] subjectArray = jwtTokenUtil.getSubject(accessToken).split(",");
 
         account.setUsername(subjectArray[0]);

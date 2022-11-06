@@ -47,11 +47,10 @@ public class JwtTokenUtil  {
 //                    .compact();
 //    }
 
-    public String generateToken(UserDetails userDetails) {
-        Map<String, Object> claims = new HashMap<>();
+    public String generateToken(Account account) {
         return  Jwts.builder()
-                .setSubject(userDetails.getUsername() + "," +userDetails.getPassword())
-                .setClaims(claims)
+                .setSubject(account.getUsername() + "," +account.getPassword())
+                .claim("roles", account.getRoles().toString())
                 .setIssuer("Code Java")
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() +EXPIrE_DURATION))
@@ -82,7 +81,7 @@ public class JwtTokenUtil  {
         return parseClaims(token).getSubject();
     }
 
-    private Claims parseClaims(String token) {
+    public Claims parseClaims(String token) {
         return Jwts.parser()
                     .setSigningKey(secretKey)
                     .parseClaimsJws(token)

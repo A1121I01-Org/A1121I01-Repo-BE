@@ -28,3 +28,4 @@ create table if not exists customer (
 	customer_name varchar(50) not null,				
 	customer_address varchar(255)		
 );
+select * from customer;
