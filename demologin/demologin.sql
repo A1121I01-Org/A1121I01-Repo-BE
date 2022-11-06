@@ -26,6 +26,11 @@ select * from account_role;
 create table if not exists customer (
 	customer_id bigint primary key auto_increment,						
 	customer_name varchar(50) not null,				
-	customer_address varchar(255)		
+	customer_address varchar(255),
+	`created_by` varchar(255) DEFAULT NULL,
+	`creation_date` datetime DEFAULT NULL,
+	`last_modified_by` varchar(255) DEFAULT NULL,
+	`last_modified_date` datetime DEFAULT NULL
 );
+truncate table customer;
 select * from customer;

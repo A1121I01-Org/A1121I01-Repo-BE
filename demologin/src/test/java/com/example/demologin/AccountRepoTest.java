@@ -25,10 +25,10 @@ public class AccountRepoTest {
     @Test
     public void testAccount() {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String pass = "hieu2002";
+        String pass = "hieu2003";
         String encodePass = passwordEncoder.encode(pass);
 
-        Account newaccount = new Account("hieupro123", encodePass);
+        Account newaccount = new Account("hieufunny", encodePass);
 
         Account saveAccount = accountRepository.save(newaccount);
 

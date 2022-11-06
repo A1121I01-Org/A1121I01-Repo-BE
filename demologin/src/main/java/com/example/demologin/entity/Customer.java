@@ -1,19 +1,20 @@
 package com.example.demologin.entity;
-
+import com.example.demologin.service.BeanUtil;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-
+import org.ocpsoft.prettytime.PrettyTime;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "customer")
-public class Customer {
+public class Customer extends Auditing{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerId;
@@ -55,5 +56,20 @@ public class Customer {
 
     public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
+    }
+
+//    public String getPrettyTime() {
+//        PrettyTime pt = BeanUtil.getBean(PrettyTime.class);
+//        return pt.format(convertToDateViaInstant(getCreationDate()));
+//    }
+
+//    private Date convertToDateViaInstant(LocalDateTime dateToConvert) {
+//        return java.util.Date.from(dateToConvert.atZone(ZoneId.systemDefault()).toInstant());
+//    }
+
+
+    @Override
+    public String toString() {
+        return this.customerName;
     }
 }
