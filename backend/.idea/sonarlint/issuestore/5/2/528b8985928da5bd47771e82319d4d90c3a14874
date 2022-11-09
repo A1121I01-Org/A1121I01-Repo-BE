@@ -1,0 +1,39 @@
+
+u
+java:S2293À"YReplace the type specification in this constructor call with the diamond operator ("<>").(……˜»şÿÿÿÿ
+p
+java:S2293Â"YReplace the type specification in this constructor call with the diamond operator ("<>").(¨—°Õ
+p
+java:S2293ë"YReplace the type specification in this constructor call with the diamond operator ("<>").(Å­„Â
+p
+java:S2293í"YReplace the type specification in this constructor call with the diamond operator ("<>").(â½Ï—
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(À©Õ—ıÿÿÿÿ
+P
+java:S3655X"3Call "name.isPresent()" before accessing the value.(áè´Í8ˆ¥òÄ0
+]	java:S125J"<This block of commented-out lines of code should be removed.(ô™—ğùÿÿÿÿ8îÒñÄ0
+]	java:S125_"<This block of commented-out lines of code should be removed.(‹ïáœøÿÿÿÿ8ËòÔòÂ0
+\
+java:S4684¥"@Replace this persistent entity with a simple POJO or DTO object.(Áö¤íùÿÿÿÿ
+B
+java:S1452¥"&Remove usage of generic wildcard type.(Áö¤íùÿÿÿÿ
+O
+java:S1611¨"3Remove the parentheses around the "error" parameter(¶Ã‰¬úÿÿÿÿ
+O	java:S106­"9Replace this use of System.out or System.err by a logger.(÷Õ
+\
+java:S4684ò"@Replace this persistent entity with a simple POJO or DTO object.(Ğ›ê˜üÿÿÿÿ
+B
+java:S1452ò"&Remove usage of generic wildcard type.(Ğ›ê˜üÿÿÿÿ
+Y
+java:S1854…"=Remove this useless assignment to local variable "employee1".(©ò·Æıÿÿÿÿ
+W
+java:S4684‚"@Replace this persistent entity with a simple POJO or DTO object.(ıŒöì
+=
+java:S1452‚"&Remove usage of generic wildcard type.(ıŒöì
+T	java:S106ƒ"9Replace this use of System.out or System.err by a logger.(ìÑÑÈÿÿÿÿÿ
+J
+java:S1481…".Remove this unused "employee1" local variable.(©ò·Æıÿÿÿÿ
+T	java:S106‰"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
+O
+java:S1611“"3Remove the parentheses around the "error" parameter(ı£—Ôúÿÿÿÿ
+W
+java:S1128":Remove this unused import 'module6.backend.entity.Import'.(ÛåÒ…8ì‚¯Ä0

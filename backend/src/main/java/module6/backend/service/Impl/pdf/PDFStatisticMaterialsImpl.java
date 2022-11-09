@@ -24,7 +24,9 @@ public class PDFStatisticMaterialsImpl {
             PdfWriter.getInstance(document,out);
             document.open();
             Font f = new Font(BaseFont.createFont("D:\\VietFontsWeb1_ttf\\vuArial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
+            Font f1 = new Font(BaseFont.createFont("D:\\VietFontsWeb1_ttf\\vuArial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
             f.setSize(20);
+            f1.setSize(13);
             Font font1 = FontFactory.getFont(FontFactory.TIMES, 13, BaseColor.BLACK);
             Font font2 = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 13, BaseColor.BLACK);
             Paragraph para = new Paragraph("Thống kê vật tư", f);
@@ -38,7 +40,7 @@ public class PDFStatisticMaterialsImpl {
                 header.setBackgroundColor(BaseColor.LIGHT_GRAY);
                 header.setHorizontalAlignment(Element.ALIGN_CENTER);
                 header.setBorderWidth(1);
-                header.setPhrase(new Phrase(headerTitle,font1));
+                header.setPhrase(new Phrase(headerTitle,f1));
                 table.addCell(header);
             });
 

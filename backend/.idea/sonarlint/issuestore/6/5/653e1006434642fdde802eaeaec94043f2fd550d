@@ -1,0 +1,7 @@
+
+W	java:S107-"=Method has 10 parameters, which is greater than 7 authorized.(»òç®ÿÿÿÿÿ
+Q	java:S107/"<Method has 9 parameters, which is greater than 7 authorized.(â©ùã
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Éáÿ
+W	java:S125$"<This block of commented-out lines of code should be removed.(ÒÁ›98ýòíÄ0
+W
+java:S1128":Remove this unused import 'module6.backend.entity.Import'.(ÛåÒ…8ò†èñÂ0

@@ -31,11 +31,11 @@ public class PDFStatisticCustomerImpl {
             PdfPTable table = new PdfPTable(4);
             Stream.of("Mã KH ", "Tên khách hàng", "SL đơn hàng", "Tổng tiền").forEach(headerTitle -> {
                 PdfPCell header = new PdfPCell();
-                Font headerFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+//                Font headerFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
                 header.setBackgroundColor(BaseColor.LIGHT_GRAY);
                 header.setHorizontalAlignment(Element.ALIGN_CENTER);
                 header.setBorderWidth(1);
-                header.setPhrase(new Phrase(headerTitle, headerFont));
+                header.setPhrase(new Phrase(headerTitle, f));
                 table.addCell(header);
             });
 

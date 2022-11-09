@@ -30,6 +30,7 @@ public class JwtServiceImpl implements UserDetailsService {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
+	// tạo jwt token
 	public JwtResponse createJwtToken(LoginRequest loginRequest) throws Exception {
 		String username = loginRequest.getUsername();
 		String password = loginRequest.getPassword();
@@ -42,6 +43,7 @@ public class JwtServiceImpl implements UserDetailsService {
 		return new JwtResponse(account , newGeneratedToken);
 	}
 
+	// phương thức có sẵn của userdetail
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Account account = accountRepository.findAccountByUsername(username);

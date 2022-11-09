@@ -1,12 +1,0 @@
-
-g
-java:S11922"QDefine a constant instead of duplicating this literal "/api/customer/**" 3 times.(îÿ˜÷
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÚšŸÊúÿÿÿÿ
-_
-java:S1874"DRemove this use of "WebSecurityConfigurerAdapter"; it is deprecated.(Ã÷ ´ýÿÿÿÿ
-—
-java:S46014"|Reorder the URL patterns from most to less specific, the pattern "/api/customer/**" should occurs before "/api/customer/**".(Ú¯ÖŸþÿÿÿÿ
-[
-java:S1128	"@Remove this unused import 'org.springframework.http.HttpMethod'.(Ê¨Ä¡øÿÿÿÿ
-`
-java:S1128"ERemove this unused import 'org.springframework.http.HttpMethod.POST'.(ÛÈ—šùÿÿÿÿ
