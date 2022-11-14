@@ -5,6 +5,7 @@ import com.example.demologin.security.utils.JwtTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -18,6 +19,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import javax.servlet.http.HttpServletResponse;
+
+import static org.springframework.http.HttpMethod.GET;
 
 
 @Configuration
@@ -33,6 +36,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService jwtService;
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -55,9 +59,25 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.cors();
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/api/books","/api/books/book-search").permitAll();
 
+        http.authorizeRequests().antMatchers("/auth/login").permitAll()
+                .antMatchers(HttpHeaders.ALLOW).permitAll()
+                .antMatchers(GET,"/api/books/**").hasAuthority("ROLE_ADMIN")
+                .anyRequest().authenticated();
+
+
+
+
+
+
+
+
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//        http.authorizeRequests().anyRequest().permitAll();
         http.exceptionHandling().authenticationEntryPoint(
                 (request, response, ex) -> {
                     response.sendError(HttpServletResponse.SC_UNAUTHORIZED,
@@ -65,9 +85,9 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 }
         );
 
-        http.authorizeRequests()
-            .antMatchers("/auth/login").permitAll()
-            .anyRequest().authenticated();
+//        http.authorizeRequests()
+//            .antMatchers("/auth/login").permitAll()
+//            .anyRequest().authenticated();
 
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
 

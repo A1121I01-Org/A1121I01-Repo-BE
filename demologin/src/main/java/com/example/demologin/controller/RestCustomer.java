@@ -1,6 +1,6 @@
 package com.example.demologin.controller;
 
-import com.example.demologin.entity.Customer;
+import com.example.demologin.entity.customer.Customer;
 import com.example.demologin.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,9 +11,9 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("customers")
 public class RestCustomer {
 
     @Autowired

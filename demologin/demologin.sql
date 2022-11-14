@@ -32,5 +32,5 @@ create table if not exists customer (
 	`last_modified_by` varchar(255) DEFAULT NULL,
 	`last_modified_date` datetime DEFAULT NULL
 );
-truncate table customer;
+drop table customer;
 select * from customer;
