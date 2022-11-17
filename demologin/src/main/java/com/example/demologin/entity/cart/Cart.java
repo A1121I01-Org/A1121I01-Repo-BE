@@ -41,6 +41,10 @@ public class Cart {
     @JoinColumn(name = "cart_customer_id")
     private Customer cartCustomerId;
 
+    private Double bookPromotionPercent;
+
+    private Boolean cartFlag = false;
+
 
     public Cart() {
     }
@@ -75,6 +79,28 @@ public class Cart {
         this.cartCustomerId = cartCustomerId;
     }
 
+    public Cart(Long cartId, String cartCode, String bookName, String bookImage, String bookPublisher,
+                String bookTranslator, Double bookPrice, Integer cartQuantity, Double cartTotalMoney,
+                LocalDate cartDateCreate, CartStatus cartStatusId, Account cartAccountId, Customer cartCustomerId,
+                Double bookPromotionPercent,Boolean cartFlag) {
+        this.cartId = cartId;
+        this.cartCode = cartCode;
+        this.bookName = bookName;
+        this.bookImage = bookImage;
+        this.bookPublisher = bookPublisher;
+        this.bookTranslator = bookTranslator;
+        this.bookPrice = bookPrice;
+        this.cartQuantity = cartQuantity;
+        this.cartTotalMoney = cartTotalMoney;
+        this.cartDateCreate = cartDateCreate;
+        this.cartStatusId = cartStatusId;
+        this.cartAccountId = cartAccountId;
+        this.cartCustomerId = cartCustomerId;
+        this.bookPromotionPercent = bookPromotionPercent;
+        this.cartFlag = cartFlag;
+
+    }
+
     public Cart(Long cartId, String cartCode, Integer cartQuantity, LocalDate cartDateCreate, Double cartTotalMoney, CartStatus cartStatusId, Account cartAccountId, Customer cartCustomerId) {
         this.cartId = cartId;
         this.cartCode = cartCode;
@@ -103,10 +129,12 @@ public class Cart {
         this.cartCustomerId = cartCustomerId;
     }
 
-    public Cart(Integer cartQuantity, Double cartTotalMoney, CartStatus cartStatusId) {
+    public Cart( Integer cartQuantity, Double cartTotalMoney, CartStatus cartStatusId,  Customer cartCustomerId) {
+
         this.cartQuantity = cartQuantity;
         this.cartTotalMoney = cartTotalMoney;
         this.cartStatusId = cartStatusId;
+        this.cartCustomerId = cartCustomerId;
     }
 
     public Long getCartId() {
@@ -211,5 +239,13 @@ public class Cart {
 
     public void setCartCustomerId(Customer cartCustomerId) {
         this.cartCustomerId = cartCustomerId;
+    }
+
+    public Double getBookPromotionPercent() {
+        return bookPromotionPercent;
+    }
+
+    public void setBookPromotionPercent(Double bookPromotionPercent) {
+        this.bookPromotionPercent = bookPromotionPercent;
     }
 }

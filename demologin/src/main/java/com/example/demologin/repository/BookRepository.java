@@ -25,5 +25,14 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     @Query(value = "select * from book where book_name like %:name% and book_flag = 0", nativeQuery = true)
     Page<Book> searchBookName(@Param("name") String name, Pageable pageable);
 
+    @Query(value = "SELECT book_code, book_name, book_content, book_price, book_translator, book_quantity, book_publisher, book_author, book_promotion_id, book_category_id FROM book \n" +
+            "WHERE book_flag = 0 AND book_status = 0 AND book_id = :id", nativeQuery = true)
+    Book findBookByBookFlagAndBookStatus(@Param("id") Long cartId);
+
+    @Query(value = "select book_code, book_name, book_content, book_price, book_translator, book_quantity, book_publisher, book_author, book_promotion_id, book_category_id from book where  book_flag = 0", nativeQuery = true)
+    List<Book> findBookBySameBookAuthor();
+
+
+
 
 }

@@ -1,10 +1,15 @@
 package com.example.demologin.entity.book;
 
+import com.example.demologin.entity.Account;
 import com.example.demologin.entity.Auditing;
+import com.example.demologin.entity.customer.Customer;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-
+//@JsonDeserialize(as= Customer.class)
 @Entity
 @Table(name = "book")
 public class Book extends Auditing{
@@ -32,24 +37,36 @@ public class Book extends Auditing{
 
     private Integer bookQuantity=0;
 
+    private Integer bookQuantityBuy;
+
     private Boolean bookFlag=false;
 
     private String bookPublisher;
 
     private String bookAuthor;
 
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_category_id")
     private BookCategory bookCategoryId;
+
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_promotion_id")
     private Promotion bookPromotionId;
 
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "book_customer_id")
+    private Customer bookCustomerId;
+
     public Book() {
     }
 
-    public Book(Long bookId, String bookCode, String bookName, String bookImage, String bookContent, Boolean bookStatus, Double bookPrice, String bookTranslator, String bookWeight, LocalDate bookPublishDate, Integer bookQuantity, Boolean bookFlag, String bookPublisher, String bookAuthor, BookCategory bookCategoryId, Promotion bookPromotionId) {
+    public Book(Long bookId, String bookCode, String bookName, String bookImage, String bookContent,
+                Boolean bookStatus, Double bookPrice, String bookTranslator, String bookWeight,
+                LocalDate bookPublishDate, Integer bookQuantity, Integer bookQuantityBuy, Boolean bookFlag,
+                String bookPublisher, String bookAuthor, BookCategory bookCategoryId, Promotion bookPromotionId, Customer bookCustomerId) {
         this.bookId = bookId;
         this.bookCode = bookCode;
         this.bookName = bookName;
@@ -61,11 +78,13 @@ public class Book extends Auditing{
         this.bookWeight = bookWeight;
         this.bookPublishDate = bookPublishDate;
         this.bookQuantity = bookQuantity;
+        this.bookQuantityBuy = bookQuantityBuy;
         this.bookFlag = bookFlag;
         this.bookPublisher = bookPublisher;
         this.bookAuthor = bookAuthor;
         this.bookCategoryId = bookCategoryId;
         this.bookPromotionId = bookPromotionId;
+        this.bookCustomerId = bookCustomerId;
     }
 
     public Long getBookId() {
@@ -156,6 +175,14 @@ public class Book extends Auditing{
         this.bookQuantity = bookQuantity;
     }
 
+    public Integer getBookQuantityBuy() {
+        return bookQuantityBuy;
+    }
+
+    public void setBookQuantityBuy(Integer bookQuantityBuy) {
+        this.bookQuantityBuy = bookQuantityBuy;
+    }
+
     public Boolean getBookFlag() {
         return bookFlag;
     }
@@ -194,6 +221,14 @@ public class Book extends Auditing{
 
     public void setBookPromotionId(Promotion bookPromotionId) {
         this.bookPromotionId = bookPromotionId;
+    }
+
+    public Customer getBookCustomerId() {
+        return bookCustomerId;
+    }
+
+    public void setBookCustomerId(Customer bookCustomerId) {
+        this.bookCustomerId = bookCustomerId;
     }
 
     @Override

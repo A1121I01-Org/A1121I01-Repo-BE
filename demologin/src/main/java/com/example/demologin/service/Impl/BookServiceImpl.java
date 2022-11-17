@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 @Service
@@ -45,5 +46,14 @@ public class BookServiceImpl implements IBookService {
     @Override
     public Page<Book> searchBookName(String name, Pageable page) {
         return bookRepository.searchBookName(name, page);
+    }
+
+    @Override
+    public List<Book> findBookByBookFlagAndBookStatus(Long[] bookId) {
+        List<Book> books = new ArrayList<>();
+        for (int i =0; i<bookId.length;i++) {
+            books.add(bookRepository.findBookByBookFlagAndBookStatus(bookId[i])) ;
+        }
+        return books;
     }
 }

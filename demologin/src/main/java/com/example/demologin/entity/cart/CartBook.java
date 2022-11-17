@@ -40,6 +40,12 @@ public class CartBook {
         this.cartBookFlag = cartBookFlag;
     }
 
+    public CartBook(Cart cartId, Boolean cartMaterialFlag, Book bookId) {
+        this.cartId = cartId;
+        this.cartBookFlag = cartBookFlag;
+        this.bookId = bookId;
+    }
+
     public Long getCartBookId() {
         return cartBookId;
     }

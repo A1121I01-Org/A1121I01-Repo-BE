@@ -20,4 +20,8 @@ public interface IBookService {
     Page<Book> findAllBook(Pageable page);
 
     Page<Book> searchBookName(String name, Pageable page);
+
+    List<Book> findBookByBookFlagAndBookStatus(Long[] bookId);
+
+
 }

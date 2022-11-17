@@ -1,19 +1,19 @@
 package com.example.demologin.entity.customer;
 import com.example.demologin.entity.Account;
-import com.example.demologin.service.BeanUtil;
-import lombok.Getter;
-import lombok.Setter;
-import org.ocpsoft.prettytime.PrettyTime;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
 
+//@JsonTypeInfo( use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+//@JsonDeserialize(as=Account.class)
 @Entity
-@Getter
-@Setter
 @Table(name = "customer")
 public class Customer {
     @Id
@@ -33,6 +33,7 @@ public class Customer {
 
     private Boolean customerFlag = false;
 
+    @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_account_id")
     private Account customerAccountId;

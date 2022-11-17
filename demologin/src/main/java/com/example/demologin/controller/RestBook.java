@@ -116,6 +116,25 @@ public class RestBook {
         bookService.updateBook(book);
         return new ResponseEntity<>(book, HttpStatus.OK);
     }
+    @PostMapping("/checkBook")
+    public ResponseEntity<List<Book>> checkCart(@RequestBody Long[] bookId) {
+        try {
+            List<Book> books = bookService.findBookByBookFlagAndBookStatus(bookId);
+            return new ResponseEntity<>(books,HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("detail/{id}")
+    public ResponseEntity<Book> findMaterialById(@PathVariable("id") Long id) {
+        Optional<Book> book = bookService.findBookById(id);
+        if (book.isPresent()) {
+            return new ResponseEntity<>(book.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 
 }

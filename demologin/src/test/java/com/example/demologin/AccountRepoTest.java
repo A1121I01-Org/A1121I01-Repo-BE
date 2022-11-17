@@ -2,7 +2,11 @@ package com.example.demologin;
 
 import com.example.demologin.entity.Account;
 import com.example.demologin.entity.Role;
+import com.example.demologin.entity.cart.Cart;
 import com.example.demologin.repository.AccountRepository;
+import com.example.demologin.service.ICartService;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -11,6 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Rollback;
 
+import java.io.IOException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -18,6 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(false)
 public class AccountRepoTest {
+
 
     @Autowired
     private AccountRepository accountRepository;
@@ -50,6 +57,17 @@ public class AccountRepoTest {
 
         assertThat(account1.getRoles()).hasSize(1);
     }
+
+//    @Test(expected = JsonMappingException.class)
+//    public void givenAbstractClass_whenDeserializing_thenException()
+//            throws IOException {
+//        String json = "{"animal":{"name":"lacy"}}";
+//        ObjectMapper mapper = new ObjectMapper();
+//
+//        mapper.reader().forType(Account.class).readValue(json);
+//    }
+
+
 
 
 }

@@ -21,6 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import javax.servlet.http.HttpServletResponse;
 
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 
 
 @Configuration
@@ -62,7 +63,10 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors();
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/books","/api/books/book-search").permitAll();
+                .antMatchers("/api/books","/api/books/book-search", "/api/books/checkBook",
+                        "/api/account/create-Account","/api/books/detail/{id}",
+                        "/api/cart/addBookIntoCart/{id}","/api/cart/list/{id}",
+                        "/api/cart/delete/{cartId}","/api/cart/findCartIdExists/{id}").permitAll();
 
         http.authorizeRequests().antMatchers("/auth/login").permitAll()
                 .antMatchers(HttpHeaders.ALLOW).permitAll()
