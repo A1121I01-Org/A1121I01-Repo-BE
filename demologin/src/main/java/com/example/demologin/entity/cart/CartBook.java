@@ -26,6 +26,11 @@ public class CartBook {
     public CartBook() {
     }
 
+    public CartBook(Book bookId, Cart cartId) {
+        this.bookId = bookId;
+        this.cartId = cartId;
+    }
+
     public CartBook(Long cartBookId, Book bookId, Cart cartId, Boolean cartBookFlag, String cartBookReason) {
         this.cartBookId = cartBookId;
         this.bookId = bookId;

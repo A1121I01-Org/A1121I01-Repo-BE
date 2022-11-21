@@ -10,4 +10,6 @@ public interface IAccountService {
     //HieuNT code tao customer moi va account moi
     void createCustomerAccount(CustomerAccount customerAccount);
 
+    Account findAccountByAccountId(Long id);
+
 }

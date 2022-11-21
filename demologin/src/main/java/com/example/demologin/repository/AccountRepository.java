@@ -13,6 +13,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     Optional<Account> findAllByUsername(String userName);
 
 //    Account findAccountByUsername(String username);
+    @Query(value = "SELECT * FROM account WHERE account_id=?1 and account_flag = 0", nativeQuery = true)
     Account findAccountByAccountId(Long id);
 
     @Query(value = "SELECT * FROM account WHERE username=?1 and account_flag = 0", nativeQuery = true)

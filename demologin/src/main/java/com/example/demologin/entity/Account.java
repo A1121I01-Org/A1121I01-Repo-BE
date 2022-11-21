@@ -1,12 +1,14 @@
 package com.example.demologin.entity;
 
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.*;
 
 @Entity
@@ -17,8 +19,11 @@ public class Account implements UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountId;
+    @Length(max = 20, min = 5)
+    @Pattern(regexp = "^[a-z0-9]{5,20}$")
     @Column(unique = true)
     private String username;
+    @NotBlank
     private String password;
 
     @ManyToMany

@@ -5,6 +5,7 @@ import com.example.demologin.entity.cart.Cart;
 import com.example.demologin.repository.CartRepository;
 import com.example.demologin.service.ICartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -18,10 +19,10 @@ public class CartServiceImpl implements ICartService {
     @Autowired
     private CartRepository cartRepository;
 
-    @Override
-    public void updateCart(Integer quantity, Double money, Long id) {
-        cartRepository.updateCart(quantity, money, id);
-    }
+//    @Override
+//    public void updateCart(Integer quantity, Double money, Long id) {
+//        cartRepository.updateCart(quantity, money, id);
+//    }
 
     @Override
     public void insertBookIntoCart(String name, String img, String publisher, String translator, Double price, Integer quantity, Double totalMoney, Date dateCreate, Long cartStatusId, Long accountId, Double promotionPercent) {
@@ -43,10 +44,20 @@ public class CartServiceImpl implements ICartService {
         return cartRepository.existsByCartId(cartId, bookName);
     }
 
+    @Override
+    public Optional<Cart> findCartByCartId(Long cartId) {
+        return cartRepository.findCartByCartId(cartId);
+    }
+
 
     @Override
-    public void updateQuantityCart(Integer quantity, Long cartId) {
-        cartRepository.updateQuantityCart(quantity,cartId);
+    public void updateQuantityCart(Integer quantity,Double totalMoney, Long cartId,String bookName) {
+        cartRepository.updateQuantityCart(quantity,totalMoney,cartId,bookName);
+    }
+
+    @Override
+    public void updateCart(Integer quantity, Double totalMoney, Long cartId) {
+        cartRepository.updateCart(quantity,totalMoney,cartId);
     }
 
 

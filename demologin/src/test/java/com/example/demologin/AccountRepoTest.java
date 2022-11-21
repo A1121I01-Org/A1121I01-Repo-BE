@@ -32,10 +32,11 @@ public class AccountRepoTest {
     @Test
     public void testAccount() {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String pass = "hieu2003";
+//        String pass = "hieu2003";
+        String pass = "123123";
         String encodePass = passwordEncoder.encode(pass);
 
-        Account newaccount = new Account("hieufunny", encodePass);
+        Account newaccount = new Account("hieuadmin", encodePass);
 
         Account saveAccount = accountRepository.save(newaccount);
 

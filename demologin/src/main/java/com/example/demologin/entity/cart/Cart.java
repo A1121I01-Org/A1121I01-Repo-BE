@@ -49,42 +49,27 @@ public class Cart {
     public Cart() {
     }
 
-    public Cart(Long cartId, String cartCode, String bookName, String bookImage, String bookPublisher, String bookTranslator, Double bookPrice, Integer cartQuantity, Double cartTotalMoney, LocalDate cartDateCreate, CartStatus cartStatusId, Account cartAccountId, Customer cartCustomerId) {
-        this.cartId = cartId;
-        this.cartCode = cartCode;
-        this.bookName = bookName;
-        this.bookImage = bookImage;
-        this.bookPublisher = bookPublisher;
-        this.bookTranslator = bookTranslator;
-        this.bookPrice = bookPrice;
-        this.cartQuantity = cartQuantity;
-        this.cartTotalMoney = cartTotalMoney;
-        this.cartDateCreate = cartDateCreate;
-        this.cartStatusId = cartStatusId;
-        this.cartAccountId = cartAccountId;
-        this.cartCustomerId = cartCustomerId;
-    }
+//    public Cart(Long cartId, String cartCode, String bookName, String bookImage, String bookPublisher, String bookTranslator, Double bookPrice, Integer cartQuantity, Double cartTotalMoney, LocalDate cartDateCreate, CartStatus cartStatusId, Account cartAccountId, Customer cartCustomerId) {
+//        this.cartId = cartId;
+//        this.cartCode = cartCode;
+//        this.bookName = bookName;
+//        this.bookImage = bookImage;
+//        this.bookPublisher = bookPublisher;
+//        this.bookTranslator = bookTranslator;
+//        this.bookPrice = bookPrice;
+//        this.cartQuantity = cartQuantity;
+//        this.cartTotalMoney = cartTotalMoney;
+//        this.cartDateCreate = cartDateCreate;
+//        this.cartStatusId = cartStatusId;
+//        this.cartAccountId = cartAccountId;
+//        this.cartCustomerId = cartCustomerId;
+//    }
 
-    public Cart(Long cartId, String cartCode, String bookName, String bookImage, String bookPublisher, String bookTranslator, Double bookPrice, Integer cartQuantity, Double cartTotalMoney, CartStatus cartStatusId, Customer cartCustomerId) {
-        this.cartId = cartId;
-        this.cartCode = cartCode;
-        this.bookName = bookName;
-        this.bookImage = bookImage;
-        this.bookPublisher = bookPublisher;
-        this.bookTranslator = bookTranslator;
-        this.bookPrice = bookPrice;
-        this.cartQuantity = cartQuantity;
-        this.cartTotalMoney = cartTotalMoney;
-        this.cartStatusId = cartStatusId;
-        this.cartCustomerId = cartCustomerId;
-    }
-
-    public Cart(Long cartId, String cartCode, String bookName, String bookImage, String bookPublisher,
+    public Cart(String bookName, String bookImage, String bookPublisher,
                 String bookTranslator, Double bookPrice, Integer cartQuantity, Double cartTotalMoney,
-                LocalDate cartDateCreate, CartStatus cartStatusId, Account cartAccountId, Customer cartCustomerId,
-                Double bookPromotionPercent,Boolean cartFlag) {
-        this.cartId = cartId;
-        this.cartCode = cartCode;
+                LocalDate cartDateCreate, Account cartAccountId,
+                Double bookPromotionPercent) {
+
         this.bookName = bookName;
         this.bookImage = bookImage;
         this.bookPublisher = bookPublisher;
@@ -93,49 +78,63 @@ public class Cart {
         this.cartQuantity = cartQuantity;
         this.cartTotalMoney = cartTotalMoney;
         this.cartDateCreate = cartDateCreate;
-        this.cartStatusId = cartStatusId;
         this.cartAccountId = cartAccountId;
-        this.cartCustomerId = cartCustomerId;
         this.bookPromotionPercent = bookPromotionPercent;
-        this.cartFlag = cartFlag;
+
 
     }
 
-    public Cart(Long cartId, String cartCode, Integer cartQuantity, LocalDate cartDateCreate, Double cartTotalMoney, CartStatus cartStatusId, Account cartAccountId, Customer cartCustomerId) {
-        this.cartId = cartId;
-        this.cartCode = cartCode;
-        this.cartQuantity = cartQuantity;
-        this.cartDateCreate = cartDateCreate;
-    }
+//    public Cart(Long cartId, String cartCode, String bookName, String bookImage, String bookPublisher, String bookTranslator, Double bookPrice, Integer cartQuantity, Double cartTotalMoney, CartStatus cartStatusId, Customer cartCustomerId) {
+//        this.cartId = cartId;
+//        this.cartCode = cartCode;
+//        this.bookName = bookName;
+//        this.bookImage = bookImage;
+//        this.bookPublisher = bookPublisher;
+//        this.bookTranslator = bookTranslator;
+//        this.bookPrice = bookPrice;
+//        this.cartQuantity = cartQuantity;
+//        this.cartTotalMoney = cartTotalMoney;
+//        this.cartStatusId = cartStatusId;
+//        this.cartCustomerId = cartCustomerId;
+//    }
 
-    public Cart(Long cartId, String cartCode, Integer cartQuantity, Double cartTotalMoney, CartStatus cartStatusId, Account cartAccountId, Customer cartCustomerId) {
-        this.cartId = cartId;
-        this.cartCode = cartCode;
-        this.cartQuantity = cartQuantity;
 
-        this.cartTotalMoney = cartTotalMoney;
-        this.cartStatusId = cartStatusId;
-        this.cartAccountId = cartAccountId;
-        this.cartCustomerId = cartCustomerId;
-    }
 
-    public Cart(Long cartId, String cartCode, Integer cartQuantity, LocalDate cartDateCreate, Double cartTotalMoney, CartStatus cartStatusId, Customer cartCustomerId) {
-        this.cartId = cartId;
-        this.cartCode = cartCode;
-        this.cartQuantity = cartQuantity;
-        this.cartDateCreate = cartDateCreate;
-        this.cartTotalMoney = cartTotalMoney;
-        this.cartStatusId = cartStatusId;
-        this.cartCustomerId = cartCustomerId;
-    }
-
-    public Cart( Integer cartQuantity, Double cartTotalMoney, CartStatus cartStatusId,  Customer cartCustomerId) {
-
-        this.cartQuantity = cartQuantity;
-        this.cartTotalMoney = cartTotalMoney;
-        this.cartStatusId = cartStatusId;
-        this.cartCustomerId = cartCustomerId;
-    }
+//    public Cart(Long cartId, String cartCode, Integer cartQuantity, LocalDate cartDateCreate, Double cartTotalMoney, CartStatus cartStatusId, Account cartAccountId, Customer cartCustomerId) {
+//        this.cartId = cartId;
+//        this.cartCode = cartCode;
+//        this.cartQuantity = cartQuantity;
+//        this.cartDateCreate = cartDateCreate;
+//    }
+//
+//    public Cart(Long cartId, String cartCode, Integer cartQuantity, Double cartTotalMoney, CartStatus cartStatusId, Account cartAccountId, Customer cartCustomerId) {
+//        this.cartId = cartId;
+//        this.cartCode = cartCode;
+//        this.cartQuantity = cartQuantity;
+//
+//        this.cartTotalMoney = cartTotalMoney;
+//        this.cartStatusId = cartStatusId;
+//        this.cartAccountId = cartAccountId;
+//        this.cartCustomerId = cartCustomerId;
+//    }
+//
+//    public Cart(Long cartId, String cartCode, Integer cartQuantity, LocalDate cartDateCreate, Double cartTotalMoney, CartStatus cartStatusId, Customer cartCustomerId) {
+//        this.cartId = cartId;
+//        this.cartCode = cartCode;
+//        this.cartQuantity = cartQuantity;
+//        this.cartDateCreate = cartDateCreate;
+//        this.cartTotalMoney = cartTotalMoney;
+//        this.cartStatusId = cartStatusId;
+//        this.cartCustomerId = cartCustomerId;
+//    }
+//
+//    public Cart( Integer cartQuantity, Double cartTotalMoney, CartStatus cartStatusId,  Customer cartCustomerId) {
+//
+//        this.cartQuantity = cartQuantity;
+//        this.cartTotalMoney = cartTotalMoney;
+//        this.cartStatusId = cartStatusId;
+//        this.cartCustomerId = cartCustomerId;
+//    }
 
     public Long getCartId() {
         return cartId;

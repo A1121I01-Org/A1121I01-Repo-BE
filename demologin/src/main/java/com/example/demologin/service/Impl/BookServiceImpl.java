@@ -1,6 +1,7 @@
 package com.example.demologin.service.Impl;
 
 import com.example.demologin.entity.book.Book;
+import com.example.demologin.entity.book.BookCategory;
 import com.example.demologin.entity.customer.Customer;
 import com.example.demologin.repository.BookRepository;
 import com.example.demologin.service.IBookService;
@@ -9,9 +10,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class BookServiceImpl implements IBookService {
 
@@ -56,4 +59,21 @@ public class BookServiceImpl implements IBookService {
         }
         return books;
     }
+
+    @Override
+    public void saveBook(String bookCode, String bookName, String image, String content, Double price, String translator, String weight, LocalDate publishDate, Integer quantity, String bookPublisher, String bookAuthor, Long bookPromotionPd, Long bookCategoryId) {
+        bookRepository.createBook(bookCode,bookName,image,content,price,translator,weight,publishDate,quantity,bookPublisher,bookAuthor,bookPromotionPd,bookCategoryId);
+    }
+
+    @Override
+    public List<Book> findAllByBookCategoryId(Long categoryId) {
+        return bookRepository.findAllByBookCategoryId(categoryId);
+    }
+
+    @Override
+    public Optional<Book> existsByBookId(Long bookId) {
+        return bookRepository.existsByBookId(bookId);
+    }
+
+
 }

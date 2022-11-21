@@ -60,26 +60,23 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+//        http.csrf().disable().authorizeRequests().anyRequest().permitAll();
+
         http.cors();
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/api/books","/api/books/book-search", "/api/books/checkBook",
                         "/api/account/create-Account","/api/books/detail/{id}",
                         "/api/cart/addBookIntoCart/{id}","/api/cart/list/{id}",
-                        "/api/cart/delete/{cartId}","/api/cart/findCartIdExists/{id}").permitAll();
+                        "/api/cart/delete/{cartId}","/api/cart/findCartIdExists/{id}",
+                        "/api/cart/changeQuantityCart","/api/books/findAllByBookCategoryId/list/{id}",
+                        "/api/category").permitAll();
 
         http.authorizeRequests().antMatchers("/auth/login").permitAll()
                 .antMatchers(HttpHeaders.ALLOW).permitAll()
-                .antMatchers(GET,"/api/books/**").hasAuthority("ROLE_ADMIN")
+                .antMatchers(GET,"/api/books/**","/api/cart/**","/api/account/**","/customers/**").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/api/books/**","/api/cart/**","/api/account/**","/customers/**").hasAnyAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated();
-
-
-
-
-
-
-
-
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 //        http.authorizeRequests().anyRequest().permitAll();
         http.exceptionHandling().authenticationEntryPoint(

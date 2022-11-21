@@ -19,9 +19,9 @@ import java.util.Optional;
 public interface CartRepository extends JpaRepository<Cart, Long> {
 
 
-    @Modifying
-    @Query(value = "UPDATE cart SET cart_quantity = :quantity , cart_total_money = :money WHERE cart_id = :idCart ", nativeQuery = true)
-    void updateCart(@Param("quantity") Integer quantity, @Param("money") Double money, @Param("idCart") Long idCart);
+//    @Modifying
+//    @Query(value = "UPDATE cart SET cart_quantity = :quantity , cart_total_money = :money WHERE cart_id = :idCart ", nativeQuery = true)
+//    void updateCart(@Param("quantity") Integer quantity, @Param("money") Double money, @Param("idCart") Long idCart);
 
     @Query(value = "INSERT INTO `cart` (`book_name`, `book_image`, `book_publisher`, `book_translator`, `book_price`, `cart_quantity`, `cart_total_money`,`cart_date_create`,`cart_status_id`,  `cart_account_id`,`book_promotion_percent`)" +
             "VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11);", nativeQuery = true)
@@ -36,11 +36,20 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
     @Query(value = "UPDATE cart SET cart_flag = 1 WHERE cart_id= :cartId ", nativeQuery = true)
     void deleteCartByCartIdAndAccountId(@Param("cartId") Long cartId);
 
-    @Query(value = "select * from cart where cart_id= :cartId AND book_name= :bookName", nativeQuery = true)
-    Optional<Cart> existsByCartId(@Param("cartId") Long cartId, @Param("bookName") String bookName);
+    @Query(value = "select * from cart where cart_account_id= :accountId AND book_name= :bookName AND cart_flag = 0", nativeQuery = true)
+    Optional<Cart> existsByCartId(@Param("accountId") Long accountId, @Param("bookName") String bookName);
+
+    @Query(value = "select * from cart where cart_id= :cartId AND cart_flag = 0", nativeQuery = true)
+    Optional<Cart> findCartByCartId(@Param("cartId") Long cartId );
+
 
     @Modifying
-    @Query(value = "UPDATE cart SET cart_quantity = :quantity  WHERE cart_id = :cartId ", nativeQuery = true)
-    void updateQuantityCart(@Param("quantity") Integer quantity,@Param("cartId") Long cartId);
+    @Query(value = "UPDATE cart SET cart_quantity = :quantity, cart_total_money= :totalMoney  WHERE cart_account_id = :accountId AND book_name= :bookName AND cart_flag = 0", nativeQuery = true)
+    void updateQuantityCart(@Param("quantity") Integer quantity,@Param("totalMoney") Double totalMoney,@Param("accountId") Long accountId, @Param("bookName") String bookName);
+
+    @Modifying
+    @Query(value = "UPDATE cart SET cart_quantity= :quantity, cart_total_money= :totalMoney  WHERE cart_id= :cartId AND cart_flag = 0", nativeQuery = true)
+    void updateCart(@Param("quantity") Integer quantity,@Param("totalMoney") Double totalMoney, @Param("cartId") Long cartId);
+
 
 }

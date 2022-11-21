@@ -1,5 +1,6 @@
 package com.example.demologin.controller;
 
+import com.example.demologin.entity.Account;
 import com.example.demologin.entity.book.Book;
 import com.example.demologin.entity.cart.Cart;
 import com.example.demologin.entity.cart.CartBook;
@@ -7,6 +8,8 @@ import com.example.demologin.entity.cart.CartStatus;
 import com.example.demologin.repository.CartBookRepository;
 import com.example.demologin.repository.CartRepository;
 import com.example.demologin.repository.CartStatusRepository;
+import com.example.demologin.service.IAccountService;
+import com.example.demologin.service.IBookService;
 import com.example.demologin.service.ICartBookService;
 import com.example.demologin.service.ICartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,12 +27,6 @@ import java.util.Optional;
 @CrossOrigin
 @RequestMapping("api/cart")
 public class RestCart {
-
-    @Autowired
-    private CartStatusRepository cartStatusRepository;
-
-//    @Autowired
-//    private ICustomerService customerService;
 
     @Autowired
     private ICartBookService cartBookService;
@@ -40,7 +38,12 @@ public class RestCart {
     private ICartService cartService;
 
     @Autowired
+    private IAccountService accountService;
+
+    @Autowired
     private CartRepository cartRepository;
+
+    @Autowired private IBookService bookService;
 
 
     @GetMapping("/list/{id}")
@@ -59,22 +62,41 @@ public class RestCart {
 
     @PostMapping("/addBookIntoCart/{id}")
     public ResponseEntity<?> insertBookCart(@PathVariable("id") Long id ,@RequestBody Book book) {
-
+        List<CartBook> cartBookList = cartBookService.findAllCartBook(id);
         Optional<Cart> existCartBydId = cartService.existsByCartId(id, book.getBookName());
-        if (existCartBydId.get() != null){
-            cartRepository.updateQuantityCart(book.getBookQuantityBuy()+1,id);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } else {
-            long millis=System.currentTimeMillis();
-            Date date = new Date(millis);
-            cartService.insertBookIntoCart(book.getBookName(), book.getBookImage(),book.getBookPublisher(),book.getBookTranslator(),
-                    book.getBookPrice(),book.getBookQuantityBuy(),book.getBookPrice()*book.getBookQuantityBuy(),date,(long) 1,
-                    id,book.getBookPromotionId().getPromotionPercent());
+        Optional<Book> existBookById = bookService.existsByBookId(book.getBookId());
+        for (CartBook cartBook: cartBookList) {
+            if (cartBook.getBookId().getBookId() == book.getBookId()) {
+                if (existCartBydId.isPresent()){
+                    if ( existBookById.get().getBookQuantity() > existCartBydId.get().getCartQuantity()){
+                        Double totalMoney = existCartBydId.get().getBookPrice()*(existCartBydId.get().getCartQuantity()+1);
+                        cartService.updateQuantityCart(existCartBydId.get().getCartQuantity()+1,totalMoney,id,book.getBookName());
+                        return new ResponseEntity<>(HttpStatus.OK);
+                    } else {
+                        String message = "Số lượng sách thêm đã lớn hơn số lượng trong kho hiện tại. Vui lòng nhập lại";
+                        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+                    }
 
-            return new ResponseEntity<>(HttpStatus.CREATED);
+                }
+            }
         }
+        long millis=System.currentTimeMillis();
+//                Date date = new Date(millis);
+        LocalDate localDate = LocalDate.now();
+        Account account = accountService.findAccountByAccountId(id);
+        Double total = book.getBookPrice()*book.getBookQuantityBuy();
+        Cart cart = new Cart(book.getBookName(),book.getBookImage(),book.getBookPublisher(),book.getBookTranslator(),
+                book.getBookPrice(),book.getBookQuantityBuy(),total,localDate,account,book.getBookPromotionId().getPromotionPercent());
+        CartBook cartBook1 = new CartBook(book,cart);
+        cartRepository.save(cart);
+        cartBookRepository.save(cartBook1);
+//                cartService.insertBookIntoCart(book.getBookName(), book.getBookImage(),book.getBookPublisher(),book.getBookTranslator(),
+//                        book.getBookPrice(),book.getBookQuantityBuy(),book.getBookPrice()*book.getBookQuantityBuy(),date,(long) 1,
+//                        id,book.getBookPromotionId().getPromotionPercent());
 
+        return new ResponseEntity<>(HttpStatus.CREATED);
 
+//
 //        try {
 //            Long[] bookId = cartBookRepository.getCartBookByIdAndStatus();
 //            CartBook cartBook0 = cartBookRepository.findCartBookByStatusAndFlagAndBookId1(book.getBookId());
@@ -99,6 +121,28 @@ public class RestCart {
 //        } catch (Exception e) {
 //            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 //        }
+    }
+
+    @PostMapping("/changeQuantityCart")
+    public ResponseEntity<?> changeQuantityCart(@RequestParam("quantity") Integer quantity,
+                                                @RequestParam("money") Double money,@RequestParam("id") Long id) {
+        List<CartBook> cartBookList = cartBookService.findAllCartBookByCartId(id);
+        Optional<Cart> existCartBydId = cartService.findCartByCartId(id);
+//        Optional<Book> existBookById = bookService.existsByBookId(book.getBookId());
+
+        if (existCartBydId.isPresent()){
+            for (CartBook cartBook: cartBookList) {
+                if (cartBook.getBookId().getBookQuantity() < quantity) {
+                    String message = "Số lượng sách thêm đã lớn hơn số lượng trong kho hiện tại. Vui lòng nhập lại";
+                    return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+                } else {
+                    cartService.updateCart(quantity,money,id);
+                    return new ResponseEntity<>(HttpStatus.OK);
+                }
+            }
+
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/delete/{cartId}")

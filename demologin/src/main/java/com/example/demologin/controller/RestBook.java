@@ -1,6 +1,7 @@
 package com.example.demologin.controller;
 
 import com.example.demologin.entity.book.Book;
+import com.example.demologin.entity.book.BookCategory;
 import com.example.demologin.entity.book.Promotion;
 import com.example.demologin.repository.BookRepository;
 import com.example.demologin.service.IBookService;
@@ -59,20 +60,20 @@ public class RestBook {
         return new ResponseEntity<>(bookPage, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    @PostMapping("/create")
-    public ResponseEntity<Book> create(@RequestBody @Valid Book book) {
-        try {
-            System.out.println(book.getBookCode());
-             bookService.createBook(book);
-//            URI uri = URI.create("/books" + saveBook.getBookId());
-            return new ResponseEntity<>(book,HttpStatus.CREATED);
-//            return ResponseEntity.created(uri).body(saveBook);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
-        }
-    }
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+//    @PostMapping("/create")
+//    public ResponseEntity<Book> create(@RequestBody @Valid Book book) {
+//        try {
+//            System.out.println(book.getBookCode());
+//             bookService.createBook(book);
+////            URI uri = URI.create("/books" + saveBook.getBookId());
+//            return new ResponseEntity<>(book,HttpStatus.CREATED);
+////            return ResponseEntity.created(uri).body(saveBook);
+//        } catch (Exception ex) {
+//            System.out.println(ex.getMessage());
+//            return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
+//        }
+//    }
 
 //    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
 //    @PatchMapping("update")
@@ -135,6 +136,35 @@ public class RestBook {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @PostMapping("create")
+    public ResponseEntity<Book> saveBook(@Valid @RequestBody Book book) {
+        try {
+            System.out.println(book.getBookCode());
+            bookService.saveBook(book.getBookCode(), book.getBookName()
+                    , book.getBookImage(), book.getBookContent(), book.getBookPrice()
+                    ,book.getBookTranslator(), book.getBookWeight(), book.getBookPublishDate()
+                    , book.getBookQuantity(),book.getBookPublisher(),book.getBookAuthor()
+                    ,book.getBookPromotionId().getPromotionId(),book.getBookCategoryId().getCategoryId());
+            return new ResponseEntity<>(book, HttpStatus.CREATED);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("findAllByBookCategoryId/list/{id}")
+    public ResponseEntity<List<Book>> findAllByBookCategoryId(@PathVariable("id") Long id) {
+        List<Book> books = bookService.findAllByBookCategoryId(id);
+        if (books.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(books, HttpStatus.OK);
+        }
+    }
+
+
 
 
 }
